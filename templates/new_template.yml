@@ -1,0 +1,53 @@
+# Template can have new field for versioning? 
+heat_pump_heating:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix brick: <https://brickschema.org/schema/Brick#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    p:name a s223:HeatPump ;
+        s223:hasRole s223:Role-Heating .
+        s223:hasAspect p:optional_aspect .
+  dependencies:
+    - template: aspect
+      args: {"name": "optional_aspect"}
+  optional: ["optional_aspect"]
+  type: heat_pump
+heat_pump_cooling:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix brick: <https://brickschema.org/schema/Brick#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    p:name a s223:HeatPump ;
+        s223:hasRole s223:Role-Cooling .
+        s223:hasAspect p:optional_aspect .
+  dependencies:
+    - template: aspect
+      args: {"name": "optional_aspect"}
+  optional: ["optional_aspect"]
+  type: heat_pump
+heat_pump_v1:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix brick: <https://brickschema.org/schema/Brick#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    p:name a s223:HeatPump ;
+        s223:hasRole s223:Role-Cooling .
+        s223:hasAspect p:optional_aspect .
+  dependencies:
+    - template: aspect
+      args: {"name": "optional_aspect"}
+  optional: ["optional_aspect"]
+  type: heat_pump
+heat_pump_v2:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix brick: <https://brickschema.org/schema/Brick#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    p:name a s223:HeatPump ;
+        s223:hasRole s223:Role-Cooling .
+        s223:hasAspect p:optional_aspect .
+  dependencies:
+    - template: aspect
+      args: {"name": "optional_aspect"}
+  optional: ["optional_aspect"]
+  type: heat_pump_v1 
