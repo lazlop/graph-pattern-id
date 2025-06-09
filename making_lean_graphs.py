@@ -9,14 +9,13 @@ from rdflib import Graph, BNode, Literal, Namespace, RDF, URIRef
 import pandas as pd
 from namespaces import * 
 from tqdm import tqdm
-from concurrent.futures import ProcessPoolExecutor as Pool
 
 EX = Namespace("http://data.ashrae.org/standard223/data/lbnl-example-2#")
 s223 = Graph(store = 'Oxigraph')
 s223.parse("223p.ttl", format="turtle")
 
 g = Graph(store = 'Oxigraph')
-g.parse("vrf-model-cut.ttl", format="turtle")
+g.parse("vrf-model.ttl", format="turtle")
 
 # %%
 # rules 
@@ -58,7 +57,7 @@ def get_class(node, data_graph = g, schema_graph = s223, ns = S223):
             print('didnt find correct class')
             print(r.bindings[0]['label'])
             return r.bindings[0]['label']
-        return None
+        return Literal(None)
     # print(r.bindings[0]['class'])
     return r.bindings[0]['class']
 def make_groups(g = g, ns = S223, start_node = None):
@@ -68,8 +67,8 @@ def make_groups(g = g, ns = S223, start_node = None):
     i = 0
     for s, p, o in tqdm(g):
         if check_ns(p, ns):
-            with Pool() as pool:
-                s_class, o_class = pool.map(get_class, [s, o])
+            s_class = get_class(s)
+            o_class = get_class(o)
             new_graph.add((s_class, p, o_class))
             # groups[str(s)].append(str(o))
     return new_graph
