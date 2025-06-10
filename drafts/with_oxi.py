@@ -61,8 +61,9 @@ def check_ns(node, ns = EX):
     ns_without_delimiter = str(ns)[:-1]
     return ns_without_delimiter == node_ns
 
-def get_groups():
+def check_class_groups():
     cg = NamedNode("urn:class-graph")
+    groups = []
     class_triples = set()
     subject_list = []
     object_list = []
@@ -78,6 +79,8 @@ def get_groups():
             continue
         subjects = list(get_class(quad.subject))
         objects = list(get_class(quad.object))
+
+        # getting subject and object class if available 
         if len(subjects) == 0:
             labels = list(store.quads_for_pattern(quad.subject,NamedNode(RDFS.label),None,dg))
             if len(labels) > 0:
@@ -101,8 +104,20 @@ def get_groups():
         else:
             object_class = objects[0]['class'].value
             object_list.append(object_class)
+
+        # creating group based on chain of connections
+        # Will go through all triples and query the node to see if it matches group. It's ok for a single node to be in multiple groups.
+        # defining a group - the largest group of nodes that share the same connection types over a domain of interest (like a namespace)
+        # Nodes can not be in more than one group. 
+        # if one AHU connects to two kinds of VAVs, we would want 3 groups, one for each kind of VAV and the AHU 
+        # The parts of groups that overlap get broken off into their own group after everything is done. 
+        # groups will be coallesced if they're the same.
+
             
-        class_triples.add((get_local_name(subject_class), get_local_name(quad.predicate), get_local_name(object_class)))
+        # can't just add the class as the identifier for the class within the group, because there could be many entities of the same class within the group 
+        # can use to test the grouping algorithm 
+        triple = (get_local_name(subject_class), get_local_name(quad.predicate), get_local_name(object_class))
+        class_triples.add(triple)
     return subject_list, object_list, class_triples
 
 if __name__ == "__main__":

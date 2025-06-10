@@ -61,3 +61,11 @@ def bind_prefixes(graph):
 
 def get_prefixes(g):
     return "\n".join(f"PREFIX {prefix}: <{namespace}>" for prefix, namespace in g.namespace_manager.namespaces())
+
+def convert_to_prefixed(uri, g):
+    try:
+        prefix, uri_ref, local_name = g.compute_qname(uri)
+        return f"{prefix}:{local_name}"
+    except Exception as e:
+        print(e)
+        return uri
