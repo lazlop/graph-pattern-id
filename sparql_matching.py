@@ -202,22 +202,9 @@ class PatternQuery:
             query_dict[class_triple] = {}
             subject = get_local_name(var_triple.s)
             object = get_local_name(var_triple.o)
-            if subject not in counter.keys():
-                counter[subject] = 0
-                s_var = subject
-            else:
-                counter[subject] += 1
-                s_var = subject + '_' + str(counter[subject])
-            if object not in counter.keys():
-                counter[object] = 0
-                o_var = object
-            else:
-                counter[object] += 1
-                o_var = object + '_' + str(counter[object])
-
             # have to remove angle brackets from predicate
             p_var = class_triple.p.split('<')[1].split('>')[0]
-            query_dict[class_triple] = Triple(s_var,p_var,o_var)
+            query_dict[class_triple] = Triple(subject,p_var,object)
         filters = self.add_filters(counter)
         return query_dict, filters
     # query fragments can be list, then list can be continuously concatenated with fragments. fragments can be joined by '\n'
