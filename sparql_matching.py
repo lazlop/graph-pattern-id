@@ -65,8 +65,7 @@ def walk_graph_sequentially(store, graph_name = dg, start_node=None, max_depth=N
         # pyoxigraph store
         for quad in store.quads_for_pattern(None, None, node, graph_name):
             s, p, o = quad.subject, quad.predicate, quad.object
-            if isinstance(node, Literal):
-                neighbors.append((s, p, o, 'incoming')) 
+            neighbors.append((s, p, o, 'incoming')) 
 
         # literals can't be subjects
         if isinstance(node, Literal):
@@ -90,16 +89,18 @@ def walk_graph_sequentially(store, graph_name = dg, start_node=None, max_depth=N
         # Get all neighbors of current node
         neighbors = get_neighbors(current_node, store)
         
+        # First, add all triples involving this node to the path
         for s, p, o, direction in neighbors:
             triple_tuple = (s, p, o)
             if triple_tuple not in [t[:3] for t in path]:  # Avoid duplicate triples
                 path.append((s, p, o, direction, depth))
-                
-                # Continue traversal to connected nodes
-                if direction == 'outgoing' and o not in visited:
-                    dfs_walk(o, depth + 1)
-                elif direction == 'incoming' and s not in visited:
-                    dfs_walk(s, depth + 1)
+        
+        # Then, recursively visit all unvisited connected nodes
+        for s, p, o, direction in neighbors:
+            if direction == 'outgoing' and o not in visited:
+                dfs_walk(o, depth + 1)
+            elif direction == 'incoming' and s not in visited:
+                dfs_walk(s, depth + 1)
     
     # Get starting node if not provided
     if start_node is None:
