@@ -4,6 +4,9 @@ from pyoxigraph import *
 from namespaces import *
 from rdflib import Graph
 
+dg = NamedNode("urn:data-graph")
+sg = NamedNode("urn:schema-graph")
+
 def get_local_name(node):
     node = str(node).replace('<', '').replace('>', '')
     if '#' in node:
@@ -37,7 +40,7 @@ def get_class(node, store, prefixes, ns = S223):
     r = store.query(query, use_default_graph_as_union=True)
     return r
 
-def walk_graph_sequentially(graph, graph_name = dg, start_node=None, max_depth=None):
+def walk_graph_sequentially(store, graph_name = dg, start_node=None, max_depth=None):
     """
     Sequentially walk an RDF graph using depth-first traversal.
     
@@ -52,36 +55,26 @@ def walk_graph_sequentially(graph, graph_name = dg, start_node=None, max_depth=N
     visited = set()
     path = []
     
-    def get_all_triples(graph):
-        """Get all triples from the graph"""
-        if hasattr(graph, 'triples'):
-            # rdflib Graph
-            return list(graph.triples((None, None, None)))
-        else:
+    def get_all_triples(store):
             # pyoxigraph store
-            return list(graph)
+            return list(store.quads_for_pattern(None, None, None, graph_name))
     
-    def get_neighbors(node, graph):
+    def get_neighbors(node, store):
         """Get all neighboring nodes (both as subject and object)"""
         neighbors = []
+        # pyoxigraph store
+        for quad in store.quads_for_pattern(None, None, node, graph_name):
+            s, p, o = quad.subject, quad.predicate, quad.object
+            if isinstance(node, Literal):
+                neighbors.append((s, p, o, 'incoming')) 
+
+        # literals can't be subjects
+        if isinstance(node, Literal):
+            return neighbors
         
-        if hasattr(graph, 'triples'):
-            # rdflib Graph
-            # Get triples where node is subject
-            for s, p, o in graph.triples((node, None, None)):
-                neighbors.append((s, p, o, 'outgoing'))
-            # Get triples where node is object
-            for s, p, o in graph.triples((None, None, node)):
-                neighbors.append((s, p, o, 'incoming'))
-        else:
-            # pyoxigraph store
-            for triple in graph:
-                s, p, o = triple.subject, triple.predicate, triple.object
-                if s == node:
-                    neighbors.append((s, p, o, 'outgoing'))
-                elif o == node:
-                    neighbors.append((s, p, o, 'incoming'))
-        
+        for quad in store.quads_for_pattern(node, None, None, graph_name):
+            s, p, o = quad.subject, quad.predicate, quad.object
+            neighbors.append((s, p, o, 'outgoing'))
         return neighbors
     
     def dfs_walk(current_node, depth=0):
@@ -91,11 +84,11 @@ def walk_graph_sequentially(graph, graph_name = dg, start_node=None, max_depth=N
         
         if current_node in visited:
             return
-        
+        print(current_node)
         visited.add(current_node)
         
         # Get all neighbors of current node
-        neighbors = get_neighbors(current_node, graph)
+        neighbors = get_neighbors(current_node, store)
         
         for s, p, o, direction in neighbors:
             triple_tuple = (s, p, o)
@@ -110,7 +103,7 @@ def walk_graph_sequentially(graph, graph_name = dg, start_node=None, max_depth=N
     
     # Get starting node if not provided
     if start_node is None:
-        all_triples = get_all_triples(graph)
+        all_triples = get_all_triples(store)
         if all_triples:
             start_node = all_triples[0][0]  # Use first subject as starting point
         else:
@@ -121,7 +114,7 @@ def walk_graph_sequentially(graph, graph_name = dg, start_node=None, max_depth=N
     
     return path
 
-def walk_graph_by_groups(graph):
+def walk_graph_by_groups(store, graph_name = dg):
     """
     Walk the graph and group nodes based on structural patterns.
     
@@ -134,11 +127,8 @@ def walk_graph_by_groups(graph):
     groups = []
     remaining_triples = set()
     
-    # Get all triples from graph
-    if hasattr(graph, 'triples'):
-        all_triples = list(graph.triples((None, None, None)))
-    else:
-        all_triples = list(graph)
+    all_quads = store.quads_for_pattern(None, None, None, graph_name)
+    all_triples = [(quad.subject, quad.predicate, quad.object) for quad in all_quads]
     
     remaining_triples.update(all_triples)
     
@@ -243,7 +233,8 @@ class PatternQuery:
 store = Store()
 dg = NamedNode("urn:data-graph")
 sg = NamedNode("urn:schema-graph")
-store.load(path = "vrf-model.ttl", format = RdfFormat.TURTLE, to_graph=dg)
+# store.load(path = "vrf-model.ttl", format = RdfFormat.TURTLE, to_graph=dg)
+store.load(path = "test-graph.ttl", format = RdfFormat.TURTLE, to_graph=dg)
 EX = Namespace("http://data.ashrae.org/standard223/data/scb-vrf#")
 store.load(path = "223p.ttl", format = RdfFormat.TURTLE, to_graph=sg)
 
