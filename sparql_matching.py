@@ -3,7 +3,11 @@ from dataclasses import dataclass
 from pyoxigraph import * 
 from namespaces import *
 from rdflib import Graph, URIRef
-
+from collections import defaultdict
+from itertools import combinations
+import pandas as pd
+from figuring_out_sparql_tables import find_sets
+from IPython.display import display
 # to query with pyoxigraph I must use the default graph as union or set the efault graph
 
 # store = Store()
@@ -28,7 +32,7 @@ store = Store()
 dg = NamedNode("urn:data-graph")
 sg = NamedNode("urn:schema-graph")
 # store.load(path = "vrf-model.ttl", format = RdfFormat.TURTLE, to_graph=dg)
-store.load(path = "test-graph.ttl", format = RdfFormat.TURTLE, to_graph=dg)
+store.load(path = "test-graph5.ttl", format = RdfFormat.TURTLE, to_graph=dg)
 EX = Namespace("http://data.ashrae.org/standard223/data/scb-vrf#")
 store.load(path = "223p.ttl", format = RdfFormat.TURTLE, to_graph=sg)
 
@@ -39,6 +43,13 @@ def get_local_name(node):
     else:
         return node.rpartition('/')[-1]
     
+def get_prefixed_name(node):
+    # TODO: Make this function as intended
+    node = str(node).replace('<', '').replace('>', '')
+    if '#' in node:
+        return f"s223:{node.rpartition('#')[-1]}"
+    else:
+        return f"s223:{node.rpartition('/')[-1]}"
 # may need to make my own triple dataclass
 @dataclass(frozen=True)
 class Triple():
@@ -67,6 +78,7 @@ def get_class(node, store = store, prefixes = prefixes, ns = S223):
         return None
     return classes[0]['class'].value
 
+query = ""
 def walk_graph_sequentially(store, graph_name = dg, start_node=None, max_depth=None):
     """
     Sequentially walk an RDF graph using depth-first traversal.
@@ -82,6 +94,7 @@ def walk_graph_sequentially(store, graph_name = dg, start_node=None, max_depth=N
     visited = set()
     path = []
     groups = []
+    query = ""
 
     def get_all_triples(store):
             # pyoxigraph store
@@ -128,25 +141,23 @@ def walk_graph_sequentially(store, graph_name = dg, start_node=None, max_depth=N
                 object = get_class(str(o))
                 if object is None:
                     continue
-                if direction == 'incoming' and s not in visited:
-                    groups.append(
-                                  (Triple(str(get_class(s)), str(p), str(get_class(o))),
-                                   Triple(str(s), str(p), str(o))
-                                   )
+                groups.append(
+                    (Triple(str(get_class(s)), str(p), str(get_class(o))),
+                    Triple(str(s), str(p), str(o))
                     )
-                elif direction == 'outgoing' and o not in visited:
-                    groups.append(
-                                  (Triple(str(get_class(o)), str(p), str(get_class(s))),
-                                   Triple(str(o), str(p), str(s))
-                                   )
-                    )
+                )
 
                 p = PatternQuery(groups)
-                print(p.query)
-                print('QUERYING FOR: ', current_node, "ON PATH: ", path)
+                print('WHERE')
+                global query 
+                query = p.query
+                print(p.where)
+                # print('QUERYING FOR: ', current_node, "ON PATH: ", path)
                 print('RESULTS')
                 res = store.query(p.query, default_graph = [dg])
-                print(res.serialize(format = QueryResultsFormat.TSV).decode('utf-8'))
+                df = pd.DataFrame(list(res), columns = res.variables).map(get_local_name)
+                display(df)
+                # print(groups)
 
                 # Continue traversal to connected nodes
                 if direction == 'outgoing' and o not in visited:
@@ -179,38 +190,48 @@ class PatternQuery:
         self.triples = triples
         # self.graph = graph
         # self.prefixes = get_prefixes(graph)
-        self.query_dict, self.filters = self.make_var_names(triples)
+        self.query_dict = self.make_var_names(triples)
+        self.filters = self.add_filters(self.query_dict)
         self.where = self.add_where(self.query_dict)
         self.query = self.get_query()
-
-
-    def add_filters(self, counter):
+    
+    def add_filters(self, triples):
         filter_lst = []
-        for klass, num in counter.items():
-            if num < 1:
-                continue 
-            for n in range(1,num):
-                for n_i in range(1, n):
-                    filter_lst.append(f"FILTER (?{klass}{n_i} != ?{klass}{n}) .")
+        # anything of the same class should not equal another var of the same class
+        filter_dict = defaultdict(set)
+        for class_triple, var_triple in triples:
+            filter_dict[class_triple.s].add(var_triple.s)
+            filter_dict[class_triple.o].add(var_triple.o)
+        for klass, var_list in filter_dict.items():
+            if len(var_list) == 1:
+                continue
+            for var_1, var_2 in combinations(var_list,2):
+                filter_lst.append(f"FILTER (?{var_1} != ?{var_2}) .")
         
         return "\n".join(filter_lst) 
     def make_var_names(self,triples):
         # makes a dictionary with triples of classes to triples with var names
+        """
+        Makes a dictionary with triples of classes to triples with var names
+        :param triples: a list of tuples, where each tuple contains a triple of classes and a triple of variables
+        :return: a list of tuples, where each tuple contains a triple of classes and a triple of variables with var names
+        """
         counter = {}
-        query_dict = {}
+        query_triples = []
         for class_triple, var_triple in triples:
-            query_dict[class_triple] = {}
             subject = get_local_name(var_triple.s)
             object = get_local_name(var_triple.o)
             # have to remove angle brackets from predicate
-            p_var = class_triple.p.split('<')[1].split('>')[0]
-            query_dict[class_triple] = Triple(subject,p_var,object)
-        filters = self.add_filters(counter)
-        return query_dict, filters
+            if class_triple.p.startswith('<'):
+                p_var = class_triple.p.split('<')[1].split('>')[0]
+            else:
+                p_var = class_triple.p
+            query_triples.append((class_triple,Triple(subject,p_var,object)))
+        return query_triples
     # query fragments can be list, then list can be continuously concatenated with fragments. fragments can be joined by '\n'
-    def add_where(self,query_dict):
+    def add_where(self,query_triples):
         where = []
-        for klass, var in query_dict.items():
+        for klass, var in query_triples:
             where.append(f"?{var.s} a {convert_to_prefixed(klass.s,g)} .")
             where.append(f"?{var.s} {convert_to_prefixed(URIRef(var.p),g)} ?{var.o} .")
             where.append(f"?{var.o} a {convert_to_prefixed(klass.o, g)} .")
@@ -221,28 +242,118 @@ class PatternQuery:
         query = f"""{prefixes}\nSELECT DISTINCT * WHERE {{ {self.where}\n{self.filters} }} """
         return query
 
-# %%
-
-# test_data = [
-#     Triple(S223['Connection'], S223['connectsFrom'], S223['HeatExchanger']),
-#     Triple(S223['Connection'], S223['connectsFrom'], S223['Junction']),
-#     Triple(S223['Connection'], S223['connectsFrom'], S223['Valve']),
-#     Triple(S223['Connection'], S223['connectsTo'], S223['AirHandlingUnit']),
-#     Triple(S223['Connection'], S223['connectsTo'], S223['Coil']),
-#     Triple(S223['Connection'], S223['connectsTo'], S223['Compressor']),
-#     Triple(S223['Connection'], S223['connectsTo'], S223['Damper']),
-#     ]
-# %%
-store = Store()
-dg = NamedNode("urn:data-graph")
-sg = NamedNode("urn:schema-graph")
-# store.load(path = "vrf-model.ttl", format = RdfFormat.TURTLE, to_graph=dg)
-store.load(path = "test-graph.ttl", format = RdfFormat.TURTLE, to_graph=dg)
-EX = Namespace("http://data.ashrae.org/standard223/data/scb-vrf#")
-store.load(path = "223p.ttl", format = RdfFormat.TURTLE, to_graph=sg)
-
-# g = Graph(store = 'Oxigraph')
-# g.parse("vrf-model-cut.ttl", format="turtle")
-
 path = walk_graph_sequentially(store)
+# %%
+sets = find_sets(query, store)
+display(sets)
+
+# %%
+#Trying just going over the whole graph, no depth first search 
+
+def check_ns(node, ns = S223):
+    # would have been better to do with sparql
+    # have to get rid of starting bracket
+    # hardcoding 223 for now 
+    return get_local_name(node) == str(node).replace(str(ns),'').replace('<','').replace('>','')
+
+
+groups = []
+for quad in list(store.quads_for_pattern(None, None, None, dg)):
+    print(quad)
+    if not check_ns(quad.predicate):
+        print("predicate not in 223")
+        continue
+    s_class = get_class(str(quad.subject))
+    if s_class is None:
+        continue
+    o_class = get_class(str(quad.object))
+    if o_class is None:
+        continue
+    groups.append(
+            (Triple(str(s_class), str(quad.predicate), str(o_class)),
+            Triple(str(quad.subject), str(quad.predicate), str(quad.object))
+            )
+        )
+print(groups)
+p = PatternQuery(groups)
+print('WHERE')
+query = p.query
+print(p.where)
+# print('QUERYING FOR: ', current_node, "ON PATH: ", path)
+print('RESULTS')
+res = store.query(p.query, default_graph = [dg])
+df = pd.DataFrame(list(res), columns = res.variables).map(get_local_name)
+display(df)
+sets = find_sets(query, store)
+display(sets)
+
+def get_group_relations(groups, sets):
+    # can double check relation between groups and compose a new_graph
+    new_graph_triples = []
+    for class_triple, triple in groups:
+        for s_set in sets:
+            if isinstance(s_set, tuple):
+                s_set = list(s_set)
+            else:
+                s_set = [s_set]
+            if Variable(triple.s) in s_set:
+                for o_set in sets:
+                    if isinstance(o_set, tuple):
+                        o_set = list(o_set)
+                    else:
+                        o_set = [o_set]
+                    if Variable(triple.o) in o_set:
+                        new_graph_triples.append((
+                            Triple(class_triple.s, triple.p, class_triple.o),
+                            Triple(s_set, triple.p, o_set))
+                        )
+    return new_graph_triples
+temp = get_group_relations(groups = p.query_dict, sets = sets)
+
+def group_serialization(group):
+    return '_'.join(str(var).replace('?','x') for var in group)
+
+def create_new_graph(triples):
+    # create a new graph with the triples
+    # serialize groups 
+    group_dict = {}
+    group_triples = []
+    for class_triple, triple in triples:
+        s = group_serialization(triple.s)
+        o = group_serialization(triple.o)
+        group_dict[s] = triple.s
+        group_dict[o] = triple.o
+        store.add(Quad(NamedNode(EX[s]), NamedNode(triple.p), NamedNode(EX[o]), NamedNode(EX)))
+        store.add(Quad(NamedNode(EX[s]), NamedNode(A), NamedNode(class_triple.s), NamedNode(EX)))
+        store.add(Quad(NamedNode(EX[o]), NamedNode(A), NamedNode(class_triple.o), NamedNode(EX)))
+    return group_dict
+
+# %%
+dct = create_new_graph(temp)
+display(dct)
+
+groups = []
+for quad in list(store.quads_for_pattern(None, None, None, NamedNode(EX))):
+    print(quad)
+    if not check_ns(quad.predicate):
+        print("predicate not in 223")
+        continue
+    s_class = get_class(str(quad.subject))
+    if s_class is None:
+        continue
+    o_class = get_class(str(quad.object))
+    if o_class is None:
+        continue
+    groups.append(
+            (Triple(str(s_class), str(quad.predicate), str(o_class)),
+            Triple(str(quad.subject), str(quad.predicate), str(quad.object))
+            )
+        )
+# %%
+p = PatternQuery(groups)
+res = store.query(p.query, default_graph = [NamedNode(EX)])
+df = pd.DataFrame(list(res), columns = res.variables).map(get_local_name)
+display(df)
+sets = find_sets(p.query, store)
+display(sets)
 # %%

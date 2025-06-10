@@ -13,14 +13,29 @@
 
 @prefix ex: <urn:example#> .
 
-# 4 sets, Root, branches without leaves, branch with leaves, leaves
+# 8 groups. root, loop1 and 2, loop1_2 and 2_2, loop2_1 and 1_1, loop 3, loop3_1, loop3_2
 
-ex:0_0 a s223:Root ;
-    s223:cnx ex:1_0, ex:1_1, ex:1_2 . 
-ex:1_0 a s223:Branch . 
-ex:1_1 a s223:Branch .
-ex:1_2 a s223:Branch ;
-    s223:cnx ex:2_0, ex:2_1, ex:2_2 . 
-ex:2_0 a s223:Leaf . 
-ex:2_1 a s223:Leaf .
-ex:2_2 a s223:Leaf .
+ex:root a s223:Root ;
+    s223:cnx ex:loop1, ex:loop2 .
+ex:loop1 a s223:Branch;
+    s223:cnx ex:loop1_1 . 
+ex:loop2 a s223:Branch;
+    s223:cnx ex:loop2_1 .
+ex:loop1_1 a s223:Branch ;
+    s223:cnx ex:loop1_2 . 
+ex:loop2_1 a s223:Branch ;
+    s223:cnx ex:loop2_2 .
+ex:loop1_2 a s223:Branch ;
+    s223:cnx ex:loop1.
+ex:loop2_2 a s223:Branch ;
+    s223:cnx ex:loop2.
+
+
+ex:root2 a s223:Root ; 
+    s223:cnx ex:loop3 .
+ex:loop3 a s223:Branch ;
+    s223:cnx ex:loop3_1 .
+ex:loop3_1 a s223:Branch ;
+    s223:cnx ex:loop3_2 . 
+ex:loop3_2 a s223:Branch ; 
+    s223:cnx ex:loop3 .

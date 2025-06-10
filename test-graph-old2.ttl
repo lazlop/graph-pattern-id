@@ -13,14 +13,8 @@
 
 @prefix ex: <urn:example#> .
 
-# 4 sets, Root, branches without leaves, branch with leaves, leaves
-
-ex:0_0 a s223:Root ;
+ex:0_0 a s223:Branch ;
     s223:cnx ex:1_0, ex:1_1, ex:1_2 . 
-ex:1_0 a s223:Branch . 
-ex:1_1 a s223:Branch .
-ex:1_2 a s223:Branch ;
-    s223:cnx ex:2_0, ex:2_1, ex:2_2 . 
-ex:2_0 a s223:Leaf . 
-ex:2_1 a s223:Leaf .
-ex:2_2 a s223:Leaf .
+ex:1_0 a s223:Leaf . 
+ex:1_1 a s223:Leaf .
+ex:1_2 a s223:Leaf .
