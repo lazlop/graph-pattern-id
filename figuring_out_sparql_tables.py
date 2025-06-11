@@ -114,11 +114,11 @@ def find_overlap_columns(df):
 
     return result, unpaired
 #%%
-same_counts, _ = find_overlap_columns(df)
-for col1, col2 in same_counts:
-    print(f"{col1} and {col2}")
-    print(f"Value counts for {col1}: {df[col1].value_counts().to_dict()}")
-    print(f"Value counts for {col2}: {df[col2].value_counts().to_dict()}")
+# same_counts, _ = find_overlap_columns(df)
+# for col1, col2 in same_counts:
+#     print(f"{col1} and {col2}")
+#     print(f"Value counts for {col1}: {df[col1].value_counts().to_dict()}")
+#     print(f"Value counts for {col2}: {df[col2].value_counts().to_dict()}")
 
 
 # %%

@@ -11,7 +11,7 @@ import numpy as np
 from IPython.display import display
 import networkx as nx
 
-TEST_GRAPH_FILE = "test-graph5.ttl"
+TEST_GRAPH_FILE = "test-graph.ttl"
 SCHEMA_GRAPH_FILE = "223p.ttl"
 
 g = Graph(store = 'Oxigraph')
@@ -213,8 +213,9 @@ def find_sets_from_pairs(pairs):
     groups = list(check_set)
     return groups + [tuple(cycle) for cycle in cycles]
 
-def find_sets(query, store):
-    df = pd.DataFrame(list(store.query(query, use_default_graph_as_union=True)), columns = store.query(query, use_default_graph_as_union=True).variables).map(get_local_name)
+def find_sets(query, store, default_graph):
+    res = store.query(query, default_graph = [default_graph])
+    df = pd.DataFrame(list(res), columns = res.variables).map(get_local_name)
     pairs, unpaired = find_overlap_columns(df)
     groups = find_sets_from_pairs(pairs)
     return groups + unpaired
@@ -266,7 +267,7 @@ def run():
     # print(p.where)
     # res = store.query(p.query, default_graph = [dg])
     # df = pd.DataFrame(list(res), columns = res.variables).map(get_local_name)
-    sets = find_sets(query, store)
+    sets = find_sets(query, store, dg)
     return p, sets
 
 def run_for_groups(p, sets):
@@ -281,14 +282,16 @@ def run_for_groups(p, sets):
     query = p.query
     # res = store.query(p.query, default_graph = [NamedNode(ns)])
     # df = pd.DataFrame(list(res), columns = res.variables).map(get_local_name)
-    sets = find_sets(query, store)
+    sets = find_sets(query, store, NamedNode(ns))
     return p, sets, group_dict
 
 def run_to_completion():
     group_dicts = []
     all_sets = []
+    all_p = []
     p, sets = run()
     all_sets.append(sets)
+    all_p.append(p)
     while True:
         p, sets, group_dict = run_for_groups(p, sets)
         print('set length ',len(sets))
@@ -298,13 +301,21 @@ def run_to_completion():
         else:
             group_dicts.append(group_dict)
             all_sets.append(sets)
-    return p, all_sets, group_dicts
+            all_p.append(p)
+    return all_p, all_sets, group_dicts
 
 from visualize_triples import visualize_triples
 # %%
-p, all_sets, group_dicts = run_to_completion()
+all_p, all_sets, group_dicts = run_to_completion()
 display(all_sets)
 display(group_dicts)
+for p in all_p:
+    triples = [triples for _, triples in p.query_dict]
+    visualize_triples(triples)
+# visualize_last_group 
+p, sets, group_dict = run_for_groups(all_p[-1], all_sets[-1])
+triples = [triples for _, triples in p.query_dict]
+a = visualize_triples(triples)
 # group_relations = get_group_relations(p.query_dict, all_sets[-1])
 # triples = [triples for _, triples in group_relations]
 # visualize_triples([triples for _, triples in group_relations])
