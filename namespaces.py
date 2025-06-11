@@ -59,6 +59,29 @@ def bind_prefixes(graph):
     graph.bind("hpfs", HPFS)
     graph.bind('s223', S223)
 
+
+namespace_dict= {
+    'xsd': XSD,
+    'rdf': RDF,
+    'owl': OWL,
+    'rdfs': RDFS,
+    'skos': SKOS,
+    'sh': SH,
+    'quantitykind': QK,
+    'qudt': QUDT,
+    'unit': UNIT,
+    'brick': BRICK,
+    'tag': TAG,
+    'bsh': BSH,
+    'P': PARAM,
+    'constraint': CONSTRAINT,
+    'bmotif': BM,
+    'hpflex': HPF,
+    'hpfs': HPFS,
+    's223': S223,
+    'ex1': "http://data.ashrae.org/standard223/data/scb-vrf#"
+}
+
 def get_prefixes(g):
     return "\n".join(f"PREFIX {prefix}: <{namespace}>" for prefix, namespace in g.namespace_manager.namespaces())
 
