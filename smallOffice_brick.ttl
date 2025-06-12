@@ -1,0 +1,44 @@
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smallOffice: <http://example.org/building/> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+
+<http://example.org/building/Core_ZN-ZN-HP-Htg-Coil-27-Clg-kBtu/hr-7.7HSPF_Heating_Coil_Air_Heating_Rate> a brick:Thermal_Power_Sensor ;
+    rdfs:label "Core_ZN-ZN-HP-Htg-Coil-27-Clg-kBtu/hr-7.7HSPF_Heating_Coil_Air_Heating_Rate" ;
+    brick:hasUnit unit:W ;
+    brick:isPointOf <http://example.org/building/Core_ZN-ZN-HP-Htg-Coil-27-Clg-kBtu/hr-7.7HSPF> .
+
+<http://example.org/building/Core_ZN-ZN-HP-Htg-Coil-27-Clg-kBtu/hr-7.7HSPF_Heating_Coil_Electricity_Rate> a brick:Electrical_Power_Sensor ;
+    rdfs:label "Core_ZN-ZN-HP-Htg-Coil-27-Clg-kBtu/hr-7.7HSPF_Heating_Coil_Electricity_Rate" ;
+    brick:hasUnit unit:W ;
+    brick:isPointOf <http://example.org/building/Core_ZN-ZN-HP-Htg-Coil-27-Clg-kBtu/hr-7.7HSPF> .
+
+<http://example.org/building/Core_ZN-ZN-PSZ-AC-1-1spd-DX-HP-Clg-Coil-27kBtu/hr-13.0SEER_Cooling_Coil_Electricity_Rate> a brick:Electrical_Power_Sensor ;
+    rdfs:label "Core_ZN-ZN-PSZ-AC-1-1spd-DX-HP-Clg-Coil-27kBtu/hr-13.0SEER_Cooling_Coil_Electricity_Rate" ;
+    brick:hasUnit unit:W ;
+    brick:isPointOf <http://example.org/building/Core_ZN-ZN-PSZ-AC-1-1spd-DX-HP-Clg-Coil-27kBtu/hr-13.0SEER> .
+
+<http://example.org/building/Core_ZN-ZN-PSZ-AC-1-1spd-DX-HP-Clg-Coil-27kBtu/hr-13.0SEER_Cooling_Coil_Total_Cooling_Rate> a brick:Thermal_Power_Sensor ;
+    rdfs:label "Core_ZN-ZN-PSZ-AC-1-1spd-DX-HP-Clg-Coil-27kBtu/hr-13.0SEER_Cooling_Coil_Total_Cooling_Rate" ;
+    brick:hasUnit unit:W ;
+    brick:isPointOf <http://example.org/building/Core_ZN-ZN-PSZ-AC-1-1spd-DX-HP-Clg-Coil-27kBtu/hr-13.0SEER> .
+
+smallOffice:Core_ZN-ZN-PSZ-AC-1-Diffuser-Zone-Air-Terminal-Minimum-Air-Flow-Fraction a brick:Min_Position_Setpoint_Limit ;
+    rdfs:label "Core_ZN-ZN-PSZ-AC-1-Diffuser-Zone-Air-Terminal-Minimum-Air-Flow-Fraction" ;
+    brick:hasUnit unit:PERCENT ;
+    brick:isPointOf smallOffice:Core_ZN-ZN-PSZ-AC-1-Diffuser .
+
+smallOffice:Core_ZN-ZN-PSZ-AC-1-Diffuser-Zone-Air-Terminal-VAV-Damper-Position a brick:Damper_Position_Command ;
+    rdfs:label "Core_ZN-ZN-PSZ-AC-1-Diffuser-Zone-Air-Terminal-VAV-Damper-Position" ;
+    brick:hasUnit unit:PERCENT ;
+    brick:isPointOf smallOffice:Core_ZN-ZN-PSZ-AC-1-Diffuser .
+
+smallOffice:Core_ZN-ZN-PSZ-AC-1-Fan_Fan_Electricity_Rate a brick:Electrical_Power_Sensor ;
+    rdfs:label "Core_ZN-ZN-PSZ-AC-1-Fan_Fan_Electricity_Rate" ;
+    brick:hasUnit unit:W ;
+    brick:isPointOf smallOffice:Core_ZN-ZN-PSZ-AC-1-Fan .
+
+smallOffice:Core_ZN-ZN-PSZ-AC-1-Gas-Backup-Htg-Coil_Heating_Coil_Air_Heating_Rate a brick:Thermal_Power_Sensor ;
+    rdfs:label "Core_ZN-ZN-PSZ-AC-1-Gas-Backup-Htg-Coil_Heating_Coil_Air_Heating_Rate" ;
+    brick:hasUnit unit:W ;
+    brick:isPointOf smallOffice:Core_ZN-ZN-PSZ-AC-1-Gas-Backup-Htg-Coil .

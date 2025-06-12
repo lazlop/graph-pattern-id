@@ -345,6 +345,7 @@ def run_to_completion():
 from visualize_triples import visualize_triples
 # %%
 shorten_graph()
+store.dump('vrf-cut-short.ttl', format = RdfFormat.TURTLE, from_graph=dg, prefixes=namespace_dict)
 all_p, all_sets, group_dicts = run_to_completion()
 display(all_sets)
 display(group_dicts)
