@@ -39,10 +39,17 @@ However, may make more sense to just render the groups again and reconcile.
 
 Remaking the groups into a graph and then running the process again does generate the groups I want and expect. 
 
-
-COMPLETED:
-Can construct queries and find groups within queries 
-
 TODO: 
-Constructing groups while walking the graph
-Logic for when to end the group 
+Maybe separate and tackle by type to make SPARQL queries smaller? 
+Just the thing and everything directly related to it to create the initial groups, then se see how groups relate to each other? 
+    This definitley won't have the potentially useful intermediate steps of the process with the subgroups before hte larger groups
+    Can do like: 
+        1) Get all VAVs - ask if they are the same. Create groups for which are the same 
+        2) Get all AHUs - asl of they are the same. Create groups for which they are the same 
+        3) Compare how each VAV connects to each AHU, create final groups for different kinds of connection. 
+        Relies on knowing what is included in a VAV and what is included in an AHU - but maybe these aren't terrible assumptions. 
+    
+Probably want to do the writeup and see if this idea has merrit before doing any optimization. 
+
+Can do separate queries to create groups for each type of thing then coalesce? 
+maybe something a little closer to constructing groups while walking the graph?
