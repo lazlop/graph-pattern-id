@@ -11,8 +11,8 @@ import numpy as np
 from IPython.display import display
 import networkx as nx
 
-TEST_GRAPH_FILE = "vrf-model-cut.ttl"
-SCHEMA_GRAPH_FILE = "223p.ttl"
+TEST_GRAPH_FILE = "test-graphs/test-graph.ttl"
+SCHEMA_GRAPH_FILE = "test-graphs/223p.ttl"
 
 g = Graph(store = 'Oxigraph')
 g.parse(TEST_GRAPH_FILE, format="turtle")
@@ -342,7 +342,7 @@ def run_to_completion():
             all_p.append(p)
     return all_p, all_sets, group_dicts
 
-from visualize_triples import visualize_triples
+from private.visualize_triples import visualize_triples
 # %%
 shorten_graph()
 store.dump('vrf-cut-short.ttl', format = RdfFormat.TURTLE, from_graph=dg, prefixes=namespace_dict)
