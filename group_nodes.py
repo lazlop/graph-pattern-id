@@ -1,5 +1,6 @@
 # %%
 from typing import Union
+import time 
 from dataclasses import dataclass
 from pyoxigraph import * 
 from namespaces import *
@@ -11,7 +12,7 @@ import numpy as np
 from IPython.display import display
 import networkx as nx
 
-TEST_GRAPH_FILE = "vrf-model-cut.ttl"
+TEST_GRAPH_FILE = "test-graph.ttl"
 SCHEMA_GRAPH_FILE = "223p.ttl"
 
 g = Graph(store = 'Oxigraph')
@@ -26,6 +27,7 @@ dg = NamedNode("urn:data-graph")
 sg = NamedNode("urn:schema-graph")
 store.load(path = TEST_GRAPH_FILE, format = RdfFormat.TURTLE, to_graph=odg)
 store.load(path = SCHEMA_GRAPH_FILE, format = RdfFormat.TURTLE, to_graph=sg)
+# store.dump(output='vrf-cut-short.ttl', format = RdfFormat.TURTLE, from_graph = dg,prefixes = namespace_dict)
 
 @dataclass(frozen=True)
 class Triple():
@@ -67,8 +69,10 @@ def get_class(node, store = store, prefixes = prefixes, ns = S223, ns_prefix = '
         return None
     return classes[0]['class'].value
 
-def shorten_graph(store = store, prefixes = prefixes, dg = dg, odg = odg, ns_prefix = 's223:'):
+def shorten_graph(store = store, prefixes = prefixes, dg = dg, odg = odg, ns_prefix = 's223:', exempt_predicates = ['rdf:type']):
     # shortens original data graph (odg) and puts into new named graph called dg
+    pred_filters = """
+        """.join([f"FILTER(?p != {predicate} )" for predicate in exempt_predicates])
     query = f"""
     {prefixes}
     CONSTRUCT {{
@@ -76,8 +80,7 @@ def shorten_graph(store = store, prefixes = prefixes, dg = dg, odg = odg, ns_pre
         }} 
         WHERE {{  
         ?s ?p ?o . 
-        FILTER(?p != s223:cnx)
-        FILTER(?p != rdf:type)
+        {pred_filters}
         FILTER(STRSTARTS(STR(?p), str({ns_prefix})))
     }} """
     for r in store.query(query, default_graph=[odg]):
@@ -88,16 +91,18 @@ def shorten_graph(store = store, prefixes = prefixes, dg = dg, odg = odg, ns_pre
             store.add(Quad(r.subject,NamedNode(A),NamedNode(s_class), dg))
             store.add(Quad(r.object,NamedNode(A),NamedNode(o_class), dg))
 
-
+# running shorten graph
+shorten_graph()
+#%%
 class PatternQuery:
     def __init__(self, triples, graph = g):
         self.triples = triples
         # self.graph = graph
         # self.prefixes = get_prefixes(graph)
-        self.query_dict = self.make_var_names(triples)
+        self.query_dict, self.var_names = self.make_var_names(triples)
         self.filters = self.add_filters(self.query_dict)
         self.where = self.add_where(self.query_dict)
-        self.query = self.get_query()
+        self.queries = list(self.query_generator())
     
     def add_filters(self, triples):
         filter_lst = []
@@ -122,6 +127,7 @@ class PatternQuery:
         """
         counter = {}
         query_triples = []
+        var_names = set()
         for class_triple, var_triple in triples:
             # Also replace dashes? 
             subject = get_local_name(var_triple.s).replace('-','_')
@@ -132,7 +138,9 @@ class PatternQuery:
             else:
                 p_var = class_triple.p
             query_triples.append((class_triple,Triple(subject,p_var,object)))
-        return query_triples
+            var_names.add(subject)
+            var_names.add(object)
+        return query_triples, var_names
     # query fragments can be list, then list can be continuously concatenated with fragments. fragments can be joined by '\n'
     def add_where(self,query_triples):
         where = []
@@ -142,10 +150,12 @@ class PatternQuery:
             where.append(f"?{var.o} a {convert_to_prefixed(klass.o, g)} .")
         return '\n'.join(where)
     
-    def get_query(self):
+    def query_generator(self, prefixes = prefixes):
         # may need to add prefixes
-        query = f"""{prefixes}\nSELECT DISTINCT * WHERE {{ {self.where}\n{self.filters} }}"""
-        return query
+        for var in list(self.var_names):
+            var = f"?{var}"
+            query = f"""{prefixes}\nSELECT DISTINCT {var} WHERE {{ {self.where}\n{self.filters} }}"""
+            yield query
 
 def get_triples(store = store, graph_name = dg):
     triples = []
@@ -166,94 +176,117 @@ def get_triples(store = store, graph_name = dg):
     return triples
 
 
-def find_overlap_columns(df):
-    """
-    Check if any two columns in a DataFrame have the same value counts.
+# def find_overlap_columns(df):
+#     """
+#     Check if any two columns in a DataFrame have the same value counts.
     
-    Parameters:
-    df (pandas.DataFrame): The DataFrame to check
+#     Parameters:
+#     df (pandas.DataFrame): The DataFrame to check
     
-    Returns:
-    list: Pairs of column names that have identical value counts
-    """
-    result = []
+#     Returns:
+#     list: Pairs of column names that have identical value counts
+#     """
+#     result = []
     
-    # Get all possible pairs of columns
-    column_pairs = list(combinations(df.columns, 2))
+#     # Get all possible pairs of columns
+#     column_pairs = list(combinations(df.columns, 2))
     
-    for col1, col2 in column_pairs:
-        # Get value counts for both columns
-        counts1 = df[col1].value_counts().sort_index()
-        counts2 = df[col2].value_counts().sort_index()
+#     for col1, col2 in column_pairs:
+#         # Get value counts for both columns
+#         counts1 = df[col1].value_counts().sort_index()
+#         counts2 = df[col2].value_counts().sort_index()
         
-        # Check if they have the same indices (values)
-        if not counts1.index.equals(counts2.index):
-            continue
+#         # Check if they have the same indices (values)
+#         if not counts1.index.equals(counts2.index):
+#             continue
             
-        # Check if the counts are the same
-        if not counts1.equals(counts2):
-            continue
+#         # Check if the counts are the same
+#         if not counts1.equals(counts2):
+#             continue
         
-        # check if the columns are identical 
-        if np.array_equal(df[col1], df[col2]):
-            # print('columns are identical')
-            continue 
+#         # check if the columns are identical 
+#         if np.array_equal(df[col1], df[col2]):
+#             # print('columns are identical')
+#             continue 
 
-        result.append((col1, col2))
-    # get unpaired columns
-    unpaired = []
-    for col in df.columns:
-        if col not in [c1 for c1, c2 in result] and col not in [c2 for c1, c2 in result]:
-            unpaired.append(col)
+#         result.append((col1, col2))
+#     # get unpaired columns
+#     unpaired = []
+#     for col in df.columns:
+#         if col not in [c1 for c1, c2 in result] and col not in [c2 for c1, c2 in result]:
+#             unpaired.append(col)
 
-    return result, unpaired
+#     return result, unpaired
 
 # %%
-def find_cycles(pairs):
-    # Create a directed graph
-    G = nx.Graph()
+# def find_cycles(pairs):
+#     # Create a directed graph
+#     G = nx.Graph()
     
-    # Add edges from the tuple pairs
-    G.add_edges_from(pairs)
+#     # Add edges from the tuple pairs
+#     G.add_edges_from(pairs)
     
-    # Find simple cycles in the graph
-    cycles = list(nx.simple_cycles(G))
+#     # Find simple cycles in the graph
+#     cycles = list(nx.simple_cycles(G))
     
-    return cycles
+#     return cycles
 
-def find_sets_from_pairs(pairs):
-    cycles = find_cycles(pairs)
-    # Convert to tuples for hashability
-    pair_tuples = [tuple(lst) for lst in pairs]
-    # Create a set
-    check_set = set(pair_tuples)
+# def find_sets_from_pairs(pairs):
+#     cycles = find_cycles(pairs)
+#     # Convert to tuples for hashability
+#     pair_tuples = [tuple(lst) for lst in pairs]
+#     # Create a set
+#     check_set = set(pair_tuples)
     
-    for cycle in cycles:
-        cycle_tuple_set = set(combinations(cycle, 2))
-        intersection = check_set.intersection(cycle_tuple_set)
-        if intersection:
-            check_set -= intersection
+#     for cycle in cycles:
+#         cycle_tuple_set = set(combinations(cycle, 2))
+#         intersection = check_set.intersection(cycle_tuple_set)
+#         if intersection:
+#             check_set -= intersection
     
-    groups = list(check_set)
-    return groups + [tuple(cycle) for cycle in cycles]
+#     groups = list(check_set)
+#     return groups + [tuple(cycle) for cycle in cycles]
 
-def find_sets(query, store, default_graph):
-    print('running query')
-    import time 
-    st = time.time()
-    res = store.query(query, default_graph = [default_graph])
-    print('getting results to list')
-    res_list = list(res)
-    print('converting to dataframe')
-    df = pd.DataFrame(res_list, columns = res.variables).map(get_local_name)
-    et = time.time()
-    print(f'took {et-st} seconds')
-    print('finding overlapped columns')
-    pairs, unpaired = find_overlap_columns(df)
-    print('finding sets from pairs')
-    groups = find_sets_from_pairs(pairs)
-    return groups + unpaired
+# def find_sets(query, store, default_graph):
+#     print('running query')
+#     import time 
+#     st = time.time()
+#     res = store.query(query, default_graph = [default_graph])
+#     print('getting results to list')
+#     res_list = list(res)
+#     print('converting to dataframe')
+#     df = pd.DataFrame(res_list, columns = res.variables).map(get_local_name)
+#     et = time.time()
+#     print(f'took {et-st} seconds')
+#     print('finding overlapped columns')
+#     pairs, unpaired = find_overlap_columns(df)
+#     print('finding sets from pairs')
+#     groups = find_sets_from_pairs(pairs)
+#     return groups + unpaired
 
+def find_sets(queries, store, default_graph):
+    st_all= time.time()
+    groups = []
+    for query in queries:
+        print('running query')
+        st = time.time()
+        res = store.query(query, default_graph = [default_graph])
+        print('getting results to list')
+        res_list = list(res)
+        print('converting to dataframe')
+        df = pd.DataFrame(res_list, columns = res.variables).map(get_local_name)
+        et = time.time()
+        print(f'took {et-st} seconds')
+        res_set = set([get_local_name(r) for r in res_list])
+        if res_set in groups:
+            print(res_list)
+        else:
+            groups.append((res_set))
+    et_all = time.time()
+    print(f'for all queries took {et_all-st_all} seconds')
+    return groups
+groups = find_sets(queries = p.queries, store = store, default_graph=dg)
+#%%
 def get_group_relations(groups, sets):
     # can double check relation between groups and compose a new_graph
     new_graph_triples = []
@@ -344,7 +377,6 @@ def run_to_completion():
 
 from visualize_triples import visualize_triples
 # %%
-shorten_graph()
 all_p, all_sets, group_dicts = run_to_completion()
 display(all_sets)
 display(group_dicts)
