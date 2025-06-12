@@ -17,7 +17,7 @@ store.load(path = "223p.ttl", format = RdfFormat.TURTLE, to_graph=sg)
 query = """PREFIX s223: <http://data.ashrae.org/standard223#>
 PREFIX unit: <http://qudt.org/vocab/unit/>
 PREFIX ex: <urn:example#>
-SELECT DISTINCT ?1_1 WHERE { ?1_2 a s223:Branch .
+SELECT DISTINCT * WHERE { ?1_2 a s223:Branch .
 ?1_2 s223:cnx ?2_2 .
 ?2_2 a s223:Leaf .
 ?0_0 a s223:Root .
