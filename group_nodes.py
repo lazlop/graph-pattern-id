@@ -12,7 +12,7 @@ import numpy as np
 from IPython.display import display
 import networkx as nx
 
-TEST_GRAPH_FILE = "test-graph.ttl"
+TEST_GRAPH_FILE = "vrf-model-cut.ttl"
 SCHEMA_GRAPH_FILE = "223p.ttl"
 
 g = Graph(store = 'Oxigraph')
@@ -92,6 +92,7 @@ def shorten_graph(store = store, prefixes = prefixes, dg = dg, odg = odg, ns_pre
             store.add(Quad(r.object,NamedNode(A),NamedNode(o_class), dg))
 
 # running shorten graph
+# May want to cut out s223:cnx here
 shorten_graph()
 #%%
 class PatternQuery:
@@ -277,14 +278,17 @@ def find_sets(queries, store, default_graph):
         df = pd.DataFrame(res_list, columns = res.variables).map(get_local_name)
         et = time.time()
         print(f'took {et-st} seconds')
-        res_set = set([get_local_name(r) for r in res_list])
+        # also making them variables for alignment with previous code.
+        # TODO: make all results not use variables
+        res_set = set([Variable(get_local_name(r)) for r in res_list])
         if res_set in groups:
             print(res_list)
         else:
             groups.append((res_set))
     et_all = time.time()
     print(f'for all queries took {et_all-st_all} seconds')
-    return groups
+    # turning variables into tuples for alignment with previous code. TODO: fix this
+    return [ tuple(g) for g in groups] 
 # groups = find_sets(queries = p.queries, store = store, default_graph=dg)
 #%%
 def get_group_relations(groups, sets):
@@ -332,11 +336,7 @@ def run():
     groups = get_triples()
     print('building query')
     p = PatternQuery(groups)
-    query = p.query
-    # print(p.where)
-    # res = store.query(p.query, default_graph = [dg])
-    # df = pd.DataFrame(list(res), columns = res.variables).map(get_local_name)
-    sets = find_sets(query, store, dg)
+    sets = find_sets(p.queries, store, dg)
     return p, sets
 
 def run_for_groups(p, sets):
@@ -350,10 +350,7 @@ def run_for_groups(p, sets):
     groups = get_triples(graph_name=NamedNode(ns))
 
     p = PatternQuery(groups)
-    query = p.query
-    # res = store.query(p.query, default_graph = [NamedNode(ns)])
-    # df = pd.DataFrame(list(res), columns = res.variables).map(get_local_name)
-    sets = find_sets(query, store, NamedNode(ns))
+    sets = find_sets(p.queries, store, NamedNode(ns))
     return p, sets, group_dict
 
 def run_to_completion():
