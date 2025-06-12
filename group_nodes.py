@@ -69,7 +69,7 @@ def get_class(node, store = store, prefixes = prefixes, ns = S223, ns_prefix = '
         return None
     return classes[0]['class'].value
 
-def shorten_graph(store = store, prefixes = prefixes, dg = dg, odg = odg, ns_prefix = 's223:', exempt_predicates = ['rdf:type']):
+def shorten_graph(store = store, prefixes = prefixes, dg = dg, odg = odg, ns_prefix = 's223:', exempt_predicates = ['s223:cnx','rdf:type']):
     # shortens original data graph (odg) and puts into new named graph called dg
     pred_filters = """
         """.join([f"FILTER(?p != {predicate} )" for predicate in exempt_predicates])
