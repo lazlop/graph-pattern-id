@@ -285,7 +285,7 @@ def find_sets(queries, store, default_graph):
     et_all = time.time()
     print(f'for all queries took {et_all-st_all} seconds')
     return groups
-groups = find_sets(queries = p.queries, store = store, default_graph=dg)
+# groups = find_sets(queries = p.queries, store = store, default_graph=dg)
 #%%
 def get_group_relations(groups, sets):
     # can double check relation between groups and compose a new_graph
