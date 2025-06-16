@@ -11,7 +11,9 @@ import numpy as np
 from IPython.display import display
 import networkx as nx
 
+# 1 (test-graph) and 5 (test-graph5) may be best
 TEST_GRAPH_FILE = "test-graphs/test-graph.ttl"
+# TEST_GRAPH_FILE = "test-graphs/test-graph5.ttl"
 SCHEMA_GRAPH_FILE = "test-graphs/223p.ttl"
 
 g = Graph(store = 'Oxigraph')
@@ -67,8 +69,11 @@ def get_class(node, store = store, prefixes = prefixes, ns = S223, ns_prefix = '
         return None
     return classes[0]['class'].value
 
-def shorten_graph(store = store, prefixes = prefixes, dg = dg, odg = odg, ns_prefix = 's223:'):
+
+def shorten_graph(store = store, prefixes = prefixes, dg = dg, odg = odg, ns_prefix = 's223:', exempt_predicates = ['s223:cnx','rdf:type']):
     # shortens original data graph (odg) and puts into new named graph called dg
+    pred_filters = """
+        """.join([f"FILTER(?p != {predicate} )" for predicate in exempt_predicates])
     query = f"""
     {prefixes}
     CONSTRUCT {{
@@ -76,8 +81,7 @@ def shorten_graph(store = store, prefixes = prefixes, dg = dg, odg = odg, ns_pre
         }} 
         WHERE {{  
         ?s ?p ?o . 
-        FILTER(?p != s223:cnx)
-        FILTER(?p != rdf:type)
+        {pred_filters}
         FILTER(STRSTARTS(STR(?p), str({ns_prefix})))
     }} """
     for r in store.query(query, default_graph=[odg]):
@@ -276,8 +280,8 @@ def get_group_relations(groups, sets):
                         )
     return new_graph_triples
 
-def group_serialization(group):
-    return '_'.join(str(var).replace('?','x') for var in group)
+def group_serialization(group, var_replacement = ''):
+    return '_'.join(str(var).replace('?',var_replacement) for var in group)
 
 def create_new_graph(triples, ns = EX):
     # ns is the namespace for the new graph - also used to name the graph
@@ -344,7 +348,7 @@ def run_to_completion():
 
 from private.visualize_triples import visualize_triples
 # %%
-shorten_graph()
+shorten_graph(exempt_predicates=[])
 store.dump('vrf-cut-short.ttl', format = RdfFormat.TURTLE, from_graph=dg, prefixes=namespace_dict)
 all_p, all_sets, group_dicts = run_to_completion()
 display(all_sets)
@@ -359,7 +363,3 @@ a = visualize_triples(triples)
 # group_relations = get_group_relations(p.query_dict, all_sets[-1])
 # triples = [triples for _, triples in group_relations]
 # visualize_triples([triples for _, triples in group_relations])
-
-#%%
-if __name__ == "__main__":
-    run()

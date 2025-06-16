@@ -13,14 +13,21 @@
 
 @prefix ex: <urn:example#> .
 
-# 4 sets, Root, branches without leaves, branch with leaves, leaves
-
+ex:ahu a s223:AHU ;
+    s223:cnx ex:loop1, ex:loop2 .
+ex:duct1 a s223:Duct;
+    s223:cnx ex:vav1 . 
+ex:vav1 a s223:VAV;
+    s223:cnx ex:room .
+ex:room a s223:DomainSpace ;
+    s223:cnx ex:return . 
+ex:return a s223:Duct .
 ex:root a s223:Root ;
-    s223:cnx ex:branch1, ex:branch2, ex:branch3 . 
-ex:branch1 a s223:Branch . 
-ex:branch2 a s223:Branch .
-ex:branch3 a s223:Branch ;
-    s223:cnx ex:leaf1, ex:leaf2, ex:leaf3 . 
-ex:leaf1 a s223:Leaf . 
-ex:leaf2 a s223:Leaf .
-ex:leaf3 a s223:Leaf .
+    s223:cnx ex:loop1, ex:loop2 .
+ex:loop1 a s223:Branch;
+    s223:cnx ex:loop1_1 . 
+ex:loop2 a s223:Branch;
+    s223:cnx ex:root2 .
+ex:loop1_1 a s223:Branch ;
+    s223:cnx ex:root2 . 
+ex:root2 a s223:Root .
