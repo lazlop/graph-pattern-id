@@ -1,7 +1,18 @@
-#%% 
-from buildingmotif.namespaces import bind_prefixes, A, XSD, QUDT, RDFS, A, SH, Namespace, RDF
+# %%
+from buildingmotif.namespaces import (
+    bind_prefixes,
+    A,
+    XSD,
+    QUDT,
+    RDFS,
+    A,
+    SH,
+    Namespace,
+    RDF,
+)
+
 HPF = Namespace(f"urn:hpflex#")
-HPFS = Namespace('urn:hpflex/shapes#')
+HPFS = Namespace("urn:hpflex/shapes#")
 
 PARAM = Namespace("urn:___param___#")
 # all versions of Brick > 1.1 have these namespaces
@@ -34,6 +45,7 @@ S223 = Namespace("http://data.ashrae.org/standard223#")
 
 A = RDF.type
 
+
 def bind_prefixes(graph):
     """Associate common prefixes with the graph.
 
@@ -57,33 +69,38 @@ def bind_prefixes(graph):
     graph.bind("bmotif", BM)
     graph.bind("hpflex", HPF)
     graph.bind("hpfs", HPFS)
-    graph.bind('s223', S223)
+    graph.bind("s223", S223)
 
 
-namespace_dict= {
-    'xsd': XSD,
-    'rdf': RDF,
-    'owl': OWL,
-    'rdfs': RDFS,
-    'skos': SKOS,
-    'sh': SH,
-    'quantitykind': QK,
-    'qudt': QUDT,
-    'unit': UNIT,
-    'brick': BRICK,
-    'tag': TAG,
-    'bsh': BSH,
-    'P': PARAM,
-    'constraint': CONSTRAINT,
-    'bmotif': BM,
-    'hpflex': HPF,
-    'hpfs': HPFS,
-    's223': S223,
-    'ex1': "http://data.ashrae.org/standard223/data/scb-vrf#"
+namespace_dict = {
+    "xsd": XSD,
+    "rdf": RDF,
+    "owl": OWL,
+    "rdfs": RDFS,
+    "skos": SKOS,
+    "sh": SH,
+    "quantitykind": QK,
+    "qudt": QUDT,
+    "unit": UNIT,
+    "brick": BRICK,
+    "tag": TAG,
+    "bsh": BSH,
+    "P": PARAM,
+    "constraint": CONSTRAINT,
+    "bmotif": BM,
+    "hpflex": HPF,
+    "hpfs": HPFS,
+    "s223": S223,
+    "ex1": "http://data.ashrae.org/standard223/data/scb-vrf#",
 }
 
+
 def get_prefixes(g):
-    return "\n".join(f"PREFIX {prefix}: <{namespace}>" for prefix, namespace in g.namespace_manager.namespaces())
+    return "\n".join(
+        f"PREFIX {prefix}: <{namespace}>"
+        for prefix, namespace in g.namespace_manager.namespaces()
+    )
+
 
 def convert_to_prefixed(uri, g):
     try:

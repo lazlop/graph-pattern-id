@@ -1,0 +1,33 @@
+@prefix bacnet: <http://data.ashrae.org/bacnet/2020#> .
+@prefix bob: <http://data.ashrae.org/standard223/si-builder#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix qudtqk: <http://qudt.org/vocab/quantitykind/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ref: <https://brickschema.org/schema/Brick/> .
+@prefix s223: <http://data.ashrae.org/standard223#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix ex: <urn:example#> .
+
+ex:ahu a s223:AHU ;
+    s223:cnx ex:loop1, ex:loop2 .
+ex:duct1 a s223:Duct;
+    s223:cnx ex:vav1 . 
+ex:vav1 a s223:VAV;
+    s223:cnx ex:room .
+ex:room a s223:DomainSpace ;
+    s223:cnx ex:return . 
+ex:return a s223:Duct .
+ex:root a s223:Root ;
+    s223:cnx ex:loop1, ex:loop2 .
+ex:loop1 a s223:Branch;
+    s223:cnx ex:loop1_1 . 
+ex:loop2 a s223:Branch;
+    s223:cnx ex:root2 .
+ex:loop1_1 a s223:Branch ;
+    s223:cnx ex:root2 . 
+ex:root2 a s223:Root .
