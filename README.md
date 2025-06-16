@@ -1,6 +1,6 @@
 # Graph Pattern Identification for RDF Models of Buildings
 
-Doing some subgraph mining to condense graph semantic models of buildings. 
+Doing some subgraph mining/subgraph discovery to condense graph semantic models of buildings. 
 
 TODO: Investigate something like https://github.com/p3et/dmgm for this purpose
 
