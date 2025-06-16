@@ -2,6 +2,8 @@
 
 Doing some subgraph mining to condense graph semantic models of buildings. 
 
+TODO: Investigate something like https://github.com/p3et/dmgm for this purpose
+
 
 
 Make sure you have [uv](https://docs.astral.sh/uv/) installed. 
