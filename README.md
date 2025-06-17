@@ -7,6 +7,8 @@ TODO: Investigate something like https://github.com/p3et/dmgm for this purpose
 With graph representation, demonstrate some querying. Maybe use rdf:Seq for groups so you can still answer queries over the graph. 
 
 
+![image](https://github.com/user-attachments/assets/74b87bfe-7754-480d-8846-26c84a80428a)
+
 
 Make sure you have [uv](https://docs.astral.sh/uv/) installed. 
 
