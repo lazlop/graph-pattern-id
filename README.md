@@ -7,7 +7,8 @@ TODO: Investigate something like https://github.com/p3et/dmgm for this purpose
 With graph representation, demonstrate some querying. Maybe use rdf:Seq for groups so you can still answer queries over the graph. 
 
 
-![image](https://github.com/user-attachments/assets/b251be9d-cd3b-4539-8fd1-757901508733)
+![image](https://github.com/user-attachments/assets/1c81798c-1b66-4e20-a359-050874dd0c44)
+
 
 
 
