@@ -127,6 +127,7 @@ class GraphPatternProcessor:
         
         # Initialize counter
         self.count_generator = self._counter()
+        self.group_count_generator = self._counter()
         
     def _counter(self, start: int = 0, step: int = 1):
         """Generator for creating unique counters."""
@@ -364,7 +365,19 @@ class GraphPatternProcessor:
 
     def group_serialization(self, group, var_replacement=""):
         """Serialize a group for naming purposes."""
+        # doesn't work 
+        # name = str(group[0])[:3].replace("?", var_replacement) + '_' + str(next(self.group_count_generator)) + '_' + str(len(group))
+        print('serializing grouping')
+        print(group)
+
+        # this is only naming that works
+        # return "_".join(str(var).replace("?", var_replacement) for var in group)
+    
         return "_".join(str(var).replace("?", var_replacement) for var in group)
+
+        # name = str(next(self.group_count_generator))
+        # return name
+
 
     def create_new_graph(self, triples, ns=None):
         """
