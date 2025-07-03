@@ -11,4 +11,6 @@ processor = GraphPatternProcessor(test_graph_file=TEST_GRAPH_FILE,
 # Process and visualize
 all_p, all_sets, group_dicts = processor.process_and_visualize(exempt_predicates=[])
 
+
+# Can add in the amount of permissible differences to group further. This will also help with alignment with tabular point of view. 
 # %%
