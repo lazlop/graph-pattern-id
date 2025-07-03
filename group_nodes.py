@@ -12,25 +12,6 @@ import numpy as np
 from IPython.display import display
 import networkx as nx
 
-# 1 (test-graph) and 5 (test-graph5) may be best
-# TEST_GRAPH_FILE = "test-graphs/test-graph8.ttl"
-# TEST_GRAPH_FILE = "test-graphs/test-graph5.ttl"
-TEST_GRAPH_FILE = "test-graphs/test-graph.ttl"
-SCHEMA_GRAPH_FILE = "test-graphs/223p.ttl"
-
-g = Graph(store="Oxigraph")
-g.parse(TEST_GRAPH_FILE, format="turtle")
-EX = Namespace("urn:example#")
-
-prefixes = get_prefixes(g)
-
-store = Store()
-odg = NamedNode("urn:original-data-graph")
-dg = NamedNode("urn:data-graph")
-sg = NamedNode("urn:schema-graph")
-store.load(path=TEST_GRAPH_FILE, format=RdfFormat.TURTLE, to_graph=odg)
-store.load(path=SCHEMA_GRAPH_FILE, format=RdfFormat.TURTLE, to_graph=sg)
-
 
 @dataclass(frozen=True)
 class Triple:
@@ -39,92 +20,11 @@ class Triple:
     o: Union[str, list]
 
 
-def get_local_name(node):
-    node = str(node).replace("<", "").replace(">", "")
-    if "#" in node:
-        return node.rpartition("#")[-1]
-    else:
-        return node.rpartition("/")[-1]
-
-
-def check_ns(node, ns=S223):
-    return get_local_name(node) == str(node).replace(str(ns), "").replace(
-        "<", ""
-    ).replace(">", "")
-
-
-def counter(start: int = 0, step: int = 1):
-    current = start
-    while True:
-        yield current
-        current += step
-
-
-count_generator = counter()
-
-
-def get_class(node, store=store, prefixes=prefixes, ns=S223):
-    ns_prefix = prefix_dict[ns]
-    query = f"""
-    {prefixes}
-    # PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-    SELECT ?class WHERE {{
-        {str(node)} a ?class . 
-        FILTER NOT EXISTS {{
-            {str(node)} a ?subclass .
-            ?subclass rdfs:subClassOf ?class .
-        }}
-        FILTER(STRSTARTS(STR(?class), str({ns_prefix}:)))
-    }} """
-    classes = list(store.query(query, use_default_graph_as_union=True))
-    if len(classes) == 0:
-        return None
-    return classes[0]["class"].value
-
-
-def shorten_graph(
-    store=store,
-    prefixes=prefixes,
-    dg=dg,
-    odg=odg,
-    ns = S223,
-    exempt_predicates=["rdf:type"],
-):
-    # for s223 graphs I think we get rid of ["s223:cnx", "rdf:type"]
-    # shortens original data graph (odg) and puts into new named graph called dg
-    ns_prefix = prefix_dict[ns]
-    print('ns_prefix',ns_prefix)
-    pred_filters = """
-        """.join(
-        [f"FILTER(?p != {predicate} )" for predicate in exempt_predicates]
-    )
-    query = f"""
-    {prefixes}
-    CONSTRUCT {{
-        ?s ?p ?o
-        }} 
-        WHERE {{  
-        ?s ?p ?o . 
-        {pred_filters}
-        FILTER(STRSTARTS(STR(?p), str({ns_prefix}:)))
-    }} """
-    for r in store.query(query, default_graph=[odg]):
-        s_class = get_class(r.subject, ns = ns)
-        o_class = get_class(r.object, ns = ns)
-        if o_class:
-            store.add(Quad(r.subject, r.predicate, r.object, dg))
-            store.add(Quad(r.subject, NamedNode(A), NamedNode(s_class), dg))
-            store.add(Quad(r.object, NamedNode(A), NamedNode(o_class), dg))
-
-# running shorten graph
-# May want to cut out s223:cnx here
-shorten_graph()
-#%%
 class PatternQuery:
-    def __init__(self, triples, graph=g):
+    def __init__(self, triples, graph=None):
         self.triples = triples
-        # self.graph = graph
-        # self.prefixes = get_prefixes(graph)
+        self.graph = graph
+        self.prefixes = get_prefixes(graph)
         self.query_dict = self.make_var_names(triples)
         self.filters = self.add_filters(self.query_dict)
         self.where = self.add_where(self.query_dict)
@@ -157,8 +57,8 @@ class PatternQuery:
         var_names = set()
         for class_triple, var_triple in triples:
             # Also replace dashes?
-            subject = get_local_name(var_triple.s).replace("-", "_")
-            object = get_local_name(var_triple.o).replace("-", "_")
+            subject = self.get_local_name(var_triple.s).replace("-", "_")
+            object = self.get_local_name(var_triple.o).replace("-", "_")
             # have to remove angle brackets from predicate
             if class_triple.p.startswith("<"):
                 p_var = class_triple.p.split("<")[1].split(">")[0]
@@ -167,248 +67,455 @@ class PatternQuery:
             query_triples.append((class_triple, Triple(subject, p_var, object)))
         return query_triples
 
+    def get_local_name(self, node):
+        node = str(node).replace("<", "").replace(">", "")
+        if "#" in node:
+            return node.rpartition("#")[-1]
+        else:
+            return node.rpartition("/")[-1]
+
     # query fragments can be list, then list can be continuously concatenated with fragments. fragments can be joined by '\n'
     def add_where(self, query_triples):
         where = []
         for klass, var in query_triples:
-            where.append(f"?{var.s} a {convert_to_prefixed(klass.s,g)} .")
-            where.append(f"?{var.s} {convert_to_prefixed(URIRef(var.p),g)} ?{var.o} .")
-            where.append(f"?{var.o} a {convert_to_prefixed(klass.o, g)} .")
+            where.append(f"?{var.s} a {convert_to_prefixed(klass.s, self.graph)} .")
+            where.append(f"?{var.s} {convert_to_prefixed(URIRef(var.p), self.graph)} ?{var.o} .")
+            where.append(f"?{var.o} a {convert_to_prefixed(klass.o, self.graph)} .")
         return "\n".join(where)
 
     def get_query(self):
         # may need to add prefixes
-        query = f"""{prefixes}\nSELECT DISTINCT * WHERE {{ {self.where}\n{self.filters} }}"""
+        query = f"""{self.prefixes}\nSELECT DISTINCT * WHERE {{ {self.where}\n{self.filters} }}"""
         return query
 
 
-def get_triples(store=store, graph_name=dg, ns = S223):
-    triples = []
-    for quad in list(store.quads_for_pattern(None, None, None, graph_name)):
-        if not check_ns(quad.predicate, ns):
-            continue
-        s_class = get_class(str(quad.subject), ns = S223)
-        if s_class is None:
-            continue
-        o_class = get_class(str(quad.object), ns = S223)
-        if o_class is None:
-            continue
-        triples.append(
-            (
-                Triple(str(s_class), str(quad.predicate), str(o_class)),
-                Triple(str(quad.subject), str(quad.predicate), str(quad.object)),
-            )
-        )
-    return triples
-
-
-def find_overlap_columns(df):
+class GraphPatternProcessor:
     """
-    Check if any two columns in a DataFrame have the same value counts.
-
-    Parameters:
-    df (pandas.DataFrame): The DataFrame to check
-
-    Returns:
-    list: Pairs of column names that have identical value counts
+    A class for processing graph patterns and identifying node groupings in RDF graphs.
     """
-    result = []
+    
+    def __init__(self, test_graph_file="test-graphs/test-graph.ttl", 
+                 schema_graph_file="test-graphs/223p.ttl", 
+                 namespace=S223):
+        """
+        Initialize the GraphPatternProcessor.
+        
+        Args:
+            test_graph_file (str): Path to the test graph file
+            schema_graph_file (str): Path to the schema graph file  
+            namespace: The namespace to use for processing
+        """
+        self.test_graph_file = test_graph_file
+        self.schema_graph_file = schema_graph_file
+        self.namespace = namespace
+        
+        # Initialize graphs and store
+        self.g = Graph(store="Oxigraph")
+        self.g.parse(self.test_graph_file, format="turtle")
+        self.EX = Namespace("urn:example#")
+        
+        self.prefixes = get_prefixes(self.g)
+        
+        self.store = Store()
+        self.odg = NamedNode("urn:original-data-graph")
+        self.dg = NamedNode("urn:data-graph")
+        self.sg = NamedNode("urn:schema-graph")
+        
+        # Load data into store
+        self.store.load(path=self.test_graph_file, format=RdfFormat.TURTLE, to_graph=self.odg)
+        self.store.load(path=self.schema_graph_file, format=RdfFormat.TURTLE, to_graph=self.sg)
+        
+        # Initialize counter
+        self.count_generator = self._counter()
+        
+    def _counter(self, start: int = 0, step: int = 1):
+        """Generator for creating unique counters."""
+        current = start
+        while True:
+            yield current
+            current += step
 
-    # Get all possible pairs of columns
-    column_pairs = list(combinations(df.columns, 2))
-
-    for col1, col2 in column_pairs:
-        # Get value counts for both columns
-        counts1 = df[col1].value_counts().sort_index()
-        counts2 = df[col2].value_counts().sort_index()
-
-        # Check if they have the same indices (values)
-        if not counts1.index.equals(counts2.index):
-            continue
-
-        # Check if the counts are the same
-        if not counts1.equals(counts2):
-            continue
-
-        # check if the columns are identical
-        if np.array_equal(df[col1], df[col2]):
-            # print('columns are identical')
-            continue
-
-        result.append((col1, col2))
-    # get unpaired columns
-    unpaired = []
-    for col in df.columns:
-        if col not in [c1 for c1, c2 in result] and col not in [
-            c2 for c1, c2 in result
-        ]:
-            unpaired.append(col)
-
-    return result, unpaired
-
-
-# %%
-def find_cycles(pairs):
-    G = nx.Graph()
-    G.add_edges_from(pairs)
-    cycles = list(nx.simple_cycles(G))
-
-    return cycles
-
-
-def find_sets_from_pairs(pairs):
-    cycles = find_cycles(pairs)
-    # Convert to tuples for hashability
-    pair_tuples = [tuple(lst) for lst in pairs]
-    check_set = set(pair_tuples)
-
-    for cycle in cycles:
-        cycle_tuple_set = set(combinations(cycle, 2))
-        intersection = check_set.intersection(cycle_tuple_set)
-        if intersection:
-            check_set -= intersection
-
-    groups = list(check_set)
-    return groups + [tuple(cycle) for cycle in cycles]
-
-
-def find_sets(query, store, default_graph):
-    print("running query")
-    import time
-
-    st = time.time()
-    res = store.query(query, default_graph=[default_graph])
-    print("getting results to list")
-    res_list = list(res)
-    print("converting to dataframe")
-    df = pd.DataFrame(res_list, columns=res.variables).map(get_local_name)
-    et = time.time()
-    print(f"took {et-st} seconds")
-    print("finding overlapped columns")
-    pairs, unpaired = find_overlap_columns(df)
-    print("finding sets from pairs")
-    groups = find_sets_from_pairs(pairs)
-    return groups + unpaired
-
-
-def get_group_relations(groups, sets):
-    # can double check relation between groups and compose a new_graph
-    new_graph_triples = []
-    for class_triple, triple in groups:
-        for s_set in sets:
-            if isinstance(s_set, tuple):
-                s_set = list(s_set)
-            else:
-                s_set = [s_set]
-            if Variable(triple.s) in s_set:
-                for o_set in sets:
-                    if isinstance(o_set, tuple):
-                        o_set = list(o_set)
-                    else:
-                        o_set = [o_set]
-                    if Variable(triple.o) in o_set:
-                        new_graph_triples.append(
-                            (
-                                Triple(class_triple.s, triple.p, class_triple.o),
-                                Triple(s_set, triple.p, o_set),
-                            )
-                        )
-    return new_graph_triples
-
-
-def group_serialization(group, var_replacement=""):
-    return "_".join(str(var).replace("?", var_replacement) for var in group)
-
-
-def create_new_graph(triples, ns=EX):
-    # ns is the namespace for the new graph - also used to name the graph
-    # create a new graph with the triples
-    # serialize groups
-    group_dict = {}
-    for class_triple, triple in triples:
-        s = group_serialization(triple.s)
-        o = group_serialization(triple.o)
-        group_dict[s] = triple.s
-        group_dict[o] = triple.o
-        store.add(
-            Quad(NamedNode(ns[s]), NamedNode(triple.p), NamedNode(ns[o]), NamedNode(ns))
-        )
-        store.add(
-            Quad(
-                NamedNode(ns[s]), NamedNode(A), NamedNode(class_triple.s), NamedNode(ns)
-            )
-        )
-        store.add(
-            Quad(
-                NamedNode(ns[o]), NamedNode(A), NamedNode(class_triple.o), NamedNode(ns)
-            )
-        )
-    return group_dict
-
-
-def run():
-    print("getting triples")
-    groups = get_triples()
-    print("building query")
-    p = PatternQuery(groups)
-    sets = find_sets(p.queries, store, dg)
-    return p, sets
-
-
-def run_for_groups(p, sets, store = store, schema_ns=S223):
-    # ns is new graph namespace
-    ns_str = dg.value + str(next(count_generator)) + "#"
-    ns = Namespace(ns_str)
-    print("getting_relations")
-    new_graph_triples = get_group_relations(p.query_dict, sets)
-    print("completed getting relations")
-    group_dict = create_new_graph(new_graph_triples, ns)
-    groups = get_triples(graph_name=NamedNode(ns), store = store, ns = schema_ns)
-
-    p = PatternQuery(groups)
-    sets = find_sets(p.queries, store, NamedNode(ns))
-    return p, sets, group_dict
-
-
-def run_to_completion(store = store, schema_ns = S223):
-    group_dicts = []
-    all_sets = []
-    all_p = []
-    p, sets = run()
-    all_sets.append(sets)
-    all_p.append(p)
-    while True:
-        p, sets, group_dict = run_for_groups(p, sets, store = store, schema_ns = schema_ns)
-        print("set length ", len(sets))
-        print("last set length", len(all_sets[-1]))
-        if len(sets) == len(all_sets[-1]):
-            break
+    def get_local_name(self, node):
+        """Extract the local name from a URI node."""
+        node = str(node).replace("<", "").replace(">", "")
+        if "#" in node:
+            return node.rpartition("#")[-1]
         else:
-            group_dicts.append(group_dict)
-            all_sets.append(sets)
-            all_p.append(p)
-    return all_p, all_sets, group_dicts
+            return node.rpartition("/")[-1]
+
+    def check_ns(self, node, ns=None):
+        """Check if a node belongs to a specific namespace."""
+        if ns is None:
+            ns = self.namespace
+        return self.get_local_name(node) == str(node).replace(str(ns), "").replace(
+            "<", ""
+        ).replace(">", "")
+
+    def get_class(self, node, store=None, prefixes=None, ns=None):
+        """Get the most specific class for a node."""
+        if store is None:
+            store = self.store
+        if prefixes is None:
+            prefixes = self.prefixes
+        if ns is None:
+            ns = self.namespace
+            
+        ns_prefix = prefix_dict[ns]
+        query = f"""
+        {prefixes}
+        # PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        SELECT ?class WHERE {{
+            {str(node)} a ?class . 
+            FILTER NOT EXISTS {{
+                {str(node)} a ?subclass .
+                ?subclass rdfs:subClassOf ?class .
+            }}
+            FILTER(STRSTARTS(STR(?class), str({ns_prefix}:)))
+        }} """
+        classes = list(store.query(query, use_default_graph_as_union=True))
+        if len(classes) == 0:
+            return None
+        return classes[0]["class"].value
+
+    def shorten_graph(self, store=None, prefixes=None, dg=None, odg=None, 
+                     ns=None, exempt_predicates=["rdf:type"]):
+        """
+        Shorten the original data graph and put into new named graph.
+        
+        Args:
+            exempt_predicates (list): Predicates to exclude from shortening
+        """
+        if store is None:
+            store = self.store
+        if prefixes is None:
+            prefixes = self.prefixes
+        if dg is None:
+            dg = self.dg
+        if odg is None:
+            odg = self.odg
+        if ns is None:
+            ns = self.namespace
+            
+        # for s223 graphs I think we get rid of ["s223:cnx", "rdf:type"]
+        # shortens original data graph (odg) and puts into new named graph called dg
+        ns_prefix = prefix_dict[ns]
+        print('ns_prefix', ns_prefix)
+        pred_filters = """
+            """.join(
+            [f"FILTER(?p != {predicate} )" for predicate in exempt_predicates]
+        )
+        query = f"""
+        {prefixes}
+        CONSTRUCT {{
+            ?s ?p ?o
+            }} 
+            WHERE {{  
+            ?s ?p ?o . 
+            {pred_filters}
+            FILTER(STRSTARTS(STR(?p), str({ns_prefix}:)))
+        }} """
+        for r in store.query(query, default_graph=[odg]):
+            s_class = self.get_class(r.subject, ns=ns)
+            o_class = self.get_class(r.object, ns=ns)
+            if o_class:
+                store.add(Quad(r.subject, r.predicate, r.object, dg))
+                store.add(Quad(r.subject, NamedNode(A), NamedNode(s_class), dg))
+                store.add(Quad(r.object, NamedNode(A), NamedNode(o_class), dg))
+
+    def get_triples(self, store=None, graph_name=None, ns=None):
+        """Extract triples from the store for pattern matching."""
+        if store is None:
+            store = self.store
+        if graph_name is None:
+            graph_name = self.dg
+        if ns is None:
+            ns = self.namespace
+            
+        triples = []
+        for quad in list(store.quads_for_pattern(None, None, None, graph_name)):
+            if not self.check_ns(quad.predicate, ns):
+                continue
+            s_class = self.get_class(str(quad.subject), ns=ns)
+            if s_class is None:
+                continue
+            o_class = self.get_class(str(quad.object), ns=ns)
+            if o_class is None:
+                continue
+            triples.append(
+                (
+                    Triple(str(s_class), str(quad.predicate), str(o_class)),
+                    Triple(str(quad.subject), str(quad.predicate), str(quad.object)),
+                )
+            )
+        return triples
+
+    def find_overlap_columns(self, df):
+        """
+        Check if any two columns in a DataFrame have the same value counts.
+
+        Parameters:
+        df (pandas.DataFrame): The DataFrame to check
+
+        Returns:
+        list: Pairs of column names that have identical value counts
+        """
+        result = []
+
+        # Get all possible pairs of columns
+        column_pairs = list(combinations(df.columns, 2))
+
+        for col1, col2 in column_pairs:
+            # Get value counts for both columns
+            counts1 = df[col1].value_counts().sort_index()
+            counts2 = df[col2].value_counts().sort_index()
+
+            # Check if they have the same indices (values)
+            if not counts1.index.equals(counts2.index):
+                continue
+
+            # Check if the counts are the same
+            if not counts1.equals(counts2):
+                continue
+
+            # check if the columns are identical
+            if np.array_equal(df[col1], df[col2]):
+                # print('columns are identical')
+                continue
+
+            result.append((col1, col2))
+        # get unpaired columns
+        unpaired = []
+        for col in df.columns:
+            if col not in [c1 for c1, c2 in result] and col not in [
+                c2 for c1, c2 in result
+            ]:
+                unpaired.append(col)
+
+        return result, unpaired
+
+    def find_cycles(self, pairs):
+        """Find cycles in pairs using NetworkX."""
+        G = nx.Graph()
+        G.add_edges_from(pairs)
+        cycles = list(nx.simple_cycles(G))
+        return cycles
+
+    def find_sets_from_pairs(self, pairs):
+        """Find sets from pairs, handling cycles."""
+        cycles = self.find_cycles(pairs)
+        # Convert to tuples for hashability
+        pair_tuples = [tuple(lst) for lst in pairs]
+        check_set = set(pair_tuples)
+
+        for cycle in cycles:
+            cycle_tuple_set = set(combinations(cycle, 2))
+            intersection = check_set.intersection(cycle_tuple_set)
+            if intersection:
+                check_set -= intersection
+
+        groups = list(check_set)
+        return groups + [tuple(cycle) for cycle in cycles]
+
+    def find_sets(self, query, store=None, default_graph=None):
+        """Find sets by running query and analyzing results."""
+        if store is None:
+            store = self.store
+        if default_graph is None:
+            default_graph = self.dg
+            
+        print("running query")
+        st = time.time()
+        res = store.query(query, default_graph=[default_graph])
+        print("getting results to list")
+        res_list = list(res)
+        print("converting to dataframe")
+        df = pd.DataFrame(res_list, columns=res.variables).map(self.get_local_name)
+        et = time.time()
+        print(f"took {et-st} seconds")
+        print("finding overlapped columns")
+        pairs, unpaired = self.find_overlap_columns(df)
+        print("finding sets from pairs")
+        groups = self.find_sets_from_pairs(pairs)
+        return groups + unpaired
+
+    def get_group_relations(self, groups, sets):
+        """Get relations between groups and compose a new graph."""
+        new_graph_triples = []
+        for class_triple, triple in groups:
+            for s_set in sets:
+                if isinstance(s_set, tuple):
+                    s_set = list(s_set)
+                else:
+                    s_set = [s_set]
+                if Variable(triple.s) in s_set:
+                    for o_set in sets:
+                        if isinstance(o_set, tuple):
+                            o_set = list(o_set)
+                        else:
+                            o_set = [o_set]
+                        if Variable(triple.o) in o_set:
+                            new_graph_triples.append(
+                                (
+                                    Triple(class_triple.s, triple.p, class_triple.o),
+                                    Triple(s_set, triple.p, o_set),
+                                )
+                            )
+        return new_graph_triples
+
+    def group_serialization(self, group, var_replacement=""):
+        """Serialize a group for naming purposes."""
+        return "_".join(str(var).replace("?", var_replacement) for var in group)
+
+    def create_new_graph(self, triples, ns=None):
+        """
+        Create a new graph with the triples.
+        
+        Args:
+            triples: List of triples to add to the new graph
+            ns: Namespace for the new graph
+        """
+        if ns is None:
+            ns = self.EX
+            
+        # create a new graph with the triples
+        # serialize groups
+        group_dict = {}
+        for class_triple, triple in triples:
+            s = self.group_serialization(triple.s)
+            o = self.group_serialization(triple.o)
+            group_dict[s] = triple.s
+            group_dict[o] = triple.o
+            self.store.add(
+                Quad(NamedNode(ns[s]), NamedNode(triple.p), NamedNode(ns[o]), NamedNode(ns))
+            )
+            self.store.add(
+                Quad(
+                    NamedNode(ns[s]), NamedNode(A), NamedNode(class_triple.s), NamedNode(ns)
+                )
+            )
+            self.store.add(
+                Quad(
+                    NamedNode(ns[o]), NamedNode(A), NamedNode(class_triple.o), NamedNode(ns)
+                )
+            )
+        return group_dict
+
+    def run(self):
+        """Run the initial pattern matching process."""
+        print("getting triples")
+        groups = self.get_triples()
+        print("building query")
+        p = PatternQuery(groups, graph=self.g)
+        p.graph = self.g
+        p.prefixes = self.prefixes
+        sets = self.find_sets(p.queries, self.store, self.dg)
+        return p, sets
+
+    def run_for_groups(self, p, sets, store=None, schema_ns=None):
+        """Run pattern matching for groups."""
+        if store is None:
+            store = self.store
+        if schema_ns is None:
+            schema_ns = self.namespace
+            
+        # ns is new graph namespace
+        ns_str = self.dg.value + str(next(self.count_generator)) + "#"
+        ns = Namespace(ns_str)
+        print("getting_relations")
+        new_graph_triples = self.get_group_relations(p.query_dict, sets)
+        print("completed getting relations")
+        group_dict = self.create_new_graph(new_graph_triples, ns)
+        groups = self.get_triples(graph_name=NamedNode(ns), store=store, ns=schema_ns)
+
+        p = PatternQuery(groups, graph = self.g)
+        p.graph = self.g
+        p.prefixes = self.prefixes
+        sets = self.find_sets(p.queries, store, NamedNode(ns))
+        return p, sets, group_dict
+
+    def run_to_completion(self, store=None, schema_ns=None):
+        """Run the pattern matching process to completion."""
+        if store is None:
+            store = self.store
+        if schema_ns is None:
+            schema_ns = self.namespace
+            
+        group_dicts = []
+        all_sets = []
+        all_p = []
+        p, sets = self.run()
+        all_sets.append(sets)
+        all_p.append(p)
+        while True:
+            p, sets, group_dict = self.run_for_groups(p, sets, store=store, schema_ns=schema_ns)
+            print("set length ", len(sets))
+            print("last set length", len(all_sets[-1]))
+            if len(sets) == len(all_sets[-1]):
+                break
+            else:
+                group_dicts.append(group_dict)
+                all_sets.append(sets)
+                all_p.append(p)
+        return all_p, all_sets, group_dicts
+
+    def process_and_visualize(self, exempt_predicates=None):
+        """
+        Main method to process the graph and visualize results.
+        
+        Args:
+            exempt_predicates (list): Predicates to exempt from processing
+        """
+        if exempt_predicates is None:
+            exempt_predicates = []
+            
+        # Import visualization function
+        try:
+            from private.visualize_triples import visualize_triples
+        except ImportError:
+            print("Warning: Could not import visualize_triples")
+            visualize_triples = None
+
+        # Process the graph
+        self.shorten_graph(exempt_predicates=exempt_predicates)
+        self.store.dump(
+            "vrf-cut-short.ttl", format=RdfFormat.TURTLE, 
+            from_graph=self.dg, prefixes=namespace_dict
+        )
+        
+        all_p, all_sets, group_dicts = self.run_to_completion()
+        
+        # Display results
+        display(all_sets)
+        display(group_dicts)
+        
+        # Visualize if available
+        if visualize_triples:
+            for p in all_p:
+                triples = [triples for _, triples in p.query_dict]
+                visualize_triples(triples)
+            
+            # visualize_last_group
+            p, sets, group_dict = self.run_for_groups(all_p[-1], all_sets[-1])
+            triples = [triples for _, triples in p.query_dict]
+            visualize_triples(triples)
+        
+        return all_p, all_sets, group_dicts
 
 
-from private.visualize_triples import visualize_triples
+# Example usage and main execution
+if __name__ == "__main__":
+    # Create processor instance
+    # 1 (test-graph) and 5 (test-graph5) may be best
+    # TEST_GRAPH_FILE = "test-graphs/test-graph8.ttl"
+    TEST_GRAPH_FILE = "test-graphs/test-graph5.ttl"
+    # TEST_GRAPH_FILE = "test-graphs/test-graph.ttl"
+    SCHEMA_GRAPH_FILE = "test-graphs/223p.ttl"
 
-# %%
-shorten_graph(exempt_predicates=[])
-store.dump(
-    "vrf-cut-short.ttl", format=RdfFormat.TURTLE, from_graph=dg, prefixes=namespace_dict
-)
-all_p, all_sets, group_dicts = run_to_completion()
-display(all_sets)
-display(group_dicts)
-for p in all_p:
-    triples = [triples for _, triples in p.query_dict]
-    visualize_triples(triples)
-# visualize_last_group
-p, sets, group_dict = run_for_groups(all_p[-1], all_sets[-1])
-triples = [triples for _, triples in p.query_dict]
-a = visualize_triples(triples)
-# group_relations = get_group_relations(p.query_dict, all_sets[-1])
-# triples = [triples for _, triples in group_relations]
-# visualize_triples([triples for _, triples in group_relations])
+    processor = GraphPatternProcessor(test_graph_file=TEST_GRAPH_FILE, 
+                 schema_graph_file=SCHEMA_GRAPH_FILE, 
+                 namespace=S223)
+    
+    # Process and visualize
+    all_p, all_sets, group_dicts = processor.process_and_visualize(exempt_predicates=[])
 
 # %%
