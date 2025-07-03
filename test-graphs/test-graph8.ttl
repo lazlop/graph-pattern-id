@@ -1,0 +1,34 @@
+@prefix bacnet: <http://data.ashrae.org/bacnet/2020#> .
+@prefix bob: <http://data.ashrae.org/standard223/si-builder#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix qudtqk: <http://qudt.org/vocab/quantitykind/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ref: <https://brickschema.org/schema/Brick/> .
+@prefix s223: <http://data.ashrae.org/standard223#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix ex: <urn:example#> .
+
+# One group where each branch connects to each leaf, one where they connect just to their own leaf
+
+ex:r1 a s223:Root ;
+    s223:cnx ex:b1, ex:b2 .
+ex:b1 a s223:Branch;
+    s223:cnx ex:l1, ex:l2 . 
+ex:b2 a s223:Branch;
+    s223:cnx ex:l1, ex:l2 .
+ex:l1 a s223:Leaf .
+ex:l2 a s223:Leaf .
+
+ex:r2 a s223:Root ;
+    s223:cnx ex:b3, ex:b4 .
+ex:b3 a s223:Branch ;
+    s223:cnx ex:l3 .
+ex:b4 a s223:Branch ;
+    s223:cnx ex:l4 .
+ex:l3 a s223:Leaf .
+ex:l4 a s223:Leaf .

@@ -94,6 +94,7 @@ namespace_dict = {
     "ex1": "http://data.ashrae.org/standard223/data/scb-vrf#",
 }
 
+prefix_dict = {value: key for key, value in namespace_dict.items()}
 
 def get_prefixes(g):
     return "\n".join(

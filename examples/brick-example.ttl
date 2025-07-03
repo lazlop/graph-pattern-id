@@ -1,0 +1,78 @@
+@prefix : <urn:example#> .
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+: a owl:Ontology .
+
+:ahu1 a brick:AHU ;
+    rdfs:label "AHU" ;
+    brick:feeds :vav1 ;
+    brick:hasPart :clg_coil_627885dc,
+        :htg_coil_b855e053,
+        :ra_damper_0285ccf7,
+        :sa_fan_e6f07b08 ;
+    brick:hasPoint :oa_temp_38e41ad2,
+        :sa_temp_6d131da9 .
+
+:clg_coil-valve_cmd_7f6985de a brick:Valve_Position_Command ;
+    rdfs:label "Valve_Position_Command" .
+
+:clg_coil_627885dc a brick:Cooling_Coil ;
+    rdfs:label "Cooling_Coil" ;
+    brick:hasPoint :clg_coil-valve_cmd_7f6985de .
+
+:dat_35b92ca0 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:dmp-dmppos_538244b8 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:dmp_b7eff8f1 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :dmp-dmppos_538244b8 .
+
+:htg_coil-valve_cmd_aef238ce a brick:Valve_Position_Command ;
+    rdfs:label "Valve_Position_Command" .
+
+:htg_coil_b855e053 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :htg_coil-valve_cmd_aef238ce .
+
+:oa_temp_38e41ad2 a brick:Outside_Air_Temperature_Sensor ;
+    rdfs:label "Outside_Air_Temperature_Sensor" .
+
+:ra_damper-dmppos_da4d0318 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:ra_damper_0285ccf7 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :ra_damper-dmppos_da4d0318 .
+
+:sa_fan-speed_543b8ba0 a brick:Frequency_Command ;
+    rdfs:label "Frequency_Command" .
+
+:sa_fan-start_stop_bd13a8e5 a brick:Start_Stop_Command ;
+    rdfs:label "Start_Stop_Command" .
+
+:sa_fan_e6f07b08 a brick:Supply_Fan ;
+    rdfs:label "Supply_Fan" ;
+    brick:hasPoint :sa_fan-speed_543b8ba0,
+        :sa_fan-start_stop_bd13a8e5 .
+
+:sa_temp_6d131da9 a brick:Supply_Air_Temperature_Sensor ;
+    rdfs:label "Supply_Air_Temperature_Sensor" .
+
+:vav1 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :zone_4b8f0cf5 ;
+    brick:hasPart :dmp_b7eff8f1 ;
+    brick:hasPoint :dat_35b92ca0,
+        :ztemp_572680e2 .
+
+:zone_4b8f0cf5 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:ztemp_572680e2 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+

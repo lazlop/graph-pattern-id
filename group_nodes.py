@@ -13,8 +13,9 @@ from IPython.display import display
 import networkx as nx
 
 # 1 (test-graph) and 5 (test-graph5) may be best
-TEST_GRAPH_FILE = "test-graphs/test-graph.ttl"
+# TEST_GRAPH_FILE = "test-graphs/test-graph8.ttl"
 # TEST_GRAPH_FILE = "test-graphs/test-graph5.ttl"
+TEST_GRAPH_FILE = "test-graphs/test-graph.ttl"
 SCHEMA_GRAPH_FILE = "test-graphs/223p.ttl"
 
 g = Graph(store="Oxigraph")
@@ -62,8 +63,8 @@ def counter(start: int = 0, step: int = 1):
 count_generator = counter()
 
 
-def get_class(node, store=store, prefixes=prefixes, ns=S223, ns_prefix="s223:"):
-
+def get_class(node, store=store, prefixes=prefixes, ns=S223):
+    ns_prefix = prefix_dict[ns]
     query = f"""
     {prefixes}
     # PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -73,7 +74,7 @@ def get_class(node, store=store, prefixes=prefixes, ns=S223, ns_prefix="s223:"):
             {str(node)} a ?subclass .
             ?subclass rdfs:subClassOf ?class .
         }}
-        FILTER(STRSTARTS(STR(?class), str({ns_prefix})))
+        FILTER(STRSTARTS(STR(?class), str({ns_prefix}:)))
     }} """
     classes = list(store.query(query, use_default_graph_as_union=True))
     if len(classes) == 0:
@@ -86,10 +87,13 @@ def shorten_graph(
     prefixes=prefixes,
     dg=dg,
     odg=odg,
-    ns_prefix="s223:",
-    exempt_predicates=["s223:cnx", "rdf:type"],
+    ns = S223,
+    exempt_predicates=["rdf:type"],
 ):
+    # for s223 graphs I think we get rid of ["s223:cnx", "rdf:type"]
     # shortens original data graph (odg) and puts into new named graph called dg
+    ns_prefix = prefix_dict[ns]
+    print('ns_prefix',ns_prefix)
     pred_filters = """
         """.join(
         [f"FILTER(?p != {predicate} )" for predicate in exempt_predicates]
@@ -102,11 +106,11 @@ def shorten_graph(
         WHERE {{  
         ?s ?p ?o . 
         {pred_filters}
-        FILTER(STRSTARTS(STR(?p), str({ns_prefix})))
+        FILTER(STRSTARTS(STR(?p), str({ns_prefix}:)))
     }} """
     for r in store.query(query, default_graph=[odg]):
-        s_class = get_class(r.subject)
-        o_class = get_class(r.object)
+        s_class = get_class(r.subject, ns = ns)
+        o_class = get_class(r.object, ns = ns)
         if o_class:
             store.add(Quad(r.subject, r.predicate, r.object, dg))
             store.add(Quad(r.subject, NamedNode(A), NamedNode(s_class), dg))
@@ -121,10 +125,10 @@ class PatternQuery:
         self.triples = triples
         # self.graph = graph
         # self.prefixes = get_prefixes(graph)
-        self.query_dict, self.var_names = self.make_var_names(triples)
+        self.query_dict = self.make_var_names(triples)
         self.filters = self.add_filters(self.query_dict)
         self.where = self.add_where(self.query_dict)
-        self.query = self.get_query()
+        self.queries = self.get_query()
 
     def add_filters(self, triples):
         filter_lst = []
@@ -178,15 +182,15 @@ class PatternQuery:
         return query
 
 
-def get_triples(store=store, graph_name=dg):
+def get_triples(store=store, graph_name=dg, ns = S223):
     triples = []
     for quad in list(store.quads_for_pattern(None, None, None, graph_name)):
-        if not check_ns(quad.predicate):
+        if not check_ns(quad.predicate, ns):
             continue
-        s_class = get_class(str(quad.subject))
+        s_class = get_class(str(quad.subject), ns = S223)
         if s_class is None:
             continue
-        o_class = get_class(str(quad.object))
+        o_class = get_class(str(quad.object), ns = S223)
         if o_class is None:
             continue
         triples.append(
@@ -351,7 +355,7 @@ def run():
     return p, sets
 
 
-def run_for_groups(p, sets):
+def run_for_groups(p, sets, store = store, schema_ns=S223):
     # ns is new graph namespace
     ns_str = dg.value + str(next(count_generator)) + "#"
     ns = Namespace(ns_str)
@@ -359,14 +363,14 @@ def run_for_groups(p, sets):
     new_graph_triples = get_group_relations(p.query_dict, sets)
     print("completed getting relations")
     group_dict = create_new_graph(new_graph_triples, ns)
-    groups = get_triples(graph_name=NamedNode(ns))
+    groups = get_triples(graph_name=NamedNode(ns), store = store, ns = schema_ns)
 
     p = PatternQuery(groups)
     sets = find_sets(p.queries, store, NamedNode(ns))
     return p, sets, group_dict
 
 
-def run_to_completion():
+def run_to_completion(store = store, schema_ns = S223):
     group_dicts = []
     all_sets = []
     all_p = []
@@ -374,7 +378,7 @@ def run_to_completion():
     all_sets.append(sets)
     all_p.append(p)
     while True:
-        p, sets, group_dict = run_for_groups(p, sets)
+        p, sets, group_dict = run_for_groups(p, sets, store = store, schema_ns = schema_ns)
         print("set length ", len(sets))
         print("last set length", len(all_sets[-1]))
         if len(sets) == len(all_sets[-1]):
@@ -406,3 +410,5 @@ a = visualize_triples(triples)
 # group_relations = get_group_relations(p.query_dict, all_sets[-1])
 # triples = [triples for _, triples in group_relations]
 # visualize_triples([triples for _, triples in group_relations])
+
+# %%
