@@ -1,5 +1,6 @@
 # %%
-from typing import Union
+from typing import Union, List, Union, Tuple, Optional
+from matplotlib import pyplot as plt
 import time 
 from dataclasses import dataclass
 from pyoxigraph import *
@@ -459,17 +460,81 @@ class GraphPatternProcessor:
         p, sets = self.run()
         all_sets.append(sets)
         all_p.append(p)
+        break_next = False
         while True:
             p, sets, group_dict = self.run_for_groups(p, sets, store=store, schema_ns=schema_ns)
             print("set length ", len(sets))
             print("last set length", len(all_sets[-1]))
-            if len(sets) == len(all_sets[-1]):
+            group_dicts.append(group_dict)
+            all_sets.append(sets)
+            all_p.append(p)
+            if break_next:
                 break
-            else:
-                group_dicts.append(group_dict)
-                all_sets.append(sets)
-                all_p.append(p)
+            if len(sets) == len(all_sets[-1]):
+                break_next = True 
         return all_p, all_sets, group_dicts
+    
+    def visualize_triples(self,
+                      triples_data: List[str], 
+                      figsize: Tuple[int, int] = (12, 10),
+                      node_size: int = 2000,
+                      node_color: str = "lightblue",
+                      edge_color: str = "gray",
+                      font_size: int = 10,
+                      title: str = "Graph of Triples with Connection Relationships",
+                      save_path: Optional[str] = None) -> plt.Figure:
+        """
+        Visualize RDF-like triples as a directed graph.
+        
+        Args:
+            triples_data: List of triple strings in the format "Triple(s=[...], p='...', o=[...])"
+            figsize: Figure size as (width, height) in inches
+            node_size: Size of nodes in the graph
+            node_color: Color of nodes
+            edge_color: Color of edges
+            font_size: Size of node labels
+            title: Title of the graph
+            save_path: Path to save the figure (if None, figure will be shown but not saved)
+            
+        Returns:
+            matplotlib Figure object
+        """
+        # Create a directed graph
+        G = nx.DiGraph()
+
+        # Process each triple
+        for triple in triples_data:
+            # Extract subjects and objects
+            G.add_edge(triple.s, triple.o)
+
+        # Create a more organized layout
+        pos = nx.spring_layout(G, seed=42)
+
+        # Create figure
+        fig = plt.figure(figsize=figsize)
+
+        # Draw nodes
+        nx.draw_networkx_nodes(G, pos, node_size=node_size, node_color=node_color, alpha=0.8)
+
+        # Draw edges with arrows
+        nx.draw_networkx_edges(G, pos, width=1.5, alpha=0.7, edge_color=edge_color, 
+                            connectionstyle='arc3,rad=0.1', arrowsize=15)
+
+        # Draw labels
+        nx.draw_networkx_labels(G, pos, font_size=font_size, font_family="sans-serif")
+
+        # Add a title
+        plt.title(title, fontsize=16)
+
+        # Remove axis
+        plt.axis("off")
+        plt.tight_layout()
+        
+        # Save or show the figure
+        if save_path:
+            plt.savefig(save_path, bbox_inches='tight', dpi=300)
+        
+        return fig
 
     def process_and_visualize(self, exempt_predicates=None):
         """
@@ -480,13 +545,6 @@ class GraphPatternProcessor:
         """
         if exempt_predicates is None:
             exempt_predicates = []
-            
-        # Import visualization function
-        try:
-            from private.visualize_triples import visualize_triples
-        except ImportError:
-            print("Warning: Could not import visualize_triples")
-            visualize_triples = None
 
         # Process the graph
         self.shorten_graph(exempt_predicates=exempt_predicates)
@@ -501,17 +559,10 @@ class GraphPatternProcessor:
         display(all_sets)
         display(group_dicts)
         
-        # Visualize if available
-        if visualize_triples:
-            for p in all_p:
-                triples = [triples for _, triples in p.query_dict]
-                visualize_triples(triples)
-            
-            # visualize_last_group
-            p, sets, group_dict = self.run_for_groups(all_p[-1], all_sets[-1])
+        for i,p in enumerate(all_p):
             triples = [triples for _, triples in p.query_dict]
-            visualize_triples(triples)
-        
+            self.visualize_triples(triples, save_path=f"graph-{i}.png")
+
         return all_p, all_sets, group_dicts
 
 
