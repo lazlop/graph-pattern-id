@@ -1,0 +1,318 @@
+@prefix : <urn:example#> .
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+: a owl:Ontology .
+
+:ahu_0 a brick:AHU ;
+    rdfs:label "AHU" ;
+    brick:feeds :cvav_0_0,
+        :cvav_0_1,
+        :cvav_0_2 ;
+    brick:hasPart :clg_coil_91540559,
+        :clg_coil_98381853,
+        :clg_coil_b6bb9515,
+        :clg_coil_b72b7e1a,
+        :htg_coil_459d8e94,
+        :htg_coil_5172c19e,
+        :htg_coil_b02ae40d,
+        :htg_coil_e85203da,
+        :ra_damper_057aaa50,
+        :ra_damper_6965a212,
+        :ra_damper_6b9d61ed,
+        :ra_damper_73fc498e,
+        :sa_fan_0bf60df1,
+        :sa_fan_48b82dcf,
+        :sa_fan_85664ef4,
+        :sa_fan_fe8e7a9c ;
+    brick:hasPoint :oa_temp_04553e5c,
+        :oa_temp_823f9592,
+        :oa_temp_ac5ccfd0,
+        :oa_temp_f5985e0e,
+        :sa_temp_032a0270,
+        :sa_temp_3316d12d,
+        :sa_temp_b1b39588,
+        :sa_temp_ee7eaa53 .
+
+:clg_coil-valve_cmd_7417d50b a brick:Valve_Position_Command ;
+    rdfs:label "Valve_Position_Command" .
+
+:clg_coil-valve_cmd_8083f0a0 a brick:Valve_Position_Command ;
+    rdfs:label "Valve_Position_Command" .
+
+:clg_coil-valve_cmd_a1494683 a brick:Valve_Position_Command ;
+    rdfs:label "Valve_Position_Command" .
+
+:clg_coil-valve_cmd_b8edfe78 a brick:Valve_Position_Command ;
+    rdfs:label "Valve_Position_Command" .
+
+:clg_coil_91540559 a brick:Cooling_Coil ;
+    rdfs:label "Cooling_Coil" ;
+    brick:hasPoint :clg_coil-valve_cmd_7417d50b .
+
+:clg_coil_98381853 a brick:Cooling_Coil ;
+    rdfs:label "Cooling_Coil" ;
+    brick:hasPoint :clg_coil-valve_cmd_b8edfe78 .
+
+:clg_coil_b6bb9515 a brick:Cooling_Coil ;
+    rdfs:label "Cooling_Coil" ;
+    brick:hasPoint :clg_coil-valve_cmd_a1494683 .
+
+:clg_coil_b72b7e1a a brick:Cooling_Coil ;
+    rdfs:label "Cooling_Coil" ;
+    brick:hasPoint :clg_coil-valve_cmd_8083f0a0 .
+
+:cvav_0_0 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :zone_01e67e0f,
+        :zone_bc040652,
+        :zone_ea10cb73 ;
+    brick:hasPart :dmp_539fd305,
+        :dmp_79bd32c5,
+        :dmp_ad23280b ;
+    brick:hasPoint :dat_0100d744,
+        :dat_7a1821ea,
+        :dat_95344543,
+        :ztemp_04fe5f31,
+        :ztemp_83cd7169,
+        :ztemp_a07c9d85 .
+
+:cvav_0_1 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :zone_ad2884fd,
+        :zone_d558ae64 ;
+    brick:hasPart :dmp_b357d30d,
+        :dmp_d54071e9 ;
+    brick:hasPoint :dat_480873cb,
+        :dat_95b00b94,
+        :ztemp_65b82b10,
+        :ztemp_be05394a .
+
+:cvav_0_2 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :zone_b6916609 ;
+    brick:hasPart :dmp_ba28a364 ;
+    brick:hasPoint :dat_cc581399,
+        :ztemp_0a2726a3 .
+
+:dat_0100d744 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:dat_480873cb a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:dat_7a1821ea a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:dat_95344543 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:dat_95b00b94 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:dat_cc581399 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:dmp-dmppos_1a2d4187 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:dmp-dmppos_2d80a149 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:dmp-dmppos_5c01b0cf a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:dmp-dmppos_a012d71b a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:dmp-dmppos_b6e5296a a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:dmp-dmppos_cc35cf3d a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:dmp_539fd305 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :dmp-dmppos_5c01b0cf .
+
+:dmp_79bd32c5 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :dmp-dmppos_2d80a149 .
+
+:dmp_ad23280b a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :dmp-dmppos_a012d71b .
+
+:dmp_b357d30d a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :dmp-dmppos_1a2d4187 .
+
+:dmp_ba28a364 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :dmp-dmppos_cc35cf3d .
+
+:dmp_d54071e9 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :dmp-dmppos_b6e5296a .
+
+:htg_coil-valve_cmd_4814c6aa a brick:Valve_Position_Command ;
+    rdfs:label "Valve_Position_Command" .
+
+:htg_coil-valve_cmd_71d3fe27 a brick:Valve_Position_Command ;
+    rdfs:label "Valve_Position_Command" .
+
+:htg_coil-valve_cmd_c11126b1 a brick:Valve_Position_Command ;
+    rdfs:label "Valve_Position_Command" .
+
+:htg_coil-valve_cmd_eda4586a a brick:Valve_Position_Command ;
+    rdfs:label "Valve_Position_Command" .
+
+:htg_coil_459d8e94 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :htg_coil-valve_cmd_4814c6aa .
+
+:htg_coil_5172c19e a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :htg_coil-valve_cmd_c11126b1 .
+
+:htg_coil_b02ae40d a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :htg_coil-valve_cmd_71d3fe27 .
+
+:htg_coil_e85203da a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :htg_coil-valve_cmd_eda4586a .
+
+:oa_temp_04553e5c a brick:Outside_Air_Temperature_Sensor ;
+    rdfs:label "Outside_Air_Temperature_Sensor" .
+
+:oa_temp_823f9592 a brick:Outside_Air_Temperature_Sensor ;
+    rdfs:label "Outside_Air_Temperature_Sensor" .
+
+:oa_temp_ac5ccfd0 a brick:Outside_Air_Temperature_Sensor ;
+    rdfs:label "Outside_Air_Temperature_Sensor" .
+
+:oa_temp_f5985e0e a brick:Outside_Air_Temperature_Sensor ;
+    rdfs:label "Outside_Air_Temperature_Sensor" .
+
+:ra_damper-dmppos_0f6b23e4 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:ra_damper-dmppos_73e19f4c a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:ra_damper-dmppos_7d5f5ba0 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:ra_damper-dmppos_893c54e4 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:ra_damper_057aaa50 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :ra_damper-dmppos_7d5f5ba0 .
+
+:ra_damper_6965a212 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :ra_damper-dmppos_893c54e4 .
+
+:ra_damper_6b9d61ed a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :ra_damper-dmppos_73e19f4c .
+
+:ra_damper_73fc498e a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :ra_damper-dmppos_0f6b23e4 .
+
+:sa_fan-speed_356fee27 a brick:Frequency_Command ;
+    rdfs:label "Frequency_Command" .
+
+:sa_fan-speed_37bffb09 a brick:Frequency_Command ;
+    rdfs:label "Frequency_Command" .
+
+:sa_fan-speed_38421f46 a brick:Frequency_Command ;
+    rdfs:label "Frequency_Command" .
+
+:sa_fan-speed_662dc01d a brick:Frequency_Command ;
+    rdfs:label "Frequency_Command" .
+
+:sa_fan-start_stop_101b24a6 a brick:Start_Stop_Command ;
+    rdfs:label "Start_Stop_Command" .
+
+:sa_fan-start_stop_35639258 a brick:Start_Stop_Command ;
+    rdfs:label "Start_Stop_Command" .
+
+:sa_fan-start_stop_ae6ee125 a brick:Start_Stop_Command ;
+    rdfs:label "Start_Stop_Command" .
+
+:sa_fan-start_stop_c9481095 a brick:Start_Stop_Command ;
+    rdfs:label "Start_Stop_Command" .
+
+:sa_fan_0bf60df1 a brick:Supply_Fan ;
+    rdfs:label "Supply_Fan" ;
+    brick:hasPoint :sa_fan-speed_662dc01d,
+        :sa_fan-start_stop_c9481095 .
+
+:sa_fan_48b82dcf a brick:Supply_Fan ;
+    rdfs:label "Supply_Fan" ;
+    brick:hasPoint :sa_fan-speed_356fee27,
+        :sa_fan-start_stop_ae6ee125 .
+
+:sa_fan_85664ef4 a brick:Supply_Fan ;
+    rdfs:label "Supply_Fan" ;
+    brick:hasPoint :sa_fan-speed_38421f46,
+        :sa_fan-start_stop_35639258 .
+
+:sa_fan_fe8e7a9c a brick:Supply_Fan ;
+    rdfs:label "Supply_Fan" ;
+    brick:hasPoint :sa_fan-speed_37bffb09,
+        :sa_fan-start_stop_101b24a6 .
+
+:sa_temp_032a0270 a brick:Supply_Air_Temperature_Sensor ;
+    rdfs:label "Supply_Air_Temperature_Sensor" .
+
+:sa_temp_3316d12d a brick:Supply_Air_Temperature_Sensor ;
+    rdfs:label "Supply_Air_Temperature_Sensor" .
+
+:sa_temp_b1b39588 a brick:Supply_Air_Temperature_Sensor ;
+    rdfs:label "Supply_Air_Temperature_Sensor" .
+
+:sa_temp_ee7eaa53 a brick:Supply_Air_Temperature_Sensor ;
+    rdfs:label "Supply_Air_Temperature_Sensor" .
+
+:zone_01e67e0f a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:zone_ad2884fd a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:zone_b6916609 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:zone_bc040652 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:zone_d558ae64 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:zone_ea10cb73 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:ztemp_04fe5f31 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:ztemp_0a2726a3 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:ztemp_65b82b10 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:ztemp_83cd7169 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:ztemp_a07c9d85 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:ztemp_be05394a a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+

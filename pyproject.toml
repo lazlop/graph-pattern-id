@@ -19,6 +19,7 @@ dependencies = [
     "pydot>=3.0.4",
     "tqdm>=4.67.1",
     "pyoxigraph>=0.4.11",
+    "pip>=25.1.1",
 ]
 
 
