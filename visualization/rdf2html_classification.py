@@ -1,7 +1,7 @@
 s223_types = {
     "System": ["s223:System", "brick:AHU"],
     "Equipment": ["s223:Equipment", 'brick:VAV'],
-    "Connection": ["s223:Connection"],
+    "Connection": ["s223:Connection", 'brick:Point'],
     #'s223': ["s223"],
     "InletConnectionPoint": [
         "s223:InletConnectionPoint",
@@ -15,7 +15,7 @@ s223_types = {
         "p223:ProducerOutput",
     ],
     "Function": ["p223:Producer", "s223:Function"],
-    "DomainSpace": ["s223:DomainSpace", "s223:PhysicalSpace"],
+    "DomainSpace": ["s223:DomainSpace", "s223:PhysicalSpace", 'brick:HVAC_Zone'],
 }
 
 propgraph_labels = {

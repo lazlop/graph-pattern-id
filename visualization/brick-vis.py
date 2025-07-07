@@ -30,47 +30,9 @@ def parse_rdf(ttl_file):
 
 class Node:
     groups = {
-        # New Brick-specific groups
-        "BrickAHU": {
-            "size": 50,
-            "color": "#FF6B6B",
-            "shape": "box",
-            "group_int": 1,
-            "borderWidth": 3,
-            "uri": "bob:legend/BrickAHU",
-            "label": "Legend / Brick AHU",
-        },
-        "BrickVAV": {
-            "size": 35,
-            "color": "#4ECDC4",
-            "shape": "square",
-            "group_int": 2,
-            "borderWidth": 2,
-            "uri": "bob:legend/BrickVAV",
-            "label": "Legend / Brick VAV",
-        },
-        "BrickPart": {
-            "size": 25,
-            "color": "#45B7D1",
-            "shape": "triangle",
-            "group_int": 3,
-            "borderWidth": 1,
-            "uri": "bob:legend/BrickPart",
-            "label": "Legend / Brick Part",
-        },
-        "BrickPoint": {
-            "size": 15,
-            "color": "#FFA07A",
-            "shape": "dot",
-            "group_int": 4,
-            "borderWidth": None,
-            "uri": "bob:legend/BrickPoint",
-            "label": "Legend / Brick Point",
-        },
-        # Keep existing s223 groups for backward compatibility
         "System": {
             "size": 40,
-            "color": "green",
+            "color": "#FF6B6B",
             "shape": "box",
             "group_int": 5,
             "borderWidth": None,
