@@ -1,8 +1,40 @@
 s223_types = {
-    "System": ["s223:System", "brick:AHU"],
-    "Equipment": ["s223:Equipment", 'brick:VAV'],
+    "BrickAHU": [
+        "brick:AHU", 
+        "brick:Air_Handling_Unit"
+    ],
+    "BrickVAV": [
+        "brick:VAV"
+    ],
+    "BrickPart": [
+        "brick:Cooling_Coil",
+        "brick:Heating_Coil", 
+        "brick:Damper",
+        "brick:Supply_Fan",
+        "brick:HVAC_Zone",
+        "brick:Zone"
+    ],
+    "BrickPoint": [
+        "brick:Outside_Air_Temperature_Sensor",
+        "brick:Supply_Air_Temperature_Sensor",
+        "brick:Discharge_Air_Temperature_Sensor",
+        "brick:Zone_Air_Temperature_Sensor",
+        "brick:Mixed_Air_Temperature_Sensor",
+        "brick:Return_Air_Temperature_Sensor",
+        "brick:Valve_Position_Command",
+        "brick:Damper_Position_Command",
+        "brick:Frequency_Command",
+        "brick:Start_Stop_Command",
+        "brick:Position_Command",
+        "brick:Filter_Differential_Pressure_Sensor",
+        "brick:CO2_Level_Sensor",
+        "brick:Occupancy_Sensor",
+        "brick:Fan_Status"
+    ],
+    # Keep existing s223 types for backward compatibility
+    "System": ["s223:System"],
+    "Equipment": ["s223:Equipment"],
     "Connection": ["s223:Connection"],
-    #'s223': ["s223"],
     "InletConnectionPoint": [
         "s223:InletConnectionPoint",
         "s223:InletConnectionPoint",

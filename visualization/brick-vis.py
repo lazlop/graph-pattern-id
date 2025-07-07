@@ -30,11 +30,49 @@ def parse_rdf(ttl_file):
 
 class Node:
     groups = {
+        # New Brick-specific groups
+        "BrickAHU": {
+            "size": 50,
+            "color": "#FF6B6B",
+            "shape": "box",
+            "group_int": 1,
+            "borderWidth": 3,
+            "uri": "bob:legend/BrickAHU",
+            "label": "Legend / Brick AHU",
+        },
+        "BrickVAV": {
+            "size": 35,
+            "color": "#4ECDC4",
+            "shape": "square",
+            "group_int": 2,
+            "borderWidth": 2,
+            "uri": "bob:legend/BrickVAV",
+            "label": "Legend / Brick VAV",
+        },
+        "BrickPart": {
+            "size": 25,
+            "color": "#45B7D1",
+            "shape": "triangle",
+            "group_int": 3,
+            "borderWidth": 1,
+            "uri": "bob:legend/BrickPart",
+            "label": "Legend / Brick Part",
+        },
+        "BrickPoint": {
+            "size": 15,
+            "color": "#FFA07A",
+            "shape": "dot",
+            "group_int": 4,
+            "borderWidth": None,
+            "uri": "bob:legend/BrickPoint",
+            "label": "Legend / Brick Point",
+        },
+        # Keep existing s223 groups for backward compatibility
         "System": {
             "size": 40,
             "color": "green",
             "shape": "box",
-            "group_int": 1,
+            "group_int": 5,
             "borderWidth": None,
             "uri": "bob:legend/System",
             "label": "Legend / System",
@@ -43,7 +81,7 @@ class Node:
             "size": 20,
             "color": "green",
             "shape": "square",
-            "group_int": 1,
+            "group_int": 5,
             "borderWidth": None,
             "uri": "bob:legend/Equipment",
             "label": "Legend / Equipment",
@@ -52,7 +90,7 @@ class Node:
             "size": 15,
             "color": "purple",
             "shape": "diamond",
-            "group_int": 2,
+            "group_int": 6,
             "borderWidth": None,
             "uri": "bob:legend/Connection",
             "label": "Legend / Connection",
@@ -61,7 +99,7 @@ class Node:
             "size": 15,
             "color": "purple",
             "shape": "triangle",
-            "group_int": 3,
+            "group_int": 7,
             "borderWidth": None,
             "uri": "bob:legend/InletConnectionPoint",
             "label": "Legend / InletConnectionPoint",
@@ -70,7 +108,7 @@ class Node:
             "size": 15,
             "color": "#9be0b6",
             "shape": "triangleDown",
-            "group_int": 4,
+            "group_int": 8,
             "borderWidth": None,
             "uri": "bob:legend/OutletConnectionPoint",
             "label": "Legend / OutletConnectionPoint",
@@ -79,7 +117,7 @@ class Node:
             "size": 15,
             "color": "#9be0b6",
             "shape": "star",
-            "group_int": 4,
+            "group_int": 8,
             "borderWidth": None,
             "uri": "bob:legend/Function",
             "label": "Legend / Function|Producer",
@@ -88,20 +126,11 @@ class Node:
             "size": 15,
             "color": "#9be0b6",
             "shape": "box",
-            "group_int": 4,
+            "group_int": 8,
             "borderWidth": 2,
             "uri": "bob:legend/DomainSpace",
             "label": "Legend / DomainSpace",
         },
-        #        "qudt": {
-        #            "size": 10,
-        #            "color": "#e3a1dd",
-        #            "shape": "star",
-        #            "group_int": 5,
-        #            "borderWidth": None,
-        #            "uri": "bob:legend/qudt",
-        #            "label": "Legend / qudt",
-        #        },
         "Default": {
             "size": 15,
             "color": None,
@@ -130,6 +159,7 @@ class Node:
         if p and o:
             if "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" in p:
                 self.ns.add(str(o))
+                print(o)
             self.add_info(s, p, o)
             if "label" not in p and "comment" not in p:
                 self.namespace_and_type(o)
