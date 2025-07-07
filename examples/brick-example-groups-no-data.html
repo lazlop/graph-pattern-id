@@ -1,0 +1,646 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script>function neighbourhoodHighlight(params) {
+  // console.log("in nieghbourhoodhighlight");
+  allNodes = nodes.get({ returnType: "Object" });
+  // originalNodes = JSON.parse(JSON.stringify(allNodes));
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    highlightActive = true;
+    var i, j;
+    var selectedNode = params.nodes[0];
+    var degrees = 2;
+
+    // mark all nodes as hard to read.
+    for (let nodeId in allNodes) {
+      // nodeColors[nodeId] = allNodes[nodeId].color;
+      allNodes[nodeId].color = "rgba(200,200,200,0.5)";
+      if (allNodes[nodeId].hiddenLabel === undefined) {
+        allNodes[nodeId].hiddenLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+    var connectedNodes = network.getConnectedNodes(selectedNode);
+    var allConnectedNodes = [];
+
+    // get the second degree nodes
+    for (i = 1; i < degrees; i++) {
+      for (j = 0; j < connectedNodes.length; j++) {
+        allConnectedNodes = allConnectedNodes.concat(
+          network.getConnectedNodes(connectedNodes[j])
+        );
+      }
+    }
+
+    // all second degree nodes get a different color and their label back
+    for (i = 0; i < allConnectedNodes.length; i++) {
+      // allNodes[allConnectedNodes[i]].color = "pink";
+      allNodes[allConnectedNodes[i]].color = "rgba(150,150,150,0.75)";
+      if (allNodes[allConnectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[allConnectedNodes[i]].label =
+          allNodes[allConnectedNodes[i]].hiddenLabel;
+        allNodes[allConnectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // all first degree nodes get their own color and their label back
+    for (i = 0; i < connectedNodes.length; i++) {
+      // allNodes[connectedNodes[i]].color = undefined;
+      allNodes[connectedNodes[i]].color = nodeColors[connectedNodes[i]];
+      if (allNodes[connectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[connectedNodes[i]].label =
+          allNodes[connectedNodes[i]].hiddenLabel;
+        allNodes[connectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // the main node gets its own color and its label back.
+    // allNodes[selectedNode].color = undefined;
+    allNodes[selectedNode].color = nodeColors[selectedNode];
+    if (allNodes[selectedNode].hiddenLabel !== undefined) {
+      allNodes[selectedNode].label = allNodes[selectedNode].hiddenLabel;
+      allNodes[selectedNode].hiddenLabel = undefined;
+    }
+  } else if (highlightActive === true) {
+    // console.log("highlightActive was true");
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      // allNodes[nodeId].color = "purple";
+      allNodes[nodeId].color = nodeColors[nodeId];
+      // delete allNodes[nodeId].color;
+      if (allNodes[nodeId].hiddenLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].hiddenLabel;
+        allNodes[nodeId].hiddenLabel = undefined;
+      }
+    }
+    highlightActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    // console.log("Nothing was selected");
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        // allNodes[nodeId].color = {};
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function filterHighlight(params) {
+  allNodes = nodes.get({ returnType: "Object" });
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    filterActive = true;
+    let selectedNodes = params.nodes;
+
+    // hiding all nodes and saving the label
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = true;
+      if (allNodes[nodeId].savedLabel === undefined) {
+        allNodes[nodeId].savedLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+
+    for (let i=0; i < selectedNodes.length; i++) {
+      allNodes[selectedNodes[i]].hidden = false;
+      if (allNodes[selectedNodes[i]].savedLabel !== undefined) {
+        allNodes[selectedNodes[i]].label = allNodes[selectedNodes[i]].savedLabel;
+        allNodes[selectedNodes[i]].savedLabel = undefined;
+      }
+    }
+
+  } else if (filterActive === true) {
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = false;
+      if (allNodes[nodeId].savedLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].savedLabel;
+        allNodes[nodeId].savedLabel = undefined;
+      }
+    }
+    filterActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function selectNode(nodes) {
+  network.selectNodes(nodes);
+  neighbourhoodHighlight({ nodes: nodes });
+  return nodes;
+}
+
+function selectNodes(nodes) {
+  network.selectNodes(nodes);
+  filterHighlight({nodes: nodes});
+  return nodes;
+}
+
+function highlightFilter(filter) {
+  let selectedNodes = []
+  let selectedProp = filter['property']
+  if (filter['item'] === 'node') {
+    let allNodes = nodes.get({ returnType: "Object" });
+    for (let nodeId in allNodes) {
+      if (allNodes[nodeId][selectedProp] && filter['value'].includes((allNodes[nodeId][selectedProp]).toString())) {
+        selectedNodes.push(nodeId)
+      }
+    }
+  }
+  else if (filter['item'] === 'edge'){
+    let allEdges = edges.get({returnType: 'object'});
+    // check if the selected property exists for selected edge and select the nodes connected to the edge
+    for (let edge in allEdges) {
+      if (allEdges[edge][selectedProp] && filter['value'].includes((allEdges[edge][selectedProp]).toString())) {
+        selectedNodes.push(allEdges[edge]['from'])
+        selectedNodes.push(allEdges[edge]['to'])
+      }
+    }
+  }
+  selectNodes(selectedNodes)
+}</script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+            
+            
+            
+            
+            
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tom-select/2.0.0-rc.4/css/tom-select.min.css" integrity="sha512-43fHB3GLgZfz8QXl1RPQ8O66oIgv3po9cJ5erMt1c4QISq9dYb195T3vr5ImnJPXuVroKcGBPXBFKETW8jrPNQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/tom-select/2.0.0-rc.4/js/tom-select.complete.js" integrity="sha512-jeF9CfnvzDiw9G9xiksVjxR2lib44Gnovvkv+3CgCG6NXCD4gqlA5nDAVW5WjpA+i+/zKsUWV5xNEbW1X/HH0Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 600px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+             #config {
+                 float: left;
+                 width: 400px;
+                 height: 600px;
+             }
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+                <div id="select-menu" class="card-header">
+                    <div class="row no-gutters">
+                        <div class="col-10 pb-2">
+                            <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="selectNode([value]);"
+                            id="select-node"
+                            placeholder="Select node..."
+                            >
+                                <option selected>Select a Node by ID</option>
+                                
+                                    <option value="urn:example#vav-cooling-only-co2">urn:example#vav-cooling-only-co2</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-sa_fan-start_stop">urn:example#multiple-zone-ahu-sa_fan-start_stop</option>
+                                
+                                    <option value="urn:example#vav-cooling-only-occ">urn:example#vav-cooling-only-occ</option>
+                                
+                                    <option value="urn:example#vav-cooling-only-dmp">urn:example#vav-cooling-only-dmp</option>
+                                
+                                    <option value="urn:example#vav-cooling-only-dmp-dmppos">urn:example#vav-cooling-only-dmp-dmppos</option>
+                                
+                                    <option value="urn:example#vav-with-reheat-name">urn:example#vav-with-reheat-name</option>
+                                
+                                    <option value="urn:example#vav-with-reheat-occ">urn:example#vav-with-reheat-occ</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-clg_coil-valve_cmd">urn:example#multiple-zone-ahu-clg_coil-valve_cmd</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-name">urn:example#multiple-zone-ahu-name</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ma_temp">urn:example#multiple-zone-ahu-ma_temp</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-filter_pd">urn:example#multiple-zone-ahu-filter_pd</option>
+                                
+                                    <option value="urn:example#vav-cooling-only-name">urn:example#vav-cooling-only-name</option>
+                                
+                                    <option value="urn:example#vav-cooling-only-ztemp">urn:example#vav-cooling-only-ztemp</option>
+                                
+                                    <option value="urn:example#vav-cooling-only-dat">urn:example#vav-cooling-only-dat</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-clg_coil">urn:example#multiple-zone-ahu-clg_coil</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-htg_coil">urn:example#multiple-zone-ahu-htg_coil</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-htg_coil-valve_cmd">urn:example#multiple-zone-ahu-htg_coil-valve_cmd</option>
+                                
+                                    <option value="urn:example#vav-with-reheat-zone">urn:example#vav-with-reheat-zone</option>
+                                
+                                    <option value="urn:example#vav-with-reheat-dmp">urn:example#vav-with-reheat-dmp</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-sa_fan">urn:example#multiple-zone-ahu-sa_fan</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-sa_fan-status">urn:example#multiple-zone-ahu-sa_fan-status</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra_damper-dmppos">urn:example#multiple-zone-ahu-ra_damper-dmppos</option>
+                                
+                                    <option value="urn:example#vav-cooling-only-zone">urn:example#vav-cooling-only-zone</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-oa_temp">urn:example#multiple-zone-ahu-oa_temp</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra_temp">urn:example#multiple-zone-ahu-ra_temp</option>
+                                
+                                    <option value="urn:example#vav-with-reheat-ztemp">urn:example#vav-with-reheat-ztemp</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-sa_temp">urn:example#multiple-zone-ahu-sa_temp</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-sa_fan-speed">urn:example#multiple-zone-ahu-sa_fan-speed</option>
+                                
+                                    <option value="urn:example#vav-with-reheat-dmp-dmppos">urn:example#vav-with-reheat-dmp-dmppos</option>
+                                
+                                    <option value="urn:example#vav-with-reheat-co2">urn:example#vav-with-reheat-co2</option>
+                                
+                                    <option value="urn:example#vav-with-reheat-rhc">urn:example#vav-with-reheat-rhc</option>
+                                
+                                    <option value="urn:example#vav-with-reheat-rhc-cmd">urn:example#vav-with-reheat-rhc-cmd</option>
+                                
+                                    <option value="urn:example#vav-with-reheat-dat">urn:example#vav-with-reheat-dat</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra_damper">urn:example#multiple-zone-ahu-ra_damper</option>
+                                
+                                    <option value="bob:legend/System">bob:legend/System</option>
+                                
+                                    <option value="bob:legend/Equipment">bob:legend/Equipment</option>
+                                
+                                    <option value="bob:legend/Connection">bob:legend/Connection</option>
+                                
+                                    <option value="bob:legend/InletConnectionPoint">bob:legend/InletConnectionPoint</option>
+                                
+                                    <option value="bob:legend/OutletConnectionPoint">bob:legend/OutletConnectionPoint</option>
+                                
+                                    <option value="bob:legend/Function">bob:legend/Function</option>
+                                
+                                    <option value="bob:legend/DomainSpace">bob:legend/DomainSpace</option>
+                                
+                                    <option value="bob:legend/Default">bob:legend/Default</option>
+                                
+                            </select>
+                        </div>
+                        <div class="col-2 pb-2">
+                            <button type="button" class="btn btn-primary btn-block" onclick="neighbourhoodHighlight({nodes: []});">Reset Selection</button>
+                        </div>
+                    </div>
+                </div>
+            
+            
+              <div id="filter-menu" class="card-header">
+                <div class="row no-gutters">
+                  <div class="col-3 pb-2">
+                    <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="updateFilter(value, 'item')"
+                            id="select-item"
+                        >
+                        <option value="">Select a network item</option>
+                        <option value="edge">edge</option>
+                        <option value="node">node</option>
+                    </select>
+                  </div>
+                  <div class="col-3 pb-2">
+                    <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="updateFilter(value, 'property')"
+                            id="select-property"
+                        >
+                        <option value="">Select a property...</option>
+                    </select>
+                  </div>
+                  <div class="col-3 pb-2">
+                    <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            id="select-value"
+                        >
+                        <option value="">Select value(s)...</option>
+                    </select>
+                  </div>
+                  <div class="col-1 pb-2">
+                    <button type="button" class="btn btn-primary btn-block" onclick="highlightFilter(filter);">Filter</button>
+                  </div>
+                  <div class="col-2 pb-2">
+                    <button type="button" class="btn btn-primary btn-block" onclick="clearFilter(true)">Reset Selection</button>
+                  </div>
+                </div>
+              </div>
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+            <div id="config"></div>
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+                  new TomSelect("#select-node",{
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      }
+                  });
+              
+
+              
+                  // explicitly using onItemAdd and this function as we need to save multiple values
+                  let updateValueFilter = function() {
+                      return function () {
+                      filter['value'].push(arguments[0])
+                      }
+                  }
+
+                  let valueControl = new TomSelect("#select-value",{
+                      maxItems: null,
+                      valueField: 'id',
+                      labelField: 'title',
+                      searchField: 'title',
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      },
+                      onItemAdd: updateValueFilter()
+                  });
+
+                  let addValues = function() {
+                      return function () {
+                          // clear the current value options and add the selected attribute values
+                          // tom-select handles duplicates
+                          let selectedProperty = arguments[0];
+                          valueControl.clear();
+                          valueControl.clearOptions();
+                          filter['value'] = []
+                          if (filter['item'] === 'node') {
+                              for (let each in allNodes) {
+                                  valueControl.addOption({
+                                      id:allNodes[each][selectedProperty],
+                                      title:allNodes[each][selectedProperty]
+                                  })
+                              }
+                          }
+                          else if (filter['item'] === 'edge') {
+                              for (let each in allEdges) {
+                                  valueControl.addOption({
+                                      id:allEdges[each][selectedProperty],
+                                      title:allEdges[each][selectedProperty]
+                                  })
+                              }
+                          }
+                      }
+                  };
+
+                  let propControl = new TomSelect("#select-property",{
+                      valueField: 'id',
+                      labelField: 'title',
+                      searchField: 'title',
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      },
+                      onItemAdd: addValues()
+                  });
+
+                  let addProperties = function() {
+                      return function () {
+                          // loops through the selected network item and adds the attributes to dropdown
+                          // tom-select handles duplicates
+                          clearFilter(false)
+                          if (arguments[0] === 'edge') {
+                              for (let each in allEdges) {
+                                  if (allEdges.hasOwnProperty(each)) {
+                                      for (let eachProp in allEdges[each]) {
+                                          if (allEdges[each].hasOwnProperty(eachProp)) {
+                                              propControl.addOption({id: eachProp, title: eachProp})
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                          else if (arguments[0] === 'node') {
+                              for (let each in allNodes) {
+                                  if (allNodes.hasOwnProperty(each)) {
+                                      for (let eachProp in allNodes[each]) {
+                                          if (allNodes[each].hasOwnProperty(eachProp)
+                                              && (eachProp !== 'hidden' && eachProp !== 'savedLabel'
+                                                  && eachProp !== 'hiddenLabel')) {
+                                              propControl.addOption({id: eachProp, title: eachProp})
+
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  };
+
+                  let itemControl = new TomSelect("#select-item",{
+                      create: false,
+                      sortField:{
+                          field: "text",
+                          direction: "asc"
+                      },
+                      onItemAdd: addProperties()
+                  });
+
+                  function clearFilter(reset) {
+                      // utility function to clear all the selected filter options
+                      // if reset is set to true, the existing filter will be removed
+                      // else, only the dropdown options are cleared
+                      propControl.clear();
+                      propControl.clearOptions();
+                      valueControl.clear();
+                      valueControl.clearOptions();
+                      filter = {
+                          item : '',
+                          property : '',
+                          value : []
+                      }
+                      if (reset) {
+                          itemControl.clear();
+                          filterHighlight({nodes: []})
+                      }
+                  }
+
+                  function updateFilter(value, key) {
+                      // key could be 'item' or 'property' and value is as selected in dropdown
+                      filter[key] = value
+                  }
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"borderWidth": null, "group": 0, "id": "urn:example#vav-cooling-only-co2", "label": "co2", "shape": "dot", "size": 15, "title": "Label : co2\n=======\nURI : urn:example#vav-cooling-only-co2\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-sa_fan-start_stop", "label": "start_stop", "shape": "dot", "size": 15, "title": "Label : start_stop\n=======\nURI : urn:example#multiple-zone-ahu-sa_fan-start_stop\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-cooling-only-occ", "label": "occ", "shape": "dot", "size": 15, "title": "Label : occ\n=======\nURI : urn:example#vav-cooling-only-occ\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-cooling-only-dmp", "label": "dmp", "shape": "dot", "size": 15, "title": "Label : dmp\n=======\nURI : urn:example#vav-cooling-only-dmp\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-cooling-only-dmp-dmppos", "label": "dmppos", "shape": "dot", "size": 15, "title": "Label : dmppos\n=======\nURI : urn:example#vav-cooling-only-dmp-dmppos\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-with-reheat-name", "label": "reheat", "shape": "dot", "size": 15, "title": "Label : reheat\n=======\nURI : urn:example#vav-with-reheat-name\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-with-reheat-occ", "label": "occ", "shape": "dot", "size": 15, "title": "Label : occ\n=======\nURI : urn:example#vav-with-reheat-occ\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-clg_coil-valve_cmd", "label": "valve_cmd", "shape": "dot", "size": 15, "title": "Label : valve_cmd\n=======\nURI : urn:example#multiple-zone-ahu-clg_coil-valve_cmd\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-name", "label": "ahu", "shape": "dot", "size": 15, "title": "Label : ahu\n=======\nURI : urn:example#multiple-zone-ahu-name\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ma_temp", "label": "ma_temp", "shape": "dot", "size": 15, "title": "Label : ma_temp\n=======\nURI : urn:example#multiple-zone-ahu-ma_temp\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-filter_pd", "label": "filter_pd", "shape": "dot", "size": 15, "title": "Label : filter_pd\n=======\nURI : urn:example#multiple-zone-ahu-filter_pd\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-cooling-only-name", "label": "only", "shape": "dot", "size": 15, "title": "Label : only\n=======\nURI : urn:example#vav-cooling-only-name\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-cooling-only-ztemp", "label": "ztemp", "shape": "dot", "size": 15, "title": "Label : ztemp\n=======\nURI : urn:example#vav-cooling-only-ztemp\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-cooling-only-dat", "label": "dat", "shape": "dot", "size": 15, "title": "Label : dat\n=======\nURI : urn:example#vav-cooling-only-dat\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-clg_coil", "label": "clg_coil", "shape": "dot", "size": 15, "title": "Label : clg_coil\n=======\nURI : urn:example#multiple-zone-ahu-clg_coil\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-htg_coil", "label": "htg_coil", "shape": "dot", "size": 15, "title": "Label : htg_coil\n=======\nURI : urn:example#multiple-zone-ahu-htg_coil\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-htg_coil-valve_cmd", "label": "valve_cmd", "shape": "dot", "size": 15, "title": "Label : valve_cmd\n=======\nURI : urn:example#multiple-zone-ahu-htg_coil-valve_cmd\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-with-reheat-zone", "label": "zone", "shape": "dot", "size": 15, "title": "Label : zone\n=======\nURI : urn:example#vav-with-reheat-zone\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-with-reheat-dmp", "label": "dmp", "shape": "dot", "size": 15, "title": "Label : dmp\n=======\nURI : urn:example#vav-with-reheat-dmp\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-sa_fan", "label": "sa_fan", "shape": "dot", "size": 15, "title": "Label : sa_fan\n=======\nURI : urn:example#multiple-zone-ahu-sa_fan\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-sa_fan-status", "label": "status", "shape": "dot", "size": 15, "title": "Label : status\n=======\nURI : urn:example#multiple-zone-ahu-sa_fan-status\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ra_damper-dmppos", "label": "dmppos", "shape": "dot", "size": 15, "title": "Label : dmppos\n=======\nURI : urn:example#multiple-zone-ahu-ra_damper-dmppos\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-cooling-only-zone", "label": "zone", "shape": "dot", "size": 15, "title": "Label : zone\n=======\nURI : urn:example#vav-cooling-only-zone\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-oa_temp", "label": "oa_temp", "shape": "dot", "size": 15, "title": "Label : oa_temp\n=======\nURI : urn:example#multiple-zone-ahu-oa_temp\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ra_temp", "label": "ra_temp", "shape": "dot", "size": 15, "title": "Label : ra_temp\n=======\nURI : urn:example#multiple-zone-ahu-ra_temp\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-with-reheat-ztemp", "label": "ztemp", "shape": "dot", "size": 15, "title": "Label : ztemp\n=======\nURI : urn:example#vav-with-reheat-ztemp\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-sa_temp", "label": "sa_temp", "shape": "dot", "size": 15, "title": "Label : sa_temp\n=======\nURI : urn:example#multiple-zone-ahu-sa_temp\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-sa_fan-speed", "label": "speed", "shape": "dot", "size": 15, "title": "Label : speed\n=======\nURI : urn:example#multiple-zone-ahu-sa_fan-speed\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-with-reheat-dmp-dmppos", "label": "dmppos", "shape": "dot", "size": 15, "title": "Label : dmppos\n=======\nURI : urn:example#vav-with-reheat-dmp-dmppos\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-with-reheat-co2", "label": "co2", "shape": "dot", "size": 15, "title": "Label : co2\n=======\nURI : urn:example#vav-with-reheat-co2\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-with-reheat-rhc", "label": "rhc", "shape": "dot", "size": 15, "title": "Label : rhc\n=======\nURI : urn:example#vav-with-reheat-rhc\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-with-reheat-rhc-cmd", "label": "cmd", "shape": "dot", "size": 15, "title": "Label : cmd\n=======\nURI : urn:example#vav-with-reheat-rhc-cmd\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-with-reheat-dat", "label": "dat", "shape": "dot", "size": 15, "title": "Label : dat\n=======\nURI : urn:example#vav-with-reheat-dat\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ra_damper", "label": "ra_damper", "shape": "dot", "size": 15, "title": "Label : ra_damper\n=======\nURI : urn:example#multiple-zone-ahu-ra_damper\nNamespaces : \nTypes: \n======="}, {"borderWidth": null, "font": {"size": 20}, "group": 1, "id": "bob:legend/System", "label": "Legend / System", "physics": false, "shape": "box", "size": 40, "widthConstraint": 500, "x": 2000, "y": "-900px"}, {"borderWidth": null, "font": {"size": 20}, "group": 1, "id": "bob:legend/Equipment", "label": "Legend / Equipment", "physics": false, "shape": "square", "size": 20, "widthConstraint": 500, "x": 2000, "y": "-900px"}, {"borderWidth": null, "font": {"size": 20}, "group": 2, "id": "bob:legend/Connection", "label": "Legend / Connection", "physics": false, "shape": "diamond", "size": 15, "widthConstraint": 500, "x": 2000, "y": "-800px"}, {"borderWidth": null, "font": {"size": 20}, "group": 3, "id": "bob:legend/InletConnectionPoint", "label": "Legend / InletConnectionPoint", "physics": false, "shape": "triangle", "size": 15, "widthConstraint": 500, "x": 2000, "y": "-700px"}, {"borderWidth": null, "font": {"size": 20}, "group": 4, "id": "bob:legend/OutletConnectionPoint", "label": "Legend / OutletConnectionPoint", "physics": false, "shape": "triangleDown", "size": 15, "widthConstraint": 500, "x": 2000, "y": "-600px"}, {"borderWidth": null, "font": {"size": 20}, "group": 4, "id": "bob:legend/Function", "label": "Legend / Function|Producer", "physics": false, "shape": "star", "size": 15, "widthConstraint": 500, "x": 2000, "y": "-600px"}, {"borderWidth": 2, "font": {"size": 20}, "group": 4, "id": "bob:legend/DomainSpace", "label": "Legend / DomainSpace", "physics": false, "shape": "box", "size": 15, "widthConstraint": 500, "x": 2000, "y": "-600px"}, {"borderWidth": null, "font": {"size": 20}, "group": 0, "id": "bob:legend/Default", "label": "Legend / Default", "physics": false, "shape": "dot", "size": 15, "widthConstraint": 500, "x": 2000, "y": "-1000px"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "dashes": true, "from": "urn:example#vav-cooling-only-dmp", "title": "brick:hasPoint", "to": "urn:example#vav-cooling-only-dmp-dmppos", "width": 1}, {"arrows": "to", "dashes": true, "from": "urn:example#vav-with-reheat-name", "title": "brick:hasPoint", "to": "urn:example#vav-with-reheat-occ", "width": 1}, {"arrows": "to", "dashes": true, "from": "urn:example#multiple-zone-ahu-name", "title": "brick:hasPoint", "to": "urn:example#multiple-zone-ahu-ma_temp", "width": 1}, {"arrows": "to", "dashes": true, "from": "urn:example#vav-cooling-only-name", "title": "brick:hasPoint", "to": "urn:example#vav-cooling-only-ztemp", "width": 1}, {"arrows": "to", "dashes": true, "from": "urn:example#vav-cooling-only-name", "title": "brick:hasPoint", "to": "urn:example#vav-cooling-only-dat", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-name", "title": "brick:feeds", "to": "urn:example#vav-with-reheat-name", "width": 8}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-name", "title": "brick:hasPart", "to": "urn:example#multiple-zone-ahu-clg_coil", "width": 1}, {"arrows": "to", "dashes": true, "from": "urn:example#multiple-zone-ahu-htg_coil", "title": "brick:hasPoint", "to": "urn:example#multiple-zone-ahu-htg_coil-valve_cmd", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-with-reheat-name", "title": "brick:feeds", "to": "urn:example#vav-with-reheat-zone", "width": 8}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-with-reheat-name", "title": "brick:hasPart", "to": "urn:example#vav-with-reheat-dmp", "width": 1}, {"arrows": "to", "dashes": true, "from": "urn:example#vav-cooling-only-name", "title": "brick:hasPoint", "to": "urn:example#vav-cooling-only-occ", "width": 1}, {"arrows": "to", "dashes": true, "from": "urn:example#multiple-zone-ahu-clg_coil", "title": "brick:hasPoint", "to": "urn:example#multiple-zone-ahu-clg_coil-valve_cmd", "width": 1}, {"arrows": "to", "dashes": true, "from": "urn:example#multiple-zone-ahu-sa_fan", "title": "brick:hasPoint", "to": "urn:example#multiple-zone-ahu-sa_fan-status", "width": 1}, {"arrows": "to", "dashes": true, "from": "urn:example#multiple-zone-ahu-name", "title": "brick:hasPoint", "to": "urn:example#multiple-zone-ahu-oa_temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-name", "title": "brick:hasPart", "to": "urn:example#multiple-zone-ahu-sa_fan", "width": 1}, {"arrows": "to", "dashes": true, "from": "urn:example#multiple-zone-ahu-sa_fan", "title": "brick:hasPoint", "to": "urn:example#multiple-zone-ahu-sa_fan-start_stop", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-name", "title": "brick:feeds", "to": "urn:example#vav-cooling-only-name", "width": 8}, {"arrows": "to", "dashes": true, "from": "urn:example#multiple-zone-ahu-name", "title": "brick:hasPoint", "to": "urn:example#multiple-zone-ahu-sa_temp", "width": 1}, {"arrows": "to", "dashes": true, "from": "urn:example#multiple-zone-ahu-name", "title": "brick:hasPoint", "to": "urn:example#multiple-zone-ahu-ra_temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-cooling-only-name", "title": "brick:feeds", "to": "urn:example#vav-cooling-only-zone", "width": 8}, {"arrows": "to", "dashes": true, "from": "urn:example#vav-with-reheat-dmp", "title": "brick:hasPoint", "to": "urn:example#vav-with-reheat-dmp-dmppos", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-name", "title": "brick:hasPart", "to": "urn:example#multiple-zone-ahu-htg_coil", "width": 1}, {"arrows": "to", "dashes": true, "from": "urn:example#vav-with-reheat-rhc", "title": "brick:hasPoint", "to": "urn:example#vav-with-reheat-rhc-cmd", "width": 1}, {"arrows": "to", "dashes": true, "from": "urn:example#multiple-zone-ahu-sa_fan", "title": "brick:hasPoint", "to": "urn:example#multiple-zone-ahu-sa_fan-speed", "width": 1}, {"arrows": "to", "dashes": true, "from": "urn:example#vav-cooling-only-name", "title": "brick:hasPoint", "to": "urn:example#vav-cooling-only-co2", "width": 1}, {"arrows": "to", "dashes": true, "from": "urn:example#vav-with-reheat-name", "title": "brick:hasPoint", "to": "urn:example#vav-with-reheat-ztemp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-with-reheat-name", "title": "brick:hasPart", "to": "urn:example#vav-with-reheat-rhc", "width": 1}, {"arrows": "to", "dashes": true, "from": "urn:example#multiple-zone-ahu-ra_damper", "title": "brick:hasPoint", "to": "urn:example#multiple-zone-ahu-ra_damper-dmppos", "width": 1}, {"arrows": "to", "dashes": true, "from": "urn:example#vav-with-reheat-name", "title": "brick:hasPoint", "to": "urn:example#vav-with-reheat-co2", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-name", "title": "brick:hasPart", "to": "urn:example#multiple-zone-ahu-ra_damper", "width": 1}, {"arrows": "to", "dashes": true, "from": "urn:example#vav-with-reheat-name", "title": "brick:hasPoint", "to": "urn:example#vav-with-reheat-dat", "width": 1}, {"arrows": "to", "dashes": true, "from": "urn:example#multiple-zone-ahu-name", "title": "brick:hasPoint", "to": "urn:example#multiple-zone-ahu-filter_pd", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-cooling-only-name", "title": "brick:hasPart", "to": "urn:example#vav-cooling-only-dmp", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": true
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+                  // if this network requires displaying the configure window,
+                  // put it in its div
+                  options.configure["container"] = document.getElementById("config");
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+                    network.on("selectNode", neighbourhoodHighlight);
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

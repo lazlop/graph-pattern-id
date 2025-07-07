@@ -1,0 +1,105 @@
+@prefix bldg: <urn:example#> .
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+bldg:multiple-zone-ahu-name rdfs:label "ahu" ;
+    brick:feeds bldg:vav-cooling-only-name,
+        bldg:vav-with-reheat-name ;
+    brick:hasPart bldg:multiple-zone-ahu-clg_coil,
+        bldg:multiple-zone-ahu-htg_coil,
+        bldg:multiple-zone-ahu-ra_damper,
+        bldg:multiple-zone-ahu-sa_fan ;
+    brick:hasPoint bldg:multiple-zone-ahu-filter_pd,
+        bldg:multiple-zone-ahu-ma_temp,
+        bldg:multiple-zone-ahu-oa_temp,
+        bldg:multiple-zone-ahu-ra_temp,
+        bldg:multiple-zone-ahu-sa_temp .
+
+bldg:multiple-zone-ahu-clg_coil rdfs:label "clg_coil" ;
+    brick:hasPoint bldg:multiple-zone-ahu-clg_coil-valve_cmd .
+
+bldg:multiple-zone-ahu-clg_coil-valve_cmd rdfs:label "valve_cmd" .
+
+bldg:multiple-zone-ahu-filter_pd rdfs:label "filter_pd" .
+
+bldg:multiple-zone-ahu-htg_coil rdfs:label "htg_coil" ;
+    brick:hasPoint bldg:multiple-zone-ahu-htg_coil-valve_cmd .
+
+bldg:multiple-zone-ahu-htg_coil-valve_cmd rdfs:label "valve_cmd" .
+
+bldg:multiple-zone-ahu-ma_temp rdfs:label "ma_temp" .
+
+bldg:multiple-zone-ahu-oa_temp rdfs:label "oa_temp" .
+
+bldg:multiple-zone-ahu-ra_damper rdfs:label "ra_damper" ;
+    brick:hasPoint bldg:multiple-zone-ahu-ra_damper-dmppos .
+
+bldg:multiple-zone-ahu-ra_damper-dmppos rdfs:label "dmppos" .
+
+bldg:multiple-zone-ahu-ra_temp rdfs:label "ra_temp" .
+
+bldg:multiple-zone-ahu-sa_fan rdfs:label "sa_fan" ;
+    brick:hasPoint bldg:multiple-zone-ahu-sa_fan-speed,
+        bldg:multiple-zone-ahu-sa_fan-start_stop,
+        bldg:multiple-zone-ahu-sa_fan-status .
+
+bldg:multiple-zone-ahu-sa_fan-speed rdfs:label "speed" .
+
+bldg:multiple-zone-ahu-sa_fan-start_stop rdfs:label "start_stop" .
+
+bldg:multiple-zone-ahu-sa_fan-status rdfs:label "status" .
+
+bldg:multiple-zone-ahu-sa_temp rdfs:label "sa_temp" .
+
+bldg:vav-cooling-only-co2 rdfs:label "co2" .
+
+bldg:vav-cooling-only-dat rdfs:label "dat" .
+
+bldg:vav-cooling-only-dmp rdfs:label "dmp" ;
+    brick:hasPoint bldg:vav-cooling-only-dmp-dmppos .
+
+bldg:vav-cooling-only-dmp-dmppos rdfs:label "dmppos" .
+
+bldg:vav-cooling-only-name rdfs:label "only" ;
+    brick:feeds bldg:vav-cooling-only-zone ;
+    brick:hasPart bldg:vav-cooling-only-dmp ;
+    brick:hasPoint bldg:vav-cooling-only-co2,
+        bldg:vav-cooling-only-dat,
+        bldg:vav-cooling-only-occ,
+        bldg:vav-cooling-only-ztemp .
+
+bldg:vav-cooling-only-occ rdfs:label "occ" .
+
+bldg:vav-cooling-only-zone rdfs:label "zone" .
+
+bldg:vav-cooling-only-ztemp rdfs:label "ztemp" .
+
+bldg:vav-with-reheat-co2 rdfs:label "co2" .
+
+bldg:vav-with-reheat-dat rdfs:label "dat" .
+
+bldg:vav-with-reheat-dmp rdfs:label "dmp" ;
+    brick:hasPoint bldg:vav-with-reheat-dmp-dmppos .
+
+bldg:vav-with-reheat-dmp-dmppos rdfs:label "dmppos" .
+
+bldg:vav-with-reheat-name rdfs:label "reheat" ;
+    brick:feeds bldg:vav-with-reheat-zone ;
+    brick:hasPart bldg:vav-with-reheat-dmp,
+        bldg:vav-with-reheat-rhc ;
+    brick:hasPoint bldg:vav-with-reheat-co2,
+        bldg:vav-with-reheat-dat,
+        bldg:vav-with-reheat-occ,
+        bldg:vav-with-reheat-ztemp .
+
+bldg:vav-with-reheat-occ rdfs:label "occ" .
+
+bldg:vav-with-reheat-rhc rdfs:label "rhc" ;
+    brick:hasPoint bldg:vav-with-reheat-rhc-cmd .
+
+bldg:vav-with-reheat-rhc-cmd rdfs:label "cmd" .
+
+bldg:vav-with-reheat-zone rdfs:label "zone" .
+
+bldg:vav-with-reheat-ztemp rdfs:label "ztemp" .
+
