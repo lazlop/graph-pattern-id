@@ -1,0 +1,1067 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script>function neighbourhoodHighlight(params) {
+  // console.log("in nieghbourhoodhighlight");
+  allNodes = nodes.get({ returnType: "Object" });
+  // originalNodes = JSON.parse(JSON.stringify(allNodes));
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    highlightActive = true;
+    var i, j;
+    var selectedNode = params.nodes[0];
+    var degrees = 2;
+
+    // mark all nodes as hard to read.
+    for (let nodeId in allNodes) {
+      // nodeColors[nodeId] = allNodes[nodeId].color;
+      allNodes[nodeId].color = "rgba(200,200,200,0.5)";
+      if (allNodes[nodeId].hiddenLabel === undefined) {
+        allNodes[nodeId].hiddenLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+    var connectedNodes = network.getConnectedNodes(selectedNode);
+    var allConnectedNodes = [];
+
+    // get the second degree nodes
+    for (i = 1; i < degrees; i++) {
+      for (j = 0; j < connectedNodes.length; j++) {
+        allConnectedNodes = allConnectedNodes.concat(
+          network.getConnectedNodes(connectedNodes[j])
+        );
+      }
+    }
+
+    // all second degree nodes get a different color and their label back
+    for (i = 0; i < allConnectedNodes.length; i++) {
+      // allNodes[allConnectedNodes[i]].color = "pink";
+      allNodes[allConnectedNodes[i]].color = "rgba(150,150,150,0.75)";
+      if (allNodes[allConnectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[allConnectedNodes[i]].label =
+          allNodes[allConnectedNodes[i]].hiddenLabel;
+        allNodes[allConnectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // all first degree nodes get their own color and their label back
+    for (i = 0; i < connectedNodes.length; i++) {
+      // allNodes[connectedNodes[i]].color = undefined;
+      allNodes[connectedNodes[i]].color = nodeColors[connectedNodes[i]];
+      if (allNodes[connectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[connectedNodes[i]].label =
+          allNodes[connectedNodes[i]].hiddenLabel;
+        allNodes[connectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // the main node gets its own color and its label back.
+    // allNodes[selectedNode].color = undefined;
+    allNodes[selectedNode].color = nodeColors[selectedNode];
+    if (allNodes[selectedNode].hiddenLabel !== undefined) {
+      allNodes[selectedNode].label = allNodes[selectedNode].hiddenLabel;
+      allNodes[selectedNode].hiddenLabel = undefined;
+    }
+  } else if (highlightActive === true) {
+    // console.log("highlightActive was true");
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      // allNodes[nodeId].color = "purple";
+      allNodes[nodeId].color = nodeColors[nodeId];
+      // delete allNodes[nodeId].color;
+      if (allNodes[nodeId].hiddenLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].hiddenLabel;
+        allNodes[nodeId].hiddenLabel = undefined;
+      }
+    }
+    highlightActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    // console.log("Nothing was selected");
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        // allNodes[nodeId].color = {};
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function filterHighlight(params) {
+  allNodes = nodes.get({ returnType: "Object" });
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    filterActive = true;
+    let selectedNodes = params.nodes;
+
+    // hiding all nodes and saving the label
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = true;
+      if (allNodes[nodeId].savedLabel === undefined) {
+        allNodes[nodeId].savedLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+
+    for (let i=0; i < selectedNodes.length; i++) {
+      allNodes[selectedNodes[i]].hidden = false;
+      if (allNodes[selectedNodes[i]].savedLabel !== undefined) {
+        allNodes[selectedNodes[i]].label = allNodes[selectedNodes[i]].savedLabel;
+        allNodes[selectedNodes[i]].savedLabel = undefined;
+      }
+    }
+
+  } else if (filterActive === true) {
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = false;
+      if (allNodes[nodeId].savedLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].savedLabel;
+        allNodes[nodeId].savedLabel = undefined;
+      }
+    }
+    filterActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function selectNode(nodes) {
+  network.selectNodes(nodes);
+  neighbourhoodHighlight({ nodes: nodes });
+  return nodes;
+}
+
+function selectNodes(nodes) {
+  network.selectNodes(nodes);
+  filterHighlight({nodes: nodes});
+  return nodes;
+}
+
+function highlightFilter(filter) {
+  let selectedNodes = []
+  let selectedProp = filter['property']
+  if (filter['item'] === 'node') {
+    let allNodes = nodes.get({ returnType: "Object" });
+    for (let nodeId in allNodes) {
+      if (allNodes[nodeId][selectedProp] && filter['value'].includes((allNodes[nodeId][selectedProp]).toString())) {
+        selectedNodes.push(nodeId)
+      }
+    }
+  }
+  else if (filter['item'] === 'edge'){
+    let allEdges = edges.get({returnType: 'object'});
+    // check if the selected property exists for selected edge and select the nodes connected to the edge
+    for (let edge in allEdges) {
+      if (allEdges[edge][selectedProp] && filter['value'].includes((allEdges[edge][selectedProp]).toString())) {
+        selectedNodes.push(allEdges[edge]['from'])
+        selectedNodes.push(allEdges[edge]['to'])
+      }
+    }
+  }
+  selectNodes(selectedNodes)
+}</script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+            
+            
+            
+            
+            
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tom-select/2.0.0-rc.4/css/tom-select.min.css" integrity="sha512-43fHB3GLgZfz8QXl1RPQ8O66oIgv3po9cJ5erMt1c4QISq9dYb195T3vr5ImnJPXuVroKcGBPXBFKETW8jrPNQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/tom-select/2.0.0-rc.4/js/tom-select.complete.js" integrity="sha512-jeF9CfnvzDiw9G9xiksVjxR2lib44Gnovvkv+3CgCG6NXCD4gqlA5nDAVW5WjpA+i+/zKsUWV5xNEbW1X/HH0Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 600px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+             #loadingBar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width: 100%;
+                 height: 600px;
+                 background-color:rgba(200,200,200,0.8);
+                 -webkit-transition: all 0.5s ease;
+                 -moz-transition: all 0.5s ease;
+                 -ms-transition: all 0.5s ease;
+                 -o-transition: all 0.5s ease;
+                 transition: all 0.5s ease;
+                 opacity:1;
+             }
+
+             #bar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width:20px;
+                 height:20px;
+                 margin:auto auto auto auto;
+                 border-radius:11px;
+                 border:2px solid rgba(30,30,30,0.05);
+                 background: rgb(0, 173, 246); /* Old browsers */
+                 box-shadow: 2px 0px 4px rgba(0,0,0,0.4);
+             }
+
+             #border {
+                 position:absolute;
+                 top:10px;
+                 left:10px;
+                 width:500px;
+                 height:23px;
+                 margin:auto auto auto auto;
+                 box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+                 border-radius:10px;
+             }
+
+             #text {
+                 position:absolute;
+                 top:8px;
+                 left:530px;
+                 width:30px;
+                 height:50px;
+                 margin:auto auto auto auto;
+                 font-size:22px;
+                 color: #000000;
+             }
+
+             div.outerBorder {
+                 position:relative;
+                 top:400px;
+                 width:600px;
+                 height:44px;
+                 margin:auto auto auto auto;
+                 border:8px solid rgba(0,0,0,0.1);
+                 background: rgb(252,252,252); /* Old browsers */
+                 background: -moz-linear-gradient(top,  rgba(252,252,252,1) 0%, rgba(237,237,237,1) 100%); /* FF3.6+ */
+                 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(237,237,237,1))); /* Chrome,Safari4+ */
+                 background: -webkit-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Chrome10+,Safari5.1+ */
+                 background: -o-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
+                 background: -ms-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* IE10+ */
+                 background: linear-gradient(to bottom,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* W3C */
+                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+                 border-radius:72px;
+                 box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+             }
+             
+
+             
+             #config {
+                 float: left;
+                 width: 400px;
+                 height: 600px;
+             }
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+                <div id="select-menu" class="card-header">
+                    <div class="row no-gutters">
+                        <div class="col-10 pb-2">
+                            <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="selectNode([value]);"
+                            id="select-node"
+                            placeholder="Select node..."
+                            >
+                                <option selected>Select a Node by ID</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-economizer-oa-damper-actuator">urn:example#multiple-zone-ahu-economizer-oa-damper-actuator</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-economizer-oa-damper-command">urn:example#multiple-zone-ahu-economizer-oa-damper-command</option>
+                                
+                                    <option value="urn:example#vav-cooling-only-duct-after-damper">urn:example#vav-cooling-only-duct-after-damper</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra-damper">urn:example#multiple-zone-ahu-ra-damper</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra-damper-position">urn:example#multiple-zone-ahu-ra-damper-position</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-heat-coil-air-temp">urn:example#multiple-zone-ahu-heat-coil-air-temp</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-clg-coil-valve-out">urn:example#multiple-zone-ahu-clg-coil-valve-out</option>
+                                
+                                    <option value="urn:example#vav-cooling-only-damper-in">urn:example#vav-cooling-only-damper-in</option>
+                                
+                                    <option value="urn:example#vav-reheat-name">urn:example#vav-reheat-name</option>
+                                
+                                    <option value="urn:example#vav-reheat-reheat-coil-valve">urn:example#vav-reheat-reheat-coil-valve</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-clg-coil">urn:example#multiple-zone-ahu-clg-coil</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-supply-duct-static-pressure-setpoint">urn:example#multiple-zone-ahu-supply-duct-static-pressure-setpoint</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-duct-ra-in">urn:example#multiple-zone-ahu-duct-ra-in</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-htg-coil-valve-position">urn:example#multiple-zone-ahu-htg-coil-valve-position</option>
+                                
+                                    <option value="urn:example#vav-cooling-only-damper-out">urn:example#vav-cooling-only-damper-out</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-htg-coil-return-water-temp-sensor">urn:example#multiple-zone-ahu-htg-coil-return-water-temp-sensor</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-htg-coil-water-out">urn:example#multiple-zone-ahu-htg-coil-water-out</option>
+                                
+                                    <option value="urn:example#vav-reheat-discharge-air-flow-sensor">urn:example#vav-reheat-discharge-air-flow-sensor</option>
+                                
+                                    <option value="urn:example#vav-reheat-air-in">urn:example#vav-reheat-air-in</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-hot-water-in">urn:example#multiple-zone-ahu-hot-water-in</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra-fan-static-pressure-sensor">urn:example#multiple-zone-ahu-ra-fan-static-pressure-sensor</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-sa-fan-power">urn:example#multiple-zone-ahu-sa-fan-power</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-sa-fan-start-status">urn:example#multiple-zone-ahu-sa-fan-start-status</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-clg-coil-valve-in">urn:example#multiple-zone-ahu-clg-coil-valve-in</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-duct-before-filter">urn:example#multiple-zone-ahu-duct-before-filter</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-htg-coil-supply-water-temp-sensor">urn:example#multiple-zone-ahu-htg-coil-supply-water-temp-sensor</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-htg-coil-supply-water-temp">urn:example#multiple-zone-ahu-htg-coil-supply-water-temp</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-duct-before-minimum-oa-damper">urn:example#multiple-zone-ahu-duct-before-minimum-oa-damper</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-duct-oa-in">urn:example#multiple-zone-ahu-duct-oa-in</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-name">urn:example#multiple-zone-ahu-name</option>
+                                
+                                    <option value="urn:example#vav-reheat-reheat-coil-return-water-temp">urn:example#vav-reheat-reheat-coil-return-water-temp</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-outside-supply-junction">urn:example#multiple-zone-ahu-outside-supply-junction</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra-temp">urn:example#multiple-zone-ahu-ra-temp</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-filter-differential-pressure-sensor">urn:example#multiple-zone-ahu-filter-differential-pressure-sensor</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-filter-in">urn:example#multiple-zone-ahu-filter-in</option>
+                                
+                                    <option value="urn:example#vav-reheat-air-out">urn:example#vav-reheat-air-out</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra-fan">urn:example#multiple-zone-ahu-ra-fan</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra-fan-power">urn:example#multiple-zone-ahu-ra-fan-power</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-heat-coil-air-temp-sensor">urn:example#multiple-zone-ahu-heat-coil-air-temp-sensor</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ea-damper-out">urn:example#multiple-zone-ahu-ea-damper-out</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-htg-coil-valve">urn:example#multiple-zone-ahu-htg-coil-valve</option>
+                                
+                                    <option value="urn:example#vav-cooling-only-out">urn:example#vav-cooling-only-out</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-economizer-oa-damper-out">urn:example#multiple-zone-ahu-economizer-oa-damper-out</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-duct-ea-out">urn:example#multiple-zone-ahu-duct-ea-out</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ea-damper-command">urn:example#multiple-zone-ahu-ea-damper-command</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ea-out">urn:example#multiple-zone-ahu-ea-out</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-sa-flow-sensor">urn:example#multiple-zone-ahu-sa-flow-sensor</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-sa-fan">urn:example#multiple-zone-ahu-sa-fan</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-duct-after-economizer-oa-damper">urn:example#multiple-zone-ahu-duct-after-economizer-oa-damper</option>
+                                
+                                    <option value="urn:example#vav-reheat-reheat-coil-return-water-temp-sensor">urn:example#vav-reheat-reheat-coil-return-water-temp-sensor</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-sa-temp-sensor">urn:example#multiple-zone-ahu-sa-temp-sensor</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-sa-temp">urn:example#multiple-zone-ahu-sa-temp</option>
+                                
+                                    <option value="urn:example#vav-cooling-only-name">urn:example#vav-cooling-only-name</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ea-damper">urn:example#multiple-zone-ahu-ea-damper</option>
+                                
+                                    <option value="urn:example#vav-reheat-damper">urn:example#vav-reheat-damper</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-supply-duct-static-pressure-sensor">urn:example#multiple-zone-ahu-supply-duct-static-pressure-sensor</option>
+                                
+                                    <option value="urn:example#vav-reheat-reheat-coil-supply-water-temp">urn:example#vav-reheat-reheat-coil-supply-water-temp</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-economizer-oa-damper">urn:example#multiple-zone-ahu-economizer-oa-damper</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra-fan-start-cmd">urn:example#multiple-zone-ahu-ra-fan-start-cmd</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-oa-temp-sensor">urn:example#multiple-zone-ahu-oa-temp-sensor</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra-damper-actuator">urn:example#multiple-zone-ahu-ra-damper-actuator</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra-damper-command">urn:example#multiple-zone-ahu-ra-damper-command</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-filter">urn:example#multiple-zone-ahu-filter</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-duct-sa-out">urn:example#multiple-zone-ahu-duct-sa-out</option>
+                                
+                                    <option value="urn:example#vav-reheat-reheat-coil">urn:example#vav-reheat-reheat-coil</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-clg-coil-valve">urn:example#multiple-zone-ahu-clg-coil-valve</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ma-temp">urn:example#multiple-zone-ahu-ma-temp</option>
+                                
+                                    <option value="urn:example#vav-reheat-damper-command">urn:example#vav-reheat-damper-command</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-oa-in">urn:example#multiple-zone-ahu-oa-in</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra-fan-start-status">urn:example#multiple-zone-ahu-ra-fan-start-status</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra-fan-high-static-reset-cmd">urn:example#multiple-zone-ahu-ra-fan-high-static-reset-cmd</option>
+                                
+                                    <option value="urn:example#vav-reheat-discharge-air-flow">urn:example#vav-reheat-discharge-air-flow</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-outside-air-junction">urn:example#multiple-zone-ahu-outside-air-junction</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-oa-temp">urn:example#multiple-zone-ahu-oa-temp</option>
+                                
+                                    <option value="urn:example#vav-cooling-only-damper">urn:example#vav-cooling-only-damper</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-htg-coil-return-water-temp">urn:example#multiple-zone-ahu-htg-coil-return-water-temp</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-sa-temp-setpoint">urn:example#multiple-zone-ahu-sa-temp-setpoint</option>
+                                
+                                    <option value="urn:example#vav-reheat-reheat-coil-valve-out">urn:example#vav-reheat-reheat-coil-valve-out</option>
+                                
+                                    <option value="urn:example#vav-reheat-hot-water-out">urn:example#vav-reheat-hot-water-out</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-sa-flow">urn:example#multiple-zone-ahu-sa-flow</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-htg-coil">urn:example#multiple-zone-ahu-htg-coil</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-pipe-hot-water-return-after-valve">urn:example#multiple-zone-ahu-pipe-hot-water-return-after-valve</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-sa-fan-in">urn:example#multiple-zone-ahu-sa-fan-in</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ma-temp-sensor">urn:example#multiple-zone-ahu-ma-temp-sensor</option>
+                                
+                                    <option value="urn:example#vav-cooling-only-damper-command">urn:example#vav-cooling-only-damper-command</option>
+                                
+                                    <option value="urn:example#vav-reheat-hot-water-in-connection">urn:example#vav-reheat-hot-water-in-connection</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-minimum-oa-damper-position">urn:example#multiple-zone-ahu-minimum-oa-damper-position</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-clg-coil-valve-command">urn:example#multiple-zone-ahu-clg-coil-valve-command</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-clg-coil-return-water-temp">urn:example#multiple-zone-ahu-clg-coil-return-water-temp</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-htg-coil-valve-out">urn:example#multiple-zone-ahu-htg-coil-valve-out</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-pipe-hot-water-return-before-valve">urn:example#multiple-zone-ahu-pipe-hot-water-return-before-valve</option>
+                                
+                                    <option value="urn:example#vav-cooling-only-in">urn:example#vav-cooling-only-in</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-clg-coil-supply-water-temp-sensor">urn:example#multiple-zone-ahu-clg-coil-supply-water-temp-sensor</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-sa-fan-start-cmd">urn:example#multiple-zone-ahu-sa-fan-start-cmd</option>
+                                
+                                    <option value="urn:example#vav-reheat-reheat-coil-valve-command">urn:example#vav-reheat-reheat-coil-valve-command</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra-fan-discharge-static-pressure">urn:example#multiple-zone-ahu-ra-fan-discharge-static-pressure</option>
+                                
+                                    <option value="urn:example#vav-cooling-only-damper-position">urn:example#vav-cooling-only-damper-position</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-duct-before-ea-damper">urn:example#multiple-zone-ahu-duct-before-ea-damper</option>
+                                
+                                    <option value="urn:example#vav-reheat-hot-water-in">urn:example#vav-reheat-hot-water-in</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-supply-duct-static-pressure">urn:example#multiple-zone-ahu-supply-duct-static-pressure</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-minimum-oa-damper-out">urn:example#multiple-zone-ahu-minimum-oa-damper-out</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ea-damper-in">urn:example#multiple-zone-ahu-ea-damper-in</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra-fan-speed-status">urn:example#multiple-zone-ahu-ra-fan-speed-status</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-clg-coil-air-in">urn:example#multiple-zone-ahu-clg-coil-air-in</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-outside-supply-junction-out">urn:example#multiple-zone-ahu-outside-supply-junction-out</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-outside-supply-junction-in-2">urn:example#multiple-zone-ahu-outside-supply-junction-in-2</option>
+                                
+                                    <option value="urn:example#vav-reheat-duct-after-damper">urn:example#vav-reheat-duct-after-damper</option>
+                                
+                                    <option value="urn:example#vav-reheat-air-in-connection">urn:example#vav-reheat-air-in-connection</option>
+                                
+                                    <option value="urn:example#vav-reheat-pipe-hot-water-return-before-valve">urn:example#vav-reheat-pipe-hot-water-return-before-valve</option>
+                                
+                                    <option value="urn:example#vav-reheat-reheat-coil-air-in">urn:example#vav-reheat-reheat-coil-air-in</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-pipe-hot-water-supply">urn:example#multiple-zone-ahu-pipe-hot-water-supply</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-sa-out">urn:example#multiple-zone-ahu-sa-out</option>
+                                
+                                    <option value="urn:example#vav-reheat-damper-out">urn:example#vav-reheat-damper-out</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-outside-air-junction-out-2">urn:example#multiple-zone-ahu-outside-air-junction-out-2</option>
+                                
+                                    <option value="urn:example#vav-cooling-only-discharge-air-flow">urn:example#vav-cooling-only-discharge-air-flow</option>
+                                
+                                    <option value="urn:example#vav-reheat-reheat-coil-air-out">urn:example#vav-reheat-reheat-coil-air-out</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-return-exhaust-junction-in">urn:example#multiple-zone-ahu-return-exhaust-junction-in</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-economizer-oa-damper-position">urn:example#multiple-zone-ahu-economizer-oa-damper-position</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra-fan-out">urn:example#multiple-zone-ahu-ra-fan-out</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra-temp-sensor">urn:example#multiple-zone-ahu-ra-temp-sensor</option>
+                                
+                                    <option value="urn:example#vav-reheat-damper-in">urn:example#vav-reheat-damper-in</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-htg-coil-air-in">urn:example#multiple-zone-ahu-htg-coil-air-in</option>
+                                
+                                    <option value="urn:example#vav-reheat-reheat-coil-supply-water-temp-sensor">urn:example#vav-reheat-reheat-coil-supply-water-temp-sensor</option>
+                                
+                                    <option value="urn:example#vav-reheat-reheat-coil-water-in">urn:example#vav-reheat-reheat-coil-water-in</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-clg-coil-return-water-temp-sensor">urn:example#multiple-zone-ahu-clg-coil-return-water-temp-sensor</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-oa-flow-measurement-station">urn:example#multiple-zone-ahu-oa-flow-measurement-station</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-duct-after-ra-damper">urn:example#multiple-zone-ahu-duct-after-ra-damper</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-htg-coil-valve-in">urn:example#multiple-zone-ahu-htg-coil-valve-in</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-htg-coil-water-in">urn:example#multiple-zone-ahu-htg-coil-water-in</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-filter-out">urn:example#multiple-zone-ahu-filter-out</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra-in">urn:example#multiple-zone-ahu-ra-in</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-minimum-oa-damper">urn:example#multiple-zone-ahu-minimum-oa-damper</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-clg-coil-water-out">urn:example#multiple-zone-ahu-clg-coil-water-out</option>
+                                
+                                    <option value="urn:example#vav-reheat-discharge-air-flow-setpoint">urn:example#vav-reheat-discharge-air-flow-setpoint</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-sa-fan-speed-cmd">urn:example#multiple-zone-ahu-sa-fan-speed-cmd</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-sa-fan-high-static-reset-cmd">urn:example#multiple-zone-ahu-sa-fan-high-static-reset-cmd</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra-fan-speed-cmd">urn:example#multiple-zone-ahu-ra-fan-speed-cmd</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-clg-coil-supply-water-temp">urn:example#multiple-zone-ahu-clg-coil-supply-water-temp</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-duct-after-clg-coil">urn:example#multiple-zone-ahu-duct-after-clg-coil</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-chilled-water-in">urn:example#multiple-zone-ahu-chilled-water-in</option>
+                                
+                                    <option value="urn:example#vav-reheat-discharge-air-temp-sensor">urn:example#vav-reheat-discharge-air-temp-sensor</option>
+                                
+                                    <option value="urn:example#vav-reheat-air-out-connection">urn:example#vav-reheat-air-out-connection</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-clg-coil-air-out">urn:example#multiple-zone-ahu-clg-coil-air-out</option>
+                                
+                                    <option value="urn:example#vav-reheat-hot-water-out-connection">urn:example#vav-reheat-hot-water-out-connection</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-oa-flow">urn:example#multiple-zone-ahu-oa-flow</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra-flow">urn:example#multiple-zone-ahu-ra-flow</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-duct-after-filter">urn:example#multiple-zone-ahu-duct-after-filter</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ea-damper-actuator">urn:example#multiple-zone-ahu-ea-damper-actuator</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-outside-air-junction-out-1">urn:example#multiple-zone-ahu-outside-air-junction-out-1</option>
+                                
+                                    <option value="urn:example#vav-reheat-reheat-coil-valve-actuator">urn:example#vav-reheat-reheat-coil-valve-actuator</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-htg-coil-air-out">urn:example#multiple-zone-ahu-htg-coil-air-out</option>
+                                
+                                    <option value="urn:example#vav-reheat-reheat-coil-valve-in">urn:example#vav-reheat-reheat-coil-valve-in</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-duct-after-htg-coil">urn:example#multiple-zone-ahu-duct-after-htg-coil</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-pipe-chilled-water-return-after-valve">urn:example#multiple-zone-ahu-pipe-chilled-water-return-after-valve</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-clg-coil-valve-position">urn:example#multiple-zone-ahu-clg-coil-valve-position</option>
+                                
+                                    <option value="urn:example#vav-reheat-discharge-air-temp-setpoint">urn:example#vav-reheat-discharge-air-temp-setpoint</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-clg-coil-water-in">urn:example#multiple-zone-ahu-clg-coil-water-in</option>
+                                
+                                    <option value="urn:example#vav-reheat-reheat-coil-water-out">urn:example#vav-reheat-reheat-coil-water-out</option>
+                                
+                                    <option value="urn:example#vav-reheat-reheat-coil-valve-position">urn:example#vav-reheat-reheat-coil-valve-position</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra-flow-sensor">urn:example#multiple-zone-ahu-ra-flow-sensor</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-sa-fan-speed-status">urn:example#multiple-zone-ahu-sa-fan-speed-status</option>
+                                
+                                    <option value="urn:example#vav-cooling-only-discharge-air-flow-sensor">urn:example#vav-cooling-only-discharge-air-flow-sensor</option>
+                                
+                                    <option value="urn:example#vav-reheat-damper-position">urn:example#vav-reheat-damper-position</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-return-exhaust-junction-out-2">urn:example#multiple-zone-ahu-return-exhaust-junction-out-2</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-htg-coil-valve-actuator">urn:example#multiple-zone-ahu-htg-coil-valve-actuator</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-htg-coil-valve-command">urn:example#multiple-zone-ahu-htg-coil-valve-command</option>
+                                
+                                    <option value="urn:example#vav-cooling-only-out-connection">urn:example#vav-cooling-only-out-connection</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra-fan-in">urn:example#multiple-zone-ahu-ra-fan-in</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-minimum-oa-damper-command">urn:example#multiple-zone-ahu-minimum-oa-damper-command</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-pipe-chilled-water-return-before-valve">urn:example#multiple-zone-ahu-pipe-chilled-water-return-before-valve</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-economizer-oa-damper-in">urn:example#multiple-zone-ahu-economizer-oa-damper-in</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-sa-fan-out">urn:example#multiple-zone-ahu-sa-fan-out</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-chilled-water-out">urn:example#multiple-zone-ahu-chilled-water-out</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-duct-after-minimum-oa-damper">urn:example#multiple-zone-ahu-duct-after-minimum-oa-damper</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-return-exhaust-junction-out-1">urn:example#multiple-zone-ahu-return-exhaust-junction-out-1</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra-damper-in">urn:example#multiple-zone-ahu-ra-damper-in</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-return-exhaust-junction">urn:example#multiple-zone-ahu-return-exhaust-junction</option>
+                                
+                                    <option value="urn:example#vav-reheat-damper-actuator">urn:example#vav-reheat-damper-actuator</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-outside-supply-junction-in-3">urn:example#multiple-zone-ahu-outside-supply-junction-in-3</option>
+                                
+                                    <option value="urn:example#vav-cooling-only-discharge-air-flow-setpoint">urn:example#vav-cooling-only-discharge-air-flow-setpoint</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-filter-differential-pressure">urn:example#multiple-zone-ahu-filter-differential-pressure</option>
+                                
+                                    <option value="urn:example#vav-reheat-discharge-air-temp">urn:example#vav-reheat-discharge-air-temp</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-minimum-oa-damper-actuator">urn:example#multiple-zone-ahu-minimum-oa-damper-actuator</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-outside-air-junction-in">urn:example#multiple-zone-ahu-outside-air-junction-in</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-duct-before-ra-damper">urn:example#multiple-zone-ahu-duct-before-ra-damper</option>
+                                
+                                    <option value="urn:example#vav-cooling-only-duct-before-damper">urn:example#vav-cooling-only-duct-before-damper</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ra-damper-out">urn:example#multiple-zone-ahu-ra-damper-out</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-hot-water-out">urn:example#multiple-zone-ahu-hot-water-out</option>
+                                
+                                    <option value="urn:example#vav-cooling-only-damper-actuator">urn:example#vav-cooling-only-damper-actuator</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-duct-before-economizer-oa-damper">urn:example#multiple-zone-ahu-duct-before-economizer-oa-damper</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-outside-supply-junction-in-1">urn:example#multiple-zone-ahu-outside-supply-junction-in-1</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-duct-after-ra-fan">urn:example#multiple-zone-ahu-duct-after-ra-fan</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-pipe-chilled-water-supply">urn:example#multiple-zone-ahu-pipe-chilled-water-supply</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-minimum-oa-damper-in">urn:example#multiple-zone-ahu-minimum-oa-damper-in</option>
+                                
+                                    <option value="urn:example#vav-cooling-only-in-connection">urn:example#vav-cooling-only-in-connection</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-ea-damper-position">urn:example#multiple-zone-ahu-ea-damper-position</option>
+                                
+                                    <option value="urn:example#multiple-zone-ahu-clg-coil-valve-actuator">urn:example#multiple-zone-ahu-clg-coil-valve-actuator</option>
+                                
+                                    <option value="bob:legend/System">bob:legend/System</option>
+                                
+                                    <option value="bob:legend/Equipment">bob:legend/Equipment</option>
+                                
+                                    <option value="bob:legend/Connection">bob:legend/Connection</option>
+                                
+                                    <option value="bob:legend/InletConnectionPoint">bob:legend/InletConnectionPoint</option>
+                                
+                                    <option value="bob:legend/OutletConnectionPoint">bob:legend/OutletConnectionPoint</option>
+                                
+                                    <option value="bob:legend/Function">bob:legend/Function</option>
+                                
+                                    <option value="bob:legend/DomainSpace">bob:legend/DomainSpace</option>
+                                
+                                    <option value="bob:legend/Default">bob:legend/Default</option>
+                                
+                            </select>
+                        </div>
+                        <div class="col-2 pb-2">
+                            <button type="button" class="btn btn-primary btn-block" onclick="neighbourhoodHighlight({nodes: []});">Reset Selection</button>
+                        </div>
+                    </div>
+                </div>
+            
+            
+              <div id="filter-menu" class="card-header">
+                <div class="row no-gutters">
+                  <div class="col-3 pb-2">
+                    <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="updateFilter(value, 'item')"
+                            id="select-item"
+                        >
+                        <option value="">Select a network item</option>
+                        <option value="edge">edge</option>
+                        <option value="node">node</option>
+                    </select>
+                  </div>
+                  <div class="col-3 pb-2">
+                    <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="updateFilter(value, 'property')"
+                            id="select-property"
+                        >
+                        <option value="">Select a property...</option>
+                    </select>
+                  </div>
+                  <div class="col-3 pb-2">
+                    <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            id="select-value"
+                        >
+                        <option value="">Select value(s)...</option>
+                    </select>
+                  </div>
+                  <div class="col-1 pb-2">
+                    <button type="button" class="btn btn-primary btn-block" onclick="highlightFilter(filter);">Filter</button>
+                  </div>
+                  <div class="col-2 pb-2">
+                    <button type="button" class="btn btn-primary btn-block" onclick="clearFilter(true)">Reset Selection</button>
+                  </div>
+                </div>
+              </div>
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+            <div id="loadingBar">
+              <div class="outerBorder">
+                <div id="text">0%</div>
+                <div id="border">
+                  <div id="bar"></div>
+                </div>
+              </div>
+            </div>
+        
+        
+            <div id="config"></div>
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+                  new TomSelect("#select-node",{
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      }
+                  });
+              
+
+              
+                  // explicitly using onItemAdd and this function as we need to save multiple values
+                  let updateValueFilter = function() {
+                      return function () {
+                      filter['value'].push(arguments[0])
+                      }
+                  }
+
+                  let valueControl = new TomSelect("#select-value",{
+                      maxItems: null,
+                      valueField: 'id',
+                      labelField: 'title',
+                      searchField: 'title',
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      },
+                      onItemAdd: updateValueFilter()
+                  });
+
+                  let addValues = function() {
+                      return function () {
+                          // clear the current value options and add the selected attribute values
+                          // tom-select handles duplicates
+                          let selectedProperty = arguments[0];
+                          valueControl.clear();
+                          valueControl.clearOptions();
+                          filter['value'] = []
+                          if (filter['item'] === 'node') {
+                              for (let each in allNodes) {
+                                  valueControl.addOption({
+                                      id:allNodes[each][selectedProperty],
+                                      title:allNodes[each][selectedProperty]
+                                  })
+                              }
+                          }
+                          else if (filter['item'] === 'edge') {
+                              for (let each in allEdges) {
+                                  valueControl.addOption({
+                                      id:allEdges[each][selectedProperty],
+                                      title:allEdges[each][selectedProperty]
+                                  })
+                              }
+                          }
+                      }
+                  };
+
+                  let propControl = new TomSelect("#select-property",{
+                      valueField: 'id',
+                      labelField: 'title',
+                      searchField: 'title',
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      },
+                      onItemAdd: addValues()
+                  });
+
+                  let addProperties = function() {
+                      return function () {
+                          // loops through the selected network item and adds the attributes to dropdown
+                          // tom-select handles duplicates
+                          clearFilter(false)
+                          if (arguments[0] === 'edge') {
+                              for (let each in allEdges) {
+                                  if (allEdges.hasOwnProperty(each)) {
+                                      for (let eachProp in allEdges[each]) {
+                                          if (allEdges[each].hasOwnProperty(eachProp)) {
+                                              propControl.addOption({id: eachProp, title: eachProp})
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                          else if (arguments[0] === 'node') {
+                              for (let each in allNodes) {
+                                  if (allNodes.hasOwnProperty(each)) {
+                                      for (let eachProp in allNodes[each]) {
+                                          if (allNodes[each].hasOwnProperty(eachProp)
+                                              && (eachProp !== 'hidden' && eachProp !== 'savedLabel'
+                                                  && eachProp !== 'hiddenLabel')) {
+                                              propControl.addOption({id: eachProp, title: eachProp})
+
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  };
+
+                  let itemControl = new TomSelect("#select-item",{
+                      create: false,
+                      sortField:{
+                          field: "text",
+                          direction: "asc"
+                      },
+                      onItemAdd: addProperties()
+                  });
+
+                  function clearFilter(reset) {
+                      // utility function to clear all the selected filter options
+                      // if reset is set to true, the existing filter will be removed
+                      // else, only the dropdown options are cleared
+                      propControl.clear();
+                      propControl.clearOptions();
+                      valueControl.clear();
+                      valueControl.clearOptions();
+                      filter = {
+                          item : '',
+                          property : '',
+                          value : []
+                      }
+                      if (reset) {
+                          itemControl.clear();
+                          filterHighlight({nodes: []})
+                      }
+                  }
+
+                  function updateFilter(value, key) {
+                      // key could be 'item' or 'property' and value is as selected in dropdown
+                      filter[key] = value
+                  }
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-economizer-oa-damper-actuator", "label": "actuator", "shape": "dot", "size": 15, "title": "Label : actuator\n=======\nURI : urn:example#multiple-zone-ahu-economizer-oa-damper-actuator\nNamespaces : s223\nTypes: s223:Actuator\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-economizer-oa-damper-command", "label": "command", "shape": "dot", "size": 15, "title": "Label : command\n=======\nURI : urn:example#multiple-zone-ahu-economizer-oa-damper-command\nNamespaces : s223\nTypes: s223:QuantifiableActuatableProperty\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#vav-cooling-only-duct-after-damper", "label": "damper", "shape": "diamond", "size": 15, "title": "Label : damper\n=======\nURI : urn:example#vav-cooling-only-duct-after-damper\nNamespaces : s223\nTypes: s223:Connection, s223:Duct\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ra-damper", "label": "damper", "shape": "dot", "size": 15, "title": "Label : damper\n=======\nURI : urn:example#multiple-zone-ahu-ra-damper\nNamespaces : http://data.ashrae.org/standard223/1.0/extensions/g36#Damper, s223\nTypes: http://data.ashrae.org/standard223/1.0/extensions/g36#Damper, s223:Damper\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ra-damper-position", "label": "position", "shape": "dot", "size": 15, "title": "Label : position\n=======\nURI : urn:example#multiple-zone-ahu-ra-damper-position\nNamespaces : s223\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-heat-coil-air-temp", "label": "temp", "shape": "dot", "size": 15, "title": "Label : temp\n=======\nURI : urn:example#multiple-zone-ahu-heat-coil-air-temp\nNamespaces : s223, http://data.ashrae.org/standard223#QuantifiableObservableProperty\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#multiple-zone-ahu-clg-coil-valve-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#multiple-zone-ahu-clg-coil-valve-out\nNamespaces : http://data.ashrae.org/standard223#OutletConnectionPoint, s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#vav-cooling-only-damper-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#vav-cooling-only-damper-in\nNamespaces : s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-reheat-name", "label": "reheat", "shape": "dot", "size": 15, "title": "Label : reheat\n=======\nURI : urn:example#vav-reheat-name\nNamespaces : s223, http://data.ashrae.org/standard223/1.0/extensions/g36#VAVWithReheat\nTypes: s223:SingleDuctTerminal, http://data.ashrae.org/standard223/1.0/extensions/g36#VAVWithReheat\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-reheat-reheat-coil-valve", "label": "valve", "shape": "dot", "size": 15, "title": "Label : valve\n=======\nURI : urn:example#vav-reheat-reheat-coil-valve\nNamespaces : s223, http://data.ashrae.org/standard223/1.0/extensions/g36#HotWaterValve\nTypes: s223:Valve, http://data.ashrae.org/standard223/1.0/extensions/g36#HotWaterValve\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-clg-coil", "label": "coil", "shape": "dot", "size": 15, "title": "Label : coil\n=======\nURI : urn:example#multiple-zone-ahu-clg-coil\nNamespaces : s223, http://data.ashrae.org/standard223/1.0/extensions/g36#ChilledWaterCoil, http://data.ashrae.org/standard223/1.0/extensions/g36#ChilledWaterCoil\nTypes: s223:CoolingCoil, http://data.ashrae.org/standard223/1.0/extensions/g36#ChilledWaterCoil\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-supply-duct-static-pressure-setpoint", "label": "setpoint", "shape": "dot", "size": 15, "title": "Label : setpoint\n=======\nURI : urn:example#multiple-zone-ahu-supply-duct-static-pressure-setpoint\nNamespaces : s223\nTypes: s223:QuantifiableActuatableProperty\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#multiple-zone-ahu-duct-ra-in", "label": "in", "shape": "diamond", "size": 15, "title": "Label : in\n=======\nURI : urn:example#multiple-zone-ahu-duct-ra-in\nNamespaces : http://data.ashrae.org/standard223#Connection, s223\nTypes: s223:Connection, s223:Duct\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-htg-coil-valve-position", "label": "position", "shape": "dot", "size": 15, "title": "Label : position\n=======\nURI : urn:example#multiple-zone-ahu-htg-coil-valve-position\nNamespaces : s223\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#vav-cooling-only-damper-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#vav-cooling-only-damper-out\nNamespaces : http://data.ashrae.org/standard223#OutletConnectionPoint, s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-htg-coil-return-water-temp-sensor", "label": "sensor", "shape": "dot", "size": 15, "title": "Label : sensor\n=======\nURI : urn:example#multiple-zone-ahu-htg-coil-return-water-temp-sensor\nNamespaces : s223\nTypes: s223:Sensor\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#multiple-zone-ahu-htg-coil-water-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#multiple-zone-ahu-htg-coil-water-out\nNamespaces : s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-reheat-discharge-air-flow-sensor", "label": "sensor", "shape": "dot", "size": 15, "title": "Label : sensor\n=======\nURI : urn:example#vav-reheat-discharge-air-flow-sensor\nNamespaces : s223\nTypes: s223:Sensor\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#vav-reheat-air-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#vav-reheat-air-in\nNamespaces : s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#multiple-zone-ahu-hot-water-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#multiple-zone-ahu-hot-water-in\nNamespaces : http://data.ashrae.org/standard223#InletConnectionPoint, s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ra-fan-static-pressure-sensor", "label": "sensor", "shape": "dot", "size": 15, "title": "Label : sensor\n=======\nURI : urn:example#multiple-zone-ahu-ra-fan-static-pressure-sensor\nNamespaces : s223, http://data.ashrae.org/standard223#Sensor\nTypes: s223:Sensor\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-sa-fan-power", "label": "power", "shape": "dot", "size": 15, "title": "Label : power\n=======\nURI : urn:example#multiple-zone-ahu-sa-fan-power\nNamespaces : s223\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-sa-fan-start-status", "label": "status", "shape": "dot", "size": 15, "title": "Label : status\n=======\nURI : urn:example#multiple-zone-ahu-sa-fan-start-status\nNamespaces : http://data.ashrae.org/standard223#EnumeratedObservableProperty, s223\nTypes: s223:EnumeratedObservableProperty\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#multiple-zone-ahu-clg-coil-valve-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#multiple-zone-ahu-clg-coil-valve-in\nNamespaces : http://data.ashrae.org/standard223#InletConnectionPoint, s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#multiple-zone-ahu-duct-before-filter", "label": "filter", "shape": "diamond", "size": 15, "title": "Label : filter\n=======\nURI : urn:example#multiple-zone-ahu-duct-before-filter\nNamespaces : s223\nTypes: s223:Connection, s223:Duct\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-htg-coil-supply-water-temp-sensor", "label": "sensor", "shape": "dot", "size": 15, "title": "Label : sensor\n=======\nURI : urn:example#multiple-zone-ahu-htg-coil-supply-water-temp-sensor\nNamespaces : s223\nTypes: s223:Sensor\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-htg-coil-supply-water-temp", "label": "temp", "shape": "dot", "size": 15, "title": "Label : temp\n=======\nURI : urn:example#multiple-zone-ahu-htg-coil-supply-water-temp\nNamespaces : s223\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#multiple-zone-ahu-duct-before-minimum-oa-damper", "label": "damper", "shape": "diamond", "size": 15, "title": "Label : damper\n=======\nURI : urn:example#multiple-zone-ahu-duct-before-minimum-oa-damper\nNamespaces : s223\nTypes: s223:Connection, s223:Duct\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#multiple-zone-ahu-duct-oa-in", "label": "in", "shape": "diamond", "size": 15, "title": "Label : in\n=======\nURI : urn:example#multiple-zone-ahu-duct-oa-in\nNamespaces : s223, http://data.ashrae.org/standard223#Duct\nTypes: s223:Connection, s223:Duct\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-name", "label": "ahu", "shape": "dot", "size": 15, "title": "Label : ahu\n=======\nURI : urn:example#multiple-zone-ahu-name\nNamespaces : http://data.ashrae.org/standard223/1.0/extensions/g36#MultipleZoneVAVAirHandlingUnit, s223\nTypes: http://data.ashrae.org/standard223/1.0/extensions/g36#MultipleZoneVAVAirHandlingUnit, s223:AirHandlingUnit\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-reheat-reheat-coil-return-water-temp", "label": "temp", "shape": "dot", "size": 15, "title": "Label : temp\n=======\nURI : urn:example#vav-reheat-reheat-coil-return-water-temp\nNamespaces : s223, http://data.ashrae.org/standard223#QuantifiableObservableProperty\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-outside-supply-junction", "label": "junction", "shape": "dot", "size": 15, "title": "Label : junction\n=======\nURI : urn:example#multiple-zone-ahu-outside-supply-junction\nNamespaces : s223\nTypes: s223:Junction\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ra-temp", "label": "temp", "shape": "dot", "size": 15, "title": "Label : temp\n=======\nURI : urn:example#multiple-zone-ahu-ra-temp\nNamespaces : s223\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-filter-differential-pressure-sensor", "label": "sensor", "shape": "dot", "size": 15, "title": "Label : sensor\n=======\nURI : urn:example#multiple-zone-ahu-filter-differential-pressure-sensor\nNamespaces : s223\nTypes: s223:DifferentialSensor, s223:Sensor\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#multiple-zone-ahu-filter-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#multiple-zone-ahu-filter-in\nNamespaces : s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#vav-reheat-air-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#vav-reheat-air-out\nNamespaces : http://data.ashrae.org/standard223#OutletConnectionPoint, s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ra-fan", "label": "fan", "shape": "dot", "size": 15, "title": "Label : fan\n=======\nURI : urn:example#multiple-zone-ahu-ra-fan\nNamespaces : s223, http://data.ashrae.org/standard223/1.0/extensions/g36#FanWithVFD\nTypes: http://data.ashrae.org/standard223/1.0/extensions/g36#FanWithVFD, s223:Fan\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ra-fan-power", "label": "power", "shape": "dot", "size": 15, "title": "Label : power\n=======\nURI : urn:example#multiple-zone-ahu-ra-fan-power\nNamespaces : s223\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-heat-coil-air-temp-sensor", "label": "sensor", "shape": "dot", "size": 15, "title": "Label : sensor\n=======\nURI : urn:example#multiple-zone-ahu-heat-coil-air-temp-sensor\nNamespaces : s223\nTypes: s223:Sensor\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#multiple-zone-ahu-ea-damper-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#multiple-zone-ahu-ea-damper-out\nNamespaces : http://data.ashrae.org/standard223#OutletConnectionPoint, s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-htg-coil-valve", "label": "valve", "shape": "dot", "size": 15, "title": "Label : valve\n=======\nURI : urn:example#multiple-zone-ahu-htg-coil-valve\nNamespaces : s223, http://data.ashrae.org/standard223/1.0/extensions/g36#HotWaterValve\nTypes: s223:Valve, http://data.ashrae.org/standard223/1.0/extensions/g36#HotWaterValve\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#vav-cooling-only-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#vav-cooling-only-out\nNamespaces : s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#multiple-zone-ahu-economizer-oa-damper-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#multiple-zone-ahu-economizer-oa-damper-out\nNamespaces : http://data.ashrae.org/standard223#OutletConnectionPoint, s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#multiple-zone-ahu-duct-ea-out", "label": "out", "shape": "diamond", "size": 15, "title": "Label : out\n=======\nURI : urn:example#multiple-zone-ahu-duct-ea-out\nNamespaces : s223, http://data.ashrae.org/standard223#Duct\nTypes: s223:Connection, s223:Duct\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ea-damper-command", "label": "command", "shape": "dot", "size": 15, "title": "Label : command\n=======\nURI : urn:example#multiple-zone-ahu-ea-damper-command\nNamespaces : s223\nTypes: s223:QuantifiableActuatableProperty\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#multiple-zone-ahu-ea-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#multiple-zone-ahu-ea-out\nNamespaces : http://data.ashrae.org/standard223#OutletConnectionPoint, s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-sa-flow-sensor", "label": "sensor", "shape": "dot", "size": 15, "title": "Label : sensor\n=======\nURI : urn:example#multiple-zone-ahu-sa-flow-sensor\nNamespaces : s223\nTypes: s223:Sensor\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-sa-fan", "label": "fan", "shape": "dot", "size": 15, "title": "Label : fan\n=======\nURI : urn:example#multiple-zone-ahu-sa-fan\nNamespaces : s223, http://data.ashrae.org/standard223/1.0/extensions/g36#FanWithVFD\nTypes: http://data.ashrae.org/standard223/1.0/extensions/g36#FanWithVFD, s223:Fan\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#multiple-zone-ahu-duct-after-economizer-oa-damper", "label": "damper", "shape": "diamond", "size": 15, "title": "Label : damper\n=======\nURI : urn:example#multiple-zone-ahu-duct-after-economizer-oa-damper\nNamespaces : s223\nTypes: s223:Connection, s223:Duct\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-reheat-reheat-coil-return-water-temp-sensor", "label": "sensor", "shape": "dot", "size": 15, "title": "Label : sensor\n=======\nURI : urn:example#vav-reheat-reheat-coil-return-water-temp-sensor\nNamespaces : s223, http://data.ashrae.org/standard223#Sensor\nTypes: s223:Sensor\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-sa-temp-sensor", "label": "sensor", "shape": "dot", "size": 15, "title": "Label : sensor\n=======\nURI : urn:example#multiple-zone-ahu-sa-temp-sensor\nNamespaces : s223\nTypes: s223:Sensor\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-sa-temp", "label": "temp", "shape": "dot", "size": 15, "title": "Label : temp\n=======\nURI : urn:example#multiple-zone-ahu-sa-temp\nNamespaces : s223\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-cooling-only-name", "label": "only", "shape": "dot", "size": 15, "title": "Label : only\n=======\nURI : urn:example#vav-cooling-only-name\nNamespaces : s223, http://data.ashrae.org/standard223/1.0/extensions/g36#VAV\nTypes: s223:SingleDuctTerminal, http://data.ashrae.org/standard223/1.0/extensions/g36#VAV\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ea-damper", "label": "damper", "shape": "dot", "size": 15, "title": "Label : damper\n=======\nURI : urn:example#multiple-zone-ahu-ea-damper\nNamespaces : http://data.ashrae.org/standard223/1.0/extensions/g36#Damper, http://data.ashrae.org/standard223/1.0/extensions/g36#Damper, s223\nTypes: http://data.ashrae.org/standard223/1.0/extensions/g36#Damper, s223:Damper\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-reheat-damper", "label": "damper", "shape": "dot", "size": 15, "title": "Label : damper\n=======\nURI : urn:example#vav-reheat-damper\nNamespaces : http://data.ashrae.org/standard223/1.0/extensions/g36#Damper, s223\nTypes: http://data.ashrae.org/standard223/1.0/extensions/g36#Damper, s223:Damper\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-supply-duct-static-pressure-sensor", "label": "sensor", "shape": "dot", "size": 15, "title": "Label : sensor\n=======\nURI : urn:example#multiple-zone-ahu-supply-duct-static-pressure-sensor\nNamespaces : s223\nTypes: s223:Sensor\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-reheat-reheat-coil-supply-water-temp", "label": "temp", "shape": "dot", "size": 15, "title": "Label : temp\n=======\nURI : urn:example#vav-reheat-reheat-coil-supply-water-temp\nNamespaces : s223, http://data.ashrae.org/standard223#QuantifiableObservableProperty\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-economizer-oa-damper", "label": "damper", "shape": "dot", "size": 15, "title": "Label : damper\n=======\nURI : urn:example#multiple-zone-ahu-economizer-oa-damper\nNamespaces : http://data.ashrae.org/standard223/1.0/extensions/g36#Damper, s223\nTypes: http://data.ashrae.org/standard223/1.0/extensions/g36#Damper, s223:Damper\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ra-fan-start-cmd", "label": "cmd", "shape": "dot", "size": 15, "title": "Label : cmd\n=======\nURI : urn:example#multiple-zone-ahu-ra-fan-start-cmd\nNamespaces : s223\nTypes: s223:EnumeratedActuatableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-oa-temp-sensor", "label": "sensor", "shape": "dot", "size": 15, "title": "Label : sensor\n=======\nURI : urn:example#multiple-zone-ahu-oa-temp-sensor\nNamespaces : s223, http://data.ashrae.org/standard223#Sensor\nTypes: s223:Sensor\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ra-damper-actuator", "label": "actuator", "shape": "dot", "size": 15, "title": "Label : actuator\n=======\nURI : urn:example#multiple-zone-ahu-ra-damper-actuator\nNamespaces : s223\nTypes: s223:Actuator\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ra-damper-command", "label": "command", "shape": "dot", "size": 15, "title": "Label : command\n=======\nURI : urn:example#multiple-zone-ahu-ra-damper-command\nNamespaces : s223\nTypes: s223:QuantifiableActuatableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-filter", "label": "filter", "shape": "dot", "size": 15, "title": "Label : filter\n=======\nURI : urn:example#multiple-zone-ahu-filter\nNamespaces : s223, http://data.ashrae.org/standard223/1.0/extensions/g36#Filter\nTypes: s223:Filter, http://data.ashrae.org/standard223/1.0/extensions/g36#Filter\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#multiple-zone-ahu-duct-sa-out", "label": "out", "shape": "diamond", "size": 15, "title": "Label : out\n=======\nURI : urn:example#multiple-zone-ahu-duct-sa-out\nNamespaces : s223, http://data.ashrae.org/standard223#Duct\nTypes: s223:Connection, s223:Duct\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-reheat-reheat-coil", "label": "coil", "shape": "dot", "size": 15, "title": "Label : coil\n=======\nURI : urn:example#vav-reheat-reheat-coil\nNamespaces : http://data.ashrae.org/standard223/1.0/extensions/g36#HotWaterCoil, s223\nTypes: s223:HeatingCoil, http://data.ashrae.org/standard223/1.0/extensions/g36#HotWaterCoil\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-clg-coil-valve", "label": "valve", "shape": "dot", "size": 15, "title": "Label : valve\n=======\nURI : urn:example#multiple-zone-ahu-clg-coil-valve\nNamespaces : s223, http://data.ashrae.org/standard223/1.0/extensions/g36#ChilledWaterValve\nTypes: s223:Valve, http://data.ashrae.org/standard223/1.0/extensions/g36#ChilledWaterValve\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ma-temp", "label": "temp", "shape": "dot", "size": 15, "title": "Label : temp\n=======\nURI : urn:example#multiple-zone-ahu-ma-temp\nNamespaces : s223, http://data.ashrae.org/standard223#QuantifiableObservableProperty\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-reheat-damper-command", "label": "command", "shape": "dot", "size": 15, "title": "Label : command\n=======\nURI : urn:example#vav-reheat-damper-command\nNamespaces : s223\nTypes: s223:QuantifiableActuatableProperty\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#multiple-zone-ahu-oa-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#multiple-zone-ahu-oa-in\nNamespaces : s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ra-fan-start-status", "label": "status", "shape": "dot", "size": 15, "title": "Label : status\n=======\nURI : urn:example#multiple-zone-ahu-ra-fan-start-status\nNamespaces : s223\nTypes: s223:EnumeratedObservableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ra-fan-high-static-reset-cmd", "label": "cmd", "shape": "dot", "size": 15, "title": "Label : cmd\n=======\nURI : urn:example#multiple-zone-ahu-ra-fan-high-static-reset-cmd\nNamespaces : s223\nTypes: s223:EnumeratedActuatableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-reheat-discharge-air-flow", "label": "flow", "shape": "dot", "size": 15, "title": "Label : flow\n=======\nURI : urn:example#vav-reheat-discharge-air-flow\nNamespaces : s223\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-outside-air-junction", "label": "junction", "shape": "dot", "size": 15, "title": "Label : junction\n=======\nURI : urn:example#multiple-zone-ahu-outside-air-junction\nNamespaces : s223\nTypes: s223:Junction\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-oa-temp", "label": "temp", "shape": "dot", "size": 15, "title": "Label : temp\n=======\nURI : urn:example#multiple-zone-ahu-oa-temp\nNamespaces : s223, http://data.ashrae.org/standard223#QuantifiableObservableProperty\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-cooling-only-damper", "label": "damper", "shape": "dot", "size": 15, "title": "Label : damper\n=======\nURI : urn:example#vav-cooling-only-damper\nNamespaces : http://data.ashrae.org/standard223/1.0/extensions/g36#Damper, s223\nTypes: http://data.ashrae.org/standard223/1.0/extensions/g36#Damper, s223:Damper\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-htg-coil-return-water-temp", "label": "temp", "shape": "dot", "size": 15, "title": "Label : temp\n=======\nURI : urn:example#multiple-zone-ahu-htg-coil-return-water-temp\nNamespaces : s223, http://data.ashrae.org/standard223#QuantifiableObservableProperty\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-sa-temp-setpoint", "label": "setpoint", "shape": "dot", "size": 15, "title": "Label : setpoint\n=======\nURI : urn:example#multiple-zone-ahu-sa-temp-setpoint\nNamespaces : s223, http://data.ashrae.org/standard223#QuantifiableActuatableProperty\nTypes: s223:QuantifiableActuatableProperty\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#vav-reheat-reheat-coil-valve-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#vav-reheat-reheat-coil-valve-out\nNamespaces : s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#vav-reheat-hot-water-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#vav-reheat-hot-water-out\nNamespaces : s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-sa-flow", "label": "flow", "shape": "dot", "size": 15, "title": "Label : flow\n=======\nURI : urn:example#multiple-zone-ahu-sa-flow\nNamespaces : s223\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-htg-coil", "label": "coil", "shape": "dot", "size": 15, "title": "Label : coil\n=======\nURI : urn:example#multiple-zone-ahu-htg-coil\nNamespaces : http://data.ashrae.org/standard223/1.0/extensions/g36#HotWaterCoil, s223\nTypes: s223:HeatingCoil, http://data.ashrae.org/standard223/1.0/extensions/g36#HotWaterCoil\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#multiple-zone-ahu-pipe-hot-water-return-after-valve", "label": "valve", "shape": "diamond", "size": 15, "title": "Label : valve\n=======\nURI : urn:example#multiple-zone-ahu-pipe-hot-water-return-after-valve\nNamespaces : http://data.ashrae.org/standard223#Connection, s223\nTypes: s223:Connection, s223:Pipe\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#multiple-zone-ahu-sa-fan-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#multiple-zone-ahu-sa-fan-in\nNamespaces : http://data.ashrae.org/standard223#InletConnectionPoint, s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ma-temp-sensor", "label": "sensor", "shape": "dot", "size": 15, "title": "Label : sensor\n=======\nURI : urn:example#multiple-zone-ahu-ma-temp-sensor\nNamespaces : s223\nTypes: s223:Sensor\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-cooling-only-damper-command", "label": "command", "shape": "dot", "size": 15, "title": "Label : command\n=======\nURI : urn:example#vav-cooling-only-damper-command\nNamespaces : s223, http://data.ashrae.org/standard223#QuantifiableActuatableProperty\nTypes: s223:QuantifiableActuatableProperty\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#vav-reheat-hot-water-in-connection", "label": "connection", "shape": "diamond", "size": 15, "title": "Label : connection\n=======\nURI : urn:example#vav-reheat-hot-water-in-connection\nNamespaces : http://data.ashrae.org/standard223#Connection, s223\nTypes: s223:Connection, s223:Pipe\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-minimum-oa-damper-position", "label": "position", "shape": "dot", "size": 15, "title": "Label : position\n=======\nURI : urn:example#multiple-zone-ahu-minimum-oa-damper-position\nNamespaces : s223\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-clg-coil-valve-command", "label": "command", "shape": "dot", "size": 15, "title": "Label : command\n=======\nURI : urn:example#multiple-zone-ahu-clg-coil-valve-command\nNamespaces : s223\nTypes: s223:QuantifiableActuatableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-clg-coil-return-water-temp", "label": "temp", "shape": "dot", "size": 15, "title": "Label : temp\n=======\nURI : urn:example#multiple-zone-ahu-clg-coil-return-water-temp\nNamespaces : s223, http://data.ashrae.org/standard223#QuantifiableObservableProperty\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#multiple-zone-ahu-htg-coil-valve-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#multiple-zone-ahu-htg-coil-valve-out\nNamespaces : s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#multiple-zone-ahu-pipe-hot-water-return-before-valve", "label": "valve", "shape": "diamond", "size": 15, "title": "Label : valve\n=======\nURI : urn:example#multiple-zone-ahu-pipe-hot-water-return-before-valve\nNamespaces : s223\nTypes: s223:Connection, s223:Pipe\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#vav-cooling-only-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#vav-cooling-only-in\nNamespaces : s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-clg-coil-supply-water-temp-sensor", "label": "sensor", "shape": "dot", "size": 15, "title": "Label : sensor\n=======\nURI : urn:example#multiple-zone-ahu-clg-coil-supply-water-temp-sensor\nNamespaces : s223\nTypes: s223:Sensor\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-sa-fan-start-cmd", "label": "cmd", "shape": "dot", "size": 15, "title": "Label : cmd\n=======\nURI : urn:example#multiple-zone-ahu-sa-fan-start-cmd\nNamespaces : s223\nTypes: s223:EnumeratedActuatableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-reheat-reheat-coil-valve-command", "label": "command", "shape": "dot", "size": 15, "title": "Label : command\n=======\nURI : urn:example#vav-reheat-reheat-coil-valve-command\nNamespaces : s223\nTypes: s223:QuantifiableActuatableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ra-fan-discharge-static-pressure", "label": "pressure", "shape": "dot", "size": 15, "title": "Label : pressure\n=======\nURI : urn:example#multiple-zone-ahu-ra-fan-discharge-static-pressure\nNamespaces : s223, http://data.ashrae.org/standard223#QuantifiableObservableProperty\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-cooling-only-damper-position", "label": "position", "shape": "dot", "size": 15, "title": "Label : position\n=======\nURI : urn:example#vav-cooling-only-damper-position\nNamespaces : s223, http://data.ashrae.org/standard223#QuantifiableObservableProperty\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#multiple-zone-ahu-duct-before-ea-damper", "label": "damper", "shape": "diamond", "size": 15, "title": "Label : damper\n=======\nURI : urn:example#multiple-zone-ahu-duct-before-ea-damper\nNamespaces : http://data.ashrae.org/standard223#Connection, s223\nTypes: s223:Connection, s223:Duct\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#vav-reheat-hot-water-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#vav-reheat-hot-water-in\nNamespaces : http://data.ashrae.org/standard223#InletConnectionPoint, s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-supply-duct-static-pressure", "label": "pressure", "shape": "dot", "size": 15, "title": "Label : pressure\n=======\nURI : urn:example#multiple-zone-ahu-supply-duct-static-pressure\nNamespaces : s223\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#multiple-zone-ahu-minimum-oa-damper-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#multiple-zone-ahu-minimum-oa-damper-out\nNamespaces : s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#multiple-zone-ahu-ea-damper-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#multiple-zone-ahu-ea-damper-in\nNamespaces : http://data.ashrae.org/standard223#InletConnectionPoint, s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ra-fan-speed-status", "label": "status", "shape": "dot", "size": 15, "title": "Label : status\n=======\nURI : urn:example#multiple-zone-ahu-ra-fan-speed-status\nNamespaces : s223\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#multiple-zone-ahu-clg-coil-air-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#multiple-zone-ahu-clg-coil-air-in\nNamespaces : http://data.ashrae.org/standard223#InletConnectionPoint, s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#multiple-zone-ahu-outside-supply-junction-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#multiple-zone-ahu-outside-supply-junction-out\nNamespaces : s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#multiple-zone-ahu-outside-supply-junction-in-2", "label": "2", "shape": "triangle", "size": 15, "title": "Label : 2\n=======\nURI : urn:example#multiple-zone-ahu-outside-supply-junction-in-2\nNamespaces : s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#vav-reheat-duct-after-damper", "label": "damper", "shape": "diamond", "size": 15, "title": "Label : damper\n=======\nURI : urn:example#vav-reheat-duct-after-damper\nNamespaces : s223\nTypes: s223:Connection, s223:Duct\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#vav-reheat-air-in-connection", "label": "connection", "shape": "diamond", "size": 15, "title": "Label : connection\n=======\nURI : urn:example#vav-reheat-air-in-connection\nNamespaces : s223\nTypes: s223:Connection, s223:Duct\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#vav-reheat-pipe-hot-water-return-before-valve", "label": "valve", "shape": "diamond", "size": 15, "title": "Label : valve\n=======\nURI : urn:example#vav-reheat-pipe-hot-water-return-before-valve\nNamespaces : http://data.ashrae.org/standard223#Connection, s223\nTypes: s223:Connection, s223:Pipe\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#vav-reheat-reheat-coil-air-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#vav-reheat-reheat-coil-air-in\nNamespaces : http://data.ashrae.org/standard223#InletConnectionPoint, s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#multiple-zone-ahu-pipe-hot-water-supply", "label": "supply", "shape": "diamond", "size": 15, "title": "Label : supply\n=======\nURI : urn:example#multiple-zone-ahu-pipe-hot-water-supply\nNamespaces : s223\nTypes: s223:Connection, s223:Pipe\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#multiple-zone-ahu-sa-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#multiple-zone-ahu-sa-out\nNamespaces : s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#vav-reheat-damper-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#vav-reheat-damper-out\nNamespaces : s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#multiple-zone-ahu-outside-air-junction-out-2", "label": "2", "shape": "triangleDown", "size": 15, "title": "Label : 2\n=======\nURI : urn:example#multiple-zone-ahu-outside-air-junction-out-2\nNamespaces : http://data.ashrae.org/standard223#OutletConnectionPoint, s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-cooling-only-discharge-air-flow", "label": "flow", "shape": "dot", "size": 15, "title": "Label : flow\n=======\nURI : urn:example#vav-cooling-only-discharge-air-flow\nNamespaces : s223, http://data.ashrae.org/standard223#QuantifiableObservableProperty\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#vav-reheat-reheat-coil-air-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#vav-reheat-reheat-coil-air-out\nNamespaces : http://data.ashrae.org/standard223#OutletConnectionPoint, s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#multiple-zone-ahu-return-exhaust-junction-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#multiple-zone-ahu-return-exhaust-junction-in\nNamespaces : s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-economizer-oa-damper-position", "label": "position", "shape": "dot", "size": 15, "title": "Label : position\n=======\nURI : urn:example#multiple-zone-ahu-economizer-oa-damper-position\nNamespaces : s223\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#multiple-zone-ahu-ra-fan-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#multiple-zone-ahu-ra-fan-out\nNamespaces : s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ra-temp-sensor", "label": "sensor", "shape": "dot", "size": 15, "title": "Label : sensor\n=======\nURI : urn:example#multiple-zone-ahu-ra-temp-sensor\nNamespaces : s223\nTypes: s223:Sensor\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#vav-reheat-damper-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#vav-reheat-damper-in\nNamespaces : http://data.ashrae.org/standard223#InletConnectionPoint, s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#multiple-zone-ahu-htg-coil-air-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#multiple-zone-ahu-htg-coil-air-in\nNamespaces : http://data.ashrae.org/standard223#InletConnectionPoint, s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-reheat-reheat-coil-supply-water-temp-sensor", "label": "sensor", "shape": "dot", "size": 15, "title": "Label : sensor\n=======\nURI : urn:example#vav-reheat-reheat-coil-supply-water-temp-sensor\nNamespaces : s223\nTypes: s223:Sensor\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#vav-reheat-reheat-coil-water-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#vav-reheat-reheat-coil-water-in\nNamespaces : s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-clg-coil-return-water-temp-sensor", "label": "sensor", "shape": "dot", "size": 15, "title": "Label : sensor\n=======\nURI : urn:example#multiple-zone-ahu-clg-coil-return-water-temp-sensor\nNamespaces : s223, http://data.ashrae.org/standard223#Sensor\nTypes: s223:Sensor\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-oa-flow-measurement-station", "label": "station", "shape": "dot", "size": 15, "title": "Label : station\n=======\nURI : urn:example#multiple-zone-ahu-oa-flow-measurement-station\nNamespaces : s223\nTypes: s223:Sensor\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#multiple-zone-ahu-duct-after-ra-damper", "label": "damper", "shape": "diamond", "size": 15, "title": "Label : damper\n=======\nURI : urn:example#multiple-zone-ahu-duct-after-ra-damper\nNamespaces : s223, http://data.ashrae.org/standard223#Duct\nTypes: s223:Connection, s223:Duct\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#multiple-zone-ahu-htg-coil-valve-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#multiple-zone-ahu-htg-coil-valve-in\nNamespaces : http://data.ashrae.org/standard223#InletConnectionPoint, s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#multiple-zone-ahu-htg-coil-water-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#multiple-zone-ahu-htg-coil-water-in\nNamespaces : s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#multiple-zone-ahu-filter-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#multiple-zone-ahu-filter-out\nNamespaces : http://data.ashrae.org/standard223#OutletConnectionPoint, s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#multiple-zone-ahu-ra-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#multiple-zone-ahu-ra-in\nNamespaces : s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-minimum-oa-damper", "label": "damper", "shape": "dot", "size": 15, "title": "Label : damper\n=======\nURI : urn:example#multiple-zone-ahu-minimum-oa-damper\nNamespaces : http://data.ashrae.org/standard223/1.0/extensions/g36#Damper, s223, http://data.ashrae.org/standard223#Damper\nTypes: http://data.ashrae.org/standard223/1.0/extensions/g36#Damper, s223:Damper\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#multiple-zone-ahu-clg-coil-water-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#multiple-zone-ahu-clg-coil-water-out\nNamespaces : s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-reheat-discharge-air-flow-setpoint", "label": "setpoint", "shape": "dot", "size": 15, "title": "Label : setpoint\n=======\nURI : urn:example#vav-reheat-discharge-air-flow-setpoint\nNamespaces : s223\nTypes: s223:QuantifiableActuatableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-sa-fan-speed-cmd", "label": "cmd", "shape": "dot", "size": 15, "title": "Label : cmd\n=======\nURI : urn:example#multiple-zone-ahu-sa-fan-speed-cmd\nNamespaces : s223\nTypes: s223:QuantifiableActuatableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-sa-fan-high-static-reset-cmd", "label": "cmd", "shape": "dot", "size": 15, "title": "Label : cmd\n=======\nURI : urn:example#multiple-zone-ahu-sa-fan-high-static-reset-cmd\nNamespaces : s223\nTypes: s223:EnumeratedActuatableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ra-fan-speed-cmd", "label": "cmd", "shape": "dot", "size": 15, "title": "Label : cmd\n=======\nURI : urn:example#multiple-zone-ahu-ra-fan-speed-cmd\nNamespaces : s223, http://data.ashrae.org/standard223#QuantifiableActuatableProperty\nTypes: s223:QuantifiableActuatableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-clg-coil-supply-water-temp", "label": "temp", "shape": "dot", "size": 15, "title": "Label : temp\n=======\nURI : urn:example#multiple-zone-ahu-clg-coil-supply-water-temp\nNamespaces : s223, http://data.ashrae.org/standard223#QuantifiableObservableProperty\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#multiple-zone-ahu-duct-after-clg-coil", "label": "coil", "shape": "diamond", "size": 15, "title": "Label : coil\n=======\nURI : urn:example#multiple-zone-ahu-duct-after-clg-coil\nNamespaces : s223, http://data.ashrae.org/standard223#Duct\nTypes: s223:Connection, s223:Duct\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#multiple-zone-ahu-chilled-water-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#multiple-zone-ahu-chilled-water-in\nNamespaces : http://data.ashrae.org/standard223#InletConnectionPoint, s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-reheat-discharge-air-temp-sensor", "label": "sensor", "shape": "dot", "size": 15, "title": "Label : sensor\n=======\nURI : urn:example#vav-reheat-discharge-air-temp-sensor\nNamespaces : s223, http://data.ashrae.org/standard223#Sensor\nTypes: s223:Sensor\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#vav-reheat-air-out-connection", "label": "connection", "shape": "diamond", "size": 15, "title": "Label : connection\n=======\nURI : urn:example#vav-reheat-air-out-connection\nNamespaces : s223\nTypes: s223:Connection, s223:Duct\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#multiple-zone-ahu-clg-coil-air-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#multiple-zone-ahu-clg-coil-air-out\nNamespaces : http://data.ashrae.org/standard223#OutletConnectionPoint, s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#vav-reheat-hot-water-out-connection", "label": "connection", "shape": "diamond", "size": 15, "title": "Label : connection\n=======\nURI : urn:example#vav-reheat-hot-water-out-connection\nNamespaces : http://data.ashrae.org/standard223#Connection, s223\nTypes: s223:Connection, s223:Pipe\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-oa-flow", "label": "flow", "shape": "dot", "size": 15, "title": "Label : flow\n=======\nURI : urn:example#multiple-zone-ahu-oa-flow\nNamespaces : s223, http://data.ashrae.org/standard223#QuantifiableObservableProperty\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ra-flow", "label": "flow", "shape": "dot", "size": 15, "title": "Label : flow\n=======\nURI : urn:example#multiple-zone-ahu-ra-flow\nNamespaces : s223, http://data.ashrae.org/standard223#QuantifiableObservableProperty\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#multiple-zone-ahu-duct-after-filter", "label": "filter", "shape": "diamond", "size": 15, "title": "Label : filter\n=======\nURI : urn:example#multiple-zone-ahu-duct-after-filter\nNamespaces : http://data.ashrae.org/standard223#Connection, s223\nTypes: s223:Connection, s223:Duct\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ea-damper-actuator", "label": "actuator", "shape": "dot", "size": 15, "title": "Label : actuator\n=======\nURI : urn:example#multiple-zone-ahu-ea-damper-actuator\nNamespaces : s223\nTypes: s223:Actuator\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#multiple-zone-ahu-outside-air-junction-out-1", "label": "1", "shape": "triangleDown", "size": 15, "title": "Label : 1\n=======\nURI : urn:example#multiple-zone-ahu-outside-air-junction-out-1\nNamespaces : http://data.ashrae.org/standard223#OutletConnectionPoint, s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-reheat-reheat-coil-valve-actuator", "label": "actuator", "shape": "dot", "size": 15, "title": "Label : actuator\n=======\nURI : urn:example#vav-reheat-reheat-coil-valve-actuator\nNamespaces : s223\nTypes: s223:Actuator\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#multiple-zone-ahu-htg-coil-air-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#multiple-zone-ahu-htg-coil-air-out\nNamespaces : s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#vav-reheat-reheat-coil-valve-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#vav-reheat-reheat-coil-valve-in\nNamespaces : http://data.ashrae.org/standard223#InletConnectionPoint, s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#multiple-zone-ahu-duct-after-htg-coil", "label": "coil", "shape": "diamond", "size": 15, "title": "Label : coil\n=======\nURI : urn:example#multiple-zone-ahu-duct-after-htg-coil\nNamespaces : s223\nTypes: s223:Connection, s223:Duct\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#multiple-zone-ahu-pipe-chilled-water-return-after-valve", "label": "valve", "shape": "diamond", "size": 15, "title": "Label : valve\n=======\nURI : urn:example#multiple-zone-ahu-pipe-chilled-water-return-after-valve\nNamespaces : http://data.ashrae.org/standard223#Connection, s223\nTypes: s223:Connection, s223:Pipe\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-clg-coil-valve-position", "label": "position", "shape": "dot", "size": 15, "title": "Label : position\n=======\nURI : urn:example#multiple-zone-ahu-clg-coil-valve-position\nNamespaces : s223, http://data.ashrae.org/standard223#QuantifiableObservableProperty\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-reheat-discharge-air-temp-setpoint", "label": "setpoint", "shape": "dot", "size": 15, "title": "Label : setpoint\n=======\nURI : urn:example#vav-reheat-discharge-air-temp-setpoint\nNamespaces : s223, http://data.ashrae.org/standard223#QuantifiableActuatableProperty\nTypes: s223:QuantifiableActuatableProperty\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#multiple-zone-ahu-clg-coil-water-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#multiple-zone-ahu-clg-coil-water-in\nNamespaces : s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#vav-reheat-reheat-coil-water-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#vav-reheat-reheat-coil-water-out\nNamespaces : http://data.ashrae.org/standard223#OutletConnectionPoint, s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-reheat-reheat-coil-valve-position", "label": "position", "shape": "dot", "size": 15, "title": "Label : position\n=======\nURI : urn:example#vav-reheat-reheat-coil-valve-position\nNamespaces : s223, http://data.ashrae.org/standard223#QuantifiableObservableProperty\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ra-flow-sensor", "label": "sensor", "shape": "dot", "size": 15, "title": "Label : sensor\n=======\nURI : urn:example#multiple-zone-ahu-ra-flow-sensor\nNamespaces : s223, http://data.ashrae.org/standard223#Sensor\nTypes: s223:Sensor\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-sa-fan-speed-status", "label": "status", "shape": "dot", "size": 15, "title": "Label : status\n=======\nURI : urn:example#multiple-zone-ahu-sa-fan-speed-status\nNamespaces : s223\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-cooling-only-discharge-air-flow-sensor", "label": "sensor", "shape": "dot", "size": 15, "title": "Label : sensor\n=======\nURI : urn:example#vav-cooling-only-discharge-air-flow-sensor\nNamespaces : s223, http://data.ashrae.org/standard223#Sensor\nTypes: s223:Sensor\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-reheat-damper-position", "label": "position", "shape": "dot", "size": 15, "title": "Label : position\n=======\nURI : urn:example#vav-reheat-damper-position\nNamespaces : s223\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#multiple-zone-ahu-return-exhaust-junction-out-2", "label": "2", "shape": "triangleDown", "size": 15, "title": "Label : 2\n=======\nURI : urn:example#multiple-zone-ahu-return-exhaust-junction-out-2\nNamespaces : s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-htg-coil-valve-actuator", "label": "actuator", "shape": "dot", "size": 15, "title": "Label : actuator\n=======\nURI : urn:example#multiple-zone-ahu-htg-coil-valve-actuator\nNamespaces : s223\nTypes: s223:Actuator\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-htg-coil-valve-command", "label": "command", "shape": "dot", "size": 15, "title": "Label : command\n=======\nURI : urn:example#multiple-zone-ahu-htg-coil-valve-command\nNamespaces : s223\nTypes: s223:QuantifiableActuatableProperty\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#vav-cooling-only-out-connection", "label": "connection", "shape": "diamond", "size": 15, "title": "Label : connection\n=======\nURI : urn:example#vav-cooling-only-out-connection\nNamespaces : s223\nTypes: s223:Connection\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#multiple-zone-ahu-ra-fan-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#multiple-zone-ahu-ra-fan-in\nNamespaces : s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-minimum-oa-damper-command", "label": "command", "shape": "dot", "size": 15, "title": "Label : command\n=======\nURI : urn:example#multiple-zone-ahu-minimum-oa-damper-command\nNamespaces : s223\nTypes: s223:QuantifiableActuatableProperty\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#multiple-zone-ahu-pipe-chilled-water-return-before-valve", "label": "valve", "shape": "diamond", "size": 15, "title": "Label : valve\n=======\nURI : urn:example#multiple-zone-ahu-pipe-chilled-water-return-before-valve\nNamespaces : s223\nTypes: s223:Connection, s223:Pipe\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#multiple-zone-ahu-economizer-oa-damper-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#multiple-zone-ahu-economizer-oa-damper-in\nNamespaces : http://data.ashrae.org/standard223#InletConnectionPoint, s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#multiple-zone-ahu-sa-fan-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#multiple-zone-ahu-sa-fan-out\nNamespaces : s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#multiple-zone-ahu-chilled-water-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#multiple-zone-ahu-chilled-water-out\nNamespaces : s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#multiple-zone-ahu-duct-after-minimum-oa-damper", "label": "damper", "shape": "diamond", "size": 15, "title": "Label : damper\n=======\nURI : urn:example#multiple-zone-ahu-duct-after-minimum-oa-damper\nNamespaces : s223\nTypes: s223:Connection, s223:Duct\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#multiple-zone-ahu-return-exhaust-junction-out-1", "label": "1", "shape": "triangleDown", "size": 15, "title": "Label : 1\n=======\nURI : urn:example#multiple-zone-ahu-return-exhaust-junction-out-1\nNamespaces : s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#multiple-zone-ahu-ra-damper-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#multiple-zone-ahu-ra-damper-in\nNamespaces : s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-return-exhaust-junction", "label": "junction", "shape": "dot", "size": 15, "title": "Label : junction\n=======\nURI : urn:example#multiple-zone-ahu-return-exhaust-junction\nNamespaces : s223, http://data.ashrae.org/standard223#Junction\nTypes: s223:Junction\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-reheat-damper-actuator", "label": "actuator", "shape": "dot", "size": 15, "title": "Label : actuator\n=======\nURI : urn:example#vav-reheat-damper-actuator\nNamespaces : s223\nTypes: s223:Actuator\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#multiple-zone-ahu-outside-supply-junction-in-3", "label": "3", "shape": "triangle", "size": 15, "title": "Label : 3\n=======\nURI : urn:example#multiple-zone-ahu-outside-supply-junction-in-3\nNamespaces : s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-cooling-only-discharge-air-flow-setpoint", "label": "setpoint", "shape": "dot", "size": 15, "title": "Label : setpoint\n=======\nURI : urn:example#vav-cooling-only-discharge-air-flow-setpoint\nNamespaces : s223\nTypes: s223:QuantifiableActuatableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-filter-differential-pressure", "label": "pressure", "shape": "dot", "size": 15, "title": "Label : pressure\n=======\nURI : urn:example#multiple-zone-ahu-filter-differential-pressure\nNamespaces : s223\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-reheat-discharge-air-temp", "label": "temp", "shape": "dot", "size": 15, "title": "Label : temp\n=======\nURI : urn:example#vav-reheat-discharge-air-temp\nNamespaces : s223, http://data.ashrae.org/standard223#QuantifiableObservableProperty\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-minimum-oa-damper-actuator", "label": "actuator", "shape": "dot", "size": 15, "title": "Label : actuator\n=======\nURI : urn:example#multiple-zone-ahu-minimum-oa-damper-actuator\nNamespaces : s223\nTypes: s223:Actuator\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#multiple-zone-ahu-outside-air-junction-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#multiple-zone-ahu-outside-air-junction-in\nNamespaces : http://data.ashrae.org/standard223#InletConnectionPoint, s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#multiple-zone-ahu-duct-before-ra-damper", "label": "damper", "shape": "diamond", "size": 15, "title": "Label : damper\n=======\nURI : urn:example#multiple-zone-ahu-duct-before-ra-damper\nNamespaces : s223, http://data.ashrae.org/standard223#Duct\nTypes: s223:Connection, s223:Duct\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#vav-cooling-only-duct-before-damper", "label": "damper", "shape": "diamond", "size": 15, "title": "Label : damper\n=======\nURI : urn:example#vav-cooling-only-duct-before-damper\nNamespaces : s223, http://data.ashrae.org/standard223#Duct\nTypes: s223:Connection, s223:Duct\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#multiple-zone-ahu-ra-damper-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#multiple-zone-ahu-ra-damper-out\nNamespaces : http://data.ashrae.org/standard223#OutletConnectionPoint, s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 8, "id": "urn:example#multiple-zone-ahu-hot-water-out", "label": "out", "shape": "triangleDown", "size": 15, "title": "Label : out\n=======\nURI : urn:example#multiple-zone-ahu-hot-water-out\nNamespaces : s223\nTypes: s223:OutletConnectionPoint\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#vav-cooling-only-damper-actuator", "label": "actuator", "shape": "dot", "size": 15, "title": "Label : actuator\n=======\nURI : urn:example#vav-cooling-only-damper-actuator\nNamespaces : http://data.ashrae.org/standard223#Actuator, s223\nTypes: s223:Actuator\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#multiple-zone-ahu-duct-before-economizer-oa-damper", "label": "damper", "shape": "diamond", "size": 15, "title": "Label : damper\n=======\nURI : urn:example#multiple-zone-ahu-duct-before-economizer-oa-damper\nNamespaces : s223, http://data.ashrae.org/standard223#Duct\nTypes: s223:Connection, s223:Duct\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#multiple-zone-ahu-outside-supply-junction-in-1", "label": "1", "shape": "triangle", "size": 15, "title": "Label : 1\n=======\nURI : urn:example#multiple-zone-ahu-outside-supply-junction-in-1\nNamespaces : s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#multiple-zone-ahu-duct-after-ra-fan", "label": "fan", "shape": "diamond", "size": 15, "title": "Label : fan\n=======\nURI : urn:example#multiple-zone-ahu-duct-after-ra-fan\nNamespaces : http://data.ashrae.org/standard223#Connection, s223\nTypes: s223:Connection, s223:Duct\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#multiple-zone-ahu-pipe-chilled-water-supply", "label": "supply", "shape": "diamond", "size": 15, "title": "Label : supply\n=======\nURI : urn:example#multiple-zone-ahu-pipe-chilled-water-supply\nNamespaces : http://data.ashrae.org/standard223#Connection, s223\nTypes: s223:Connection, s223:Pipe\n======="}, {"borderWidth": null, "group": 7, "id": "urn:example#multiple-zone-ahu-minimum-oa-damper-in", "label": "in", "shape": "triangle", "size": 15, "title": "Label : in\n=======\nURI : urn:example#multiple-zone-ahu-minimum-oa-damper-in\nNamespaces : s223\nTypes: s223:InletConnectionPoint\n======="}, {"borderWidth": null, "group": 6, "id": "urn:example#vav-cooling-only-in-connection", "label": "connection", "shape": "diamond", "size": 15, "title": "Label : connection\n=======\nURI : urn:example#vav-cooling-only-in-connection\nNamespaces : s223\nTypes: s223:Connection\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-ea-damper-position", "label": "position", "shape": "dot", "size": 15, "title": "Label : position\n=======\nURI : urn:example#multiple-zone-ahu-ea-damper-position\nNamespaces : s223\nTypes: s223:QuantifiableObservableProperty\n======="}, {"borderWidth": null, "group": 0, "id": "urn:example#multiple-zone-ahu-clg-coil-valve-actuator", "label": "actuator", "shape": "dot", "size": 15, "title": "Label : actuator\n=======\nURI : urn:example#multiple-zone-ahu-clg-coil-valve-actuator\nNamespaces : s223\nTypes: s223:Actuator\n======="}, {"borderWidth": null, "font": {"size": 20}, "group": 5, "id": "bob:legend/System", "label": "Legend / System", "physics": false, "shape": "box", "size": 40, "widthConstraint": 500, "x": 2000, "y": "-500px"}, {"borderWidth": null, "font": {"size": 20}, "group": 5, "id": "bob:legend/Equipment", "label": "Legend / Equipment", "physics": false, "shape": "square", "size": 20, "widthConstraint": 500, "x": 2000, "y": "-500px"}, {"borderWidth": null, "font": {"size": 20}, "group": 6, "id": "bob:legend/Connection", "label": "Legend / Connection", "physics": false, "shape": "diamond", "size": 15, "widthConstraint": 500, "x": 2000, "y": "-400px"}, {"borderWidth": null, "font": {"size": 20}, "group": 7, "id": "bob:legend/InletConnectionPoint", "label": "Legend / InletConnectionPoint", "physics": false, "shape": "triangle", "size": 15, "widthConstraint": 500, "x": 2000, "y": "-300px"}, {"borderWidth": null, "font": {"size": 20}, "group": 8, "id": "bob:legend/OutletConnectionPoint", "label": "Legend / OutletConnectionPoint", "physics": false, "shape": "triangleDown", "size": 15, "widthConstraint": 500, "x": 2000, "y": "-200px"}, {"borderWidth": null, "font": {"size": 20}, "group": 8, "id": "bob:legend/Function", "label": "Legend / Function|Producer", "physics": false, "shape": "star", "size": 15, "widthConstraint": 500, "x": 2000, "y": "-200px"}, {"borderWidth": 2, "font": {"size": 20}, "group": 8, "id": "bob:legend/DomainSpace", "label": "Legend / DomainSpace", "physics": false, "shape": "box", "size": 15, "widthConstraint": 500, "x": 2000, "y": "-200px"}, {"borderWidth": null, "font": {"size": 20}, "group": 0, "id": "bob:legend/Default", "label": "Legend / Default", "physics": false, "shape": "dot", "size": 15, "widthConstraint": 500, "x": 2000, "y": "-1000px"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-economizer-oa-damper-actuator", "title": "s223:actuatedByProperty", "to": "urn:example#multiple-zone-ahu-economizer-oa-damper-command", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ra-damper", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-ra-damper-position", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-name", "title": "s223:contains", "to": "urn:example#vav-reheat-reheat-coil-valve", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-htg-coil-return-water-temp-sensor", "title": "s223:hasObservationLocation", "to": "urn:example#multiple-zone-ahu-htg-coil-water-out", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-discharge-air-flow-sensor", "title": "s223:hasObservationLocation", "to": "urn:example#vav-reheat-air-in", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-htg-coil-supply-water-temp-sensor", "title": "s223:observes", "to": "urn:example#multiple-zone-ahu-htg-coil-supply-water-temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-name", "title": "s223:contains", "to": "urn:example#multiple-zone-ahu-outside-supply-junction", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-filter-differential-pressure-sensor", "title": "s223:hasObservationLocation", "to": "urn:example#multiple-zone-ahu-filter-in", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ra-fan", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-ra-fan-power", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-sa-flow-sensor", "title": "s223:hasObservationLocation", "to": "urn:example#multiple-zone-ahu-sa-fan", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-sa-temp-sensor", "title": "s223:observes", "to": "urn:example#multiple-zone-ahu-sa-temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ra-damper-actuator", "title": "s223:actuatedByProperty", "to": "urn:example#multiple-zone-ahu-ra-damper-command", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-name", "title": "s223:contains", "to": "urn:example#multiple-zone-ahu-filter", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-sa-fan", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-sa-fan-power", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-name", "title": "s223:contains", "to": "urn:example#multiple-zone-ahu-clg-coil-valve", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ra-fan", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-ra-fan-high-static-reset-cmd", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-air-out", "title": "s223:hasProperty", "to": "urn:example#vav-reheat-discharge-air-flow", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-reheat-coil-valve-out", "title": "s223:mapsTo", "to": "urn:example#vav-reheat-hot-water-out", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-name", "title": "s223:contains", "to": "urn:example#vav-reheat-reheat-coil", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ma-temp-sensor", "title": "s223:observes", "to": "urn:example#multiple-zone-ahu-ma-temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-clg-coil-valve", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-clg-coil-valve-command", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-sa-fan", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-sa-fan-start-cmd", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-reheat-coil-valve", "title": "s223:hasProperty", "to": "urn:example#vav-reheat-reheat-coil-valve-command", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-name", "title": "s223:contains", "to": "urn:example#multiple-zone-ahu-economizer-oa-damper", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-cooling-only-damper", "title": "s223:hasProperty", "to": "urn:example#vav-cooling-only-damper-position", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-damper", "title": "s223:hasProperty", "to": "urn:example#vav-reheat-damper-command", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-sa-out", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-supply-duct-static-pressure-setpoint", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ra-temp-sensor", "title": "s223:observes", "to": "urn:example#multiple-zone-ahu-ra-temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-sa-out", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-sa-temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-sa-fan", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-sa-flow", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-reheat-coil-supply-water-temp-sensor", "title": "s223:hasObservationLocation", "to": "urn:example#vav-reheat-reheat-coil-water-in", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-htg-coil-water-in", "title": "s223:mapsTo", "to": "urn:example#multiple-zone-ahu-hot-water-in", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ra-temp-sensor", "title": "s223:hasObservationLocation", "to": "urn:example#multiple-zone-ahu-ra-in", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-clg-coil-return-water-temp-sensor", "title": "s223:hasObservationLocation", "to": "urn:example#multiple-zone-ahu-clg-coil-water-out", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-air-out", "title": "s223:hasProperty", "to": "urn:example#vav-reheat-discharge-air-flow-setpoint", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-sa-fan", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-sa-fan-speed-cmd", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ra-fan", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-ra-fan-speed-cmd", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-supply-duct-static-pressure-sensor", "title": "s223:hasObservationLocation", "to": "urn:example#multiple-zone-ahu-duct-sa-out", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-sa-out", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-supply-duct-static-pressure", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-cooling-only-damper-in", "title": "s223:mapsTo", "to": "urn:example#vav-cooling-only-in", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ea-damper-actuator", "title": "s223:actuatedByProperty", "to": "urn:example#multiple-zone-ahu-ea-damper-command", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-cooling-only-damper-out", "title": "s223:mapsTo", "to": "urn:example#vav-cooling-only-out", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-supply-duct-static-pressure-sensor", "title": "s223:observes", "to": "urn:example#multiple-zone-ahu-supply-duct-static-pressure", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-oa-flow-measurement-station", "title": "s223:hasObservationLocation", "to": "urn:example#multiple-zone-ahu-minimum-oa-damper-out", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-reheat-coil-valve-actuator", "title": "s223:actuatedByProperty", "to": "urn:example#vav-reheat-reheat-coil-valve-command", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-heat-coil-air-temp-sensor", "title": "s223:observes", "to": "urn:example#multiple-zone-ahu-heat-coil-air-temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-heat-coil-air-temp-sensor", "title": "s223:hasObservationLocation", "to": "urn:example#multiple-zone-ahu-duct-after-htg-coil", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ea-damper", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-ea-damper-command", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-cooling-only-name", "title": "s223:contains", "to": "urn:example#vav-cooling-only-damper", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-name", "title": "s223:contains", "to": "urn:example#multiple-zone-ahu-ra-damper", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-clg-coil", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-clg-coil-supply-water-temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-economizer-oa-damper", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-economizer-oa-damper-position", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-damper-in", "title": "s223:mapsTo", "to": "urn:example#vav-reheat-air-in", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ra-damper", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-ra-damper-command", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-reheat-coil-air-out", "title": "s223:mapsTo", "to": "urn:example#vav-reheat-air-out", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-reheat-coil-return-water-temp-sensor", "title": "s223:hasObservationLocation", "to": "urn:example#vav-reheat-reheat-coil-water-out", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-htg-coil-valve-actuator", "title": "s223:actuatedByProperty", "to": "urn:example#multiple-zone-ahu-htg-coil-valve-command", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ra-fan-in", "title": "s223:mapsTo", "to": "urn:example#multiple-zone-ahu-ra-in", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ra-flow-sensor", "title": "s223:hasObservationLocation", "to": "urn:example#multiple-zone-ahu-ra-fan", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-minimum-oa-damper", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-minimum-oa-damper-command", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-name", "title": "s223:contains", "to": "urn:example#multiple-zone-ahu-ra-fan", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-name", "title": "s223:contains", "to": "urn:example#multiple-zone-ahu-minimum-oa-damper", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-sa-fan-out", "title": "s223:mapsTo", "to": "urn:example#multiple-zone-ahu-sa-out", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-discharge-air-flow-sensor", "title": "s223:observes", "to": "urn:example#vav-reheat-discharge-air-flow", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-economizer-oa-damper", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-economizer-oa-damper-command", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-clg-coil-valve-out", "title": "s223:mapsTo", "to": "urn:example#multiple-zone-ahu-chilled-water-out", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-damper", "title": "s223:hasProperty", "to": "urn:example#vav-reheat-damper-position", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-damper-actuator", "title": "s223:actuatedByProperty", "to": "urn:example#vav-reheat-damper-command", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-clg-coil-return-water-temp-sensor", "title": "s223:observes", "to": "urn:example#multiple-zone-ahu-clg-coil-return-water-temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ra-flow-sensor", "title": "s223:observes", "to": "urn:example#multiple-zone-ahu-ra-flow", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ma-temp-sensor", "title": "s223:hasObservationLocation", "to": "urn:example#multiple-zone-ahu-filter-in", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-filter", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-filter-differential-pressure", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-htg-coil", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-htg-coil-supply-water-temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ra-fan-out", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-ra-fan-discharge-static-pressure", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-oa-temp-sensor", "title": "s223:observes", "to": "urn:example#multiple-zone-ahu-oa-temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-sa-fan", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-sa-fan-high-static-reset-cmd", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-minimum-oa-damper-actuator", "title": "s223:actuatedByProperty", "to": "urn:example#multiple-zone-ahu-minimum-oa-damper-command", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ra-damper-actuator", "title": "s223:actuates", "to": "urn:example#multiple-zone-ahu-ra-damper", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-sa-out", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-sa-temp-setpoint", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-htg-coil-air-out", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-heat-coil-air-temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-damper-actuator", "title": "s223:actuates", "to": "urn:example#vav-reheat-damper", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-cooling-only-out", "title": "s223:hasProperty", "to": "urn:example#vav-cooling-only-discharge-air-flow", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-name", "title": "s223:contains", "to": "urn:example#multiple-zone-ahu-ea-damper", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-cooling-only-damper", "title": "s223:hasProperty", "to": "urn:example#vav-cooling-only-damper-command", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-filter-in", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-ma-temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-cooling-only-damper-actuator", "title": "s223:actuatedByProperty", "to": "urn:example#vav-cooling-only-damper-command", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ra-fan", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-ra-fan-start-cmd", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-air-out", "title": "s223:hasProperty", "to": "urn:example#vav-reheat-discharge-air-temp-setpoint", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ra-fan-static-pressure-sensor", "title": "s223:hasObservationLocation", "to": "urn:example#multiple-zone-ahu-duct-after-ra-fan", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-htg-coil-supply-water-temp-sensor", "title": "s223:hasObservationLocation", "to": "urn:example#multiple-zone-ahu-htg-coil-water-in", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-name", "title": "s223:contains", "to": "urn:example#vav-reheat-damper", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-htg-coil-return-water-temp-sensor", "title": "s223:observes", "to": "urn:example#multiple-zone-ahu-htg-coil-return-water-temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-name", "title": "s223:contains", "to": "urn:example#multiple-zone-ahu-htg-coil", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-clg-coil-supply-water-temp-sensor", "title": "s223:hasObservationLocation", "to": "urn:example#multiple-zone-ahu-clg-coil-water-in", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-sa-temp-sensor", "title": "s223:hasObservationLocation", "to": "urn:example#multiple-zone-ahu-sa-out", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-name", "title": "s223:contains", "to": "urn:example#multiple-zone-ahu-htg-coil-valve", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-filter-differential-pressure-sensor", "title": "s223:observes", "to": "urn:example#multiple-zone-ahu-filter-differential-pressure", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-htg-coil-valve-actuator", "title": "s223:actuates", "to": "urn:example#multiple-zone-ahu-htg-coil-valve", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-oa-flow-measurement-station", "title": "s223:observes", "to": "urn:example#multiple-zone-ahu-oa-flow", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-name", "title": "s223:contains", "to": "urn:example#multiple-zone-ahu-return-exhaust-junction", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-sa-fan", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-sa-fan-speed-status", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-discharge-air-temp-sensor", "title": "s223:hasObservationLocation", "to": "urn:example#vav-reheat-air-out", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-clg-coil-water-in", "title": "s223:mapsTo", "to": "urn:example#multiple-zone-ahu-chilled-water-in", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-clg-coil-valve-actuator", "title": "s223:actuates", "to": "urn:example#multiple-zone-ahu-clg-coil-valve", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ra-fan", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-ra-fan-start-status", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-cooling-only-damper-actuator", "title": "s223:actuates", "to": "urn:example#vav-cooling-only-damper", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-htg-coil-valve-out", "title": "s223:mapsTo", "to": "urn:example#multiple-zone-ahu-hot-water-out", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ra-in", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-ra-temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-reheat-coil", "title": "s223:hasProperty", "to": "urn:example#vav-reheat-reheat-coil-supply-water-temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-reheat-coil-return-water-temp-sensor", "title": "s223:observes", "to": "urn:example#vav-reheat-reheat-coil-return-water-temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-sa-flow-sensor", "title": "s223:observes", "to": "urn:example#multiple-zone-ahu-sa-flow", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-minimum-oa-damper-actuator", "title": "s223:actuates", "to": "urn:example#multiple-zone-ahu-minimum-oa-damper", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-reheat-coil-supply-water-temp-sensor", "title": "s223:observes", "to": "urn:example#vav-reheat-reheat-coil-supply-water-temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-name", "title": "s223:contains", "to": "urn:example#multiple-zone-ahu-sa-fan", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-clg-coil-supply-water-temp-sensor", "title": "s223:observes", "to": "urn:example#multiple-zone-ahu-clg-coil-supply-water-temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-economizer-oa-damper-actuator", "title": "s223:actuates", "to": "urn:example#multiple-zone-ahu-economizer-oa-damper", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ea-damper-actuator", "title": "s223:actuates", "to": "urn:example#multiple-zone-ahu-ea-damper", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ra-fan", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-ra-flow", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ea-damper-out", "title": "s223:mapsTo", "to": "urn:example#multiple-zone-ahu-ea-out", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-oa-temp-sensor", "title": "s223:hasObservationLocation", "to": "urn:example#multiple-zone-ahu-minimum-oa-damper-out", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-cooling-only-out", "title": "s223:hasProperty", "to": "urn:example#vav-cooling-only-discharge-air-flow-setpoint", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-minimum-oa-damper", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-minimum-oa-damper-position", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-reheat-coil-valve", "title": "s223:hasProperty", "to": "urn:example#vav-reheat-reheat-coil-valve-position", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-clg-coil-valve-actuator", "title": "s223:actuatedByProperty", "to": "urn:example#multiple-zone-ahu-clg-coil-valve-command", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-air-out", "title": "s223:hasProperty", "to": "urn:example#vav-reheat-discharge-air-temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-reheat-coil-water-in", "title": "s223:mapsTo", "to": "urn:example#vav-reheat-hot-water-in", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-discharge-air-temp-sensor", "title": "s223:observes", "to": "urn:example#vav-reheat-discharge-air-temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-sa-fan", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-sa-fan-start-status", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-oa-in", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-oa-temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-htg-coil-valve", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-htg-coil-valve-command", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-htg-coil-valve", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-htg-coil-valve-position", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-reheat-coil", "title": "s223:hasProperty", "to": "urn:example#vav-reheat-reheat-coil-return-water-temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-clg-coil-valve", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-clg-coil-valve-position", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-clg-coil", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-clg-coil-return-water-temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-reheat-reheat-coil-valve-actuator", "title": "s223:actuates", "to": "urn:example#vav-reheat-reheat-coil-valve", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ea-damper", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-ea-damper-position", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-cooling-only-discharge-air-flow-sensor", "title": "s223:hasObservationLocation", "to": "urn:example#vav-cooling-only-out", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-minimum-oa-damper-out", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-oa-flow", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ra-fan", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-ra-fan-speed-status", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-name", "title": "s223:contains", "to": "urn:example#multiple-zone-ahu-clg-coil", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-ra-fan-static-pressure-sensor", "title": "s223:observes", "to": "urn:example#multiple-zone-ahu-ra-fan-discharge-static-pressure", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-filter-differential-pressure-sensor", "title": "s223:hasReferenceLocation", "to": "urn:example#multiple-zone-ahu-filter-out", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-htg-coil", "title": "s223:hasProperty", "to": "urn:example#multiple-zone-ahu-htg-coil-return-water-temp", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#vav-cooling-only-discharge-air-flow-sensor", "title": "s223:observes", "to": "urn:example#vav-cooling-only-discharge-air-flow", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-name", "title": "s223:contains", "to": "urn:example#multiple-zone-ahu-outside-air-junction", "width": 1}, {"arrows": "to", "dashes": false, "from": "urn:example#multiple-zone-ahu-outside-air-junction-in", "title": "s223:mapsTo", "to": "urn:example#multiple-zone-ahu-oa-in", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": true
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+                  // if this network requires displaying the configure window,
+                  // put it in its div
+                  options.configure["container"] = document.getElementById("config");
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+                    network.on("selectNode", neighbourhoodHighlight);
+                  
+
+                  
+
+
+                  
+                      network.on("stabilizationProgress", function(params) {
+                          document.getElementById('loadingBar').removeAttribute("style");
+                          var maxWidth = 496;
+                          var minWidth = 20;
+                          var widthFactor = params.iterations/params.total;
+                          var width = Math.max(minWidth,maxWidth * widthFactor);
+                          document.getElementById('bar').style.width = width + 'px';
+                          document.getElementById('text').innerHTML = Math.round(widthFactor*100) + '%';
+                      });
+                      network.once("stabilizationIterationsDone", function() {
+                          document.getElementById('text').innerHTML = '100%';
+                          document.getElementById('bar').style.width = '496px';
+                          document.getElementById('loadingBar').style.opacity = 0;
+                          // really clean the dom element
+                          setTimeout(function () {document.getElementById('loadingBar').style.display = 'none';}, 500);
+                      });
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

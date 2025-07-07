@@ -1,0 +1,1200 @@
+@prefix : <urn:example#> .
+@prefix ns1: <http://qudt.org/schema/qudt/> .
+@prefix ns2: <http://data.ashrae.org/standard223#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+: a owl:Ontology .
+
+:multiple-zone-ahu_clg-coil-return-water-temp-sensor_0 a ns2:Sensor ;
+    rdfs:label "Sensor" ;
+    ns2:hasObservationLocation :multiple-zone-ahu_clg-coil-water-out_0 ;
+    ns2:observes :multiple-zone-ahu_clg-coil-return-water-temp_0 .
+
+:multiple-zone-ahu_clg-coil-supply-water-temp-sensor_0 a ns2:Sensor ;
+    rdfs:label "Sensor" ;
+    ns2:hasObservationLocation :multiple-zone-ahu_clg-coil-water-in_0 ;
+    ns2:observes :multiple-zone-ahu_clg-coil-supply-water-temp_0 .
+
+:multiple-zone-ahu_clg-coil-valve-actuator_0 a ns2:Actuator ;
+    rdfs:label "Actuator" ;
+    ns2:actuatedByProperty :multiple-zone-ahu_clg-coil-valve-command_0 ;
+    ns2:actuates :multiple-zone-ahu_clg-coil-valve_0 .
+
+:multiple-zone-ahu_ea-damper-actuator_0 a ns2:Actuator ;
+    rdfs:label "Actuator" ;
+    ns2:actuatedByProperty :multiple-zone-ahu_ea-damper-command_0 ;
+    ns2:actuates :multiple-zone-ahu_ea-damper_0 .
+
+:multiple-zone-ahu_economizer-oa-damper-actuator_0 a ns2:Actuator ;
+    rdfs:label "Actuator" ;
+    ns2:actuatedByProperty :multiple-zone-ahu_economizer-oa-damper-command_0 ;
+    ns2:actuates :multiple-zone-ahu_economizer-oa-damper_0 .
+
+:multiple-zone-ahu_filter-differential-pressure-sensor_0 a ns2:DifferentialSensor,
+        ns2:Sensor ;
+    rdfs:label "Sensor" ;
+    ns2:hasObservationLocation :multiple-zone-ahu_filter-in_0 ;
+    ns2:hasReferenceLocation :multiple-zone-ahu_filter-out_0 ;
+    ns2:observes :multiple-zone-ahu_filter-differential-pressure_0 .
+
+:multiple-zone-ahu_heat-coil-air-temp-sensor_0 a ns2:Sensor ;
+    rdfs:label "Sensor" ;
+    ns2:hasObservationLocation :multiple-zone-ahu_duct-after-htg-coil_0 ;
+    ns2:observes :multiple-zone-ahu_heat-coil-air-temp_0 .
+
+:multiple-zone-ahu_htg-coil-return-water-temp-sensor_0 a ns2:Sensor ;
+    rdfs:label "Sensor" ;
+    ns2:hasObservationLocation :multiple-zone-ahu_htg-coil-water-out_0 ;
+    ns2:observes :multiple-zone-ahu_htg-coil-return-water-temp_0 .
+
+:multiple-zone-ahu_htg-coil-supply-water-temp-sensor_0 a ns2:Sensor ;
+    rdfs:label "Sensor" ;
+    ns2:hasObservationLocation :multiple-zone-ahu_htg-coil-water-in_0 ;
+    ns2:observes :multiple-zone-ahu_htg-coil-supply-water-temp_0 .
+
+:multiple-zone-ahu_htg-coil-valve-actuator_0 a ns2:Actuator ;
+    rdfs:label "Actuator" ;
+    ns2:actuatedByProperty :multiple-zone-ahu_htg-coil-valve-command_0 ;
+    ns2:actuates :multiple-zone-ahu_htg-coil-valve_0 .
+
+:multiple-zone-ahu_ma-temp-sensor_0 a ns2:Sensor ;
+    rdfs:label "Sensor" ;
+    ns2:hasObservationLocation :multiple-zone-ahu_filter-in_0 ;
+    ns2:observes :multiple-zone-ahu_ma-temp_0 .
+
+:multiple-zone-ahu_minimum-oa-damper-actuator_0 a ns2:Actuator ;
+    rdfs:label "Actuator" ;
+    ns2:actuatedByProperty :multiple-zone-ahu_minimum-oa-damper-command_0 ;
+    ns2:actuates :multiple-zone-ahu_minimum-oa-damper_0 .
+
+:multiple-zone-ahu_name_0 a ns2:AirHandlingUnit,
+        <http://data.ashrae.org/standard223/1.0/extensions/g36#MultipleZoneVAVAirHandlingUnit> ;
+    rdfs:label "MultipleZoneVAVAirHandlingUnit" ;
+    ns2:cnx :multiple-zone-ahu_chilled-water-in_0,
+        :multiple-zone-ahu_chilled-water-out_0,
+        :multiple-zone-ahu_ea-out_0,
+        :multiple-zone-ahu_hot-water-in_0,
+        :multiple-zone-ahu_hot-water-out_0,
+        :multiple-zone-ahu_oa-in_0,
+        :multiple-zone-ahu_ra-in_0,
+        :multiple-zone-ahu_sa-out_0 ;
+    ns2:contains :multiple-zone-ahu_clg-coil-valve_0,
+        :multiple-zone-ahu_clg-coil_0,
+        :multiple-zone-ahu_ea-damper_0,
+        :multiple-zone-ahu_economizer-oa-damper_0,
+        :multiple-zone-ahu_filter_0,
+        :multiple-zone-ahu_htg-coil-valve_0,
+        :multiple-zone-ahu_htg-coil_0,
+        :multiple-zone-ahu_minimum-oa-damper_0,
+        :multiple-zone-ahu_outside-air-junction_0,
+        :multiple-zone-ahu_outside-supply-junction_0,
+        :multiple-zone-ahu_ra-damper_0,
+        :multiple-zone-ahu_ra-fan_0,
+        :multiple-zone-ahu_return-exhaust-junction_0,
+        :multiple-zone-ahu_sa-fan_0 .
+
+:multiple-zone-ahu_oa-flow-measurement-station_0 a ns2:Sensor ;
+    rdfs:label "Sensor" ;
+    ns2:hasObservationLocation :multiple-zone-ahu_minimum-oa-damper-out_0 ;
+    ns2:observes :multiple-zone-ahu_oa-flow_0 .
+
+:multiple-zone-ahu_oa-temp-sensor_0 a ns2:Sensor ;
+    rdfs:label "Sensor" ;
+    ns2:hasObservationLocation :multiple-zone-ahu_minimum-oa-damper-out_0 ;
+    ns2:observes :multiple-zone-ahu_oa-temp_0 .
+
+:multiple-zone-ahu_ra-damper-actuator_0 a ns2:Actuator ;
+    rdfs:label "Actuator" ;
+    ns2:actuatedByProperty :multiple-zone-ahu_ra-damper-command_0 ;
+    ns2:actuates :multiple-zone-ahu_ra-damper_0 .
+
+:multiple-zone-ahu_ra-fan-static-pressure-sensor_0 a ns2:Sensor ;
+    rdfs:label "Sensor" ;
+    ns2:hasObservationLocation :multiple-zone-ahu_duct-after-ra-fan_0 ;
+    ns2:observes :multiple-zone-ahu_ra-fan-discharge-static-pressure_0 .
+
+:multiple-zone-ahu_ra-flow-sensor_0 a ns2:Sensor ;
+    rdfs:label "Sensor" ;
+    ns2:hasObservationLocation :multiple-zone-ahu_ra-fan_0 ;
+    ns2:observes :multiple-zone-ahu_ra-flow_0 .
+
+:multiple-zone-ahu_ra-temp-sensor_0 a ns2:Sensor ;
+    rdfs:label "Sensor" ;
+    ns2:hasObservationLocation :multiple-zone-ahu_ra-in_0 ;
+    ns2:observes :multiple-zone-ahu_ra-temp_0 .
+
+:multiple-zone-ahu_sa-flow-sensor_0 a ns2:Sensor ;
+    rdfs:label "Sensor" ;
+    ns2:hasObservationLocation :multiple-zone-ahu_sa-fan_0 ;
+    ns2:observes :multiple-zone-ahu_sa-flow_0 .
+
+:multiple-zone-ahu_sa-temp-sensor_0 a ns2:Sensor ;
+    rdfs:label "Sensor" ;
+    ns2:hasObservationLocation :multiple-zone-ahu_sa-out_0 ;
+    ns2:observes :multiple-zone-ahu_sa-temp_0 .
+
+:multiple-zone-ahu_supply-duct-static-pressure-sensor_0 a ns2:Sensor ;
+    rdfs:label "Sensor" ;
+    ns2:hasObservationLocation :multiple-zone-ahu_duct-sa-out_0 ;
+    ns2:observes :multiple-zone-ahu_supply-duct-static-pressure_0 .
+
+:vav-cooling-only_damper-actuator_0_0 a ns2:Actuator ;
+    rdfs:label "Actuator" ;
+    ns2:actuatedByProperty :vav-cooling-only_damper-command_0_0 ;
+    ns2:actuates :vav-cooling-only_damper_0_0 .
+
+:vav-cooling-only_discharge-air-flow-sensor_0_0 a ns2:Sensor ;
+    rdfs:label "Sensor" ;
+    ns2:hasObservationLocation :vav-cooling-only_out_0_0 ;
+    ns2:observes :vav-cooling-only_discharge-air-flow_0_0 .
+
+:vav-cooling-only_name_0_0 a ns2:SingleDuctTerminal,
+        <http://data.ashrae.org/standard223/1.0/extensions/g36#VAV> ;
+    rdfs:label "VAV" ;
+    ns2:cnx :vav-cooling-only_in_0_0,
+        :vav-cooling-only_out_0_0 ;
+    ns2:contains :vav-cooling-only_damper_0_0 .
+
+:vav-reheat_damper-actuator_0_0 a ns2:Actuator ;
+    rdfs:label "Actuator" ;
+    ns2:actuatedByProperty :vav-reheat_damper-command_0_0 ;
+    ns2:actuates :vav-reheat_damper_0_0 .
+
+:vav-reheat_discharge-air-flow-sensor_0_0 a ns2:Sensor ;
+    rdfs:label "Sensor" ;
+    ns2:hasObservationLocation :vav-reheat_air-in_0_0 ;
+    ns2:observes :vav-reheat_discharge-air-flow_0_0 .
+
+:vav-reheat_discharge-air-temp-sensor_0_0 a ns2:Sensor ;
+    rdfs:label "Sensor" ;
+    ns2:hasObservationLocation :vav-reheat_air-out_0_0 ;
+    ns2:observes :vav-reheat_discharge-air-temp_0_0 .
+
+:vav-reheat_name_0_0 a ns2:SingleDuctTerminal,
+        <http://data.ashrae.org/standard223/1.0/extensions/g36#VAVWithReheat> ;
+    rdfs:label "SingleDuctTerminal" ;
+    ns2:cnx :vav-reheat_air-in_0_0,
+        :vav-reheat_air-out_0_0,
+        :vav-reheat_hot-water-in_0_0,
+        :vav-reheat_hot-water-out_0_0 ;
+    ns2:contains :vav-reheat_damper_0_0,
+        :vav-reheat_reheat-coil-valve_0_0,
+        :vav-reheat_reheat-coil_0_0 .
+
+:vav-reheat_reheat-coil-return-water-temp-sensor_0_0 a ns2:Sensor ;
+    rdfs:label "Sensor" ;
+    ns2:hasObservationLocation :vav-reheat_reheat-coil-water-out_0_0 ;
+    ns2:observes :vav-reheat_reheat-coil-return-water-temp_0_0 .
+
+:vav-reheat_reheat-coil-supply-water-temp-sensor_0_0 a ns2:Sensor ;
+    rdfs:label "Sensor" ;
+    ns2:hasObservationLocation :vav-reheat_reheat-coil-water-in_0_0 ;
+    ns2:observes :vav-reheat_reheat-coil-supply-water-temp_0_0 .
+
+:vav-reheat_reheat-coil-valve-actuator_0_0 a ns2:Actuator ;
+    rdfs:label "Actuator" ;
+    ns2:actuatedByProperty :vav-reheat_reheat-coil-valve-command_0_0 ;
+    ns2:actuates :vav-reheat_reheat-coil-valve_0_0 .
+
+:multiple-zone-ahu_clg-coil-air-in_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-after-htg-coil_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_clg-coil-air-in-mapsto_0 .
+
+:multiple-zone-ahu_clg-coil-air-out_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-after-clg-coil_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_clg-coil-air-out-mapsto_0 .
+
+:multiple-zone-ahu_clg-coil-valve-in_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_pipe-chilled-water-return-before-valve_0 ;
+    ns2:hasMedium ns2:Fluid-Water ;
+    ns2:mapsTo :multiple-zone-ahu_clg-coil-valve-in-mapsto_0 .
+
+:multiple-zone-ahu_clg-coil-valve-out_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_pipe-chilled-water-return-after-valve_0 ;
+    ns2:hasMedium ns2:Fluid-Water ;
+    ns2:mapsTo :multiple-zone-ahu_chilled-water-out_0,
+        :multiple-zone-ahu_clg-coil-valve-out-mapsto_0 .
+
+:multiple-zone-ahu_clg-coil-valve-position_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
+
+:multiple-zone-ahu_clg-coil_0 a ns2:CoolingCoil,
+        <http://data.ashrae.org/standard223/1.0/extensions/g36#ChilledWaterCoil> ;
+    rdfs:label "ChilledWaterCoil" ;
+    ns2:cnx :multiple-zone-ahu_clg-coil-air-in_0,
+        :multiple-zone-ahu_clg-coil-air-out_0,
+        :multiple-zone-ahu_clg-coil-water-in_0,
+        :multiple-zone-ahu_clg-coil-water-out_0 ;
+    ns2:hasProperty :multiple-zone-ahu_clg-coil-return-water-temp_0,
+        :multiple-zone-ahu_clg-coil-supply-water-temp_0 ;
+    ns2:hasRole ns2:Role-Cooling .
+
+:multiple-zone-ahu_ea-damper-in_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-before-ea-damper_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_ea-damper-in-mapsto_0 .
+
+:multiple-zone-ahu_ea-damper-out_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-ea-out_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_ea-damper-out-mapsto_0,
+        :multiple-zone-ahu_ea-out_0 .
+
+:multiple-zone-ahu_ea-damper-position_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
+
+:multiple-zone-ahu_economizer-oa-damper-in_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-before-economizer-oa-damper_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_economizer-oa-damper-in-mapsto_0 .
+
+:multiple-zone-ahu_economizer-oa-damper-out_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-after-economizer-oa-damper_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_economizer-oa-damper-out-mapsto_0 .
+
+:multiple-zone-ahu_economizer-oa-damper-position_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
+
+:multiple-zone-ahu_filter_0 a ns2:Filter,
+        <http://data.ashrae.org/standard223/1.0/extensions/g36#Filter> ;
+    rdfs:label "Filter" ;
+    ns2:cnx :multiple-zone-ahu_filter-in_0,
+        :multiple-zone-ahu_filter-out_0 ;
+    ns2:hasProperty :multiple-zone-ahu_filter-differential-pressure_0 .
+
+:multiple-zone-ahu_htg-coil-air-in_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-after-filter_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_htg-coil-air-in-mapsto_0 .
+
+:multiple-zone-ahu_htg-coil-air-out_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-after-htg-coil_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:hasProperty :multiple-zone-ahu_heat-coil-air-temp_0 ;
+    ns2:mapsTo :multiple-zone-ahu_htg-coil-air-out-mapsto_0 .
+
+:multiple-zone-ahu_htg-coil-valve-in_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_pipe-hot-water-return-before-valve_0 ;
+    ns2:hasMedium ns2:Fluid-Water ;
+    ns2:mapsTo :multiple-zone-ahu_htg-coil-valve-in-mapsto_0 .
+
+:multiple-zone-ahu_htg-coil-valve-out_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_pipe-hot-water-return-after-valve_0 ;
+    ns2:hasMedium ns2:Fluid-Water ;
+    ns2:mapsTo :multiple-zone-ahu_hot-water-out_0,
+        :multiple-zone-ahu_htg-coil-valve-out-mapsto_0 .
+
+:multiple-zone-ahu_htg-coil-valve-position_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
+
+:multiple-zone-ahu_htg-coil_0 a ns2:HeatingCoil,
+        <http://data.ashrae.org/standard223/1.0/extensions/g36#HotWaterCoil> ;
+    rdfs:label "HotWaterCoil" ;
+    ns2:cnx :multiple-zone-ahu_htg-coil-air-in_0,
+        :multiple-zone-ahu_htg-coil-air-out_0,
+        :multiple-zone-ahu_htg-coil-water-in_0,
+        :multiple-zone-ahu_htg-coil-water-out_0 ;
+    ns2:hasProperty :multiple-zone-ahu_htg-coil-return-water-temp_0,
+        :multiple-zone-ahu_htg-coil-supply-water-temp_0 ;
+    ns2:hasRole ns2:Role-Heating .
+
+:multiple-zone-ahu_minimum-oa-damper-in_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-before-minimum-oa-damper_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_minimum-oa-damper-in-mapsto_0 .
+
+:multiple-zone-ahu_minimum-oa-damper-position_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
+
+:multiple-zone-ahu_outside-air-junction-in_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-oa-in_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_oa-in_0,
+        :multiple-zone-ahu_outside-air-junction-in-mapsto_0 .
+
+:multiple-zone-ahu_outside-air-junction-out-1_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-before-minimum-oa-damper_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_outside-air-junction-out-1-mapsto_0 .
+
+:multiple-zone-ahu_outside-air-junction-out-2_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-before-economizer-oa-damper_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_outside-air-junction-out-2-mapsto_0 .
+
+:multiple-zone-ahu_outside-air-junction_0 a ns2:Junction ;
+    rdfs:label "Junction" ;
+    ns2:cnx :multiple-zone-ahu_outside-air-junction-in_0,
+        :multiple-zone-ahu_outside-air-junction-out-1_0,
+        :multiple-zone-ahu_outside-air-junction-out-2_0 ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:multiple-zone-ahu_outside-supply-junction-in-1_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-after-ra-damper_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_outside-supply-junction-in-1-mapsto_0 .
+
+:multiple-zone-ahu_outside-supply-junction-in-2_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-after-minimum-oa-damper_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_outside-supply-junction-in-2-mapsto_0 .
+
+:multiple-zone-ahu_outside-supply-junction-in-3_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-after-economizer-oa-damper_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_outside-supply-junction-in-3-mapsto_0 .
+
+:multiple-zone-ahu_outside-supply-junction-out_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-before-filter_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_outside-supply-junction-out-mapsto_0 .
+
+:multiple-zone-ahu_outside-supply-junction_0 a ns2:Junction ;
+    rdfs:label "Junction" ;
+    ns2:cnx :multiple-zone-ahu_outside-supply-junction-in-1_0,
+        :multiple-zone-ahu_outside-supply-junction-in-2_0,
+        :multiple-zone-ahu_outside-supply-junction-in-3_0,
+        :multiple-zone-ahu_outside-supply-junction-out_0 ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:multiple-zone-ahu_ra-damper-in_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-before-ra-damper_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_ra-damper-in-mapsto_0 .
+
+:multiple-zone-ahu_ra-damper-out_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-after-ra-damper_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_ra-damper-out-mapsto_0 .
+
+:multiple-zone-ahu_ra-damper-position_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
+
+:multiple-zone-ahu_ra-fan-high-static-reset-cmd_0 a ns2:EnumeratedActuatableProperty ;
+    rdfs:label "EnumeratedActuatableProperty" ;
+    ns2:hasEnumerationKind ns2:EnumerationKind-Binary .
+
+:multiple-zone-ahu_ra-fan-in_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-ra-in_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_ra-fan-in-mapsto_0,
+        :multiple-zone-ahu_ra-in_0 .
+
+:multiple-zone-ahu_ra-fan-out_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-after-ra-fan_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:hasProperty :multiple-zone-ahu_ra-fan-discharge-static-pressure_0 ;
+    ns2:mapsTo :multiple-zone-ahu_ra-fan-out-mapsto_0 .
+
+:multiple-zone-ahu_ra-fan-power_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/ElectricPower> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/W> .
+
+:multiple-zone-ahu_ra-fan-speed-cmd_0 a ns2:QuantifiableActuatableProperty ;
+    rdfs:label "QuantifiableActuatableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
+
+:multiple-zone-ahu_ra-fan-speed-status_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
+
+:multiple-zone-ahu_ra-fan-start-cmd_0 a ns2:EnumeratedActuatableProperty ;
+    rdfs:label "EnumeratedActuatableProperty" ;
+    ns2:hasEnumerationKind ns2:Binary-OnOff .
+
+:multiple-zone-ahu_ra-fan-start-status_0 a ns2:EnumeratedObservableProperty ;
+    rdfs:label "EnumeratedObservableProperty" ;
+    ns2:hasEnumerationKind ns2:Binary-OnOff .
+
+:multiple-zone-ahu_return-exhaust-junction-in_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-after-ra-fan_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_return-exhaust-junction-in-mapsto_0 .
+
+:multiple-zone-ahu_return-exhaust-junction-out-1_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-before-ea-damper_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_return-exhaust-junction-out-1-mapsto_0 .
+
+:multiple-zone-ahu_return-exhaust-junction-out-2_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-before-ra-damper_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_return-exhaust-junction-out-2-mapsto_0 .
+
+:multiple-zone-ahu_return-exhaust-junction_0 a ns2:Junction ;
+    rdfs:label "Junction" ;
+    ns2:cnx :multiple-zone-ahu_return-exhaust-junction-in_0,
+        :multiple-zone-ahu_return-exhaust-junction-out-1_0,
+        :multiple-zone-ahu_return-exhaust-junction-out-2_0 ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:multiple-zone-ahu_sa-fan-high-static-reset-cmd_0 a ns2:EnumeratedActuatableProperty ;
+    rdfs:label "EnumeratedActuatableProperty" ;
+    ns2:hasEnumerationKind ns2:EnumerationKind-Binary .
+
+:multiple-zone-ahu_sa-fan-in_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-after-clg-coil_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_sa-fan-in-mapsto_0 .
+
+:multiple-zone-ahu_sa-fan-out_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-sa-out_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_sa-fan-out-mapsto_0,
+        :multiple-zone-ahu_sa-out_0 .
+
+:multiple-zone-ahu_sa-fan-power_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/ElectricPower> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/W> .
+
+:multiple-zone-ahu_sa-fan-speed-cmd_0 a ns2:QuantifiableActuatableProperty ;
+    rdfs:label "QuantifiableActuatableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
+
+:multiple-zone-ahu_sa-fan-speed-status_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
+
+:multiple-zone-ahu_sa-fan-start-cmd_0 a ns2:EnumeratedActuatableProperty ;
+    rdfs:label "EnumeratedActuatableProperty" ;
+    ns2:hasEnumerationKind ns2:Binary-OnOff .
+
+:multiple-zone-ahu_sa-fan-start-status_0 a ns2:EnumeratedObservableProperty ;
+    rdfs:label "EnumeratedObservableProperty" ;
+    ns2:hasEnumerationKind ns2:Binary-OnOff .
+
+:multiple-zone-ahu_sa-temp-setpoint_0 a ns2:QuantifiableActuatableProperty ;
+    rdfs:label "QuantifiableActuatableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/DEG_C> .
+
+:multiple-zone-ahu_supply-duct-static-pressure-setpoint_0 a ns2:QuantifiableActuatableProperty ;
+    rdfs:label "QuantifiableActuatableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Pressure> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/IN_H2O> .
+
+:vav-cooling-only_damper-in_0_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :vav-cooling-only_duct-before-damper_0_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :vav-cooling-only_damper-in-mapsto_0_0,
+        :vav-cooling-only_in_0_0 .
+
+:vav-cooling-only_damper-out_0_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :vav-cooling-only_duct-after-damper_0_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :vav-cooling-only_damper-out-mapsto_0_0,
+        :vav-cooling-only_out_0_0 .
+
+:vav-cooling-only_damper-position_0_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
+
+:vav-cooling-only_discharge-air-flow-setpoint_0_0 a ns2:QuantifiableActuatableProperty ;
+    rdfs:label "QuantifiableActuatableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/VolumeFlowRate> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/FT3-PER-MIN> .
+
+:vav-cooling-only_duct-after-damper_0_0 a ns2:Connection,
+        ns2:Duct ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:vav-cooling-only_duct-before-damper_0_0 a ns2:Connection,
+        ns2:Duct ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:vav-cooling-only_in-connection_0_0 a ns2:Connection ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:vav-cooling-only_out-connection_0_0 a ns2:Connection ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:vav-reheat_damper-in_0_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :vav-reheat_air-in-connection_0_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :vav-reheat_air-in_0_0,
+        :vav-reheat_damper-in-mapsto_0_0 .
+
+:vav-reheat_damper-out_0_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :vav-reheat_duct-after-damper_0_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :vav-reheat_damper-out-mapsto_0_0 .
+
+:vav-reheat_damper-position_0_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
+
+:vav-reheat_discharge-air-flow-setpoint_0_0 a ns2:QuantifiableActuatableProperty ;
+    rdfs:label "QuantifiableActuatableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/VolumeFlowRate> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/FT3-PER-MIN> .
+
+:vav-reheat_discharge-air-temp-setpoint_0_0 a ns2:QuantifiableActuatableProperty ;
+    rdfs:label "QuantifiableActuatableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/DEG_C> .
+
+:vav-reheat_reheat-coil-air-in_0_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :vav-reheat_duct-after-damper_0_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :vav-reheat_reheat-coil-air-in-mapsto_0_0 .
+
+:vav-reheat_reheat-coil-air-out_0_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :vav-reheat_air-out-connection_0_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :vav-reheat_air-out_0_0,
+        :vav-reheat_reheat-coil-air-out-mapsto_0_0 .
+
+:vav-reheat_reheat-coil-valve-in_0_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :vav-reheat_pipe-hot-water-return-before-valve_0_0 ;
+    ns2:hasMedium ns2:Fluid-Water ;
+    ns2:mapsTo :vav-reheat_reheat-coil-valve-in-mapsto_0_0 .
+
+:vav-reheat_reheat-coil-valve-out_0_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :vav-reheat_hot-water-out-connection_0_0 ;
+    ns2:hasMedium ns2:Fluid-Water ;
+    ns2:mapsTo :vav-reheat_hot-water-out_0_0,
+        :vav-reheat_reheat-coil-valve-out-mapsto_0_0 .
+
+:vav-reheat_reheat-coil-valve-position_0_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
+
+:vav-reheat_reheat-coil_0_0 a ns2:HeatingCoil,
+        <http://data.ashrae.org/standard223/1.0/extensions/g36#HotWaterCoil> ;
+    rdfs:label "HotWaterCoil" ;
+    ns2:cnx :vav-reheat_reheat-coil-air-in_0_0,
+        :vav-reheat_reheat-coil-air-out_0_0,
+        :vav-reheat_reheat-coil-water-in_0_0,
+        :vav-reheat_reheat-coil-water-out_0_0 ;
+    ns2:hasProperty :vav-reheat_reheat-coil-return-water-temp_0_0,
+        :vav-reheat_reheat-coil-supply-water-temp_0_0 ;
+    ns2:hasRole ns2:Role-Heating .
+
+:multiple-zone-ahu_chilled-water-in_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_pipe-chilled-water-supply_0 ;
+    ns2:hasMedium ns2:Fluid-Water ;
+    ns2:mapsTo :multiple-zone-ahu_chilled-water-in-mapsto_0 .
+
+:multiple-zone-ahu_chilled-water-out_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_pipe-chilled-water-return-after-valve_0 ;
+    ns2:hasMedium ns2:Fluid-Water ;
+    ns2:mapsTo :multiple-zone-ahu_chilled-water-out-mapsto_0 .
+
+:multiple-zone-ahu_clg-coil-return-water-temp_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/DEG_C> .
+
+:multiple-zone-ahu_clg-coil-supply-water-temp_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/DEG_C> .
+
+:multiple-zone-ahu_clg-coil-valve-command_0 a ns2:QuantifiableActuatableProperty ;
+    rdfs:label "QuantifiableActuatableProperty" ;
+    ns2:hasAspect ns2:Binary-Position ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
+
+:multiple-zone-ahu_clg-coil-valve_0 a ns2:Valve,
+        <http://data.ashrae.org/standard223/1.0/extensions/g36#ChilledWaterValve> ;
+    rdfs:label "ChilledWaterValve" ;
+    ns2:cnx :multiple-zone-ahu_clg-coil-valve-in_0,
+        :multiple-zone-ahu_clg-coil-valve-out_0 ;
+    ns2:hasProperty :multiple-zone-ahu_clg-coil-valve-command_0,
+        :multiple-zone-ahu_clg-coil-valve-position_0 .
+
+:multiple-zone-ahu_clg-coil-water-in_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_pipe-chilled-water-supply_0 ;
+    ns2:hasMedium ns2:Fluid-Water ;
+    ns2:mapsTo :multiple-zone-ahu_chilled-water-in_0,
+        :multiple-zone-ahu_clg-coil-water-in-mapsto_0 .
+
+:multiple-zone-ahu_clg-coil-water-out_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_pipe-chilled-water-return-before-valve_0 ;
+    ns2:hasMedium ns2:Fluid-Water ;
+    ns2:mapsTo :multiple-zone-ahu_clg-coil-water-out-mapsto_0 .
+
+:multiple-zone-ahu_duct-after-clg-coil_0 a ns2:Connection,
+        ns2:Duct ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:multiple-zone-ahu_duct-after-economizer-oa-damper_0 a ns2:Connection,
+        ns2:Duct ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:multiple-zone-ahu_duct-after-filter_0 a ns2:Connection,
+        ns2:Duct ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:multiple-zone-ahu_duct-after-minimum-oa-damper_0 a ns2:Connection,
+        ns2:Duct ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:multiple-zone-ahu_duct-after-ra-damper_0 a ns2:Connection,
+        ns2:Duct ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:multiple-zone-ahu_duct-before-ea-damper_0 a ns2:Connection,
+        ns2:Duct ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:multiple-zone-ahu_duct-before-economizer-oa-damper_0 a ns2:Connection,
+        ns2:Duct ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:multiple-zone-ahu_duct-before-filter_0 a ns2:Connection,
+        ns2:Duct ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:multiple-zone-ahu_duct-before-minimum-oa-damper_0 a ns2:Connection,
+        ns2:Duct ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:multiple-zone-ahu_duct-before-ra-damper_0 a ns2:Connection,
+        ns2:Duct ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:multiple-zone-ahu_duct-ea-out_0 a ns2:Connection,
+        ns2:Duct ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:multiple-zone-ahu_duct-oa-in_0 a ns2:Connection,
+        ns2:Duct ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:multiple-zone-ahu_duct-ra-in_0 a ns2:Connection,
+        ns2:Duct ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:multiple-zone-ahu_ea-damper-command_0 a ns2:QuantifiableActuatableProperty ;
+    rdfs:label "QuantifiableActuatableProperty" ;
+    ns2:hasAspect ns2:Binary-Position ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
+
+:multiple-zone-ahu_ea-damper_0 a ns2:Damper,
+        <http://data.ashrae.org/standard223/1.0/extensions/g36#Damper> ;
+    rdfs:label "Damper" ;
+    ns2:cnx :multiple-zone-ahu_ea-damper-in_0,
+        :multiple-zone-ahu_ea-damper-out_0 ;
+    ns2:hasProperty :multiple-zone-ahu_ea-damper-command_0,
+        :multiple-zone-ahu_ea-damper-position_0 ;
+    ns2:hasRole ns2:Role-Exhaust .
+
+:multiple-zone-ahu_ea-out_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-ea-out_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_ea-out-mapsto_0 .
+
+:multiple-zone-ahu_economizer-oa-damper-command_0 a ns2:QuantifiableActuatableProperty ;
+    rdfs:label "QuantifiableActuatableProperty" ;
+    ns2:hasAspect ns2:Binary-Position ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
+
+:multiple-zone-ahu_economizer-oa-damper_0 a ns2:Damper,
+        <http://data.ashrae.org/standard223/1.0/extensions/g36#Damper> ;
+    rdfs:label "Damper" ;
+    ns2:cnx :multiple-zone-ahu_economizer-oa-damper-in_0,
+        :multiple-zone-ahu_economizer-oa-damper-out_0 ;
+    ns2:hasProperty :multiple-zone-ahu_economizer-oa-damper-command_0,
+        :multiple-zone-ahu_economizer-oa-damper-position_0 ;
+    ns2:hasRole ns2:Role-Economizer .
+
+:multiple-zone-ahu_filter-differential-pressure_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Pressure> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/IN_H2O> ;
+    ns1:isDeltaQuantity true .
+
+:multiple-zone-ahu_filter-out_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-after-filter_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :multiple-zone-ahu_filter-out-mapsto_0 .
+
+:multiple-zone-ahu_heat-coil-air-temp_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/DEG_C> .
+
+:multiple-zone-ahu_hot-water-in_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_pipe-hot-water-supply_0 ;
+    ns2:hasMedium ns2:Fluid-Water ;
+    ns2:mapsTo :multiple-zone-ahu_hot-water-in-mapsto_0 .
+
+:multiple-zone-ahu_hot-water-out_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_pipe-hot-water-return-after-valve_0 ;
+    ns2:hasMedium ns2:Fluid-Water ;
+    ns2:mapsTo :multiple-zone-ahu_hot-water-out-mapsto_0 .
+
+:multiple-zone-ahu_htg-coil-return-water-temp_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/DEG_C> .
+
+:multiple-zone-ahu_htg-coil-supply-water-temp_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/DEG_C> .
+
+:multiple-zone-ahu_htg-coil-valve-command_0 a ns2:QuantifiableActuatableProperty ;
+    rdfs:label "QuantifiableActuatableProperty" ;
+    ns2:hasAspect ns2:Binary-Position ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
+
+:multiple-zone-ahu_htg-coil-valve_0 a ns2:Valve,
+        <http://data.ashrae.org/standard223/1.0/extensions/g36#HotWaterValve> ;
+    rdfs:label "Valve" ;
+    ns2:cnx :multiple-zone-ahu_htg-coil-valve-in_0,
+        :multiple-zone-ahu_htg-coil-valve-out_0 ;
+    ns2:hasProperty :multiple-zone-ahu_htg-coil-valve-command_0,
+        :multiple-zone-ahu_htg-coil-valve-position_0 .
+
+:multiple-zone-ahu_htg-coil-water-in_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_pipe-hot-water-supply_0 ;
+    ns2:hasMedium ns2:Fluid-Water ;
+    ns2:mapsTo :multiple-zone-ahu_hot-water-in_0,
+        :multiple-zone-ahu_htg-coil-water-in-mapsto_0 .
+
+:multiple-zone-ahu_htg-coil-water-out_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_pipe-hot-water-return-before-valve_0 ;
+    ns2:hasMedium ns2:Fluid-Water ;
+    ns2:mapsTo :multiple-zone-ahu_htg-coil-water-out-mapsto_0 .
+
+:multiple-zone-ahu_ma-temp_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/DEG_C> .
+
+:multiple-zone-ahu_minimum-oa-damper-command_0 a ns2:QuantifiableActuatableProperty ;
+    rdfs:label "QuantifiableActuatableProperty" ;
+    ns2:hasAspect ns2:Binary-Position ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
+
+:multiple-zone-ahu_minimum-oa-damper_0 a ns2:Damper,
+        <http://data.ashrae.org/standard223/1.0/extensions/g36#Damper> ;
+    rdfs:label "Damper" ;
+    ns2:cnx :multiple-zone-ahu_minimum-oa-damper-in_0,
+        :multiple-zone-ahu_minimum-oa-damper-out_0 ;
+    ns2:hasProperty :multiple-zone-ahu_minimum-oa-damper-command_0,
+        :multiple-zone-ahu_minimum-oa-damper-position_0 ;
+    ns2:hasRole ns2:Role-OutdoorAirIntake .
+
+:multiple-zone-ahu_oa-flow_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/VolumeFlowRate> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/FT3-PER-MIN> .
+
+:multiple-zone-ahu_oa-in_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-oa-in_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:hasProperty :multiple-zone-ahu_oa-temp_0 ;
+    ns2:mapsTo :multiple-zone-ahu_oa-in-mapsto_0 .
+
+:multiple-zone-ahu_oa-temp_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns2:hasAspect ns2:Role-OutdoorAirIntake ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/DEG_C> .
+
+:multiple-zone-ahu_pipe-chilled-water-return-after-valve_0 a ns2:Connection,
+        ns2:Pipe ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Water .
+
+:multiple-zone-ahu_pipe-chilled-water-return-before-valve_0 a ns2:Connection,
+        ns2:Pipe ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Water .
+
+:multiple-zone-ahu_pipe-chilled-water-supply_0 a ns2:Connection,
+        ns2:Pipe ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Water .
+
+:multiple-zone-ahu_pipe-hot-water-return-after-valve_0 a ns2:Connection,
+        ns2:Pipe ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Water .
+
+:multiple-zone-ahu_pipe-hot-water-return-before-valve_0 a ns2:Connection,
+        ns2:Pipe ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Water .
+
+:multiple-zone-ahu_pipe-hot-water-supply_0 a ns2:Connection,
+        ns2:Pipe ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Water .
+
+:multiple-zone-ahu_ra-damper-command_0 a ns2:QuantifiableActuatableProperty ;
+    rdfs:label "QuantifiableActuatableProperty" ;
+    ns2:hasAspect ns2:Binary-Position ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
+
+:multiple-zone-ahu_ra-damper_0 a ns2:Damper,
+        <http://data.ashrae.org/standard223/1.0/extensions/g36#Damper> ;
+    rdfs:label "Damper" ;
+    ns2:cnx :multiple-zone-ahu_ra-damper-in_0,
+        :multiple-zone-ahu_ra-damper-out_0 ;
+    ns2:hasProperty :multiple-zone-ahu_ra-damper-command_0,
+        :multiple-zone-ahu_ra-damper-position_0 ;
+    ns2:hasRole ns2:Role-Return .
+
+:multiple-zone-ahu_ra-fan-discharge-static-pressure_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Pressure> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/IN_H2O> .
+
+:multiple-zone-ahu_ra-fan_0 a ns2:Fan,
+        <http://data.ashrae.org/standard223/1.0/extensions/g36#FanWithVFD> ;
+    rdfs:label "Fan" ;
+    ns2:cnx :multiple-zone-ahu_ra-fan-in_0,
+        :multiple-zone-ahu_ra-fan-out_0 ;
+    ns2:hasProperty :multiple-zone-ahu_ra-fan-high-static-reset-cmd_0,
+        :multiple-zone-ahu_ra-fan-power_0,
+        :multiple-zone-ahu_ra-fan-speed-cmd_0,
+        :multiple-zone-ahu_ra-fan-speed-status_0,
+        :multiple-zone-ahu_ra-fan-start-cmd_0,
+        :multiple-zone-ahu_ra-fan-start-status_0,
+        :multiple-zone-ahu_ra-flow_0 ;
+    ns2:hasRole ns2:Role-Return .
+
+:multiple-zone-ahu_ra-flow_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/VolumeFlowRate> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/FT3-PER-MIN> .
+
+:multiple-zone-ahu_ra-temp_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns2:hasAspect ns2:Role-Return ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/DEG_C> .
+
+:multiple-zone-ahu_sa-fan_0 a ns2:Fan,
+        <http://data.ashrae.org/standard223/1.0/extensions/g36#FanWithVFD> ;
+    rdfs:label "Fan" ;
+    ns2:cnx :multiple-zone-ahu_sa-fan-in_0,
+        :multiple-zone-ahu_sa-fan-out_0 ;
+    ns2:hasProperty :multiple-zone-ahu_sa-fan-high-static-reset-cmd_0,
+        :multiple-zone-ahu_sa-fan-power_0,
+        :multiple-zone-ahu_sa-fan-speed-cmd_0,
+        :multiple-zone-ahu_sa-fan-speed-status_0,
+        :multiple-zone-ahu_sa-fan-start-cmd_0,
+        :multiple-zone-ahu_sa-fan-start-status_0,
+        :multiple-zone-ahu_sa-flow_0 ;
+    ns2:hasRole ns2:Role-Supply .
+
+:multiple-zone-ahu_sa-flow_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/VolumeFlowRate> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/FT3-PER-MIN> .
+
+:multiple-zone-ahu_sa-temp_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns2:hasAspect ns2:Role-Supply ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/DEG_C> .
+
+:multiple-zone-ahu_supply-duct-static-pressure_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns2:hasAspect ns2:Role-Supply ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Pressure> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/IN_H2O> .
+
+:vav-cooling-only_damper-command_0_0 a ns2:QuantifiableActuatableProperty ;
+    rdfs:label "QuantifiableActuatableProperty" ;
+    ns2:hasAspect ns2:Binary-Position ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
+
+:vav-cooling-only_damper_0_0 a ns2:Damper,
+        <http://data.ashrae.org/standard223/1.0/extensions/g36#Damper> ;
+    rdfs:label "Damper" ;
+    ns2:cnx :vav-cooling-only_damper-in_0_0,
+        :vav-cooling-only_damper-out_0_0 ;
+    ns2:hasProperty :vav-cooling-only_damper-command_0_0,
+        :vav-cooling-only_damper-position_0_0 .
+
+:vav-cooling-only_discharge-air-flow_0_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns2:hasAspect ns2:Role-Discharge ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/VolumeFlowRate> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/FT3-PER-MIN> .
+
+:vav-cooling-only_in_0_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :vav-cooling-only_in-connection_0_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :vav-cooling-only_in-mapsto_0_0 .
+
+:vav-reheat_air-in-connection_0_0 a ns2:Connection,
+        ns2:Duct ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:vav-reheat_air-out-connection_0_0 a ns2:Connection,
+        ns2:Duct ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:vav-reheat_damper-command_0_0 a ns2:QuantifiableActuatableProperty ;
+    rdfs:label "QuantifiableActuatableProperty" ;
+    ns2:hasAspect ns2:Binary-Position ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
+
+:vav-reheat_damper_0_0 a ns2:Damper,
+        <http://data.ashrae.org/standard223/1.0/extensions/g36#Damper> ;
+    rdfs:label "Damper" ;
+    ns2:cnx :vav-reheat_damper-in_0_0,
+        :vav-reheat_damper-out_0_0 ;
+    ns2:hasProperty :vav-reheat_damper-command_0_0,
+        :vav-reheat_damper-position_0_0 .
+
+:vav-reheat_discharge-air-flow_0_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns2:hasAspect ns2:Role-Discharge ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/VolumeFlowRate> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/FT3-PER-MIN> .
+
+:vav-reheat_discharge-air-temp_0_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns2:hasAspect ns2:Role-Discharge ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/DEG_C> .
+
+:vav-reheat_duct-after-damper_0_0 a ns2:Connection,
+        ns2:Duct ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:vav-reheat_hot-water-in-connection_0_0 a ns2:Connection,
+        ns2:Pipe ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Water .
+
+:vav-reheat_hot-water-in_0_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :vav-reheat_hot-water-in-connection_0_0 ;
+    ns2:hasMedium ns2:Fluid-Water ;
+    ns2:mapsTo :vav-reheat_hot-water-in-mapsto_0_0 .
+
+:vav-reheat_hot-water-out-connection_0_0 a ns2:Connection,
+        ns2:Pipe ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Water .
+
+:vav-reheat_hot-water-out_0_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :vav-reheat_hot-water-out-connection_0_0 ;
+    ns2:hasMedium ns2:Fluid-Water ;
+    ns2:mapsTo :vav-reheat_hot-water-out-mapsto_0_0 .
+
+:vav-reheat_pipe-hot-water-return-before-valve_0_0 a ns2:Connection,
+        ns2:Pipe ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Water .
+
+:vav-reheat_reheat-coil-return-water-temp_0_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/DEG_C> .
+
+:vav-reheat_reheat-coil-supply-water-temp_0_0 a ns2:QuantifiableObservableProperty ;
+    rdfs:label "QuantifiableObservableProperty" ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/DEG_C> .
+
+:vav-reheat_reheat-coil-valve-command_0_0 a ns2:QuantifiableActuatableProperty ;
+    rdfs:label "QuantifiableActuatableProperty" ;
+    ns2:hasAspect ns2:Binary-Position ;
+    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/DimensionlessRatio> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PERCENT> .
+
+:vav-reheat_reheat-coil-valve_0_0 a ns2:Valve,
+        <http://data.ashrae.org/standard223/1.0/extensions/g36#HotWaterValve> ;
+    rdfs:label "Valve" ;
+    ns2:cnx :vav-reheat_reheat-coil-valve-in_0_0,
+        :vav-reheat_reheat-coil-valve-out_0_0 ;
+    ns2:hasProperty :vav-reheat_reheat-coil-valve-command_0_0,
+        :vav-reheat_reheat-coil-valve-position_0_0 .
+
+:vav-reheat_reheat-coil-water-in_0_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :vav-reheat_hot-water-in-connection_0_0 ;
+    ns2:hasMedium ns2:Fluid-Water ;
+    ns2:mapsTo :vav-reheat_hot-water-in_0_0,
+        :vav-reheat_reheat-coil-water-in-mapsto_0_0 .
+
+:vav-reheat_reheat-coil-water-out_0_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :vav-reheat_pipe-hot-water-return-before-valve_0_0 ;
+    ns2:hasMedium ns2:Fluid-Water ;
+    ns2:mapsTo :vav-reheat_reheat-coil-water-out-mapsto_0_0 .
+
+:multiple-zone-ahu_duct-after-htg-coil_0 a ns2:Connection,
+        ns2:Duct ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:multiple-zone-ahu_duct-after-ra-fan_0 a ns2:Connection,
+        ns2:Duct ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:multiple-zone-ahu_duct-sa-out_0 a ns2:Connection,
+        ns2:Duct ;
+    rdfs:label "Connection" ;
+    ns2:hasMedium ns2:Fluid-Air .
+
+:multiple-zone-ahu_filter-in_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-before-filter_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:hasProperty :multiple-zone-ahu_ma-temp_0 ;
+    ns2:mapsTo :multiple-zone-ahu_filter-in-mapsto_0 .
+
+:multiple-zone-ahu_minimum-oa-damper-out_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-after-minimum-oa-damper_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:hasProperty :multiple-zone-ahu_oa-flow_0 ;
+    ns2:mapsTo :multiple-zone-ahu_minimum-oa-damper-out-mapsto_0 .
+
+:multiple-zone-ahu_ra-in_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-ra-in_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:hasProperty :multiple-zone-ahu_ra-temp_0 ;
+    ns2:mapsTo :multiple-zone-ahu_ra-in-mapsto_0 .
+
+:multiple-zone-ahu_sa-out_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :multiple-zone-ahu_duct-sa-out_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:hasProperty :multiple-zone-ahu_sa-temp-setpoint_0,
+        :multiple-zone-ahu_sa-temp_0,
+        :multiple-zone-ahu_supply-duct-static-pressure-setpoint_0,
+        :multiple-zone-ahu_supply-duct-static-pressure_0 ;
+    ns2:mapsTo :multiple-zone-ahu_sa-out-mapsto_0 .
+
+:vav-cooling-only_out_0_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :vav-cooling-only_out-connection_0_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:hasProperty :vav-cooling-only_discharge-air-flow-setpoint_0_0,
+        :vav-cooling-only_discharge-air-flow_0_0 ;
+    ns2:mapsTo :vav-cooling-only_out-mapsto_0_0 .
+
+:vav-reheat_air-in_0_0 a ns2:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    ns2:cnx :vav-reheat_air-in-connection_0_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:mapsTo :vav-reheat_air-in-mapsto_0_0 .
+
+:vav-reheat_air-out_0_0 a ns2:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    ns2:cnx :vav-reheat_air-out-connection_0_0 ;
+    ns2:hasMedium ns2:Fluid-Air ;
+    ns2:hasProperty :vav-reheat_discharge-air-flow-setpoint_0_0,
+        :vav-reheat_discharge-air-flow_0_0,
+        :vav-reheat_discharge-air-temp-setpoint_0_0,
+        :vav-reheat_discharge-air-temp_0_0 ;
+    ns2:mapsTo :vav-reheat_air-out-mapsto_0_0 .
+
