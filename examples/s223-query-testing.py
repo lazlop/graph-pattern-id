@@ -57,6 +57,8 @@ def assemble_ahu(bindings):
 
 not_condensed_t = []
 condensed_t = []
+condensed_reasoning_t = []
+not_condensed_reasoning_t = []
 model_length = []
 for n in range(20):
     bldg = Model.create("urn:example#")
@@ -252,11 +254,33 @@ for n in range(20):
     """
     query_to_df(bldg_query, bldg_graph)
     condensed_t.append(time() - st)
+
+
+    import pyshacl 
+    ont = Graph()
+    ont.parse('../ontologies/223p.ttl')
+    for s,p,o in bldg_graph.triples((None,None,None)):
+        ont.add((s,p,o))
+    st = time()
+    pyshacl.validate(ont, ont)
+    et = time()
+    not_condensed_reasoning_t.append(et-st)
+
+    ont = g.parse('../ontologies/223p.ttl')
+    for s,p,o in g.triples((None,None,None)):
+        ont.add((s,p,o))
+    st = time()
+    pyshacl.validate(ont, ont)
+    et = time()
+    condensed_reasoning_t.append(et-st)
+
 import pandas as pd 
 df = pd.DataFrame({
     'model_length': model_length,
     'not_condensed_t': not_condensed_t,
-    'condensed_t': condensed_t
+    'condensed_t': condensed_t,
+    'not_condensed_reasoning_t': not_condensed_reasoning_t,
+    'condensed_reasoning_t': condensed_reasoning_t,
 })
 df.to_csv('query-time-s223.csv')
 import matplotlib.pyplot as plt
