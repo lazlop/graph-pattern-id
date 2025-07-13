@@ -46,7 +46,7 @@ model_length = []
 for n in range(14):
     bldg = Model.create("urn:example#")
     bldg.graph.bind('',BLDG)
-    g = Graph()
+    g = Graph(store = 'Oxigraph')
     g.bind('',BLDG)
 
     bldg_config = {'ahus': 1+n, 'cv': 15, 'hv': 15}
