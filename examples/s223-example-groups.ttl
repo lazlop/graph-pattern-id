@@ -1,1576 +1,1698 @@
 @prefix : <urn:example#> .
-@prefix ns1: <http://data.ashrae.org/standard223#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix qudtqk: <http://qudt.org/vocab/quantitykind/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix unit: <http://qudt.org/vocab/unit/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
-:multiple-zone-ahu-clg-coil-return-water-temp-sensor a ns1:Sensor,
-        rdf:Seq ;
-    ns1:hasObservationLocation :multiple-zone-ahu-clg-coil-water-out ;
-    ns1:observes :multiple-zone-ahu-clg-coil-return-water-temp ;
-    rdf:_1 :multiple-zone-ahu_clg-coil-return-water-temp-sensor_0 .
-
-:multiple-zone-ahu-clg-coil-supply-water-temp-sensor a ns1:Sensor,
-        rdf:Seq ;
-    ns1:hasObservationLocation :multiple-zone-ahu-clg-coil-water-in ;
-    ns1:observes :multiple-zone-ahu-clg-coil-supply-water-temp ;
-    rdf:_1 :multiple-zone-ahu_clg-coil-supply-water-temp-sensor_0 .
-
-:multiple-zone-ahu-clg-coil-valve-actuator a ns1:Actuator,
-        rdf:Seq ;
-    ns1:actuatedByProperty :multiple-zone-ahu-clg-coil-valve-command ;
-    ns1:actuates :multiple-zone-ahu-clg-coil-valve ;
-    rdf:_1 :multiple-zone-ahu_clg-coil-valve-actuator_0 .
-
-:multiple-zone-ahu-ea-damper-actuator a ns1:Actuator,
-        rdf:Seq ;
-    ns1:actuatedByProperty :multiple-zone-ahu-ea-damper-command ;
-    ns1:actuates :multiple-zone-ahu-ea-damper ;
-    rdf:_1 :multiple-zone-ahu_ea-damper-actuator_0 .
-
-:multiple-zone-ahu-economizer-oa-damper-actuator a ns1:Actuator,
-        rdf:Seq ;
-    ns1:actuatedByProperty :multiple-zone-ahu-economizer-oa-damper-command ;
-    ns1:actuates :multiple-zone-ahu-economizer-oa-damper ;
-    rdf:_1 :multiple-zone-ahu_economizer-oa-damper-actuator_0 .
-
-:multiple-zone-ahu-filter-differential-pressure-sensor a ns1:DifferentialSensor,
-        ns1:Sensor,
-        rdf:Seq ;
-    ns1:hasObservationLocation :multiple-zone-ahu-filter-in ;
-    ns1:hasReferenceLocation :multiple-zone-ahu-filter-out ;
-    ns1:observes :multiple-zone-ahu-filter-differential-pressure ;
-    rdf:_1 :multiple-zone-ahu_filter-differential-pressure-sensor_0 .
-
-:multiple-zone-ahu-heat-coil-air-temp-sensor a ns1:Sensor,
-        rdf:Seq ;
-    ns1:hasObservationLocation :multiple-zone-ahu-duct-after-htg-coil ;
-    ns1:observes :multiple-zone-ahu-heat-coil-air-temp ;
-    rdf:_1 :multiple-zone-ahu_heat-coil-air-temp-sensor_0 .
-
-:multiple-zone-ahu-htg-coil-return-water-temp-sensor a ns1:Sensor,
-        rdf:Seq ;
-    ns1:hasObservationLocation :multiple-zone-ahu-htg-coil-water-out ;
-    ns1:observes :multiple-zone-ahu-htg-coil-return-water-temp ;
-    rdf:_1 :multiple-zone-ahu_htg-coil-return-water-temp-sensor_0 .
-
-:multiple-zone-ahu-htg-coil-supply-water-temp-sensor a ns1:Sensor,
-        rdf:Seq ;
-    ns1:hasObservationLocation :multiple-zone-ahu-htg-coil-water-in ;
-    ns1:observes :multiple-zone-ahu-htg-coil-supply-water-temp ;
-    rdf:_1 :multiple-zone-ahu_htg-coil-supply-water-temp-sensor_0 .
-
-:multiple-zone-ahu-htg-coil-valve-actuator a ns1:Actuator,
-        rdf:Seq ;
-    ns1:actuatedByProperty :multiple-zone-ahu-htg-coil-valve-command ;
-    ns1:actuates :multiple-zone-ahu-htg-coil-valve ;
-    rdf:_1 :multiple-zone-ahu_htg-coil-valve-actuator_0 .
-
-:multiple-zone-ahu-ma-temp-sensor a ns1:Sensor,
-        rdf:Seq ;
-    ns1:hasObservationLocation :multiple-zone-ahu-filter-in ;
-    ns1:observes :multiple-zone-ahu-ma-temp ;
-    rdf:_1 :multiple-zone-ahu_ma-temp-sensor_0 .
-
-:multiple-zone-ahu-minimum-oa-damper-actuator a ns1:Actuator,
-        rdf:Seq ;
-    ns1:actuatedByProperty :multiple-zone-ahu-minimum-oa-damper-command ;
-    ns1:actuates :multiple-zone-ahu-minimum-oa-damper ;
-    rdf:_1 :multiple-zone-ahu_minimum-oa-damper-actuator_0 .
-
-:multiple-zone-ahu-name a ns1:AirHandlingUnit,
-        <http://data.ashrae.org/standard223/1.0/extensions/g36#MultipleZoneVAVAirHandlingUnit>,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-chilled-water-in,
-        :multiple-zone-ahu-chilled-water-out,
-        :multiple-zone-ahu-ea-out,
-        :multiple-zone-ahu-hot-water-in,
-        :multiple-zone-ahu-hot-water-out,
-        :multiple-zone-ahu-oa-in,
-        :multiple-zone-ahu-ra-in,
-        :multiple-zone-ahu-sa-out ;
-    ns1:contains :multiple-zone-ahu-clg-coil,
-        :multiple-zone-ahu-clg-coil-valve,
-        :multiple-zone-ahu-ea-damper,
-        :multiple-zone-ahu-economizer-oa-damper,
-        :multiple-zone-ahu-filter,
-        :multiple-zone-ahu-htg-coil,
-        :multiple-zone-ahu-htg-coil-valve,
-        :multiple-zone-ahu-minimum-oa-damper,
-        :multiple-zone-ahu-outside-air-junction,
-        :multiple-zone-ahu-outside-supply-junction,
-        :multiple-zone-ahu-ra-damper,
-        :multiple-zone-ahu-ra-fan,
-        :multiple-zone-ahu-return-exhaust-junction,
-        :multiple-zone-ahu-sa-fan ;
-    rdf:_1 :multiple-zone-ahu_name_0 .
-
-:multiple-zone-ahu-oa-flow-measurement-station a ns1:Sensor,
-        rdf:Seq ;
-    ns1:hasObservationLocation :multiple-zone-ahu-minimum-oa-damper-out ;
-    ns1:observes :multiple-zone-ahu-oa-flow ;
-    rdf:_1 :multiple-zone-ahu_oa-flow-measurement-station_0 .
-
-:multiple-zone-ahu-oa-temp-sensor a ns1:Sensor,
-        rdf:Seq ;
-    ns1:hasObservationLocation :multiple-zone-ahu-minimum-oa-damper-out ;
-    ns1:observes :multiple-zone-ahu-oa-temp ;
-    rdf:_1 :multiple-zone-ahu_oa-temp-sensor_0 .
-
-:multiple-zone-ahu-ra-damper-actuator a ns1:Actuator,
-        rdf:Seq ;
-    ns1:actuatedByProperty :multiple-zone-ahu-ra-damper-command ;
-    ns1:actuates :multiple-zone-ahu-ra-damper ;
-    rdf:_1 :multiple-zone-ahu_ra-damper-actuator_0 .
-
-:multiple-zone-ahu-ra-fan-static-pressure-sensor a ns1:Sensor,
-        rdf:Seq ;
-    ns1:hasObservationLocation :multiple-zone-ahu-duct-after-ra-fan ;
-    ns1:observes :multiple-zone-ahu-ra-fan-discharge-static-pressure ;
-    rdf:_1 :multiple-zone-ahu_ra-fan-static-pressure-sensor_0 .
-
-:multiple-zone-ahu-ra-flow-sensor a ns1:Sensor,
-        rdf:Seq ;
-    ns1:hasObservationLocation :multiple-zone-ahu-ra-fan ;
-    ns1:observes :multiple-zone-ahu-ra-flow ;
-    rdf:_1 :multiple-zone-ahu_ra-flow-sensor_0 .
-
-:multiple-zone-ahu-ra-temp-sensor a ns1:Sensor,
-        rdf:Seq ;
-    ns1:hasObservationLocation :multiple-zone-ahu-ra-in ;
-    ns1:observes :multiple-zone-ahu-ra-temp ;
-    rdf:_1 :multiple-zone-ahu_ra-temp-sensor_0 .
-
-:multiple-zone-ahu-sa-flow-sensor a ns1:Sensor,
-        rdf:Seq ;
-    ns1:hasObservationLocation :multiple-zone-ahu-sa-fan ;
-    ns1:observes :multiple-zone-ahu-sa-flow ;
-    rdf:_1 :multiple-zone-ahu_sa-flow-sensor_0 .
-
-:multiple-zone-ahu-sa-temp-sensor a ns1:Sensor,
-        rdf:Seq ;
-    ns1:hasObservationLocation :multiple-zone-ahu-sa-out ;
-    ns1:observes :multiple-zone-ahu-sa-temp ;
-    rdf:_1 :multiple-zone-ahu_sa-temp-sensor_0 .
-
-:multiple-zone-ahu-supply-duct-static-pressure-sensor a ns1:Sensor,
-        rdf:Seq ;
-    ns1:hasObservationLocation :multiple-zone-ahu-duct-sa-out ;
-    ns1:observes :multiple-zone-ahu-supply-duct-static-pressure ;
-    rdf:_1 :multiple-zone-ahu_supply-duct-static-pressure-sensor_0 .
-
-:vav-cooling-only-damper-actuator a ns1:Actuator,
-        rdf:Seq ;
-    ns1:actuatedByProperty :vav-cooling-only-damper-command ;
-    ns1:actuates :vav-cooling-only-damper ;
-    rdf:_1 :vav-cooling-only_damper-actuator_0_0 .
-
-:vav-cooling-only-discharge-air-flow-sensor a ns1:Sensor,
-        rdf:Seq ;
-    ns1:hasObservationLocation :vav-cooling-only-out ;
-    ns1:observes :vav-cooling-only-discharge-air-flow ;
-    rdf:_1 :vav-cooling-only_discharge-air-flow-sensor_0_0 .
-
-:vav-cooling-only-name a ns1:SingleDuctTerminal,
-        <http://data.ashrae.org/standard223/1.0/extensions/g36#VAV>,
-        rdf:Seq ;
-    ns1:cnx :vav-cooling-only-in,
-        :vav-cooling-only-out ;
-    ns1:contains :vav-cooling-only-damper ;
-    rdf:_1 :vav-cooling-only_name_0_0 .
-
-:vav-reheat-damper-actuator a ns1:Actuator,
-        rdf:Seq ;
-    ns1:actuatedByProperty :vav-reheat-damper-command ;
-    ns1:actuates :vav-reheat-damper ;
-    rdf:_1 :vav-reheat_damper-actuator_0_0 .
-
-:vav-reheat-discharge-air-flow-sensor a ns1:Sensor,
-        rdf:Seq ;
-    ns1:hasObservationLocation :vav-reheat-air-in ;
-    ns1:observes :vav-reheat-discharge-air-flow ;
-    rdf:_1 :vav-reheat_discharge-air-flow-sensor_0_0 .
-
-:vav-reheat-discharge-air-temp-sensor a ns1:Sensor,
-        rdf:Seq ;
-    ns1:hasObservationLocation :vav-reheat-air-out ;
-    ns1:observes :vav-reheat-discharge-air-temp ;
-    rdf:_1 :vav-reheat_discharge-air-temp-sensor_0_0 .
-
-:vav-reheat-name a ns1:SingleDuctTerminal,
-        <http://data.ashrae.org/standard223/1.0/extensions/g36#VAVWithReheat>,
-        rdf:Seq ;
-    ns1:cnx :vav-reheat-air-in,
-        :vav-reheat-air-out,
-        :vav-reheat-hot-water-in,
-        :vav-reheat-hot-water-out ;
-    ns1:contains :vav-reheat-damper,
-        :vav-reheat-reheat-coil,
-        :vav-reheat-reheat-coil-valve ;
-    rdf:_1 :vav-reheat_name_0_0 .
-
-:vav-reheat-reheat-coil-return-water-temp-sensor a ns1:Sensor,
-        rdf:Seq ;
-    ns1:hasObservationLocation :vav-reheat-reheat-coil-water-out ;
-    ns1:observes :vav-reheat-reheat-coil-return-water-temp ;
-    rdf:_1 :vav-reheat_reheat-coil-return-water-temp-sensor_0_0 .
-
-:vav-reheat-reheat-coil-supply-water-temp-sensor a ns1:Sensor,
-        rdf:Seq ;
-    ns1:hasObservationLocation :vav-reheat-reheat-coil-water-in ;
-    ns1:observes :vav-reheat-reheat-coil-supply-water-temp ;
-    rdf:_1 :vav-reheat_reheat-coil-supply-water-temp-sensor_0_0 .
-
-:vav-reheat-reheat-coil-valve-actuator a ns1:Actuator,
-        rdf:Seq ;
-    ns1:actuatedByProperty :vav-reheat-reheat-coil-valve-command ;
-    ns1:actuates :vav-reheat-reheat-coil-valve ;
-    rdf:_1 :vav-reheat_reheat-coil-valve-actuator_0_0 .
-
-:multiple-zone-ahu-chilled-water-in-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_chilled-water-in-mapsto_0 .
-
-:multiple-zone-ahu-chilled-water-out-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_chilled-water-out-mapsto_0 .
-
-:multiple-zone-ahu-clg-coil a ns1:CoolingCoil,
-        <http://data.ashrae.org/standard223/1.0/extensions/g36#ChilledWaterCoil>,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-clg-coil-air-in,
-        :multiple-zone-ahu-clg-coil-air-out,
-        :multiple-zone-ahu-clg-coil-water-in,
-        :multiple-zone-ahu-clg-coil-water-out ;
-    ns1:hasProperty :multiple-zone-ahu-clg-coil-return-water-temp,
-        :multiple-zone-ahu-clg-coil-supply-water-temp ;
-    ns1:hasRole ns1:Role-Cooling ;
-    rdf:_1 :multiple-zone-ahu_clg-coil_0 .
-
-:multiple-zone-ahu-clg-coil-air-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-after-htg-coil ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-clg-coil-air-in-mapsto ;
-    rdf:_1 :multiple-zone-ahu_clg-coil-air-in_0 .
-
-:multiple-zone-ahu-clg-coil-air-in-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_clg-coil-air-in-mapsto_0 .
-
-:multiple-zone-ahu-clg-coil-air-out a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-after-clg-coil ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-clg-coil-air-out-mapsto ;
-    rdf:_1 :multiple-zone-ahu_clg-coil-air-out_0 .
-
-:multiple-zone-ahu-clg-coil-air-out-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_clg-coil-air-out-mapsto_0 .
-
-:multiple-zone-ahu-clg-coil-valve-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-pipe-chilled-water-return-before-valve ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    ns1:mapsTo :multiple-zone-ahu-clg-coil-valve-in-mapsto ;
-    rdf:_1 :multiple-zone-ahu_clg-coil-valve-in_0 .
-
-:multiple-zone-ahu-clg-coil-valve-in-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_clg-coil-valve-in-mapsto_0 .
-
-:multiple-zone-ahu-clg-coil-valve-out a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-pipe-chilled-water-return-after-valve ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    ns1:mapsTo :multiple-zone-ahu-chilled-water-out,
-        :multiple-zone-ahu-clg-coil-valve-out-mapsto ;
-    rdf:_1 :multiple-zone-ahu_clg-coil-valve-out_0 .
-
-:multiple-zone-ahu-clg-coil-valve-out-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_clg-coil-valve-out-mapsto_0 .
-
-:multiple-zone-ahu-clg-coil-valve-position a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:DimensionlessRatio ;
-    qudt:hasUnit unit:PERCENT ;
-    rdf:_1 :multiple-zone-ahu_clg-coil-valve-position_0 .
-
-:multiple-zone-ahu-clg-coil-water-in-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_clg-coil-water-in-mapsto_0 .
-
-:multiple-zone-ahu-clg-coil-water-out-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_clg-coil-water-out-mapsto_0 .
-
-:multiple-zone-ahu-ea-damper-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-before-ea-damper ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-ea-damper-in-mapsto ;
-    rdf:_1 :multiple-zone-ahu_ea-damper-in_0 .
-
-:multiple-zone-ahu-ea-damper-in-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_ea-damper-in-mapsto_0 .
-
-:multiple-zone-ahu-ea-damper-out a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-ea-out ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-ea-damper-out-mapsto,
-        :multiple-zone-ahu-ea-out ;
-    rdf:_1 :multiple-zone-ahu_ea-damper-out_0 .
-
-:multiple-zone-ahu-ea-damper-out-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_ea-damper-out-mapsto_0 .
-
-:multiple-zone-ahu-ea-damper-position a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:DimensionlessRatio ;
-    qudt:hasUnit unit:PERCENT ;
-    rdf:_1 :multiple-zone-ahu_ea-damper-position_0 .
-
-:multiple-zone-ahu-ea-out-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_ea-out-mapsto_0 .
-
-:multiple-zone-ahu-economizer-oa-damper-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-before-economizer-oa-damper ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-economizer-oa-damper-in-mapsto ;
-    rdf:_1 :multiple-zone-ahu_economizer-oa-damper-in_0 .
-
-:multiple-zone-ahu-economizer-oa-damper-in-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_economizer-oa-damper-in-mapsto_0 .
-
-:multiple-zone-ahu-economizer-oa-damper-out a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-after-economizer-oa-damper ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-economizer-oa-damper-out-mapsto ;
-    rdf:_1 :multiple-zone-ahu_economizer-oa-damper-out_0 .
-
-:multiple-zone-ahu-economizer-oa-damper-out-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_economizer-oa-damper-out-mapsto_0 .
-
-:multiple-zone-ahu-economizer-oa-damper-position a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:DimensionlessRatio ;
-    qudt:hasUnit unit:PERCENT ;
-    rdf:_1 :multiple-zone-ahu_economizer-oa-damper-position_0 .
-
-:multiple-zone-ahu-filter a ns1:Filter,
-        <http://data.ashrae.org/standard223/1.0/extensions/g36#Filter>,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-filter-in,
-        :multiple-zone-ahu-filter-out ;
-    ns1:hasProperty :multiple-zone-ahu-filter-differential-pressure ;
-    rdf:_1 :multiple-zone-ahu_filter_0 .
-
-:multiple-zone-ahu-filter-in-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_filter-in-mapsto_0 .
-
-:multiple-zone-ahu-filter-out-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_filter-out-mapsto_0 .
-
-:multiple-zone-ahu-hot-water-in-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_hot-water-in-mapsto_0 .
-
-:multiple-zone-ahu-hot-water-out-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_hot-water-out-mapsto_0 .
-
-:multiple-zone-ahu-htg-coil a ns1:HeatingCoil,
-        <http://data.ashrae.org/standard223/1.0/extensions/g36#HotWaterCoil>,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-htg-coil-air-in,
-        :multiple-zone-ahu-htg-coil-air-out,
-        :multiple-zone-ahu-htg-coil-water-in,
-        :multiple-zone-ahu-htg-coil-water-out ;
-    ns1:hasProperty :multiple-zone-ahu-htg-coil-return-water-temp,
-        :multiple-zone-ahu-htg-coil-supply-water-temp ;
-    ns1:hasRole ns1:Role-Heating ;
-    rdf:_1 :multiple-zone-ahu_htg-coil_0 .
-
-:multiple-zone-ahu-htg-coil-air-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-after-filter ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-htg-coil-air-in-mapsto ;
-    rdf:_1 :multiple-zone-ahu_htg-coil-air-in_0 .
-
-:multiple-zone-ahu-htg-coil-air-in-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_htg-coil-air-in-mapsto_0 .
-
-:multiple-zone-ahu-htg-coil-air-out a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-after-htg-coil ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:hasProperty :multiple-zone-ahu-heat-coil-air-temp ;
-    ns1:mapsTo :multiple-zone-ahu-htg-coil-air-out-mapsto ;
-    rdf:_1 :multiple-zone-ahu_htg-coil-air-out_0 .
-
-:multiple-zone-ahu-htg-coil-air-out-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_htg-coil-air-out-mapsto_0 .
-
-:multiple-zone-ahu-htg-coil-valve-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-pipe-hot-water-return-before-valve ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    ns1:mapsTo :multiple-zone-ahu-htg-coil-valve-in-mapsto ;
-    rdf:_1 :multiple-zone-ahu_htg-coil-valve-in_0 .
-
-:multiple-zone-ahu-htg-coil-valve-in-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_htg-coil-valve-in-mapsto_0 .
-
-:multiple-zone-ahu-htg-coil-valve-out a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-pipe-hot-water-return-after-valve ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    ns1:mapsTo :multiple-zone-ahu-hot-water-out,
-        :multiple-zone-ahu-htg-coil-valve-out-mapsto ;
-    rdf:_1 :multiple-zone-ahu_htg-coil-valve-out_0 .
-
-:multiple-zone-ahu-htg-coil-valve-out-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_htg-coil-valve-out-mapsto_0 .
-
-:multiple-zone-ahu-htg-coil-valve-position a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:DimensionlessRatio ;
-    qudt:hasUnit unit:PERCENT ;
-    rdf:_1 :multiple-zone-ahu_htg-coil-valve-position_0 .
-
-:multiple-zone-ahu-htg-coil-water-in-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_htg-coil-water-in-mapsto_0 .
-
-:multiple-zone-ahu-htg-coil-water-out-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_htg-coil-water-out-mapsto_0 .
-
-:multiple-zone-ahu-minimum-oa-damper-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-before-minimum-oa-damper ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-minimum-oa-damper-in-mapsto ;
-    rdf:_1 :multiple-zone-ahu_minimum-oa-damper-in_0 .
-
-:multiple-zone-ahu-minimum-oa-damper-in-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_minimum-oa-damper-in-mapsto_0 .
-
-:multiple-zone-ahu-minimum-oa-damper-out-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_minimum-oa-damper-out-mapsto_0 .
-
-:multiple-zone-ahu-minimum-oa-damper-position a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:DimensionlessRatio ;
-    qudt:hasUnit unit:PERCENT ;
-    rdf:_1 :multiple-zone-ahu_minimum-oa-damper-position_0 .
-
-:multiple-zone-ahu-oa-in-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_oa-in-mapsto_0 .
-
-:multiple-zone-ahu-outside-air-junction a ns1:Junction,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-outside-air-junction-in,
-        :multiple-zone-ahu-outside-air-junction-out-1,
-        :multiple-zone-ahu-outside-air-junction-out-2 ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :multiple-zone-ahu_outside-air-junction_0 .
-
-:multiple-zone-ahu-outside-air-junction-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-oa-in ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-oa-in,
-        :multiple-zone-ahu-outside-air-junction-in-mapsto ;
-    rdf:_1 :multiple-zone-ahu_outside-air-junction-in_0 .
-
-:multiple-zone-ahu-outside-air-junction-in-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_outside-air-junction-in-mapsto_0 .
-
-:multiple-zone-ahu-outside-air-junction-out-1 a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-before-minimum-oa-damper ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-outside-air-junction-out-1-mapsto ;
-    rdf:_1 :multiple-zone-ahu_outside-air-junction-out-1_0 .
-
-:multiple-zone-ahu-outside-air-junction-out-1-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_outside-air-junction-out-1-mapsto_0 .
-
-:multiple-zone-ahu-outside-air-junction-out-2 a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-before-economizer-oa-damper ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-outside-air-junction-out-2-mapsto ;
-    rdf:_1 :multiple-zone-ahu_outside-air-junction-out-2_0 .
-
-:multiple-zone-ahu-outside-air-junction-out-2-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_outside-air-junction-out-2-mapsto_0 .
-
-:multiple-zone-ahu-outside-supply-junction a ns1:Junction,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-outside-supply-junction-in-1,
-        :multiple-zone-ahu-outside-supply-junction-in-2,
-        :multiple-zone-ahu-outside-supply-junction-in-3,
-        :multiple-zone-ahu-outside-supply-junction-out ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :multiple-zone-ahu_outside-supply-junction_0 .
-
-:multiple-zone-ahu-outside-supply-junction-in-1 a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-after-ra-damper ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-outside-supply-junction-in-1-mapsto ;
-    rdf:_1 :multiple-zone-ahu_outside-supply-junction-in-1_0 .
-
-:multiple-zone-ahu-outside-supply-junction-in-1-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_outside-supply-junction-in-1-mapsto_0 .
-
-:multiple-zone-ahu-outside-supply-junction-in-2 a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-after-minimum-oa-damper ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-outside-supply-junction-in-2-mapsto ;
-    rdf:_1 :multiple-zone-ahu_outside-supply-junction-in-2_0 .
-
-:multiple-zone-ahu-outside-supply-junction-in-2-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_outside-supply-junction-in-2-mapsto_0 .
-
-:multiple-zone-ahu-outside-supply-junction-in-3 a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-after-economizer-oa-damper ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-outside-supply-junction-in-3-mapsto ;
-    rdf:_1 :multiple-zone-ahu_outside-supply-junction-in-3_0 .
-
-:multiple-zone-ahu-outside-supply-junction-in-3-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_outside-supply-junction-in-3-mapsto_0 .
-
-:multiple-zone-ahu-outside-supply-junction-out a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-before-filter ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-outside-supply-junction-out-mapsto ;
-    rdf:_1 :multiple-zone-ahu_outside-supply-junction-out_0 .
-
-:multiple-zone-ahu-outside-supply-junction-out-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_outside-supply-junction-out-mapsto_0 .
-
-:multiple-zone-ahu-ra-damper-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-before-ra-damper ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-ra-damper-in-mapsto ;
-    rdf:_1 :multiple-zone-ahu_ra-damper-in_0 .
-
-:multiple-zone-ahu-ra-damper-in-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_ra-damper-in-mapsto_0 .
-
-:multiple-zone-ahu-ra-damper-out a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-after-ra-damper ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-ra-damper-out-mapsto ;
-    rdf:_1 :multiple-zone-ahu_ra-damper-out_0 .
-
-:multiple-zone-ahu-ra-damper-out-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_ra-damper-out-mapsto_0 .
-
-:multiple-zone-ahu-ra-damper-position a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:DimensionlessRatio ;
-    qudt:hasUnit unit:PERCENT ;
-    rdf:_1 :multiple-zone-ahu_ra-damper-position_0 .
-
-:multiple-zone-ahu-ra-fan-high-static-reset-cmd a ns1:EnumeratedActuatableProperty,
-        rdf:Seq ;
-    ns1:hasEnumerationKind ns1:EnumerationKind-Binary ;
-    rdf:_1 :multiple-zone-ahu_ra-fan-high-static-reset-cmd_0 .
-
-:multiple-zone-ahu-ra-fan-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-ra-in ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-ra-fan-in-mapsto,
-        :multiple-zone-ahu-ra-in ;
-    rdf:_1 :multiple-zone-ahu_ra-fan-in_0 .
-
-:multiple-zone-ahu-ra-fan-in-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_ra-fan-in-mapsto_0 .
-
-:multiple-zone-ahu-ra-fan-out a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-after-ra-fan ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:hasProperty :multiple-zone-ahu-ra-fan-discharge-static-pressure ;
-    ns1:mapsTo :multiple-zone-ahu-ra-fan-out-mapsto ;
-    rdf:_1 :multiple-zone-ahu_ra-fan-out_0 .
-
-:multiple-zone-ahu-ra-fan-out-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_ra-fan-out-mapsto_0 .
-
-:multiple-zone-ahu-ra-fan-power a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:ElectricPower ;
-    qudt:hasUnit unit:W ;
-    rdf:_1 :multiple-zone-ahu_ra-fan-power_0 .
-
-:multiple-zone-ahu-ra-fan-speed-cmd a ns1:QuantifiableActuatableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:DimensionlessRatio ;
-    qudt:hasUnit unit:PERCENT ;
-    rdf:_1 :multiple-zone-ahu_ra-fan-speed-cmd_0 .
-
-:multiple-zone-ahu-ra-fan-speed-status a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:DimensionlessRatio ;
-    qudt:hasUnit unit:PERCENT ;
-    rdf:_1 :multiple-zone-ahu_ra-fan-speed-status_0 .
-
-:multiple-zone-ahu-ra-fan-start-cmd a ns1:EnumeratedActuatableProperty,
-        rdf:Seq ;
-    ns1:hasEnumerationKind ns1:Binary-OnOff ;
-    rdf:_1 :multiple-zone-ahu_ra-fan-start-cmd_0 .
-
-:multiple-zone-ahu-ra-fan-start-status a ns1:EnumeratedObservableProperty,
-        rdf:Seq ;
-    ns1:hasEnumerationKind ns1:Binary-OnOff ;
-    rdf:_1 :multiple-zone-ahu_ra-fan-start-status_0 .
-
-:multiple-zone-ahu-ra-in-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_ra-in-mapsto_0 .
-
-:multiple-zone-ahu-return-exhaust-junction a ns1:Junction,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-return-exhaust-junction-in,
-        :multiple-zone-ahu-return-exhaust-junction-out-1,
-        :multiple-zone-ahu-return-exhaust-junction-out-2 ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :multiple-zone-ahu_return-exhaust-junction_0 .
-
-:multiple-zone-ahu-return-exhaust-junction-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-after-ra-fan ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-return-exhaust-junction-in-mapsto ;
-    rdf:_1 :multiple-zone-ahu_return-exhaust-junction-in_0 .
-
-:multiple-zone-ahu-return-exhaust-junction-in-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_return-exhaust-junction-in-mapsto_0 .
-
-:multiple-zone-ahu-return-exhaust-junction-out-1 a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-before-ea-damper ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-return-exhaust-junction-out-1-mapsto ;
-    rdf:_1 :multiple-zone-ahu_return-exhaust-junction-out-1_0 .
-
-:multiple-zone-ahu-return-exhaust-junction-out-1-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_return-exhaust-junction-out-1-mapsto_0 .
-
-:multiple-zone-ahu-return-exhaust-junction-out-2 a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-before-ra-damper ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-return-exhaust-junction-out-2-mapsto ;
-    rdf:_1 :multiple-zone-ahu_return-exhaust-junction-out-2_0 .
-
-:multiple-zone-ahu-return-exhaust-junction-out-2-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_return-exhaust-junction-out-2-mapsto_0 .
-
-:multiple-zone-ahu-sa-fan-high-static-reset-cmd a ns1:EnumeratedActuatableProperty,
-        rdf:Seq ;
-    ns1:hasEnumerationKind ns1:EnumerationKind-Binary ;
-    rdf:_1 :multiple-zone-ahu_sa-fan-high-static-reset-cmd_0 .
-
-:multiple-zone-ahu-sa-fan-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-after-clg-coil ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-sa-fan-in-mapsto ;
-    rdf:_1 :multiple-zone-ahu_sa-fan-in_0 .
-
-:multiple-zone-ahu-sa-fan-in-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_sa-fan-in-mapsto_0 .
-
-:multiple-zone-ahu-sa-fan-out a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-sa-out ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-sa-fan-out-mapsto,
-        :multiple-zone-ahu-sa-out ;
-    rdf:_1 :multiple-zone-ahu_sa-fan-out_0 .
-
-:multiple-zone-ahu-sa-fan-out-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_sa-fan-out-mapsto_0 .
-
-:multiple-zone-ahu-sa-fan-power a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:ElectricPower ;
-    qudt:hasUnit unit:W ;
-    rdf:_1 :multiple-zone-ahu_sa-fan-power_0 .
-
-:multiple-zone-ahu-sa-fan-speed-cmd a ns1:QuantifiableActuatableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:DimensionlessRatio ;
-    qudt:hasUnit unit:PERCENT ;
-    rdf:_1 :multiple-zone-ahu_sa-fan-speed-cmd_0 .
-
-:multiple-zone-ahu-sa-fan-speed-status a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:DimensionlessRatio ;
-    qudt:hasUnit unit:PERCENT ;
-    rdf:_1 :multiple-zone-ahu_sa-fan-speed-status_0 .
-
-:multiple-zone-ahu-sa-fan-start-cmd a ns1:EnumeratedActuatableProperty,
-        rdf:Seq ;
-    ns1:hasEnumerationKind ns1:Binary-OnOff ;
-    rdf:_1 :multiple-zone-ahu_sa-fan-start-cmd_0 .
-
-:multiple-zone-ahu-sa-fan-start-status a ns1:EnumeratedObservableProperty,
-        rdf:Seq ;
-    ns1:hasEnumerationKind ns1:Binary-OnOff ;
-    rdf:_1 :multiple-zone-ahu_sa-fan-start-status_0 .
-
-:multiple-zone-ahu-sa-out-mapsto a rdf:Seq ;
-    rdf:_1 :multiple-zone-ahu_sa-out-mapsto_0 .
-
-:multiple-zone-ahu-sa-temp-setpoint a ns1:QuantifiableActuatableProperty,
-        rdf:Seq ;
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix s223: <http://data.ashrae.org/standard223#> .
+
+:vav-cooling-only-zone a s223:DomainSpace,
+        rdf:Seq ;
+    s223:hasDomain s223:Domain-HVAC ;
+    rdfs:member :vav-cooling-only_zone_0_0,
+        :vav-cooling-only_zone_0_1,
+        :vav-cooling-only_zone_0_10,
+        :vav-cooling-only_zone_0_11,
+        :vav-cooling-only_zone_0_12,
+        :vav-cooling-only_zone_0_13,
+        :vav-cooling-only_zone_0_14,
+        :vav-cooling-only_zone_0_2,
+        :vav-cooling-only_zone_0_3,
+        :vav-cooling-only_zone_0_4,
+        :vav-cooling-only_zone_0_5,
+        :vav-cooling-only_zone_0_6,
+        :vav-cooling-only_zone_0_7,
+        :vav-cooling-only_zone_0_8,
+        :vav-cooling-only_zone_0_9,
+        :vav-cooling-only_zone_1_0,
+        :vav-cooling-only_zone_1_1,
+        :vav-cooling-only_zone_1_10,
+        :vav-cooling-only_zone_1_11,
+        :vav-cooling-only_zone_1_12,
+        :vav-cooling-only_zone_1_13,
+        :vav-cooling-only_zone_1_14,
+        :vav-cooling-only_zone_1_2,
+        :vav-cooling-only_zone_1_3,
+        :vav-cooling-only_zone_1_4,
+        :vav-cooling-only_zone_1_5,
+        :vav-cooling-only_zone_1_6,
+        :vav-cooling-only_zone_1_7,
+        :vav-cooling-only_zone_1_8,
+        :vav-cooling-only_zone_1_9,
+        :vav-cooling-only_zone_2_0,
+        :vav-cooling-only_zone_2_1,
+        :vav-cooling-only_zone_2_10,
+        :vav-cooling-only_zone_2_11,
+        :vav-cooling-only_zone_2_12,
+        :vav-cooling-only_zone_2_13,
+        :vav-cooling-only_zone_2_14,
+        :vav-cooling-only_zone_2_2,
+        :vav-cooling-only_zone_2_3,
+        :vav-cooling-only_zone_2_4,
+        :vav-cooling-only_zone_2_5,
+        :vav-cooling-only_zone_2_6,
+        :vav-cooling-only_zone_2_7,
+        :vav-cooling-only_zone_2_8,
+        :vav-cooling-only_zone_2_9,
+        :vav-cooling-only_zone_3_0,
+        :vav-cooling-only_zone_3_1,
+        :vav-cooling-only_zone_3_10,
+        :vav-cooling-only_zone_3_11,
+        :vav-cooling-only_zone_3_12,
+        :vav-cooling-only_zone_3_13,
+        :vav-cooling-only_zone_3_14,
+        :vav-cooling-only_zone_3_2,
+        :vav-cooling-only_zone_3_3,
+        :vav-cooling-only_zone_3_4,
+        :vav-cooling-only_zone_3_5,
+        :vav-cooling-only_zone_3_6,
+        :vav-cooling-only_zone_3_7,
+        :vav-cooling-only_zone_3_8,
+        :vav-cooling-only_zone_3_9 .
+
+:vav-with-reheat-zone a s223:DomainSpace,
+        rdf:Seq ;
+    s223:hasDomain s223:Domain-HVAC ;
+    rdfs:member :vav-with-reheat_name-zone_0_0,
+        :vav-with-reheat_name-zone_0_1,
+        :vav-with-reheat_name-zone_0_10,
+        :vav-with-reheat_name-zone_0_11,
+        :vav-with-reheat_name-zone_0_12,
+        :vav-with-reheat_name-zone_0_13,
+        :vav-with-reheat_name-zone_0_14,
+        :vav-with-reheat_name-zone_0_2,
+        :vav-with-reheat_name-zone_0_3,
+        :vav-with-reheat_name-zone_0_4,
+        :vav-with-reheat_name-zone_0_5,
+        :vav-with-reheat_name-zone_0_6,
+        :vav-with-reheat_name-zone_0_7,
+        :vav-with-reheat_name-zone_0_8,
+        :vav-with-reheat_name-zone_0_9,
+        :vav-with-reheat_name-zone_1_0,
+        :vav-with-reheat_name-zone_1_1,
+        :vav-with-reheat_name-zone_1_10,
+        :vav-with-reheat_name-zone_1_11,
+        :vav-with-reheat_name-zone_1_12,
+        :vav-with-reheat_name-zone_1_13,
+        :vav-with-reheat_name-zone_1_14,
+        :vav-with-reheat_name-zone_1_2,
+        :vav-with-reheat_name-zone_1_3,
+        :vav-with-reheat_name-zone_1_4,
+        :vav-with-reheat_name-zone_1_5,
+        :vav-with-reheat_name-zone_1_6,
+        :vav-with-reheat_name-zone_1_7,
+        :vav-with-reheat_name-zone_1_8,
+        :vav-with-reheat_name-zone_1_9,
+        :vav-with-reheat_name-zone_2_0,
+        :vav-with-reheat_name-zone_2_1,
+        :vav-with-reheat_name-zone_2_10,
+        :vav-with-reheat_name-zone_2_11,
+        :vav-with-reheat_name-zone_2_12,
+        :vav-with-reheat_name-zone_2_13,
+        :vav-with-reheat_name-zone_2_14,
+        :vav-with-reheat_name-zone_2_2,
+        :vav-with-reheat_name-zone_2_3,
+        :vav-with-reheat_name-zone_2_4,
+        :vav-with-reheat_name-zone_2_5,
+        :vav-with-reheat_name-zone_2_6,
+        :vav-with-reheat_name-zone_2_7,
+        :vav-with-reheat_name-zone_2_8,
+        :vav-with-reheat_name-zone_2_9,
+        :vav-with-reheat_name-zone_3_0,
+        :vav-with-reheat_name-zone_3_1,
+        :vav-with-reheat_name-zone_3_10,
+        :vav-with-reheat_name-zone_3_11,
+        :vav-with-reheat_name-zone_3_12,
+        :vav-with-reheat_name-zone_3_13,
+        :vav-with-reheat_name-zone_3_14,
+        :vav-with-reheat_name-zone_3_2,
+        :vav-with-reheat_name-zone_3_3,
+        :vav-with-reheat_name-zone_3_4,
+        :vav-with-reheat_name-zone_3_5,
+        :vav-with-reheat_name-zone_3_6,
+        :vav-with-reheat_name-zone_3_7,
+        :vav-with-reheat_name-zone_3_8,
+        :vav-with-reheat_name-zone_3_9 .
+
+:multiple-zone-ahu-clg_coil a s223:Coil,
+        rdf:Seq ;
+    s223:hasAspect s223:Role-Cooling ;
+    rdfs:member :multiple-zone-ahu_clg_coil_0,
+        :multiple-zone-ahu_clg_coil_1,
+        :multiple-zone-ahu_clg_coil_2,
+        :multiple-zone-ahu_clg_coil_3 .
+
+:multiple-zone-ahu-filter_pd a s223:QuantifiableObservableProperty,
+        rdf:Seq ;
+    s223:hasAspect s223:Aspect-Filter ;
+    s223:hasQuantityKind qudtqk:PressureDifference ;
+    rdfs:member :multiple-zone-ahu_filter_pd_0,
+        :multiple-zone-ahu_filter_pd_1,
+        :multiple-zone-ahu_filter_pd_2,
+        :multiple-zone-ahu_filter_pd_3 .
+
+:multiple-zone-ahu-htg_coil a s223:Coil,
+        rdf:Seq ;
+    s223:hasAspect s223:Role-Heating ;
+    rdfs:member :multiple-zone-ahu_htg_coil_0,
+        :multiple-zone-ahu_htg_coil_1,
+        :multiple-zone-ahu_htg_coil_2,
+        :multiple-zone-ahu_htg_coil_3 .
+
+:multiple-zone-ahu-ma_temp a s223:QuantifiableObservableProperty,
+        rdf:Seq ;
+    s223:hasQuantityKind qudtqk:Temperature ;
+    rdfs:member :multiple-zone-ahu_ma_temp_0,
+        :multiple-zone-ahu_ma_temp_1,
+        :multiple-zone-ahu_ma_temp_2,
+        :multiple-zone-ahu_ma_temp_3 .
+
+:multiple-zone-ahu-name a s223:AirHandlingUnit,
+        rdf:Seq ;
+    s223:cnx :multiple-zone-ahu-name_out ;
+    s223:connectsTo :vav-cooling-only-name,
+        :vav-with-reheat-name ;
+    s223:contains :multiple-zone-ahu-clg_coil,
+        :multiple-zone-ahu-htg_coil,
+        :multiple-zone-ahu-ra_damper,
+        :multiple-zone-ahu-sa_fan ;
+    s223:hasProperty :multiple-zone-ahu-filter_pd,
+        :multiple-zone-ahu-ma_temp,
+        :multiple-zone-ahu-oa_temp,
+        :multiple-zone-ahu-ra_temp,
+        :multiple-zone-ahu-sa_temp ;
+    rdfs:member :multiple-zone-ahu_name_0,
+        :multiple-zone-ahu_name_1,
+        :multiple-zone-ahu_name_2,
+        :multiple-zone-ahu_name_3 .
+
+:multiple-zone-ahu-oa_temp a s223:QuantifiableObservableProperty,
+        rdf:Seq ;
+    s223:hasAspect s223:Role-OutdoorAirIntake ;
+    s223:hasQuantityKind qudtqk:Temperature ;
+    rdfs:member :multiple-zone-ahu_oa_temp_0,
+        :multiple-zone-ahu_oa_temp_1,
+        :multiple-zone-ahu_oa_temp_2,
+        :multiple-zone-ahu_oa_temp_3 .
+
+:multiple-zone-ahu-ra_damper a s223:Damper,
+        rdf:Seq ;
+    s223:hasProperty :multiple-zone-ahu-ra_damper-dmppos ;
+    rdfs:member :multiple-zone-ahu_ra_damper_0,
+        :multiple-zone-ahu_ra_damper_1,
+        :multiple-zone-ahu_ra_damper_2,
+        :multiple-zone-ahu_ra_damper_3 .
+
+:multiple-zone-ahu-ra_damper-dmppos a s223:QuantifiableActuatableProperty,
+        rdf:Seq ;
+    s223:hasQuantityKind qudtqk:PositionRatio ;
+    rdfs:member :multiple-zone-ahu_ra_damper-dmppos_0,
+        :multiple-zone-ahu_ra_damper-dmppos_1,
+        :multiple-zone-ahu_ra_damper-dmppos_2,
+        :multiple-zone-ahu_ra_damper-dmppos_3 .
+
+:multiple-zone-ahu-ra_temp a s223:QuantifiableObservableProperty,
+        rdf:Seq ;
+    s223:hasAspect s223:Role-Return ;
+    s223:hasQuantityKind qudtqk:Temperature ;
+    rdfs:member :multiple-zone-ahu_ra_temp_0,
+        :multiple-zone-ahu_ra_temp_1,
+        :multiple-zone-ahu_ra_temp_2,
+        :multiple-zone-ahu_ra_temp_3 .
+
+:multiple-zone-ahu-sa_fan a s223:Fan,
+        rdf:Seq ;
+    s223:hasAspect s223:Role-SupplyAir ;
+    rdfs:member :multiple-zone-ahu_sa_fan_0,
+        :multiple-zone-ahu_sa_fan_1,
+        :multiple-zone-ahu_sa_fan_2,
+        :multiple-zone-ahu_sa_fan_3 .
+
+:multiple-zone-ahu-sa_temp a s223:QuantifiableObservableProperty,
+        rdf:Seq ;
+    s223:hasAspect s223:Role-Supply ;
+    s223:hasQuantityKind qudtqk:Temperature ;
+    rdfs:member :multiple-zone-ahu_sa_temp_0,
+        :multiple-zone-ahu_sa_temp_1,
+        :multiple-zone-ahu_sa_temp_2,
+        :multiple-zone-ahu_sa_temp_3 .
+
+:vav-cooling-only-air-inlet-connectionpoint a s223:InletConnectionPoint,
+        rdf:Seq ;
+    s223:cnx :vav-cooling-only-name ;
+    s223:hasMedium s223:Medium-Air ;
+    rdfs:member :vav-cooling-only_air-inlet-connectionpoint_0_0,
+        :vav-cooling-only_air-inlet-connectionpoint_0_1,
+        :vav-cooling-only_air-inlet-connectionpoint_0_10,
+        :vav-cooling-only_air-inlet-connectionpoint_0_11,
+        :vav-cooling-only_air-inlet-connectionpoint_0_12,
+        :vav-cooling-only_air-inlet-connectionpoint_0_13,
+        :vav-cooling-only_air-inlet-connectionpoint_0_14,
+        :vav-cooling-only_air-inlet-connectionpoint_0_2,
+        :vav-cooling-only_air-inlet-connectionpoint_0_3,
+        :vav-cooling-only_air-inlet-connectionpoint_0_4,
+        :vav-cooling-only_air-inlet-connectionpoint_0_5,
+        :vav-cooling-only_air-inlet-connectionpoint_0_6,
+        :vav-cooling-only_air-inlet-connectionpoint_0_7,
+        :vav-cooling-only_air-inlet-connectionpoint_0_8,
+        :vav-cooling-only_air-inlet-connectionpoint_0_9,
+        :vav-cooling-only_air-inlet-connectionpoint_1_0,
+        :vav-cooling-only_air-inlet-connectionpoint_1_1,
+        :vav-cooling-only_air-inlet-connectionpoint_1_10,
+        :vav-cooling-only_air-inlet-connectionpoint_1_11,
+        :vav-cooling-only_air-inlet-connectionpoint_1_12,
+        :vav-cooling-only_air-inlet-connectionpoint_1_13,
+        :vav-cooling-only_air-inlet-connectionpoint_1_14,
+        :vav-cooling-only_air-inlet-connectionpoint_1_2,
+        :vav-cooling-only_air-inlet-connectionpoint_1_3,
+        :vav-cooling-only_air-inlet-connectionpoint_1_4,
+        :vav-cooling-only_air-inlet-connectionpoint_1_5,
+        :vav-cooling-only_air-inlet-connectionpoint_1_6,
+        :vav-cooling-only_air-inlet-connectionpoint_1_7,
+        :vav-cooling-only_air-inlet-connectionpoint_1_8,
+        :vav-cooling-only_air-inlet-connectionpoint_1_9,
+        :vav-cooling-only_air-inlet-connectionpoint_2_0,
+        :vav-cooling-only_air-inlet-connectionpoint_2_1,
+        :vav-cooling-only_air-inlet-connectionpoint_2_10,
+        :vav-cooling-only_air-inlet-connectionpoint_2_11,
+        :vav-cooling-only_air-inlet-connectionpoint_2_12,
+        :vav-cooling-only_air-inlet-connectionpoint_2_13,
+        :vav-cooling-only_air-inlet-connectionpoint_2_14,
+        :vav-cooling-only_air-inlet-connectionpoint_2_2,
+        :vav-cooling-only_air-inlet-connectionpoint_2_3,
+        :vav-cooling-only_air-inlet-connectionpoint_2_4,
+        :vav-cooling-only_air-inlet-connectionpoint_2_5,
+        :vav-cooling-only_air-inlet-connectionpoint_2_6,
+        :vav-cooling-only_air-inlet-connectionpoint_2_7,
+        :vav-cooling-only_air-inlet-connectionpoint_2_8,
+        :vav-cooling-only_air-inlet-connectionpoint_2_9,
+        :vav-cooling-only_air-inlet-connectionpoint_3_0,
+        :vav-cooling-only_air-inlet-connectionpoint_3_1,
+        :vav-cooling-only_air-inlet-connectionpoint_3_10,
+        :vav-cooling-only_air-inlet-connectionpoint_3_11,
+        :vav-cooling-only_air-inlet-connectionpoint_3_12,
+        :vav-cooling-only_air-inlet-connectionpoint_3_13,
+        :vav-cooling-only_air-inlet-connectionpoint_3_14,
+        :vav-cooling-only_air-inlet-connectionpoint_3_2,
+        :vav-cooling-only_air-inlet-connectionpoint_3_3,
+        :vav-cooling-only_air-inlet-connectionpoint_3_4,
+        :vav-cooling-only_air-inlet-connectionpoint_3_5,
+        :vav-cooling-only_air-inlet-connectionpoint_3_6,
+        :vav-cooling-only_air-inlet-connectionpoint_3_7,
+        :vav-cooling-only_air-inlet-connectionpoint_3_8,
+        :vav-cooling-only_air-inlet-connectionpoint_3_9 .
+
+:vav-cooling-only-air-outlet-connectionpoint a s223:OutletConnectionPoint,
+        rdf:Seq ;
+    s223:cnx :vav-cooling-only-name ;
+    s223:hasMedium s223:Medium-Air ;
+    s223:hasProperty :vav-cooling-only-dat ;
+    rdfs:member :vav-cooling-only_air-outlet-connectionpoint_0_0,
+        :vav-cooling-only_air-outlet-connectionpoint_0_1,
+        :vav-cooling-only_air-outlet-connectionpoint_0_10,
+        :vav-cooling-only_air-outlet-connectionpoint_0_11,
+        :vav-cooling-only_air-outlet-connectionpoint_0_12,
+        :vav-cooling-only_air-outlet-connectionpoint_0_13,
+        :vav-cooling-only_air-outlet-connectionpoint_0_14,
+        :vav-cooling-only_air-outlet-connectionpoint_0_2,
+        :vav-cooling-only_air-outlet-connectionpoint_0_3,
+        :vav-cooling-only_air-outlet-connectionpoint_0_4,
+        :vav-cooling-only_air-outlet-connectionpoint_0_5,
+        :vav-cooling-only_air-outlet-connectionpoint_0_6,
+        :vav-cooling-only_air-outlet-connectionpoint_0_7,
+        :vav-cooling-only_air-outlet-connectionpoint_0_8,
+        :vav-cooling-only_air-outlet-connectionpoint_0_9,
+        :vav-cooling-only_air-outlet-connectionpoint_1_0,
+        :vav-cooling-only_air-outlet-connectionpoint_1_1,
+        :vav-cooling-only_air-outlet-connectionpoint_1_10,
+        :vav-cooling-only_air-outlet-connectionpoint_1_11,
+        :vav-cooling-only_air-outlet-connectionpoint_1_12,
+        :vav-cooling-only_air-outlet-connectionpoint_1_13,
+        :vav-cooling-only_air-outlet-connectionpoint_1_14,
+        :vav-cooling-only_air-outlet-connectionpoint_1_2,
+        :vav-cooling-only_air-outlet-connectionpoint_1_3,
+        :vav-cooling-only_air-outlet-connectionpoint_1_4,
+        :vav-cooling-only_air-outlet-connectionpoint_1_5,
+        :vav-cooling-only_air-outlet-connectionpoint_1_6,
+        :vav-cooling-only_air-outlet-connectionpoint_1_7,
+        :vav-cooling-only_air-outlet-connectionpoint_1_8,
+        :vav-cooling-only_air-outlet-connectionpoint_1_9,
+        :vav-cooling-only_air-outlet-connectionpoint_2_0,
+        :vav-cooling-only_air-outlet-connectionpoint_2_1,
+        :vav-cooling-only_air-outlet-connectionpoint_2_10,
+        :vav-cooling-only_air-outlet-connectionpoint_2_11,
+        :vav-cooling-only_air-outlet-connectionpoint_2_12,
+        :vav-cooling-only_air-outlet-connectionpoint_2_13,
+        :vav-cooling-only_air-outlet-connectionpoint_2_14,
+        :vav-cooling-only_air-outlet-connectionpoint_2_2,
+        :vav-cooling-only_air-outlet-connectionpoint_2_3,
+        :vav-cooling-only_air-outlet-connectionpoint_2_4,
+        :vav-cooling-only_air-outlet-connectionpoint_2_5,
+        :vav-cooling-only_air-outlet-connectionpoint_2_6,
+        :vav-cooling-only_air-outlet-connectionpoint_2_7,
+        :vav-cooling-only_air-outlet-connectionpoint_2_8,
+        :vav-cooling-only_air-outlet-connectionpoint_2_9,
+        :vav-cooling-only_air-outlet-connectionpoint_3_0,
+        :vav-cooling-only_air-outlet-connectionpoint_3_1,
+        :vav-cooling-only_air-outlet-connectionpoint_3_10,
+        :vav-cooling-only_air-outlet-connectionpoint_3_11,
+        :vav-cooling-only_air-outlet-connectionpoint_3_12,
+        :vav-cooling-only_air-outlet-connectionpoint_3_13,
+        :vav-cooling-only_air-outlet-connectionpoint_3_14,
+        :vav-cooling-only_air-outlet-connectionpoint_3_2,
+        :vav-cooling-only_air-outlet-connectionpoint_3_3,
+        :vav-cooling-only_air-outlet-connectionpoint_3_4,
+        :vav-cooling-only_air-outlet-connectionpoint_3_5,
+        :vav-cooling-only_air-outlet-connectionpoint_3_6,
+        :vav-cooling-only_air-outlet-connectionpoint_3_7,
+        :vav-cooling-only_air-outlet-connectionpoint_3_8,
+        :vav-cooling-only_air-outlet-connectionpoint_3_9 .
+
+:vav-cooling-only-co2 a s223:QuantifiableObservableProperty,
+        rdf:Seq ;
+    s223:hasQuantityKind qudtqk:Concentration ;
+    s223:ofConstituent s223:Constituent-CO2 ;
+    s223:ofMedium s223:Medium-Air ;
+    rdfs:member :vav-cooling-only_co2_0_0,
+        :vav-cooling-only_co2_0_1,
+        :vav-cooling-only_co2_0_10,
+        :vav-cooling-only_co2_0_11,
+        :vav-cooling-only_co2_0_12,
+        :vav-cooling-only_co2_0_13,
+        :vav-cooling-only_co2_0_14,
+        :vav-cooling-only_co2_0_2,
+        :vav-cooling-only_co2_0_3,
+        :vav-cooling-only_co2_0_4,
+        :vav-cooling-only_co2_0_5,
+        :vav-cooling-only_co2_0_6,
+        :vav-cooling-only_co2_0_7,
+        :vav-cooling-only_co2_0_8,
+        :vav-cooling-only_co2_0_9,
+        :vav-cooling-only_co2_1_0,
+        :vav-cooling-only_co2_1_1,
+        :vav-cooling-only_co2_1_10,
+        :vav-cooling-only_co2_1_11,
+        :vav-cooling-only_co2_1_12,
+        :vav-cooling-only_co2_1_13,
+        :vav-cooling-only_co2_1_14,
+        :vav-cooling-only_co2_1_2,
+        :vav-cooling-only_co2_1_3,
+        :vav-cooling-only_co2_1_4,
+        :vav-cooling-only_co2_1_5,
+        :vav-cooling-only_co2_1_6,
+        :vav-cooling-only_co2_1_7,
+        :vav-cooling-only_co2_1_8,
+        :vav-cooling-only_co2_1_9,
+        :vav-cooling-only_co2_2_0,
+        :vav-cooling-only_co2_2_1,
+        :vav-cooling-only_co2_2_10,
+        :vav-cooling-only_co2_2_11,
+        :vav-cooling-only_co2_2_12,
+        :vav-cooling-only_co2_2_13,
+        :vav-cooling-only_co2_2_14,
+        :vav-cooling-only_co2_2_2,
+        :vav-cooling-only_co2_2_3,
+        :vav-cooling-only_co2_2_4,
+        :vav-cooling-only_co2_2_5,
+        :vav-cooling-only_co2_2_6,
+        :vav-cooling-only_co2_2_7,
+        :vav-cooling-only_co2_2_8,
+        :vav-cooling-only_co2_2_9,
+        :vav-cooling-only_co2_3_0,
+        :vav-cooling-only_co2_3_1,
+        :vav-cooling-only_co2_3_10,
+        :vav-cooling-only_co2_3_11,
+        :vav-cooling-only_co2_3_12,
+        :vav-cooling-only_co2_3_13,
+        :vav-cooling-only_co2_3_14,
+        :vav-cooling-only_co2_3_2,
+        :vav-cooling-only_co2_3_3,
+        :vav-cooling-only_co2_3_4,
+        :vav-cooling-only_co2_3_5,
+        :vav-cooling-only_co2_3_6,
+        :vav-cooling-only_co2_3_7,
+        :vav-cooling-only_co2_3_8,
+        :vav-cooling-only_co2_3_9 .
+
+:vav-cooling-only-dat a s223:QuantifiableObservableProperty,
+        rdf:Seq ;
+    s223:hasAspect s223:Role-Discharge ;
+    s223:hasQuantityKind qudtqk:Temperature ;
+    rdfs:member :vav-cooling-only_dat_0_0,
+        :vav-cooling-only_dat_0_1,
+        :vav-cooling-only_dat_0_10,
+        :vav-cooling-only_dat_0_11,
+        :vav-cooling-only_dat_0_12,
+        :vav-cooling-only_dat_0_13,
+        :vav-cooling-only_dat_0_14,
+        :vav-cooling-only_dat_0_2,
+        :vav-cooling-only_dat_0_3,
+        :vav-cooling-only_dat_0_4,
+        :vav-cooling-only_dat_0_5,
+        :vav-cooling-only_dat_0_6,
+        :vav-cooling-only_dat_0_7,
+        :vav-cooling-only_dat_0_8,
+        :vav-cooling-only_dat_0_9,
+        :vav-cooling-only_dat_1_0,
+        :vav-cooling-only_dat_1_1,
+        :vav-cooling-only_dat_1_10,
+        :vav-cooling-only_dat_1_11,
+        :vav-cooling-only_dat_1_12,
+        :vav-cooling-only_dat_1_13,
+        :vav-cooling-only_dat_1_14,
+        :vav-cooling-only_dat_1_2,
+        :vav-cooling-only_dat_1_3,
+        :vav-cooling-only_dat_1_4,
+        :vav-cooling-only_dat_1_5,
+        :vav-cooling-only_dat_1_6,
+        :vav-cooling-only_dat_1_7,
+        :vav-cooling-only_dat_1_8,
+        :vav-cooling-only_dat_1_9,
+        :vav-cooling-only_dat_2_0,
+        :vav-cooling-only_dat_2_1,
+        :vav-cooling-only_dat_2_10,
+        :vav-cooling-only_dat_2_11,
+        :vav-cooling-only_dat_2_12,
+        :vav-cooling-only_dat_2_13,
+        :vav-cooling-only_dat_2_14,
+        :vav-cooling-only_dat_2_2,
+        :vav-cooling-only_dat_2_3,
+        :vav-cooling-only_dat_2_4,
+        :vav-cooling-only_dat_2_5,
+        :vav-cooling-only_dat_2_6,
+        :vav-cooling-only_dat_2_7,
+        :vav-cooling-only_dat_2_8,
+        :vav-cooling-only_dat_2_9,
+        :vav-cooling-only_dat_3_0,
+        :vav-cooling-only_dat_3_1,
+        :vav-cooling-only_dat_3_10,
+        :vav-cooling-only_dat_3_11,
+        :vav-cooling-only_dat_3_12,
+        :vav-cooling-only_dat_3_13,
+        :vav-cooling-only_dat_3_14,
+        :vav-cooling-only_dat_3_2,
+        :vav-cooling-only_dat_3_3,
+        :vav-cooling-only_dat_3_4,
+        :vav-cooling-only_dat_3_5,
+        :vav-cooling-only_dat_3_6,
+        :vav-cooling-only_dat_3_7,
+        :vav-cooling-only_dat_3_8,
+        :vav-cooling-only_dat_3_9 .
+
+:vav-cooling-only-dmp a s223:Damper,
+        rdf:Seq ;
+    s223:hasProperty :vav-cooling-only-dmp-dmppos ;
+    rdfs:member :vav-cooling-only_dmp_0_0,
+        :vav-cooling-only_dmp_0_1,
+        :vav-cooling-only_dmp_0_10,
+        :vav-cooling-only_dmp_0_11,
+        :vav-cooling-only_dmp_0_12,
+        :vav-cooling-only_dmp_0_13,
+        :vav-cooling-only_dmp_0_14,
+        :vav-cooling-only_dmp_0_2,
+        :vav-cooling-only_dmp_0_3,
+        :vav-cooling-only_dmp_0_4,
+        :vav-cooling-only_dmp_0_5,
+        :vav-cooling-only_dmp_0_6,
+        :vav-cooling-only_dmp_0_7,
+        :vav-cooling-only_dmp_0_8,
+        :vav-cooling-only_dmp_0_9,
+        :vav-cooling-only_dmp_1_0,
+        :vav-cooling-only_dmp_1_1,
+        :vav-cooling-only_dmp_1_10,
+        :vav-cooling-only_dmp_1_11,
+        :vav-cooling-only_dmp_1_12,
+        :vav-cooling-only_dmp_1_13,
+        :vav-cooling-only_dmp_1_14,
+        :vav-cooling-only_dmp_1_2,
+        :vav-cooling-only_dmp_1_3,
+        :vav-cooling-only_dmp_1_4,
+        :vav-cooling-only_dmp_1_5,
+        :vav-cooling-only_dmp_1_6,
+        :vav-cooling-only_dmp_1_7,
+        :vav-cooling-only_dmp_1_8,
+        :vav-cooling-only_dmp_1_9,
+        :vav-cooling-only_dmp_2_0,
+        :vav-cooling-only_dmp_2_1,
+        :vav-cooling-only_dmp_2_10,
+        :vav-cooling-only_dmp_2_11,
+        :vav-cooling-only_dmp_2_12,
+        :vav-cooling-only_dmp_2_13,
+        :vav-cooling-only_dmp_2_14,
+        :vav-cooling-only_dmp_2_2,
+        :vav-cooling-only_dmp_2_3,
+        :vav-cooling-only_dmp_2_4,
+        :vav-cooling-only_dmp_2_5,
+        :vav-cooling-only_dmp_2_6,
+        :vav-cooling-only_dmp_2_7,
+        :vav-cooling-only_dmp_2_8,
+        :vav-cooling-only_dmp_2_9,
+        :vav-cooling-only_dmp_3_0,
+        :vav-cooling-only_dmp_3_1,
+        :vav-cooling-only_dmp_3_10,
+        :vav-cooling-only_dmp_3_11,
+        :vav-cooling-only_dmp_3_12,
+        :vav-cooling-only_dmp_3_13,
+        :vav-cooling-only_dmp_3_14,
+        :vav-cooling-only_dmp_3_2,
+        :vav-cooling-only_dmp_3_3,
+        :vav-cooling-only_dmp_3_4,
+        :vav-cooling-only_dmp_3_5,
+        :vav-cooling-only_dmp_3_6,
+        :vav-cooling-only_dmp_3_7,
+        :vav-cooling-only_dmp_3_8,
+        :vav-cooling-only_dmp_3_9 .
+
+:vav-cooling-only-dmp-dmppos a s223:QuantifiableActuatableProperty,
+        rdf:Seq ;
+    s223:hasQuantityKind qudtqk:PositionRatio ;
+    rdfs:member :vav-cooling-only_dmp-dmppos_0_0,
+        :vav-cooling-only_dmp-dmppos_0_1,
+        :vav-cooling-only_dmp-dmppos_0_10,
+        :vav-cooling-only_dmp-dmppos_0_11,
+        :vav-cooling-only_dmp-dmppos_0_12,
+        :vav-cooling-only_dmp-dmppos_0_13,
+        :vav-cooling-only_dmp-dmppos_0_14,
+        :vav-cooling-only_dmp-dmppos_0_2,
+        :vav-cooling-only_dmp-dmppos_0_3,
+        :vav-cooling-only_dmp-dmppos_0_4,
+        :vav-cooling-only_dmp-dmppos_0_5,
+        :vav-cooling-only_dmp-dmppos_0_6,
+        :vav-cooling-only_dmp-dmppos_0_7,
+        :vav-cooling-only_dmp-dmppos_0_8,
+        :vav-cooling-only_dmp-dmppos_0_9,
+        :vav-cooling-only_dmp-dmppos_1_0,
+        :vav-cooling-only_dmp-dmppos_1_1,
+        :vav-cooling-only_dmp-dmppos_1_10,
+        :vav-cooling-only_dmp-dmppos_1_11,
+        :vav-cooling-only_dmp-dmppos_1_12,
+        :vav-cooling-only_dmp-dmppos_1_13,
+        :vav-cooling-only_dmp-dmppos_1_14,
+        :vav-cooling-only_dmp-dmppos_1_2,
+        :vav-cooling-only_dmp-dmppos_1_3,
+        :vav-cooling-only_dmp-dmppos_1_4,
+        :vav-cooling-only_dmp-dmppos_1_5,
+        :vav-cooling-only_dmp-dmppos_1_6,
+        :vav-cooling-only_dmp-dmppos_1_7,
+        :vav-cooling-only_dmp-dmppos_1_8,
+        :vav-cooling-only_dmp-dmppos_1_9,
+        :vav-cooling-only_dmp-dmppos_2_0,
+        :vav-cooling-only_dmp-dmppos_2_1,
+        :vav-cooling-only_dmp-dmppos_2_10,
+        :vav-cooling-only_dmp-dmppos_2_11,
+        :vav-cooling-only_dmp-dmppos_2_12,
+        :vav-cooling-only_dmp-dmppos_2_13,
+        :vav-cooling-only_dmp-dmppos_2_14,
+        :vav-cooling-only_dmp-dmppos_2_2,
+        :vav-cooling-only_dmp-dmppos_2_3,
+        :vav-cooling-only_dmp-dmppos_2_4,
+        :vav-cooling-only_dmp-dmppos_2_5,
+        :vav-cooling-only_dmp-dmppos_2_6,
+        :vav-cooling-only_dmp-dmppos_2_7,
+        :vav-cooling-only_dmp-dmppos_2_8,
+        :vav-cooling-only_dmp-dmppos_2_9,
+        :vav-cooling-only_dmp-dmppos_3_0,
+        :vav-cooling-only_dmp-dmppos_3_1,
+        :vav-cooling-only_dmp-dmppos_3_10,
+        :vav-cooling-only_dmp-dmppos_3_11,
+        :vav-cooling-only_dmp-dmppos_3_12,
+        :vav-cooling-only_dmp-dmppos_3_13,
+        :vav-cooling-only_dmp-dmppos_3_14,
+        :vav-cooling-only_dmp-dmppos_3_2,
+        :vav-cooling-only_dmp-dmppos_3_3,
+        :vav-cooling-only_dmp-dmppos_3_4,
+        :vav-cooling-only_dmp-dmppos_3_5,
+        :vav-cooling-only_dmp-dmppos_3_6,
+        :vav-cooling-only_dmp-dmppos_3_7,
+        :vav-cooling-only_dmp-dmppos_3_8,
+        :vav-cooling-only_dmp-dmppos_3_9 .
+
+:vav-cooling-only-occ a s223:QuantifiableObservableProperty,
+        rdf:Seq ;
+    s223:hasEnumerationKind s223:EnumerationKind-Occupancy ;
+    rdfs:member :vav-cooling-only_occ_0_0,
+        :vav-cooling-only_occ_0_1,
+        :vav-cooling-only_occ_0_10,
+        :vav-cooling-only_occ_0_11,
+        :vav-cooling-only_occ_0_12,
+        :vav-cooling-only_occ_0_13,
+        :vav-cooling-only_occ_0_14,
+        :vav-cooling-only_occ_0_2,
+        :vav-cooling-only_occ_0_3,
+        :vav-cooling-only_occ_0_4,
+        :vav-cooling-only_occ_0_5,
+        :vav-cooling-only_occ_0_6,
+        :vav-cooling-only_occ_0_7,
+        :vav-cooling-only_occ_0_8,
+        :vav-cooling-only_occ_0_9,
+        :vav-cooling-only_occ_1_0,
+        :vav-cooling-only_occ_1_1,
+        :vav-cooling-only_occ_1_10,
+        :vav-cooling-only_occ_1_11,
+        :vav-cooling-only_occ_1_12,
+        :vav-cooling-only_occ_1_13,
+        :vav-cooling-only_occ_1_14,
+        :vav-cooling-only_occ_1_2,
+        :vav-cooling-only_occ_1_3,
+        :vav-cooling-only_occ_1_4,
+        :vav-cooling-only_occ_1_5,
+        :vav-cooling-only_occ_1_6,
+        :vav-cooling-only_occ_1_7,
+        :vav-cooling-only_occ_1_8,
+        :vav-cooling-only_occ_1_9,
+        :vav-cooling-only_occ_2_0,
+        :vav-cooling-only_occ_2_1,
+        :vav-cooling-only_occ_2_10,
+        :vav-cooling-only_occ_2_11,
+        :vav-cooling-only_occ_2_12,
+        :vav-cooling-only_occ_2_13,
+        :vav-cooling-only_occ_2_14,
+        :vav-cooling-only_occ_2_2,
+        :vav-cooling-only_occ_2_3,
+        :vav-cooling-only_occ_2_4,
+        :vav-cooling-only_occ_2_5,
+        :vav-cooling-only_occ_2_6,
+        :vav-cooling-only_occ_2_7,
+        :vav-cooling-only_occ_2_8,
+        :vav-cooling-only_occ_2_9,
+        :vav-cooling-only_occ_3_0,
+        :vav-cooling-only_occ_3_1,
+        :vav-cooling-only_occ_3_10,
+        :vav-cooling-only_occ_3_11,
+        :vav-cooling-only_occ_3_12,
+        :vav-cooling-only_occ_3_13,
+        :vav-cooling-only_occ_3_14,
+        :vav-cooling-only_occ_3_2,
+        :vav-cooling-only_occ_3_3,
+        :vav-cooling-only_occ_3_4,
+        :vav-cooling-only_occ_3_5,
+        :vav-cooling-only_occ_3_6,
+        :vav-cooling-only_occ_3_7,
+        :vav-cooling-only_occ_3_8,
+        :vav-cooling-only_occ_3_9 .
+
+:vav-cooling-only-ztemp a s223:QuantifiableObservableProperty,
+        rdf:Seq ;
+    s223:hasAspect s223:Aspect-Setpoint ;
     qudt:hasQuantityKind qudtqk:Temperature ;
-    qudt:hasUnit unit:DEG_C ;
-    rdf:_1 :multiple-zone-ahu_sa-temp-setpoint_0 .
+    rdfs:member :vav-cooling-only_ztemp_0_0,
+        :vav-cooling-only_ztemp_0_1,
+        :vav-cooling-only_ztemp_0_10,
+        :vav-cooling-only_ztemp_0_11,
+        :vav-cooling-only_ztemp_0_12,
+        :vav-cooling-only_ztemp_0_13,
+        :vav-cooling-only_ztemp_0_14,
+        :vav-cooling-only_ztemp_0_2,
+        :vav-cooling-only_ztemp_0_3,
+        :vav-cooling-only_ztemp_0_4,
+        :vav-cooling-only_ztemp_0_5,
+        :vav-cooling-only_ztemp_0_6,
+        :vav-cooling-only_ztemp_0_7,
+        :vav-cooling-only_ztemp_0_8,
+        :vav-cooling-only_ztemp_0_9,
+        :vav-cooling-only_ztemp_1_0,
+        :vav-cooling-only_ztemp_1_1,
+        :vav-cooling-only_ztemp_1_10,
+        :vav-cooling-only_ztemp_1_11,
+        :vav-cooling-only_ztemp_1_12,
+        :vav-cooling-only_ztemp_1_13,
+        :vav-cooling-only_ztemp_1_14,
+        :vav-cooling-only_ztemp_1_2,
+        :vav-cooling-only_ztemp_1_3,
+        :vav-cooling-only_ztemp_1_4,
+        :vav-cooling-only_ztemp_1_5,
+        :vav-cooling-only_ztemp_1_6,
+        :vav-cooling-only_ztemp_1_7,
+        :vav-cooling-only_ztemp_1_8,
+        :vav-cooling-only_ztemp_1_9,
+        :vav-cooling-only_ztemp_2_0,
+        :vav-cooling-only_ztemp_2_1,
+        :vav-cooling-only_ztemp_2_10,
+        :vav-cooling-only_ztemp_2_11,
+        :vav-cooling-only_ztemp_2_12,
+        :vav-cooling-only_ztemp_2_13,
+        :vav-cooling-only_ztemp_2_14,
+        :vav-cooling-only_ztemp_2_2,
+        :vav-cooling-only_ztemp_2_3,
+        :vav-cooling-only_ztemp_2_4,
+        :vav-cooling-only_ztemp_2_5,
+        :vav-cooling-only_ztemp_2_6,
+        :vav-cooling-only_ztemp_2_7,
+        :vav-cooling-only_ztemp_2_8,
+        :vav-cooling-only_ztemp_2_9,
+        :vav-cooling-only_ztemp_3_0,
+        :vav-cooling-only_ztemp_3_1,
+        :vav-cooling-only_ztemp_3_10,
+        :vav-cooling-only_ztemp_3_11,
+        :vav-cooling-only_ztemp_3_12,
+        :vav-cooling-only_ztemp_3_13,
+        :vav-cooling-only_ztemp_3_14,
+        :vav-cooling-only_ztemp_3_2,
+        :vav-cooling-only_ztemp_3_3,
+        :vav-cooling-only_ztemp_3_4,
+        :vav-cooling-only_ztemp_3_5,
+        :vav-cooling-only_ztemp_3_6,
+        :vav-cooling-only_ztemp_3_7,
+        :vav-cooling-only_ztemp_3_8,
+        :vav-cooling-only_ztemp_3_9 .
 
-:multiple-zone-ahu-supply-duct-static-pressure-setpoint a ns1:QuantifiableActuatableProperty,
+:vav-with-reheat-air-inlet-connectionpoint a s223:InletConnectionPoint,
         rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:Pressure ;
-    qudt:hasUnit unit:IN_H2O ;
-    rdf:_1 :multiple-zone-ahu_supply-duct-static-pressure-setpoint_0 .
+    s223:cnx :vav-with-reheat-name ;
+    s223:hasMedium s223:Medium-Air ;
+    rdfs:member :vav-with-reheat_name-air-inlet-connectionpoint_0_0,
+        :vav-with-reheat_name-air-inlet-connectionpoint_0_1,
+        :vav-with-reheat_name-air-inlet-connectionpoint_0_10,
+        :vav-with-reheat_name-air-inlet-connectionpoint_0_11,
+        :vav-with-reheat_name-air-inlet-connectionpoint_0_12,
+        :vav-with-reheat_name-air-inlet-connectionpoint_0_13,
+        :vav-with-reheat_name-air-inlet-connectionpoint_0_14,
+        :vav-with-reheat_name-air-inlet-connectionpoint_0_2,
+        :vav-with-reheat_name-air-inlet-connectionpoint_0_3,
+        :vav-with-reheat_name-air-inlet-connectionpoint_0_4,
+        :vav-with-reheat_name-air-inlet-connectionpoint_0_5,
+        :vav-with-reheat_name-air-inlet-connectionpoint_0_6,
+        :vav-with-reheat_name-air-inlet-connectionpoint_0_7,
+        :vav-with-reheat_name-air-inlet-connectionpoint_0_8,
+        :vav-with-reheat_name-air-inlet-connectionpoint_0_9,
+        :vav-with-reheat_name-air-inlet-connectionpoint_1_0,
+        :vav-with-reheat_name-air-inlet-connectionpoint_1_1,
+        :vav-with-reheat_name-air-inlet-connectionpoint_1_10,
+        :vav-with-reheat_name-air-inlet-connectionpoint_1_11,
+        :vav-with-reheat_name-air-inlet-connectionpoint_1_12,
+        :vav-with-reheat_name-air-inlet-connectionpoint_1_13,
+        :vav-with-reheat_name-air-inlet-connectionpoint_1_14,
+        :vav-with-reheat_name-air-inlet-connectionpoint_1_2,
+        :vav-with-reheat_name-air-inlet-connectionpoint_1_3,
+        :vav-with-reheat_name-air-inlet-connectionpoint_1_4,
+        :vav-with-reheat_name-air-inlet-connectionpoint_1_5,
+        :vav-with-reheat_name-air-inlet-connectionpoint_1_6,
+        :vav-with-reheat_name-air-inlet-connectionpoint_1_7,
+        :vav-with-reheat_name-air-inlet-connectionpoint_1_8,
+        :vav-with-reheat_name-air-inlet-connectionpoint_1_9,
+        :vav-with-reheat_name-air-inlet-connectionpoint_2_0,
+        :vav-with-reheat_name-air-inlet-connectionpoint_2_1,
+        :vav-with-reheat_name-air-inlet-connectionpoint_2_10,
+        :vav-with-reheat_name-air-inlet-connectionpoint_2_11,
+        :vav-with-reheat_name-air-inlet-connectionpoint_2_12,
+        :vav-with-reheat_name-air-inlet-connectionpoint_2_13,
+        :vav-with-reheat_name-air-inlet-connectionpoint_2_14,
+        :vav-with-reheat_name-air-inlet-connectionpoint_2_2,
+        :vav-with-reheat_name-air-inlet-connectionpoint_2_3,
+        :vav-with-reheat_name-air-inlet-connectionpoint_2_4,
+        :vav-with-reheat_name-air-inlet-connectionpoint_2_5,
+        :vav-with-reheat_name-air-inlet-connectionpoint_2_6,
+        :vav-with-reheat_name-air-inlet-connectionpoint_2_7,
+        :vav-with-reheat_name-air-inlet-connectionpoint_2_8,
+        :vav-with-reheat_name-air-inlet-connectionpoint_2_9,
+        :vav-with-reheat_name-air-inlet-connectionpoint_3_0,
+        :vav-with-reheat_name-air-inlet-connectionpoint_3_1,
+        :vav-with-reheat_name-air-inlet-connectionpoint_3_10,
+        :vav-with-reheat_name-air-inlet-connectionpoint_3_11,
+        :vav-with-reheat_name-air-inlet-connectionpoint_3_12,
+        :vav-with-reheat_name-air-inlet-connectionpoint_3_13,
+        :vav-with-reheat_name-air-inlet-connectionpoint_3_14,
+        :vav-with-reheat_name-air-inlet-connectionpoint_3_2,
+        :vav-with-reheat_name-air-inlet-connectionpoint_3_3,
+        :vav-with-reheat_name-air-inlet-connectionpoint_3_4,
+        :vav-with-reheat_name-air-inlet-connectionpoint_3_5,
+        :vav-with-reheat_name-air-inlet-connectionpoint_3_6,
+        :vav-with-reheat_name-air-inlet-connectionpoint_3_7,
+        :vav-with-reheat_name-air-inlet-connectionpoint_3_8,
+        :vav-with-reheat_name-air-inlet-connectionpoint_3_9 .
 
-:vav-cooling-only-damper-in a ns1:InletConnectionPoint,
+:vav-with-reheat-air-outlet-connectionpoint a s223:OutletConnectionPoint,
         rdf:Seq ;
-    ns1:cnx :vav-cooling-only-duct-before-damper ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :vav-cooling-only-damper-in-mapsto,
-        :vav-cooling-only-in ;
-    rdf:_1 :vav-cooling-only_damper-in_0_0 .
+    s223:cnx :vav-with-reheat-name ;
+    s223:hasMedium s223:Medium-Air ;
+    s223:hasProperty :vav-with-reheat-dat ;
+    rdfs:member :vav-with-reheat_name-air-outlet-connectionpoint_0_0,
+        :vav-with-reheat_name-air-outlet-connectionpoint_0_1,
+        :vav-with-reheat_name-air-outlet-connectionpoint_0_10,
+        :vav-with-reheat_name-air-outlet-connectionpoint_0_11,
+        :vav-with-reheat_name-air-outlet-connectionpoint_0_12,
+        :vav-with-reheat_name-air-outlet-connectionpoint_0_13,
+        :vav-with-reheat_name-air-outlet-connectionpoint_0_14,
+        :vav-with-reheat_name-air-outlet-connectionpoint_0_2,
+        :vav-with-reheat_name-air-outlet-connectionpoint_0_3,
+        :vav-with-reheat_name-air-outlet-connectionpoint_0_4,
+        :vav-with-reheat_name-air-outlet-connectionpoint_0_5,
+        :vav-with-reheat_name-air-outlet-connectionpoint_0_6,
+        :vav-with-reheat_name-air-outlet-connectionpoint_0_7,
+        :vav-with-reheat_name-air-outlet-connectionpoint_0_8,
+        :vav-with-reheat_name-air-outlet-connectionpoint_0_9,
+        :vav-with-reheat_name-air-outlet-connectionpoint_1_0,
+        :vav-with-reheat_name-air-outlet-connectionpoint_1_1,
+        :vav-with-reheat_name-air-outlet-connectionpoint_1_10,
+        :vav-with-reheat_name-air-outlet-connectionpoint_1_11,
+        :vav-with-reheat_name-air-outlet-connectionpoint_1_12,
+        :vav-with-reheat_name-air-outlet-connectionpoint_1_13,
+        :vav-with-reheat_name-air-outlet-connectionpoint_1_14,
+        :vav-with-reheat_name-air-outlet-connectionpoint_1_2,
+        :vav-with-reheat_name-air-outlet-connectionpoint_1_3,
+        :vav-with-reheat_name-air-outlet-connectionpoint_1_4,
+        :vav-with-reheat_name-air-outlet-connectionpoint_1_5,
+        :vav-with-reheat_name-air-outlet-connectionpoint_1_6,
+        :vav-with-reheat_name-air-outlet-connectionpoint_1_7,
+        :vav-with-reheat_name-air-outlet-connectionpoint_1_8,
+        :vav-with-reheat_name-air-outlet-connectionpoint_1_9,
+        :vav-with-reheat_name-air-outlet-connectionpoint_2_0,
+        :vav-with-reheat_name-air-outlet-connectionpoint_2_1,
+        :vav-with-reheat_name-air-outlet-connectionpoint_2_10,
+        :vav-with-reheat_name-air-outlet-connectionpoint_2_11,
+        :vav-with-reheat_name-air-outlet-connectionpoint_2_12,
+        :vav-with-reheat_name-air-outlet-connectionpoint_2_13,
+        :vav-with-reheat_name-air-outlet-connectionpoint_2_14,
+        :vav-with-reheat_name-air-outlet-connectionpoint_2_2,
+        :vav-with-reheat_name-air-outlet-connectionpoint_2_3,
+        :vav-with-reheat_name-air-outlet-connectionpoint_2_4,
+        :vav-with-reheat_name-air-outlet-connectionpoint_2_5,
+        :vav-with-reheat_name-air-outlet-connectionpoint_2_6,
+        :vav-with-reheat_name-air-outlet-connectionpoint_2_7,
+        :vav-with-reheat_name-air-outlet-connectionpoint_2_8,
+        :vav-with-reheat_name-air-outlet-connectionpoint_2_9,
+        :vav-with-reheat_name-air-outlet-connectionpoint_3_0,
+        :vav-with-reheat_name-air-outlet-connectionpoint_3_1,
+        :vav-with-reheat_name-air-outlet-connectionpoint_3_10,
+        :vav-with-reheat_name-air-outlet-connectionpoint_3_11,
+        :vav-with-reheat_name-air-outlet-connectionpoint_3_12,
+        :vav-with-reheat_name-air-outlet-connectionpoint_3_13,
+        :vav-with-reheat_name-air-outlet-connectionpoint_3_14,
+        :vav-with-reheat_name-air-outlet-connectionpoint_3_2,
+        :vav-with-reheat_name-air-outlet-connectionpoint_3_3,
+        :vav-with-reheat_name-air-outlet-connectionpoint_3_4,
+        :vav-with-reheat_name-air-outlet-connectionpoint_3_5,
+        :vav-with-reheat_name-air-outlet-connectionpoint_3_6,
+        :vav-with-reheat_name-air-outlet-connectionpoint_3_7,
+        :vav-with-reheat_name-air-outlet-connectionpoint_3_8,
+        :vav-with-reheat_name-air-outlet-connectionpoint_3_9 .
 
-:vav-cooling-only-damper-in-mapsto a rdf:Seq ;
-    rdf:_1 :vav-cooling-only_damper-in-mapsto_0_0 .
-
-:vav-cooling-only-damper-out a ns1:OutletConnectionPoint,
+:vav-with-reheat-co2 a s223:QuantifiableObservableProperty,
         rdf:Seq ;
-    ns1:cnx :vav-cooling-only-duct-after-damper ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :vav-cooling-only-damper-out-mapsto,
-        :vav-cooling-only-out ;
-    rdf:_1 :vav-cooling-only_damper-out_0_0 .
+    s223:hasQuantityKind qudtqk:Concentration ;
+    s223:ofConstituent s223:Constituent-CO2 ;
+    s223:ofMedium s223:Medium-Air ;
+    rdfs:member :vav-with-reheat_name-co2_0_0,
+        :vav-with-reheat_name-co2_0_1,
+        :vav-with-reheat_name-co2_0_10,
+        :vav-with-reheat_name-co2_0_11,
+        :vav-with-reheat_name-co2_0_12,
+        :vav-with-reheat_name-co2_0_13,
+        :vav-with-reheat_name-co2_0_14,
+        :vav-with-reheat_name-co2_0_2,
+        :vav-with-reheat_name-co2_0_3,
+        :vav-with-reheat_name-co2_0_4,
+        :vav-with-reheat_name-co2_0_5,
+        :vav-with-reheat_name-co2_0_6,
+        :vav-with-reheat_name-co2_0_7,
+        :vav-with-reheat_name-co2_0_8,
+        :vav-with-reheat_name-co2_0_9,
+        :vav-with-reheat_name-co2_1_0,
+        :vav-with-reheat_name-co2_1_1,
+        :vav-with-reheat_name-co2_1_10,
+        :vav-with-reheat_name-co2_1_11,
+        :vav-with-reheat_name-co2_1_12,
+        :vav-with-reheat_name-co2_1_13,
+        :vav-with-reheat_name-co2_1_14,
+        :vav-with-reheat_name-co2_1_2,
+        :vav-with-reheat_name-co2_1_3,
+        :vav-with-reheat_name-co2_1_4,
+        :vav-with-reheat_name-co2_1_5,
+        :vav-with-reheat_name-co2_1_6,
+        :vav-with-reheat_name-co2_1_7,
+        :vav-with-reheat_name-co2_1_8,
+        :vav-with-reheat_name-co2_1_9,
+        :vav-with-reheat_name-co2_2_0,
+        :vav-with-reheat_name-co2_2_1,
+        :vav-with-reheat_name-co2_2_10,
+        :vav-with-reheat_name-co2_2_11,
+        :vav-with-reheat_name-co2_2_12,
+        :vav-with-reheat_name-co2_2_13,
+        :vav-with-reheat_name-co2_2_14,
+        :vav-with-reheat_name-co2_2_2,
+        :vav-with-reheat_name-co2_2_3,
+        :vav-with-reheat_name-co2_2_4,
+        :vav-with-reheat_name-co2_2_5,
+        :vav-with-reheat_name-co2_2_6,
+        :vav-with-reheat_name-co2_2_7,
+        :vav-with-reheat_name-co2_2_8,
+        :vav-with-reheat_name-co2_2_9,
+        :vav-with-reheat_name-co2_3_0,
+        :vav-with-reheat_name-co2_3_1,
+        :vav-with-reheat_name-co2_3_10,
+        :vav-with-reheat_name-co2_3_11,
+        :vav-with-reheat_name-co2_3_12,
+        :vav-with-reheat_name-co2_3_13,
+        :vav-with-reheat_name-co2_3_14,
+        :vav-with-reheat_name-co2_3_2,
+        :vav-with-reheat_name-co2_3_3,
+        :vav-with-reheat_name-co2_3_4,
+        :vav-with-reheat_name-co2_3_5,
+        :vav-with-reheat_name-co2_3_6,
+        :vav-with-reheat_name-co2_3_7,
+        :vav-with-reheat_name-co2_3_8,
+        :vav-with-reheat_name-co2_3_9 .
 
-:vav-cooling-only-damper-out-mapsto a rdf:Seq ;
-    rdf:_1 :vav-cooling-only_damper-out-mapsto_0_0 .
-
-:vav-cooling-only-damper-position a ns1:QuantifiableObservableProperty,
+:vav-with-reheat-dat a s223:QuantifiableObservableProperty,
         rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:DimensionlessRatio ;
-    qudt:hasUnit unit:PERCENT ;
-    rdf:_1 :vav-cooling-only_damper-position_0_0 .
+    s223:hasAspect s223:Role-Discharge ;
+    s223:hasQuantityKind qudtqk:Temperature ;
+    rdfs:member :vav-with-reheat_name-dat_0_0,
+        :vav-with-reheat_name-dat_0_1,
+        :vav-with-reheat_name-dat_0_10,
+        :vav-with-reheat_name-dat_0_11,
+        :vav-with-reheat_name-dat_0_12,
+        :vav-with-reheat_name-dat_0_13,
+        :vav-with-reheat_name-dat_0_14,
+        :vav-with-reheat_name-dat_0_2,
+        :vav-with-reheat_name-dat_0_3,
+        :vav-with-reheat_name-dat_0_4,
+        :vav-with-reheat_name-dat_0_5,
+        :vav-with-reheat_name-dat_0_6,
+        :vav-with-reheat_name-dat_0_7,
+        :vav-with-reheat_name-dat_0_8,
+        :vav-with-reheat_name-dat_0_9,
+        :vav-with-reheat_name-dat_1_0,
+        :vav-with-reheat_name-dat_1_1,
+        :vav-with-reheat_name-dat_1_10,
+        :vav-with-reheat_name-dat_1_11,
+        :vav-with-reheat_name-dat_1_12,
+        :vav-with-reheat_name-dat_1_13,
+        :vav-with-reheat_name-dat_1_14,
+        :vav-with-reheat_name-dat_1_2,
+        :vav-with-reheat_name-dat_1_3,
+        :vav-with-reheat_name-dat_1_4,
+        :vav-with-reheat_name-dat_1_5,
+        :vav-with-reheat_name-dat_1_6,
+        :vav-with-reheat_name-dat_1_7,
+        :vav-with-reheat_name-dat_1_8,
+        :vav-with-reheat_name-dat_1_9,
+        :vav-with-reheat_name-dat_2_0,
+        :vav-with-reheat_name-dat_2_1,
+        :vav-with-reheat_name-dat_2_10,
+        :vav-with-reheat_name-dat_2_11,
+        :vav-with-reheat_name-dat_2_12,
+        :vav-with-reheat_name-dat_2_13,
+        :vav-with-reheat_name-dat_2_14,
+        :vav-with-reheat_name-dat_2_2,
+        :vav-with-reheat_name-dat_2_3,
+        :vav-with-reheat_name-dat_2_4,
+        :vav-with-reheat_name-dat_2_5,
+        :vav-with-reheat_name-dat_2_6,
+        :vav-with-reheat_name-dat_2_7,
+        :vav-with-reheat_name-dat_2_8,
+        :vav-with-reheat_name-dat_2_9,
+        :vav-with-reheat_name-dat_3_0,
+        :vav-with-reheat_name-dat_3_1,
+        :vav-with-reheat_name-dat_3_10,
+        :vav-with-reheat_name-dat_3_11,
+        :vav-with-reheat_name-dat_3_12,
+        :vav-with-reheat_name-dat_3_13,
+        :vav-with-reheat_name-dat_3_14,
+        :vav-with-reheat_name-dat_3_2,
+        :vav-with-reheat_name-dat_3_3,
+        :vav-with-reheat_name-dat_3_4,
+        :vav-with-reheat_name-dat_3_5,
+        :vav-with-reheat_name-dat_3_6,
+        :vav-with-reheat_name-dat_3_7,
+        :vav-with-reheat_name-dat_3_8,
+        :vav-with-reheat_name-dat_3_9 .
 
-:vav-cooling-only-discharge-air-flow-setpoint a ns1:QuantifiableActuatableProperty,
+:vav-with-reheat-dmp a s223:Damper,
         rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:VolumeFlowRate ;
-    qudt:hasUnit unit:FT3-PER-MIN ;
-    rdf:_1 :vav-cooling-only_discharge-air-flow-setpoint_0_0 .
+    s223:hasProperty :vav-with-reheat-dmp-dmppos ;
+    rdfs:member :vav-with-reheat_dmp_0_0,
+        :vav-with-reheat_dmp_0_1,
+        :vav-with-reheat_dmp_0_10,
+        :vav-with-reheat_dmp_0_11,
+        :vav-with-reheat_dmp_0_12,
+        :vav-with-reheat_dmp_0_13,
+        :vav-with-reheat_dmp_0_14,
+        :vav-with-reheat_dmp_0_2,
+        :vav-with-reheat_dmp_0_3,
+        :vav-with-reheat_dmp_0_4,
+        :vav-with-reheat_dmp_0_5,
+        :vav-with-reheat_dmp_0_6,
+        :vav-with-reheat_dmp_0_7,
+        :vav-with-reheat_dmp_0_8,
+        :vav-with-reheat_dmp_0_9,
+        :vav-with-reheat_dmp_1_0,
+        :vav-with-reheat_dmp_1_1,
+        :vav-with-reheat_dmp_1_10,
+        :vav-with-reheat_dmp_1_11,
+        :vav-with-reheat_dmp_1_12,
+        :vav-with-reheat_dmp_1_13,
+        :vav-with-reheat_dmp_1_14,
+        :vav-with-reheat_dmp_1_2,
+        :vav-with-reheat_dmp_1_3,
+        :vav-with-reheat_dmp_1_4,
+        :vav-with-reheat_dmp_1_5,
+        :vav-with-reheat_dmp_1_6,
+        :vav-with-reheat_dmp_1_7,
+        :vav-with-reheat_dmp_1_8,
+        :vav-with-reheat_dmp_1_9,
+        :vav-with-reheat_dmp_2_0,
+        :vav-with-reheat_dmp_2_1,
+        :vav-with-reheat_dmp_2_10,
+        :vav-with-reheat_dmp_2_11,
+        :vav-with-reheat_dmp_2_12,
+        :vav-with-reheat_dmp_2_13,
+        :vav-with-reheat_dmp_2_14,
+        :vav-with-reheat_dmp_2_2,
+        :vav-with-reheat_dmp_2_3,
+        :vav-with-reheat_dmp_2_4,
+        :vav-with-reheat_dmp_2_5,
+        :vav-with-reheat_dmp_2_6,
+        :vav-with-reheat_dmp_2_7,
+        :vav-with-reheat_dmp_2_8,
+        :vav-with-reheat_dmp_2_9,
+        :vav-with-reheat_dmp_3_0,
+        :vav-with-reheat_dmp_3_1,
+        :vav-with-reheat_dmp_3_10,
+        :vav-with-reheat_dmp_3_11,
+        :vav-with-reheat_dmp_3_12,
+        :vav-with-reheat_dmp_3_13,
+        :vav-with-reheat_dmp_3_14,
+        :vav-with-reheat_dmp_3_2,
+        :vav-with-reheat_dmp_3_3,
+        :vav-with-reheat_dmp_3_4,
+        :vav-with-reheat_dmp_3_5,
+        :vav-with-reheat_dmp_3_6,
+        :vav-with-reheat_dmp_3_7,
+        :vav-with-reheat_dmp_3_8,
+        :vav-with-reheat_dmp_3_9 .
 
-:vav-cooling-only-duct-after-damper a ns1:Connection,
-        ns1:Duct,
+:vav-with-reheat-dmp-dmppos a s223:QuantifiableActuatableProperty,
         rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :vav-cooling-only_duct-after-damper_0_0 .
+    s223:hasQuantityKind qudtqk:PositionRatio ;
+    rdfs:member :vav-with-reheat_name-dmp-dmppos_0_0,
+        :vav-with-reheat_name-dmp-dmppos_0_1,
+        :vav-with-reheat_name-dmp-dmppos_0_10,
+        :vav-with-reheat_name-dmp-dmppos_0_11,
+        :vav-with-reheat_name-dmp-dmppos_0_12,
+        :vav-with-reheat_name-dmp-dmppos_0_13,
+        :vav-with-reheat_name-dmp-dmppos_0_14,
+        :vav-with-reheat_name-dmp-dmppos_0_2,
+        :vav-with-reheat_name-dmp-dmppos_0_3,
+        :vav-with-reheat_name-dmp-dmppos_0_4,
+        :vav-with-reheat_name-dmp-dmppos_0_5,
+        :vav-with-reheat_name-dmp-dmppos_0_6,
+        :vav-with-reheat_name-dmp-dmppos_0_7,
+        :vav-with-reheat_name-dmp-dmppos_0_8,
+        :vav-with-reheat_name-dmp-dmppos_0_9,
+        :vav-with-reheat_name-dmp-dmppos_1_0,
+        :vav-with-reheat_name-dmp-dmppos_1_1,
+        :vav-with-reheat_name-dmp-dmppos_1_10,
+        :vav-with-reheat_name-dmp-dmppos_1_11,
+        :vav-with-reheat_name-dmp-dmppos_1_12,
+        :vav-with-reheat_name-dmp-dmppos_1_13,
+        :vav-with-reheat_name-dmp-dmppos_1_14,
+        :vav-with-reheat_name-dmp-dmppos_1_2,
+        :vav-with-reheat_name-dmp-dmppos_1_3,
+        :vav-with-reheat_name-dmp-dmppos_1_4,
+        :vav-with-reheat_name-dmp-dmppos_1_5,
+        :vav-with-reheat_name-dmp-dmppos_1_6,
+        :vav-with-reheat_name-dmp-dmppos_1_7,
+        :vav-with-reheat_name-dmp-dmppos_1_8,
+        :vav-with-reheat_name-dmp-dmppos_1_9,
+        :vav-with-reheat_name-dmp-dmppos_2_0,
+        :vav-with-reheat_name-dmp-dmppos_2_1,
+        :vav-with-reheat_name-dmp-dmppos_2_10,
+        :vav-with-reheat_name-dmp-dmppos_2_11,
+        :vav-with-reheat_name-dmp-dmppos_2_12,
+        :vav-with-reheat_name-dmp-dmppos_2_13,
+        :vav-with-reheat_name-dmp-dmppos_2_14,
+        :vav-with-reheat_name-dmp-dmppos_2_2,
+        :vav-with-reheat_name-dmp-dmppos_2_3,
+        :vav-with-reheat_name-dmp-dmppos_2_4,
+        :vav-with-reheat_name-dmp-dmppos_2_5,
+        :vav-with-reheat_name-dmp-dmppos_2_6,
+        :vav-with-reheat_name-dmp-dmppos_2_7,
+        :vav-with-reheat_name-dmp-dmppos_2_8,
+        :vav-with-reheat_name-dmp-dmppos_2_9,
+        :vav-with-reheat_name-dmp-dmppos_3_0,
+        :vav-with-reheat_name-dmp-dmppos_3_1,
+        :vav-with-reheat_name-dmp-dmppos_3_10,
+        :vav-with-reheat_name-dmp-dmppos_3_11,
+        :vav-with-reheat_name-dmp-dmppos_3_12,
+        :vav-with-reheat_name-dmp-dmppos_3_13,
+        :vav-with-reheat_name-dmp-dmppos_3_14,
+        :vav-with-reheat_name-dmp-dmppos_3_2,
+        :vav-with-reheat_name-dmp-dmppos_3_3,
+        :vav-with-reheat_name-dmp-dmppos_3_4,
+        :vav-with-reheat_name-dmp-dmppos_3_5,
+        :vav-with-reheat_name-dmp-dmppos_3_6,
+        :vav-with-reheat_name-dmp-dmppos_3_7,
+        :vav-with-reheat_name-dmp-dmppos_3_8,
+        :vav-with-reheat_name-dmp-dmppos_3_9 .
 
-:vav-cooling-only-duct-before-damper a ns1:Connection,
-        ns1:Duct,
+:vav-with-reheat-occ a s223:QuantifiableObservableProperty,
         rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :vav-cooling-only_duct-before-damper_0_0 .
+    s223:hasEnumerationKind s223:EnumerationKind-Occupancy ;
+    rdfs:member :vav-with-reheat_name-occ_0_0,
+        :vav-with-reheat_name-occ_0_1,
+        :vav-with-reheat_name-occ_0_10,
+        :vav-with-reheat_name-occ_0_11,
+        :vav-with-reheat_name-occ_0_12,
+        :vav-with-reheat_name-occ_0_13,
+        :vav-with-reheat_name-occ_0_14,
+        :vav-with-reheat_name-occ_0_2,
+        :vav-with-reheat_name-occ_0_3,
+        :vav-with-reheat_name-occ_0_4,
+        :vav-with-reheat_name-occ_0_5,
+        :vav-with-reheat_name-occ_0_6,
+        :vav-with-reheat_name-occ_0_7,
+        :vav-with-reheat_name-occ_0_8,
+        :vav-with-reheat_name-occ_0_9,
+        :vav-with-reheat_name-occ_1_0,
+        :vav-with-reheat_name-occ_1_1,
+        :vav-with-reheat_name-occ_1_10,
+        :vav-with-reheat_name-occ_1_11,
+        :vav-with-reheat_name-occ_1_12,
+        :vav-with-reheat_name-occ_1_13,
+        :vav-with-reheat_name-occ_1_14,
+        :vav-with-reheat_name-occ_1_2,
+        :vav-with-reheat_name-occ_1_3,
+        :vav-with-reheat_name-occ_1_4,
+        :vav-with-reheat_name-occ_1_5,
+        :vav-with-reheat_name-occ_1_6,
+        :vav-with-reheat_name-occ_1_7,
+        :vav-with-reheat_name-occ_1_8,
+        :vav-with-reheat_name-occ_1_9,
+        :vav-with-reheat_name-occ_2_0,
+        :vav-with-reheat_name-occ_2_1,
+        :vav-with-reheat_name-occ_2_10,
+        :vav-with-reheat_name-occ_2_11,
+        :vav-with-reheat_name-occ_2_12,
+        :vav-with-reheat_name-occ_2_13,
+        :vav-with-reheat_name-occ_2_14,
+        :vav-with-reheat_name-occ_2_2,
+        :vav-with-reheat_name-occ_2_3,
+        :vav-with-reheat_name-occ_2_4,
+        :vav-with-reheat_name-occ_2_5,
+        :vav-with-reheat_name-occ_2_6,
+        :vav-with-reheat_name-occ_2_7,
+        :vav-with-reheat_name-occ_2_8,
+        :vav-with-reheat_name-occ_2_9,
+        :vav-with-reheat_name-occ_3_0,
+        :vav-with-reheat_name-occ_3_1,
+        :vav-with-reheat_name-occ_3_10,
+        :vav-with-reheat_name-occ_3_11,
+        :vav-with-reheat_name-occ_3_12,
+        :vav-with-reheat_name-occ_3_13,
+        :vav-with-reheat_name-occ_3_14,
+        :vav-with-reheat_name-occ_3_2,
+        :vav-with-reheat_name-occ_3_3,
+        :vav-with-reheat_name-occ_3_4,
+        :vav-with-reheat_name-occ_3_5,
+        :vav-with-reheat_name-occ_3_6,
+        :vav-with-reheat_name-occ_3_7,
+        :vav-with-reheat_name-occ_3_8,
+        :vav-with-reheat_name-occ_3_9 .
 
-:vav-cooling-only-in-connection a ns1:Connection,
+:vav-with-reheat-rhc-air-inlet-connectionpoint a s223:InletConnectionPoint,
         rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :vav-cooling-only_in-connection_0_0 .
+    s223:cnx :vav-with-reheat-rhc ;
+    s223:hasMedium s223:Medium-Air ;
+    rdfs:member :vav-with-reheat_rhc-air-inlet-connectionpoint_0_0,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_0_1,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_0_10,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_0_11,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_0_12,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_0_13,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_0_14,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_0_2,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_0_3,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_0_4,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_0_5,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_0_6,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_0_7,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_0_8,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_0_9,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_1_0,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_1_1,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_1_10,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_1_11,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_1_12,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_1_13,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_1_14,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_1_2,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_1_3,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_1_4,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_1_5,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_1_6,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_1_7,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_1_8,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_1_9,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_2_0,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_2_1,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_2_10,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_2_11,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_2_12,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_2_13,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_2_14,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_2_2,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_2_3,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_2_4,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_2_5,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_2_6,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_2_7,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_2_8,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_2_9,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_3_0,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_3_1,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_3_10,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_3_11,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_3_12,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_3_13,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_3_14,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_3_2,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_3_3,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_3_4,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_3_5,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_3_6,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_3_7,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_3_8,
+        :vav-with-reheat_rhc-air-inlet-connectionpoint_3_9 .
 
-:vav-cooling-only-in-mapsto a rdf:Seq ;
-    rdf:_1 :vav-cooling-only_in-mapsto_0_0 .
-
-:vav-cooling-only-out-connection a ns1:Connection,
+:vav-with-reheat-rhc-air-outlet-connectionpoint a s223:OutletConnectionPoint,
         rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :vav-cooling-only_out-connection_0_0 .
+    s223:cnx :vav-with-reheat-rhc ;
+    s223:hasMedium s223:Medium-Air ;
+    rdfs:member :vav-with-reheat_rhc-air-outlet-connectionpoint_0_0,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_0_1,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_0_10,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_0_11,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_0_12,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_0_13,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_0_14,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_0_2,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_0_3,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_0_4,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_0_5,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_0_6,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_0_7,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_0_8,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_0_9,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_1_0,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_1_1,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_1_10,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_1_11,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_1_12,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_1_13,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_1_14,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_1_2,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_1_3,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_1_4,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_1_5,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_1_6,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_1_7,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_1_8,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_1_9,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_2_0,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_2_1,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_2_10,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_2_11,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_2_12,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_2_13,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_2_14,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_2_2,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_2_3,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_2_4,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_2_5,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_2_6,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_2_7,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_2_8,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_2_9,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_3_0,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_3_1,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_3_10,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_3_11,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_3_12,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_3_13,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_3_14,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_3_2,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_3_3,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_3_4,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_3_5,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_3_6,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_3_7,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_3_8,
+        :vav-with-reheat_rhc-air-outlet-connectionpoint_3_9 .
 
-:vav-cooling-only-out-mapsto a rdf:Seq ;
-    rdf:_1 :vav-cooling-only_out-mapsto_0_0 .
-
-:vav-reheat-air-in-mapsto a rdf:Seq ;
-    rdf:_1 :vav-reheat_air-in-mapsto_0_0 .
-
-:vav-reheat-air-out-mapsto a rdf:Seq ;
-    rdf:_1 :vav-reheat_air-out-mapsto_0_0 .
-
-:vav-reheat-damper-in a ns1:InletConnectionPoint,
+:vav-with-reheat-rhc-cmd a s223:QuantifiableActuatableProperty,
         rdf:Seq ;
-    ns1:cnx :vav-reheat-air-in-connection ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :vav-reheat-air-in,
-        :vav-reheat-damper-in-mapsto ;
-    rdf:_1 :vav-reheat_damper-in_0_0 .
+    s223:hasQuantityKind qudtqk:PositionRatio ;
+    rdfs:member :vav-with-reheat_rhc-cmd_0_0,
+        :vav-with-reheat_rhc-cmd_0_1,
+        :vav-with-reheat_rhc-cmd_0_10,
+        :vav-with-reheat_rhc-cmd_0_11,
+        :vav-with-reheat_rhc-cmd_0_12,
+        :vav-with-reheat_rhc-cmd_0_13,
+        :vav-with-reheat_rhc-cmd_0_14,
+        :vav-with-reheat_rhc-cmd_0_2,
+        :vav-with-reheat_rhc-cmd_0_3,
+        :vav-with-reheat_rhc-cmd_0_4,
+        :vav-with-reheat_rhc-cmd_0_5,
+        :vav-with-reheat_rhc-cmd_0_6,
+        :vav-with-reheat_rhc-cmd_0_7,
+        :vav-with-reheat_rhc-cmd_0_8,
+        :vav-with-reheat_rhc-cmd_0_9,
+        :vav-with-reheat_rhc-cmd_1_0,
+        :vav-with-reheat_rhc-cmd_1_1,
+        :vav-with-reheat_rhc-cmd_1_10,
+        :vav-with-reheat_rhc-cmd_1_11,
+        :vav-with-reheat_rhc-cmd_1_12,
+        :vav-with-reheat_rhc-cmd_1_13,
+        :vav-with-reheat_rhc-cmd_1_14,
+        :vav-with-reheat_rhc-cmd_1_2,
+        :vav-with-reheat_rhc-cmd_1_3,
+        :vav-with-reheat_rhc-cmd_1_4,
+        :vav-with-reheat_rhc-cmd_1_5,
+        :vav-with-reheat_rhc-cmd_1_6,
+        :vav-with-reheat_rhc-cmd_1_7,
+        :vav-with-reheat_rhc-cmd_1_8,
+        :vav-with-reheat_rhc-cmd_1_9,
+        :vav-with-reheat_rhc-cmd_2_0,
+        :vav-with-reheat_rhc-cmd_2_1,
+        :vav-with-reheat_rhc-cmd_2_10,
+        :vav-with-reheat_rhc-cmd_2_11,
+        :vav-with-reheat_rhc-cmd_2_12,
+        :vav-with-reheat_rhc-cmd_2_13,
+        :vav-with-reheat_rhc-cmd_2_14,
+        :vav-with-reheat_rhc-cmd_2_2,
+        :vav-with-reheat_rhc-cmd_2_3,
+        :vav-with-reheat_rhc-cmd_2_4,
+        :vav-with-reheat_rhc-cmd_2_5,
+        :vav-with-reheat_rhc-cmd_2_6,
+        :vav-with-reheat_rhc-cmd_2_7,
+        :vav-with-reheat_rhc-cmd_2_8,
+        :vav-with-reheat_rhc-cmd_2_9,
+        :vav-with-reheat_rhc-cmd_3_0,
+        :vav-with-reheat_rhc-cmd_3_1,
+        :vav-with-reheat_rhc-cmd_3_10,
+        :vav-with-reheat_rhc-cmd_3_11,
+        :vav-with-reheat_rhc-cmd_3_12,
+        :vav-with-reheat_rhc-cmd_3_13,
+        :vav-with-reheat_rhc-cmd_3_14,
+        :vav-with-reheat_rhc-cmd_3_2,
+        :vav-with-reheat_rhc-cmd_3_3,
+        :vav-with-reheat_rhc-cmd_3_4,
+        :vav-with-reheat_rhc-cmd_3_5,
+        :vav-with-reheat_rhc-cmd_3_6,
+        :vav-with-reheat_rhc-cmd_3_7,
+        :vav-with-reheat_rhc-cmd_3_8,
+        :vav-with-reheat_rhc-cmd_3_9 .
 
-:vav-reheat-damper-in-mapsto a rdf:Seq ;
-    rdf:_1 :vav-reheat_damper-in-mapsto_0_0 .
-
-:vav-reheat-damper-out a ns1:OutletConnectionPoint,
+:vav-with-reheat-ztemp a s223:QuantifiableObservableProperty,
         rdf:Seq ;
-    ns1:cnx :vav-reheat-duct-after-damper ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :vav-reheat-damper-out-mapsto ;
-    rdf:_1 :vav-reheat_damper-out_0_0 .
-
-:vav-reheat-damper-out-mapsto a rdf:Seq ;
-    rdf:_1 :vav-reheat_damper-out-mapsto_0_0 .
-
-:vav-reheat-damper-position a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:DimensionlessRatio ;
-    qudt:hasUnit unit:PERCENT ;
-    rdf:_1 :vav-reheat_damper-position_0_0 .
-
-:vav-reheat-discharge-air-flow-setpoint a ns1:QuantifiableActuatableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:VolumeFlowRate ;
-    qudt:hasUnit unit:FT3-PER-MIN ;
-    rdf:_1 :vav-reheat_discharge-air-flow-setpoint_0_0 .
-
-:vav-reheat-discharge-air-temp-setpoint a ns1:QuantifiableActuatableProperty,
-        rdf:Seq ;
+    s223:hasAspect s223:Aspect-Setpoint ;
     qudt:hasQuantityKind qudtqk:Temperature ;
-    qudt:hasUnit unit:DEG_C ;
-    rdf:_1 :vav-reheat_discharge-air-temp-setpoint_0_0 .
-
-:vav-reheat-hot-water-in-mapsto a rdf:Seq ;
-    rdf:_1 :vav-reheat_hot-water-in-mapsto_0_0 .
-
-:vav-reheat-hot-water-out-mapsto a rdf:Seq ;
-    rdf:_1 :vav-reheat_hot-water-out-mapsto_0_0 .
-
-:vav-reheat-reheat-coil a ns1:HeatingCoil,
-        <http://data.ashrae.org/standard223/1.0/extensions/g36#HotWaterCoil>,
-        rdf:Seq ;
-    ns1:cnx :vav-reheat-reheat-coil-air-in,
-        :vav-reheat-reheat-coil-air-out,
-        :vav-reheat-reheat-coil-water-in,
-        :vav-reheat-reheat-coil-water-out ;
-    ns1:hasProperty :vav-reheat-reheat-coil-return-water-temp,
-        :vav-reheat-reheat-coil-supply-water-temp ;
-    ns1:hasRole ns1:Role-Heating ;
-    rdf:_1 :vav-reheat_reheat-coil_0_0 .
-
-:vav-reheat-reheat-coil-air-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :vav-reheat-duct-after-damper ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :vav-reheat-reheat-coil-air-in-mapsto ;
-    rdf:_1 :vav-reheat_reheat-coil-air-in_0_0 .
-
-:vav-reheat-reheat-coil-air-in-mapsto a rdf:Seq ;
-    rdf:_1 :vav-reheat_reheat-coil-air-in-mapsto_0_0 .
-
-:vav-reheat-reheat-coil-air-out a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :vav-reheat-air-out-connection ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :vav-reheat-air-out,
-        :vav-reheat-reheat-coil-air-out-mapsto ;
-    rdf:_1 :vav-reheat_reheat-coil-air-out_0_0 .
-
-:vav-reheat-reheat-coil-air-out-mapsto a rdf:Seq ;
-    rdf:_1 :vav-reheat_reheat-coil-air-out-mapsto_0_0 .
-
-:vav-reheat-reheat-coil-valve-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :vav-reheat-pipe-hot-water-return-before-valve ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    ns1:mapsTo :vav-reheat-reheat-coil-valve-in-mapsto ;
-    rdf:_1 :vav-reheat_reheat-coil-valve-in_0_0 .
-
-:vav-reheat-reheat-coil-valve-in-mapsto a rdf:Seq ;
-    rdf:_1 :vav-reheat_reheat-coil-valve-in-mapsto_0_0 .
-
-:vav-reheat-reheat-coil-valve-out a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :vav-reheat-hot-water-out-connection ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    ns1:mapsTo :vav-reheat-hot-water-out,
-        :vav-reheat-reheat-coil-valve-out-mapsto ;
-    rdf:_1 :vav-reheat_reheat-coil-valve-out_0_0 .
-
-:vav-reheat-reheat-coil-valve-out-mapsto a rdf:Seq ;
-    rdf:_1 :vav-reheat_reheat-coil-valve-out-mapsto_0_0 .
-
-:vav-reheat-reheat-coil-valve-position a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:DimensionlessRatio ;
-    qudt:hasUnit unit:PERCENT ;
-    rdf:_1 :vav-reheat_reheat-coil-valve-position_0_0 .
-
-:vav-reheat-reheat-coil-water-in-mapsto a rdf:Seq ;
-    rdf:_1 :vav-reheat_reheat-coil-water-in-mapsto_0_0 .
-
-:vav-reheat-reheat-coil-water-out-mapsto a rdf:Seq ;
-    rdf:_1 :vav-reheat_reheat-coil-water-out-mapsto_0_0 .
-
-:multiple-zone-ahu-chilled-water-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-pipe-chilled-water-supply ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    ns1:mapsTo :multiple-zone-ahu-chilled-water-in-mapsto ;
-    rdf:_1 :multiple-zone-ahu_chilled-water-in_0 .
-
-:multiple-zone-ahu-chilled-water-out a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-pipe-chilled-water-return-after-valve ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    ns1:mapsTo :multiple-zone-ahu-chilled-water-out-mapsto ;
-    rdf:_1 :multiple-zone-ahu_chilled-water-out_0 .
-
-:multiple-zone-ahu-clg-coil-return-water-temp a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:Temperature ;
-    qudt:hasUnit unit:DEG_C ;
-    rdf:_1 :multiple-zone-ahu_clg-coil-return-water-temp_0 .
-
-:multiple-zone-ahu-clg-coil-supply-water-temp a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:Temperature ;
-    qudt:hasUnit unit:DEG_C ;
-    rdf:_1 :multiple-zone-ahu_clg-coil-supply-water-temp_0 .
-
-:multiple-zone-ahu-clg-coil-valve a ns1:Valve,
-        <http://data.ashrae.org/standard223/1.0/extensions/g36#ChilledWaterValve>,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-clg-coil-valve-in,
-        :multiple-zone-ahu-clg-coil-valve-out ;
-    ns1:hasProperty :multiple-zone-ahu-clg-coil-valve-command,
-        :multiple-zone-ahu-clg-coil-valve-position ;
-    rdf:_1 :multiple-zone-ahu_clg-coil-valve_0 .
-
-:multiple-zone-ahu-clg-coil-valve-command a ns1:QuantifiableActuatableProperty,
-        rdf:Seq ;
-    ns1:hasAspect ns1:Binary-Position ;
-    qudt:hasQuantityKind qudtqk:DimensionlessRatio ;
-    qudt:hasUnit unit:PERCENT ;
-    rdf:_1 :multiple-zone-ahu_clg-coil-valve-command_0 .
-
-:multiple-zone-ahu-clg-coil-water-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-pipe-chilled-water-supply ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    ns1:mapsTo :multiple-zone-ahu-chilled-water-in,
-        :multiple-zone-ahu-clg-coil-water-in-mapsto ;
-    rdf:_1 :multiple-zone-ahu_clg-coil-water-in_0 .
-
-:multiple-zone-ahu-clg-coil-water-out a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-pipe-chilled-water-return-before-valve ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    ns1:mapsTo :multiple-zone-ahu-clg-coil-water-out-mapsto ;
-    rdf:_1 :multiple-zone-ahu_clg-coil-water-out_0 .
-
-:multiple-zone-ahu-duct-after-clg-coil a ns1:Connection,
-        ns1:Duct,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :multiple-zone-ahu_duct-after-clg-coil_0 .
-
-:multiple-zone-ahu-duct-after-economizer-oa-damper a ns1:Connection,
-        ns1:Duct,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :multiple-zone-ahu_duct-after-economizer-oa-damper_0 .
-
-:multiple-zone-ahu-duct-after-filter a ns1:Connection,
-        ns1:Duct,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :multiple-zone-ahu_duct-after-filter_0 .
-
-:multiple-zone-ahu-duct-after-minimum-oa-damper a ns1:Connection,
-        ns1:Duct,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :multiple-zone-ahu_duct-after-minimum-oa-damper_0 .
-
-:multiple-zone-ahu-duct-after-ra-damper a ns1:Connection,
-        ns1:Duct,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :multiple-zone-ahu_duct-after-ra-damper_0 .
-
-:multiple-zone-ahu-duct-before-ea-damper a ns1:Connection,
-        ns1:Duct,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :multiple-zone-ahu_duct-before-ea-damper_0 .
-
-:multiple-zone-ahu-duct-before-economizer-oa-damper a ns1:Connection,
-        ns1:Duct,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :multiple-zone-ahu_duct-before-economizer-oa-damper_0 .
-
-:multiple-zone-ahu-duct-before-filter a ns1:Connection,
-        ns1:Duct,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :multiple-zone-ahu_duct-before-filter_0 .
-
-:multiple-zone-ahu-duct-before-minimum-oa-damper a ns1:Connection,
-        ns1:Duct,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :multiple-zone-ahu_duct-before-minimum-oa-damper_0 .
-
-:multiple-zone-ahu-duct-before-ra-damper a ns1:Connection,
-        ns1:Duct,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :multiple-zone-ahu_duct-before-ra-damper_0 .
-
-:multiple-zone-ahu-duct-ea-out a ns1:Connection,
-        ns1:Duct,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :multiple-zone-ahu_duct-ea-out_0 .
-
-:multiple-zone-ahu-duct-oa-in a ns1:Connection,
-        ns1:Duct,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :multiple-zone-ahu_duct-oa-in_0 .
-
-:multiple-zone-ahu-duct-ra-in a ns1:Connection,
-        ns1:Duct,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :multiple-zone-ahu_duct-ra-in_0 .
-
-:multiple-zone-ahu-ea-damper a ns1:Damper,
-        <http://data.ashrae.org/standard223/1.0/extensions/g36#Damper>,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-ea-damper-in,
-        :multiple-zone-ahu-ea-damper-out ;
-    ns1:hasProperty :multiple-zone-ahu-ea-damper-command,
-        :multiple-zone-ahu-ea-damper-position ;
-    ns1:hasRole ns1:Role-Exhaust ;
-    rdf:_1 :multiple-zone-ahu_ea-damper_0 .
-
-:multiple-zone-ahu-ea-damper-command a ns1:QuantifiableActuatableProperty,
-        rdf:Seq ;
-    ns1:hasAspect ns1:Binary-Position ;
-    qudt:hasQuantityKind qudtqk:DimensionlessRatio ;
-    qudt:hasUnit unit:PERCENT ;
-    rdf:_1 :multiple-zone-ahu_ea-damper-command_0 .
-
-:multiple-zone-ahu-ea-out a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-ea-out ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-ea-out-mapsto ;
-    rdf:_1 :multiple-zone-ahu_ea-out_0 .
-
-:multiple-zone-ahu-economizer-oa-damper a ns1:Damper,
-        <http://data.ashrae.org/standard223/1.0/extensions/g36#Damper>,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-economizer-oa-damper-in,
-        :multiple-zone-ahu-economizer-oa-damper-out ;
-    ns1:hasProperty :multiple-zone-ahu-economizer-oa-damper-command,
-        :multiple-zone-ahu-economizer-oa-damper-position ;
-    ns1:hasRole ns1:Role-Economizer ;
-    rdf:_1 :multiple-zone-ahu_economizer-oa-damper_0 .
-
-:multiple-zone-ahu-economizer-oa-damper-command a ns1:QuantifiableActuatableProperty,
-        rdf:Seq ;
-    ns1:hasAspect ns1:Binary-Position ;
-    qudt:hasQuantityKind qudtqk:DimensionlessRatio ;
-    qudt:hasUnit unit:PERCENT ;
-    rdf:_1 :multiple-zone-ahu_economizer-oa-damper-command_0 .
-
-:multiple-zone-ahu-filter-differential-pressure a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:Pressure ;
-    qudt:hasUnit unit:IN_H2O ;
-    qudt:isDeltaQuantity true ;
-    rdf:_1 :multiple-zone-ahu_filter-differential-pressure_0 .
-
-:multiple-zone-ahu-filter-out a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-after-filter ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :multiple-zone-ahu-filter-out-mapsto ;
-    rdf:_1 :multiple-zone-ahu_filter-out_0 .
-
-:multiple-zone-ahu-heat-coil-air-temp a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:Temperature ;
-    qudt:hasUnit unit:DEG_C ;
-    rdf:_1 :multiple-zone-ahu_heat-coil-air-temp_0 .
-
-:multiple-zone-ahu-hot-water-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-pipe-hot-water-supply ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    ns1:mapsTo :multiple-zone-ahu-hot-water-in-mapsto ;
-    rdf:_1 :multiple-zone-ahu_hot-water-in_0 .
-
-:multiple-zone-ahu-hot-water-out a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-pipe-hot-water-return-after-valve ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    ns1:mapsTo :multiple-zone-ahu-hot-water-out-mapsto ;
-    rdf:_1 :multiple-zone-ahu_hot-water-out_0 .
-
-:multiple-zone-ahu-htg-coil-return-water-temp a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:Temperature ;
-    qudt:hasUnit unit:DEG_C ;
-    rdf:_1 :multiple-zone-ahu_htg-coil-return-water-temp_0 .
-
-:multiple-zone-ahu-htg-coil-supply-water-temp a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:Temperature ;
-    qudt:hasUnit unit:DEG_C ;
-    rdf:_1 :multiple-zone-ahu_htg-coil-supply-water-temp_0 .
-
-:multiple-zone-ahu-htg-coil-valve a ns1:Valve,
-        <http://data.ashrae.org/standard223/1.0/extensions/g36#HotWaterValve>,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-htg-coil-valve-in,
-        :multiple-zone-ahu-htg-coil-valve-out ;
-    ns1:hasProperty :multiple-zone-ahu-htg-coil-valve-command,
-        :multiple-zone-ahu-htg-coil-valve-position ;
-    rdf:_1 :multiple-zone-ahu_htg-coil-valve_0 .
-
-:multiple-zone-ahu-htg-coil-valve-command a ns1:QuantifiableActuatableProperty,
-        rdf:Seq ;
-    ns1:hasAspect ns1:Binary-Position ;
-    qudt:hasQuantityKind qudtqk:DimensionlessRatio ;
-    qudt:hasUnit unit:PERCENT ;
-    rdf:_1 :multiple-zone-ahu_htg-coil-valve-command_0 .
-
-:multiple-zone-ahu-htg-coil-water-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-pipe-hot-water-supply ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    ns1:mapsTo :multiple-zone-ahu-hot-water-in,
-        :multiple-zone-ahu-htg-coil-water-in-mapsto ;
-    rdf:_1 :multiple-zone-ahu_htg-coil-water-in_0 .
-
-:multiple-zone-ahu-htg-coil-water-out a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-pipe-hot-water-return-before-valve ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    ns1:mapsTo :multiple-zone-ahu-htg-coil-water-out-mapsto ;
-    rdf:_1 :multiple-zone-ahu_htg-coil-water-out_0 .
-
-:multiple-zone-ahu-ma-temp a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:Temperature ;
-    qudt:hasUnit unit:DEG_C ;
-    rdf:_1 :multiple-zone-ahu_ma-temp_0 .
-
-:multiple-zone-ahu-minimum-oa-damper a ns1:Damper,
-        <http://data.ashrae.org/standard223/1.0/extensions/g36#Damper>,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-minimum-oa-damper-in,
-        :multiple-zone-ahu-minimum-oa-damper-out ;
-    ns1:hasProperty :multiple-zone-ahu-minimum-oa-damper-command,
-        :multiple-zone-ahu-minimum-oa-damper-position ;
-    ns1:hasRole ns1:Role-OutdoorAirIntake ;
-    rdf:_1 :multiple-zone-ahu_minimum-oa-damper_0 .
-
-:multiple-zone-ahu-minimum-oa-damper-command a ns1:QuantifiableActuatableProperty,
-        rdf:Seq ;
-    ns1:hasAspect ns1:Binary-Position ;
-    qudt:hasQuantityKind qudtqk:DimensionlessRatio ;
-    qudt:hasUnit unit:PERCENT ;
-    rdf:_1 :multiple-zone-ahu_minimum-oa-damper-command_0 .
-
-:multiple-zone-ahu-oa-flow a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:VolumeFlowRate ;
-    qudt:hasUnit unit:FT3-PER-MIN ;
-    rdf:_1 :multiple-zone-ahu_oa-flow_0 .
-
-:multiple-zone-ahu-oa-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-oa-in ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:hasProperty :multiple-zone-ahu-oa-temp ;
-    ns1:mapsTo :multiple-zone-ahu-oa-in-mapsto ;
-    rdf:_1 :multiple-zone-ahu_oa-in_0 .
-
-:multiple-zone-ahu-oa-temp a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    ns1:hasAspect ns1:Role-OutdoorAirIntake ;
-    qudt:hasQuantityKind qudtqk:Temperature ;
-    qudt:hasUnit unit:DEG_C ;
-    rdf:_1 :multiple-zone-ahu_oa-temp_0 .
-
-:multiple-zone-ahu-pipe-chilled-water-return-after-valve a ns1:Connection,
-        ns1:Pipe,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    rdf:_1 :multiple-zone-ahu_pipe-chilled-water-return-after-valve_0 .
-
-:multiple-zone-ahu-pipe-chilled-water-return-before-valve a ns1:Connection,
-        ns1:Pipe,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    rdf:_1 :multiple-zone-ahu_pipe-chilled-water-return-before-valve_0 .
-
-:multiple-zone-ahu-pipe-chilled-water-supply a ns1:Connection,
-        ns1:Pipe,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    rdf:_1 :multiple-zone-ahu_pipe-chilled-water-supply_0 .
-
-:multiple-zone-ahu-pipe-hot-water-return-after-valve a ns1:Connection,
-        ns1:Pipe,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    rdf:_1 :multiple-zone-ahu_pipe-hot-water-return-after-valve_0 .
-
-:multiple-zone-ahu-pipe-hot-water-return-before-valve a ns1:Connection,
-        ns1:Pipe,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    rdf:_1 :multiple-zone-ahu_pipe-hot-water-return-before-valve_0 .
-
-:multiple-zone-ahu-pipe-hot-water-supply a ns1:Connection,
-        ns1:Pipe,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    rdf:_1 :multiple-zone-ahu_pipe-hot-water-supply_0 .
-
-:multiple-zone-ahu-ra-damper a ns1:Damper,
-        <http://data.ashrae.org/standard223/1.0/extensions/g36#Damper>,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-ra-damper-in,
-        :multiple-zone-ahu-ra-damper-out ;
-    ns1:hasProperty :multiple-zone-ahu-ra-damper-command,
-        :multiple-zone-ahu-ra-damper-position ;
-    ns1:hasRole ns1:Role-Return ;
-    rdf:_1 :multiple-zone-ahu_ra-damper_0 .
-
-:multiple-zone-ahu-ra-damper-command a ns1:QuantifiableActuatableProperty,
-        rdf:Seq ;
-    ns1:hasAspect ns1:Binary-Position ;
-    qudt:hasQuantityKind qudtqk:DimensionlessRatio ;
-    qudt:hasUnit unit:PERCENT ;
-    rdf:_1 :multiple-zone-ahu_ra-damper-command_0 .
-
-:multiple-zone-ahu-ra-fan a ns1:Fan,
-        <http://data.ashrae.org/standard223/1.0/extensions/g36#FanWithVFD>,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-ra-fan-in,
-        :multiple-zone-ahu-ra-fan-out ;
-    ns1:hasProperty :multiple-zone-ahu-ra-fan-high-static-reset-cmd,
-        :multiple-zone-ahu-ra-fan-power,
-        :multiple-zone-ahu-ra-fan-speed-cmd,
-        :multiple-zone-ahu-ra-fan-speed-status,
-        :multiple-zone-ahu-ra-fan-start-cmd,
-        :multiple-zone-ahu-ra-fan-start-status,
-        :multiple-zone-ahu-ra-flow ;
-    ns1:hasRole ns1:Role-Return ;
-    rdf:_1 :multiple-zone-ahu_ra-fan_0 .
-
-:multiple-zone-ahu-ra-fan-discharge-static-pressure a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:Pressure ;
-    qudt:hasUnit unit:IN_H2O ;
-    rdf:_1 :multiple-zone-ahu_ra-fan-discharge-static-pressure_0 .
-
-:multiple-zone-ahu-ra-flow a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:VolumeFlowRate ;
-    qudt:hasUnit unit:FT3-PER-MIN ;
-    rdf:_1 :multiple-zone-ahu_ra-flow_0 .
-
-:multiple-zone-ahu-ra-temp a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    ns1:hasAspect ns1:Role-Return ;
-    qudt:hasQuantityKind qudtqk:Temperature ;
-    qudt:hasUnit unit:DEG_C ;
-    rdf:_1 :multiple-zone-ahu_ra-temp_0 .
-
-:multiple-zone-ahu-sa-fan a ns1:Fan,
-        <http://data.ashrae.org/standard223/1.0/extensions/g36#FanWithVFD>,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-sa-fan-in,
-        :multiple-zone-ahu-sa-fan-out ;
-    ns1:hasProperty :multiple-zone-ahu-sa-fan-high-static-reset-cmd,
-        :multiple-zone-ahu-sa-fan-power,
-        :multiple-zone-ahu-sa-fan-speed-cmd,
-        :multiple-zone-ahu-sa-fan-speed-status,
-        :multiple-zone-ahu-sa-fan-start-cmd,
-        :multiple-zone-ahu-sa-fan-start-status,
-        :multiple-zone-ahu-sa-flow ;
-    ns1:hasRole ns1:Role-Supply ;
-    rdf:_1 :multiple-zone-ahu_sa-fan_0 .
-
-:multiple-zone-ahu-sa-flow a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:VolumeFlowRate ;
-    qudt:hasUnit unit:FT3-PER-MIN ;
-    rdf:_1 :multiple-zone-ahu_sa-flow_0 .
-
-:multiple-zone-ahu-sa-temp a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    ns1:hasAspect ns1:Role-Supply ;
-    qudt:hasQuantityKind qudtqk:Temperature ;
-    qudt:hasUnit unit:DEG_C ;
-    rdf:_1 :multiple-zone-ahu_sa-temp_0 .
-
-:multiple-zone-ahu-supply-duct-static-pressure a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    ns1:hasAspect ns1:Role-Supply ;
-    qudt:hasQuantityKind qudtqk:Pressure ;
-    qudt:hasUnit unit:IN_H2O ;
-    rdf:_1 :multiple-zone-ahu_supply-duct-static-pressure_0 .
-
-:vav-cooling-only-damper a ns1:Damper,
-        <http://data.ashrae.org/standard223/1.0/extensions/g36#Damper>,
-        rdf:Seq ;
-    ns1:cnx :vav-cooling-only-damper-in,
-        :vav-cooling-only-damper-out ;
-    ns1:hasProperty :vav-cooling-only-damper-command,
-        :vav-cooling-only-damper-position ;
-    rdf:_1 :vav-cooling-only_damper_0_0 .
-
-:vav-cooling-only-damper-command a ns1:QuantifiableActuatableProperty,
-        rdf:Seq ;
-    ns1:hasAspect ns1:Binary-Position ;
-    qudt:hasQuantityKind qudtqk:DimensionlessRatio ;
-    qudt:hasUnit unit:PERCENT ;
-    rdf:_1 :vav-cooling-only_damper-command_0_0 .
-
-:vav-cooling-only-discharge-air-flow a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    ns1:hasAspect ns1:Role-Discharge ;
-    qudt:hasQuantityKind qudtqk:VolumeFlowRate ;
-    qudt:hasUnit unit:FT3-PER-MIN ;
-    rdf:_1 :vav-cooling-only_discharge-air-flow_0_0 .
-
-:vav-cooling-only-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :vav-cooling-only-in-connection ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :vav-cooling-only-in-mapsto ;
-    rdf:_1 :vav-cooling-only_in_0_0 .
-
-:vav-reheat-air-in-connection a ns1:Connection,
-        ns1:Duct,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :vav-reheat_air-in-connection_0_0 .
-
-:vav-reheat-air-out-connection a ns1:Connection,
-        ns1:Duct,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :vav-reheat_air-out-connection_0_0 .
-
-:vav-reheat-damper a ns1:Damper,
-        <http://data.ashrae.org/standard223/1.0/extensions/g36#Damper>,
-        rdf:Seq ;
-    ns1:cnx :vav-reheat-damper-in,
-        :vav-reheat-damper-out ;
-    ns1:hasProperty :vav-reheat-damper-command,
-        :vav-reheat-damper-position ;
-    rdf:_1 :vav-reheat_damper_0_0 .
-
-:vav-reheat-damper-command a ns1:QuantifiableActuatableProperty,
-        rdf:Seq ;
-    ns1:hasAspect ns1:Binary-Position ;
-    qudt:hasQuantityKind qudtqk:DimensionlessRatio ;
-    qudt:hasUnit unit:PERCENT ;
-    rdf:_1 :vav-reheat_damper-command_0_0 .
-
-:vav-reheat-discharge-air-flow a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    ns1:hasAspect ns1:Role-Discharge ;
-    qudt:hasQuantityKind qudtqk:VolumeFlowRate ;
-    qudt:hasUnit unit:FT3-PER-MIN ;
-    rdf:_1 :vav-reheat_discharge-air-flow_0_0 .
-
-:vav-reheat-discharge-air-temp a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    ns1:hasAspect ns1:Role-Discharge ;
-    qudt:hasQuantityKind qudtqk:Temperature ;
-    qudt:hasUnit unit:DEG_C ;
-    rdf:_1 :vav-reheat_discharge-air-temp_0_0 .
-
-:vav-reheat-duct-after-damper a ns1:Connection,
-        ns1:Duct,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :vav-reheat_duct-after-damper_0_0 .
-
-:vav-reheat-hot-water-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :vav-reheat-hot-water-in-connection ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    ns1:mapsTo :vav-reheat-hot-water-in-mapsto ;
-    rdf:_1 :vav-reheat_hot-water-in_0_0 .
-
-:vav-reheat-hot-water-in-connection a ns1:Connection,
-        ns1:Pipe,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    rdf:_1 :vav-reheat_hot-water-in-connection_0_0 .
-
-:vav-reheat-hot-water-out a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :vav-reheat-hot-water-out-connection ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    ns1:mapsTo :vav-reheat-hot-water-out-mapsto ;
-    rdf:_1 :vav-reheat_hot-water-out_0_0 .
-
-:vav-reheat-hot-water-out-connection a ns1:Connection,
-        ns1:Pipe,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    rdf:_1 :vav-reheat_hot-water-out-connection_0_0 .
-
-:vav-reheat-pipe-hot-water-return-before-valve a ns1:Connection,
-        ns1:Pipe,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    rdf:_1 :vav-reheat_pipe-hot-water-return-before-valve_0_0 .
-
-:vav-reheat-reheat-coil-return-water-temp a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:Temperature ;
-    qudt:hasUnit unit:DEG_C ;
-    rdf:_1 :vav-reheat_reheat-coil-return-water-temp_0_0 .
-
-:vav-reheat-reheat-coil-supply-water-temp a ns1:QuantifiableObservableProperty,
-        rdf:Seq ;
-    qudt:hasQuantityKind qudtqk:Temperature ;
-    qudt:hasUnit unit:DEG_C ;
-    rdf:_1 :vav-reheat_reheat-coil-supply-water-temp_0_0 .
-
-:vav-reheat-reheat-coil-valve a ns1:Valve,
-        <http://data.ashrae.org/standard223/1.0/extensions/g36#HotWaterValve>,
-        rdf:Seq ;
-    ns1:cnx :vav-reheat-reheat-coil-valve-in,
-        :vav-reheat-reheat-coil-valve-out ;
-    ns1:hasProperty :vav-reheat-reheat-coil-valve-command,
-        :vav-reheat-reheat-coil-valve-position ;
-    rdf:_1 :vav-reheat_reheat-coil-valve_0_0 .
-
-:vav-reheat-reheat-coil-valve-command a ns1:QuantifiableActuatableProperty,
-        rdf:Seq ;
-    ns1:hasAspect ns1:Binary-Position ;
-    qudt:hasQuantityKind qudtqk:DimensionlessRatio ;
-    qudt:hasUnit unit:PERCENT ;
-    rdf:_1 :vav-reheat_reheat-coil-valve-command_0_0 .
-
-:vav-reheat-reheat-coil-water-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :vav-reheat-hot-water-in-connection ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    ns1:mapsTo :vav-reheat-hot-water-in,
-        :vav-reheat-reheat-coil-water-in-mapsto ;
-    rdf:_1 :vav-reheat_reheat-coil-water-in_0_0 .
-
-:vav-reheat-reheat-coil-water-out a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :vav-reheat-pipe-hot-water-return-before-valve ;
-    ns1:hasMedium ns1:Fluid-Water ;
-    ns1:mapsTo :vav-reheat-reheat-coil-water-out-mapsto ;
-    rdf:_1 :vav-reheat_reheat-coil-water-out_0_0 .
-
-:multiple-zone-ahu-duct-after-htg-coil a ns1:Connection,
-        ns1:Duct,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :multiple-zone-ahu_duct-after-htg-coil_0 .
-
-:multiple-zone-ahu-duct-after-ra-fan a ns1:Connection,
-        ns1:Duct,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :multiple-zone-ahu_duct-after-ra-fan_0 .
-
-:multiple-zone-ahu-duct-sa-out a ns1:Connection,
-        ns1:Duct,
-        rdf:Seq ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    rdf:_1 :multiple-zone-ahu_duct-sa-out_0 .
-
-:multiple-zone-ahu-filter-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-before-filter ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:hasProperty :multiple-zone-ahu-ma-temp ;
-    ns1:mapsTo :multiple-zone-ahu-filter-in-mapsto ;
-    rdf:_1 :multiple-zone-ahu_filter-in_0 .
-
-:multiple-zone-ahu-minimum-oa-damper-out a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-after-minimum-oa-damper ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:hasProperty :multiple-zone-ahu-oa-flow ;
-    ns1:mapsTo :multiple-zone-ahu-minimum-oa-damper-out-mapsto ;
-    rdf:_1 :multiple-zone-ahu_minimum-oa-damper-out_0 .
-
-:multiple-zone-ahu-ra-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-ra-in ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:hasProperty :multiple-zone-ahu-ra-temp ;
-    ns1:mapsTo :multiple-zone-ahu-ra-in-mapsto ;
-    rdf:_1 :multiple-zone-ahu_ra-in_0 .
-
-:multiple-zone-ahu-sa-out a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :multiple-zone-ahu-duct-sa-out ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:hasProperty :multiple-zone-ahu-sa-temp,
-        :multiple-zone-ahu-sa-temp-setpoint,
-        :multiple-zone-ahu-supply-duct-static-pressure,
-        :multiple-zone-ahu-supply-duct-static-pressure-setpoint ;
-    ns1:mapsTo :multiple-zone-ahu-sa-out-mapsto ;
-    rdf:_1 :multiple-zone-ahu_sa-out_0 .
-
-:vav-cooling-only-out a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :vav-cooling-only-out-connection ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:hasProperty :vav-cooling-only-discharge-air-flow,
-        :vav-cooling-only-discharge-air-flow-setpoint ;
-    ns1:mapsTo :vav-cooling-only-out-mapsto ;
-    rdf:_1 :vav-cooling-only_out_0_0 .
-
-:vav-reheat-air-in a ns1:InletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :vav-reheat-air-in-connection ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:mapsTo :vav-reheat-air-in-mapsto ;
-    rdf:_1 :vav-reheat_air-in_0_0 .
-
-:vav-reheat-air-out a ns1:OutletConnectionPoint,
-        rdf:Seq ;
-    ns1:cnx :vav-reheat-air-out-connection ;
-    ns1:hasMedium ns1:Fluid-Air ;
-    ns1:hasProperty :vav-reheat-discharge-air-flow,
-        :vav-reheat-discharge-air-flow-setpoint,
-        :vav-reheat-discharge-air-temp,
-        :vav-reheat-discharge-air-temp-setpoint ;
-    ns1:mapsTo :vav-reheat-air-out-mapsto ;
-    rdf:_1 :vav-reheat_air-out_0_0 .
+    rdfs:member :vav-with-reheat_name-ztemp_0_0,
+        :vav-with-reheat_name-ztemp_0_1,
+        :vav-with-reheat_name-ztemp_0_10,
+        :vav-with-reheat_name-ztemp_0_11,
+        :vav-with-reheat_name-ztemp_0_12,
+        :vav-with-reheat_name-ztemp_0_13,
+        :vav-with-reheat_name-ztemp_0_14,
+        :vav-with-reheat_name-ztemp_0_2,
+        :vav-with-reheat_name-ztemp_0_3,
+        :vav-with-reheat_name-ztemp_0_4,
+        :vav-with-reheat_name-ztemp_0_5,
+        :vav-with-reheat_name-ztemp_0_6,
+        :vav-with-reheat_name-ztemp_0_7,
+        :vav-with-reheat_name-ztemp_0_8,
+        :vav-with-reheat_name-ztemp_0_9,
+        :vav-with-reheat_name-ztemp_1_0,
+        :vav-with-reheat_name-ztemp_1_1,
+        :vav-with-reheat_name-ztemp_1_10,
+        :vav-with-reheat_name-ztemp_1_11,
+        :vav-with-reheat_name-ztemp_1_12,
+        :vav-with-reheat_name-ztemp_1_13,
+        :vav-with-reheat_name-ztemp_1_14,
+        :vav-with-reheat_name-ztemp_1_2,
+        :vav-with-reheat_name-ztemp_1_3,
+        :vav-with-reheat_name-ztemp_1_4,
+        :vav-with-reheat_name-ztemp_1_5,
+        :vav-with-reheat_name-ztemp_1_6,
+        :vav-with-reheat_name-ztemp_1_7,
+        :vav-with-reheat_name-ztemp_1_8,
+        :vav-with-reheat_name-ztemp_1_9,
+        :vav-with-reheat_name-ztemp_2_0,
+        :vav-with-reheat_name-ztemp_2_1,
+        :vav-with-reheat_name-ztemp_2_10,
+        :vav-with-reheat_name-ztemp_2_11,
+        :vav-with-reheat_name-ztemp_2_12,
+        :vav-with-reheat_name-ztemp_2_13,
+        :vav-with-reheat_name-ztemp_2_14,
+        :vav-with-reheat_name-ztemp_2_2,
+        :vav-with-reheat_name-ztemp_2_3,
+        :vav-with-reheat_name-ztemp_2_4,
+        :vav-with-reheat_name-ztemp_2_5,
+        :vav-with-reheat_name-ztemp_2_6,
+        :vav-with-reheat_name-ztemp_2_7,
+        :vav-with-reheat_name-ztemp_2_8,
+        :vav-with-reheat_name-ztemp_2_9,
+        :vav-with-reheat_name-ztemp_3_0,
+        :vav-with-reheat_name-ztemp_3_1,
+        :vav-with-reheat_name-ztemp_3_10,
+        :vav-with-reheat_name-ztemp_3_11,
+        :vav-with-reheat_name-ztemp_3_12,
+        :vav-with-reheat_name-ztemp_3_13,
+        :vav-with-reheat_name-ztemp_3_14,
+        :vav-with-reheat_name-ztemp_3_2,
+        :vav-with-reheat_name-ztemp_3_3,
+        :vav-with-reheat_name-ztemp_3_4,
+        :vav-with-reheat_name-ztemp_3_5,
+        :vav-with-reheat_name-ztemp_3_6,
+        :vav-with-reheat_name-ztemp_3_7,
+        :vav-with-reheat_name-ztemp_3_8,
+        :vav-with-reheat_name-ztemp_3_9 .
+
+:multiple-zone-ahu-name_out a s223:OutletConnectionPoint ;
+    s223:cnx :multiple-zone-ahu-name,
+        :multiple-zone-ahu-name_cn ;
+    s223:hasMedium s223:Medium-Air .
+
+:vav-cooling-only-name_in a s223:InletConnectionPoint ;
+    s223:cnx :multiple-zone-ahu-name_cn,
+        :vav-cooling-only-name ;
+    s223:hasMedium s223:Medium-Air .
+
+:vav-with-reheat-name_in a s223:InletConnectionPoint ;
+    s223:cnx :multiple-zone-ahu-name_cn,
+        :vav-with-reheat-name ;
+    s223:hasMedium s223:Medium-Air .
+
+:multiple-zone-ahu-name_cn a s223:Connection ;
+    s223:cnx :multiple-zone-ahu-name_out,
+        :vav-cooling-only-name_in,
+        :vav-with-reheat-name_in .
+
+:vav-with-reheat-rhc a s223:Coil,
+        rdf:Seq ;
+    s223:cnx :vav-with-reheat-rhc-air-inlet-connectionpoint,
+        :vav-with-reheat-rhc-air-outlet-connectionpoint ;
+    s223:hasAspect s223:Role-Heating ;
+    s223:hasProperty :vav-with-reheat-rhc-cmd ;
+    rdfs:member :vav-with-reheat_rhc_0_0,
+        :vav-with-reheat_rhc_0_1,
+        :vav-with-reheat_rhc_0_10,
+        :vav-with-reheat_rhc_0_11,
+        :vav-with-reheat_rhc_0_12,
+        :vav-with-reheat_rhc_0_13,
+        :vav-with-reheat_rhc_0_14,
+        :vav-with-reheat_rhc_0_2,
+        :vav-with-reheat_rhc_0_3,
+        :vav-with-reheat_rhc_0_4,
+        :vav-with-reheat_rhc_0_5,
+        :vav-with-reheat_rhc_0_6,
+        :vav-with-reheat_rhc_0_7,
+        :vav-with-reheat_rhc_0_8,
+        :vav-with-reheat_rhc_0_9,
+        :vav-with-reheat_rhc_1_0,
+        :vav-with-reheat_rhc_1_1,
+        :vav-with-reheat_rhc_1_10,
+        :vav-with-reheat_rhc_1_11,
+        :vav-with-reheat_rhc_1_12,
+        :vav-with-reheat_rhc_1_13,
+        :vav-with-reheat_rhc_1_14,
+        :vav-with-reheat_rhc_1_2,
+        :vav-with-reheat_rhc_1_3,
+        :vav-with-reheat_rhc_1_4,
+        :vav-with-reheat_rhc_1_5,
+        :vav-with-reheat_rhc_1_6,
+        :vav-with-reheat_rhc_1_7,
+        :vav-with-reheat_rhc_1_8,
+        :vav-with-reheat_rhc_1_9,
+        :vav-with-reheat_rhc_2_0,
+        :vav-with-reheat_rhc_2_1,
+        :vav-with-reheat_rhc_2_10,
+        :vav-with-reheat_rhc_2_11,
+        :vav-with-reheat_rhc_2_12,
+        :vav-with-reheat_rhc_2_13,
+        :vav-with-reheat_rhc_2_14,
+        :vav-with-reheat_rhc_2_2,
+        :vav-with-reheat_rhc_2_3,
+        :vav-with-reheat_rhc_2_4,
+        :vav-with-reheat_rhc_2_5,
+        :vav-with-reheat_rhc_2_6,
+        :vav-with-reheat_rhc_2_7,
+        :vav-with-reheat_rhc_2_8,
+        :vav-with-reheat_rhc_2_9,
+        :vav-with-reheat_rhc_3_0,
+        :vav-with-reheat_rhc_3_1,
+        :vav-with-reheat_rhc_3_10,
+        :vav-with-reheat_rhc_3_11,
+        :vav-with-reheat_rhc_3_12,
+        :vav-with-reheat_rhc_3_13,
+        :vav-with-reheat_rhc_3_14,
+        :vav-with-reheat_rhc_3_2,
+        :vav-with-reheat_rhc_3_3,
+        :vav-with-reheat_rhc_3_4,
+        :vav-with-reheat_rhc_3_5,
+        :vav-with-reheat_rhc_3_6,
+        :vav-with-reheat_rhc_3_7,
+        :vav-with-reheat_rhc_3_8,
+        :vav-with-reheat_rhc_3_9 .
+
+:vav-cooling-only-name a s223:SingleDuctTerminal,
+        rdf:Seq ;
+    s223:cnx :vav-cooling-only-air-inlet-connectionpoint,
+        :vav-cooling-only-air-outlet-connectionpoint,
+        :vav-cooling-only-name_in ;
+    s223:contains :vav-cooling-only-dmp ;
+    s223:hasProperty :vav-cooling-only-co2,
+        :vav-cooling-only-occ,
+        :vav-cooling-only-ztemp ;
+    rdfs:member :vav-cooling-only_name_0_0,
+        :vav-cooling-only_name_0_1,
+        :vav-cooling-only_name_0_10,
+        :vav-cooling-only_name_0_11,
+        :vav-cooling-only_name_0_12,
+        :vav-cooling-only_name_0_13,
+        :vav-cooling-only_name_0_14,
+        :vav-cooling-only_name_0_2,
+        :vav-cooling-only_name_0_3,
+        :vav-cooling-only_name_0_4,
+        :vav-cooling-only_name_0_5,
+        :vav-cooling-only_name_0_6,
+        :vav-cooling-only_name_0_7,
+        :vav-cooling-only_name_0_8,
+        :vav-cooling-only_name_0_9,
+        :vav-cooling-only_name_1_0,
+        :vav-cooling-only_name_1_1,
+        :vav-cooling-only_name_1_10,
+        :vav-cooling-only_name_1_11,
+        :vav-cooling-only_name_1_12,
+        :vav-cooling-only_name_1_13,
+        :vav-cooling-only_name_1_14,
+        :vav-cooling-only_name_1_2,
+        :vav-cooling-only_name_1_3,
+        :vav-cooling-only_name_1_4,
+        :vav-cooling-only_name_1_5,
+        :vav-cooling-only_name_1_6,
+        :vav-cooling-only_name_1_7,
+        :vav-cooling-only_name_1_8,
+        :vav-cooling-only_name_1_9,
+        :vav-cooling-only_name_2_0,
+        :vav-cooling-only_name_2_1,
+        :vav-cooling-only_name_2_10,
+        :vav-cooling-only_name_2_11,
+        :vav-cooling-only_name_2_12,
+        :vav-cooling-only_name_2_13,
+        :vav-cooling-only_name_2_14,
+        :vav-cooling-only_name_2_2,
+        :vav-cooling-only_name_2_3,
+        :vav-cooling-only_name_2_4,
+        :vav-cooling-only_name_2_5,
+        :vav-cooling-only_name_2_6,
+        :vav-cooling-only_name_2_7,
+        :vav-cooling-only_name_2_8,
+        :vav-cooling-only_name_2_9,
+        :vav-cooling-only_name_3_0,
+        :vav-cooling-only_name_3_1,
+        :vav-cooling-only_name_3_10,
+        :vav-cooling-only_name_3_11,
+        :vav-cooling-only_name_3_12,
+        :vav-cooling-only_name_3_13,
+        :vav-cooling-only_name_3_14,
+        :vav-cooling-only_name_3_2,
+        :vav-cooling-only_name_3_3,
+        :vav-cooling-only_name_3_4,
+        :vav-cooling-only_name_3_5,
+        :vav-cooling-only_name_3_6,
+        :vav-cooling-only_name_3_7,
+        :vav-cooling-only_name_3_8,
+        :vav-cooling-only_name_3_9 .
+
+:vav-with-reheat-name a s223:SingleDuctTerminal,
+        rdf:Seq ;
+    s223:cnx :vav-with-reheat-air-inlet-connectionpoint,
+        :vav-with-reheat-air-outlet-connectionpoint,
+        :vav-with-reheat-name_in ;
+    s223:contains :vav-with-reheat-dmp,
+        :vav-with-reheat-rhc ;
+    s223:hasProperty :vav-with-reheat-co2,
+        :vav-with-reheat-occ,
+        :vav-with-reheat-ztemp ;
+    rdfs:member :vav-with-reheat_name_0_0,
+        :vav-with-reheat_name_0_1,
+        :vav-with-reheat_name_0_10,
+        :vav-with-reheat_name_0_11,
+        :vav-with-reheat_name_0_12,
+        :vav-with-reheat_name_0_13,
+        :vav-with-reheat_name_0_14,
+        :vav-with-reheat_name_0_2,
+        :vav-with-reheat_name_0_3,
+        :vav-with-reheat_name_0_4,
+        :vav-with-reheat_name_0_5,
+        :vav-with-reheat_name_0_6,
+        :vav-with-reheat_name_0_7,
+        :vav-with-reheat_name_0_8,
+        :vav-with-reheat_name_0_9,
+        :vav-with-reheat_name_1_0,
+        :vav-with-reheat_name_1_1,
+        :vav-with-reheat_name_1_10,
+        :vav-with-reheat_name_1_11,
+        :vav-with-reheat_name_1_12,
+        :vav-with-reheat_name_1_13,
+        :vav-with-reheat_name_1_14,
+        :vav-with-reheat_name_1_2,
+        :vav-with-reheat_name_1_3,
+        :vav-with-reheat_name_1_4,
+        :vav-with-reheat_name_1_5,
+        :vav-with-reheat_name_1_6,
+        :vav-with-reheat_name_1_7,
+        :vav-with-reheat_name_1_8,
+        :vav-with-reheat_name_1_9,
+        :vav-with-reheat_name_2_0,
+        :vav-with-reheat_name_2_1,
+        :vav-with-reheat_name_2_10,
+        :vav-with-reheat_name_2_11,
+        :vav-with-reheat_name_2_12,
+        :vav-with-reheat_name_2_13,
+        :vav-with-reheat_name_2_14,
+        :vav-with-reheat_name_2_2,
+        :vav-with-reheat_name_2_3,
+        :vav-with-reheat_name_2_4,
+        :vav-with-reheat_name_2_5,
+        :vav-with-reheat_name_2_6,
+        :vav-with-reheat_name_2_7,
+        :vav-with-reheat_name_2_8,
+        :vav-with-reheat_name_2_9,
+        :vav-with-reheat_name_3_0,
+        :vav-with-reheat_name_3_1,
+        :vav-with-reheat_name_3_10,
+        :vav-with-reheat_name_3_11,
+        :vav-with-reheat_name_3_12,
+        :vav-with-reheat_name_3_13,
+        :vav-with-reheat_name_3_14,
+        :vav-with-reheat_name_3_2,
+        :vav-with-reheat_name_3_3,
+        :vav-with-reheat_name_3_4,
+        :vav-with-reheat_name_3_5,
+        :vav-with-reheat_name_3_6,
+        :vav-with-reheat_name_3_7,
+        :vav-with-reheat_name_3_8,
+        :vav-with-reheat_name_3_9 .
 

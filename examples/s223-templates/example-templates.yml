@@ -1,0 +1,314 @@
+vav-cooling-only:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    p:name a s223:SingleDuctTerminal ;
+        s223:hasProperty p:ztemp, p:occ, p:co2 ;
+        s223:contains p:dmp ;
+        s223:cnx p:air-outlet-connectionpoint, p:air-inlet-connectionpoint .
+    p:air-outlet-connectionpoint s223:hasProperty p:dat .
+  optional: ['occ', 'co2']
+  dependencies:
+    - template: damper
+      args: {"name": "dmp"}
+    - template: zone
+      args: {"name": "zone"}
+    - template: ztemp
+      args: {"name": "ztemp"}
+    - template: occ
+      args: {"name": "occ"}
+    - template: co2
+      args: {"name": "co2"}
+    - template: dat
+      args: {"name": "dat"}
+    - template: air-outlet-connectionpoint
+      args: {"name": "air-outlet-connectionpoint"}
+    - template: air-inlet-connectionpoint
+      args: {"name": "air-inlet-connectionpoint"}
+
+vav-with-reheat:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    p:name s223:contains p:rhc .
+
+  dependencies:
+   - template: vav-cooling-only
+     args: {"name": "name", "dmp":"dmp"}
+   - template: heating-coil
+     args: {"name": "rhc"}
+
+heating-coil:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    
+    p:name a s223:Coil ;
+      s223:hasAspect s223:Role-Heating ;
+      s223:hasProperty p:cmd ;
+      s223:cnx p:air-inlet-connectionpoint, p:air-outlet-connectionpoint .
+  dependencies:
+  - template: cmd
+    args: {"name": "cmd"}
+  - template: air-outlet-connectionpoint
+    args: {"name": "air-outlet-connectionpoint"}
+  - template: air-inlet-connectionpoint
+    args: {"name": "air-inlet-connectionpoint"}
+
+cmd:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    @prefix qudt: <http://qudt.org/schema/qudt/> .
+    @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+    
+    p:name a s223:QuantifiableActuatableProperty ;
+      s223:hasQuantityKind quantitykind:PositionRatio .
+
+damper:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    p:name a s223:Damper ;
+      s223:hasProperty p:dmppos .
+  dependencies:
+  - template: cmd
+    args: {"name": "dmppos"}
+
+zone:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    p:name a s223:DomainSpace ;
+      s223:hasDomain s223:Domain-HVAC .
+    
+ztemp:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix brick: <https://brickschema.org/schema/Brick#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    @prefix qudt: <http://qudt.org/schema/qudt/> .
+    @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+    @prefix unit: <http://qudt.org/vocab/unit/> .
+    p:name a s223:QuantifiableObservableProperty ;
+        s223:hasAspect s223:Aspect-Setpoint ;
+        qudt:hasQuantityKind quantitykind:Temperature .
+
+occ:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix brick: <https://brickschema.org/schema/Brick#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    @prefix qudt: <http://qudt.org/schema/qudt/> .
+    @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+    @prefix unit: <http://qudt.org/vocab/unit/> .
+    p:name a s223:QuantifiableObservableProperty ;
+        s223:hasEnumerationKind s223:EnumerationKind-Occupancy .
+
+co2:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix brick: <https://brickschema.org/schema/Brick#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    @prefix qudt: <http://qudt.org/schema/qudt/> .
+    @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+    @prefix unit: <http://qudt.org/vocab/unit/> .
+    p:name a s223:QuantifiableObservableProperty ;
+        s223:ofConstituent s223:Constituent-CO2 ;
+        s223:ofMedium s223:Medium-Air ;
+        s223:hasQuantityKind quantitykind:Concentration .
+
+dat:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix brick: <https://brickschema.org/schema/Brick#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    @prefix qudt: <http://qudt.org/schema/qudt/> .
+    @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+    @prefix unit: <http://qudt.org/vocab/unit/> .
+    p:name a s223:QuantifiableObservableProperty ;
+        s223:hasAspect s223:Role-Discharge ;
+        s223:hasQuantityKind quantitykind:Temperature .
+feeds:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix brick: <https://brickschema.org/schema/Brick#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    @prefix qudt: <http://qudt.org/schema/qudt/> .
+    @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+    @prefix unit: <http://qudt.org/vocab/unit/> .
+    @prefix hpf: <urn:hpflex#> .
+    p:name s223:cnx p:outlet_cp .
+    p:target s223:cnx p:inlet_cp .
+    p:outlet_cp s223:cnx p:connection .
+    p:connection s223:cnx p:inlet_cp .
+    p:name s223:connectsTo p:target .
+  dependencies:
+    - template: air-outlet-connectionpoint
+      args: {"name": "outlet_cp"}
+    - template: air-inlet-connectionpoint
+      args: {"name": "inlet_cp"}
+    - template: connection
+      args: {"name": "connection"}
+
+air-outlet-connectionpoint:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix brick: <https://brickschema.org/schema/Brick#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    @prefix qudt: <http://qudt.org/schema/qudt/> .
+    @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+    @prefix unit: <http://qudt.org/vocab/unit/> .
+    @prefix hpf: <urn:hpflex#> .
+    p:name a s223:OutletConnectionPoint;
+      s223:hasMedium s223:Medium-Air ;
+    .
+air-inlet-connectionpoint:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix brick: <https://brickschema.org/schema/Brick#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    @prefix qudt: <http://qudt.org/schema/qudt/> .
+    @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+    @prefix unit: <http://qudt.org/vocab/unit/> .
+    @prefix hpf: <urn:hpflex#> .
+    p:name a s223:InletConnectionPoint;
+      s223:hasMedium s223:Medium-Air ;
+    .
+connection:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix brick: <https://brickschema.org/schema/Brick#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    p:name a s223:Connection .
+
+in-maps-to: 
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix brick: <https://brickschema.org/schema/Brick#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    p:name s223:cnx p:inlet_cp .
+    p:target s223:cnx p:target_cp .
+    p:target_cp s223:mapsTo p:inlet_cp .
+  dependencies:
+   - template: air-inlet-connectionpoint
+     args: {"name": "inlet_cp"}
+   - template: air-inlet-connectionpoint
+     args: {"name": "target_cp"}
+
+out-maps-to: 
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix brick: <https://brickschema.org/schema/Brick#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    p:name s223:cnx p:outlet_cp .
+    p:target s223:cnx p:target_cp .
+    p:target_cp s223:mapsTo p:outlet_cp .
+  dependencies:
+   - template: air-outlet-connectionpoint
+     args: {"name": "outlet_cp"}
+   - template: air-outlet-connectionpoint
+     args: {"name": "target_cp"}
+
+multiple-zone-ahu:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix brick: <https://brickschema.org/schema/Brick#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    @prefix qudt: <http://qudt.org/schema/qudt/> .
+    @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+    @prefix unit: <http://qudt.org/vocab/unit/> .
+    p:name a s223:AirHandlingUnit ;
+      s223:contains p:sa_fan, p:ra_damper, p:clg_coil, p:htg_coil ;
+      s223:hasProperty p:sa_temp, p:oa_temp, p:ma_temp, p:ra_temp, p:filter_pd .
+  optional: ['ma_temp', 'ra_temp', 'filter_pd']
+  dependencies:
+    - template: sa_fan
+      args: {"name": "sa_fan"}
+    - template: damper
+      args: {"name": "ra_damper"}
+    - template: htg_coil
+      args: {"name": "htg_coil"}
+    - template: clg_coil
+      args: {"name": "clg_coil"}
+    - template: sa_temp
+      args: {"name": "sa_temp"}
+    - template: oa_temp
+      args: {"name": "oa_temp"}
+    - template: ma_temp
+      args: {"name": "ma_temp"}
+    - template: ra_temp
+      args: {"name": "ra_temp"}
+    - template: filter_pd
+      args: {"name": "filter_pd"}
+    
+sa_fan:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    p:name a s223:Fan ;
+      s223:hasAspect s223:Role-SupplyAir .
+
+htg_coil:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    p:name a s223:Coil ;
+      s223:hasAspect s223:Role-Heating .
+
+clg_coil:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    p:name a s223:Coil ;
+      s223:hasAspect s223:Role-Cooling .
+
+sa_temp:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    @prefix qudt: <http://qudt.org/schema/qudt/> .
+    @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+    p:name a s223:QuantifiableObservableProperty ;
+      s223:hasAspect s223:Role-Supply ;
+      s223:hasQuantityKind quantitykind:Temperature .
+
+oa_temp:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    @prefix qudt: <http://qudt.org/schema/qudt/> .
+    @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+    p:name a s223:QuantifiableObservableProperty ;
+      s223:hasAspect s223:Role-OutdoorAirIntake ;
+      s223:hasQuantityKind quantitykind:Temperature .
+
+# Know its mixed based on position
+ma_temp:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    @prefix qudt: <http://qudt.org/schema/qudt/> .
+    @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+    p:name a s223:QuantifiableObservableProperty ;
+      s223:hasQuantityKind quantitykind:Temperature .
+
+ra_temp:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    @prefix qudt: <http://qudt.org/schema/qudt/> .
+    @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+    p:name a s223:QuantifiableObservableProperty ;
+      s223:hasAspect s223:Role-Return ;
+      s223:hasQuantityKind quantitykind:Temperature .
+
+filter_pd:
+  body: >
+    @prefix p: <urn:___param___#> .
+    @prefix s223: <http://data.ashrae.org/standard223#> .
+    @prefix qudt: <http://qudt.org/schema/qudt/> .
+    @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+    p:name a s223:QuantifiableObservableProperty ;
+      s223:hasQuantityKind quantitykind:PressureDifference ;
+      s223:hasAspect s223:Aspect-Filter .
