@@ -58,10 +58,10 @@ def assemble_ahu(bindings):
 not_condensed_t = []
 condensed_t = []
 model_length = []
-for n in range(14):
+for n in range(20):
     bldg = Model.create("urn:example#")
     bldg.graph.bind('',BLDG)
-    g = Graph()
+    g = Graph(store = 'Oxigraph')
     g.bind('',BLDG)
     g.bind('s223',S223)
 
@@ -195,18 +195,15 @@ for n in range(14):
     # utils_path = os.path.abspath(os.path.join(current_dir, '..', 'utils'))
     sys.path.insert(0, '../utils')
     from utils import query_to_df, get_prefixes
-
-
+    model_length.append(len(bldg.graph))
+    # %%
+    bldg_graph = Graph(store = 'Oxigraph')
+    for s,p,o in bldg.graph.triples((None,None,None)):
+        bldg_graph.add((s,p,o))
+    for s,p,o in g.triples((None,None,None)):
+        bldg_graph.add((s,p,o))
+    # %%
     print('beginning querying')
-    # %%
-    bldg_g = Graph(store = 'Oxigraph')
-    for s,p,o in bldg.graph.triples((None,None,None)):
-        bldg_g.add((s,p,o))
-    bldg_g_normal = Graph()
-    for s,p,o in bldg.graph.triples((None,None,None)):
-        bldg_g_normal.add((s,p,o))
-
-    # %%
     st = time()
     bldg_query = get_prefixes(bldg.graph)
     bldg_query += """
@@ -227,20 +224,46 @@ for n in range(14):
         }
     }
     """
-    print(len(query_to_df(bldg_query, bldg_g)))
+    query_to_df(bldg_query, bldg_graph)
     et = time()
     elapsed_time = et - st
-    print(elapsed_time)
-    model_length.append(len(bldg_g))
-    condensed_t.append(elapsed_time)
-    not_condensed_t.append(elapsed_time)
-    # breaking at 5 minutes
-    if elapsed_time >= 600:
-        break 
-print(not_condensed_t)
-# # %%
-# import matplotlib.pyplot as plt
-# plt.ylabel('Query Time (seconds)')
-# plt.plot(range(1,15),not_condensed_t, label='Without Condensed Representation')
-# plt.plot(range(1,15),condensed_t, label='With Condensed Representation')
-# plt.xlabel('Size of Model (Amt. "Floors")')
+    not_condensed_t.append(time() - st)
+
+    st = time()
+    bldg_query = get_prefixes(bldg.graph)
+    bldg_query += """
+    SELECT ?dat ?vav ?ahu
+    WHERE {
+        ?dat a s223:QuantifiableObservableProperty .
+        ?vavC a s223:SingleDuctTerminal, rdf:Seq ;
+            rdfs:member ?vav ;
+            s223:contains ?dmp .
+        ?dmp a s223:Damper . 
+        ?vav s223:cnx ?outlet_cp . 
+        ?outlet_cp a s223:OutletConnectionPoint ;
+            s223:hasProperty ?dat .
+        ?ahu a s223:AirHandlingUnit ;
+            s223:cnx* ?vav .
+        FILTER NOT EXISTS {
+            ?vavC s223:contains ?rc .
+            ?rc a s223:Coil .
+        }
+    }
+    """
+    query_to_df(bldg_query, bldg_graph)
+    condensed_t.append(time() - st)
+import pandas as pd 
+df = pd.DataFrame({
+    'model_length': model_length,
+    'not_condensed_t': not_condensed_t,
+    'condensed_t': condensed_t
+})
+df.to_csv('query-time-s223.csv')
+import matplotlib.pyplot as plt
+plt.ylabel('Query Time (seconds)')
+plt.plot([f"{n/1000}k" for n in model_length],not_condensed_t, label='Without Condensed Representation')
+plt.plot([f"{n/1000}k" for n in model_length],condensed_t, label='With Condensed Representation')
+plt.xlabel('Size of Model (1000s of triples)')
+# plt.xticks(model_length, [f'{1+i} [{x}]' for i,x in enumerate(model_length)])
+plt.legend()
+plt.savefig('query-time-s223.png')
