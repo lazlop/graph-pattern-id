@@ -160,9 +160,6 @@ for n in range(20):
     if not_condensed_t[-1] >= 600:
         break 
 # %%
-import csv
-# Combine arrays into a list of rows
-rows = [model_length, not_condensed_t, condensed_t]
 import matplotlib.pyplot as plt
 import pandas as pd 
 df = pd.DataFrame({
@@ -170,7 +167,7 @@ df = pd.DataFrame({
     'not_condensed_t': not_condensed_t,
     'condensed_t': condensed_t
 })
-df.to_csv('query-time-s223.csv')
+df.to_csv('query-time.csv')
 plt.ylabel('Query Time (seconds)')
 plt.plot([f"{n/1000}k" for n in model_length],not_condensed_t, label='Without Condensed Representation')
 plt.plot([f"{n/1000}k" for n in model_length],condensed_t, label='With Condensed Representation')
