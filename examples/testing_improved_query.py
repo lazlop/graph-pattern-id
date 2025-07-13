@@ -43,7 +43,7 @@ print(template_types)
 not_condensed_t = []
 condensed_t = []
 model_length = []
-for n in range(14):
+for n in range(20):
     bldg = Model.create("urn:example#")
     bldg.graph.bind('',BLDG)
     g = Graph(store = 'Oxigraph')
@@ -112,13 +112,15 @@ for n in range(14):
             g.add((BLDG['multiple-zone-ahu-name'], BRICK.feeds, BLDG['vav-with-reheat-name']))
     
     bldg.add_graph(ctx.compile())
-    print(len(g))
-    print(len(bldg.graph))
-    st = time()
+    # print(len(g))
+    # print(len(bldg.graph))
 
     bldg_graph = Graph(store = 'Oxigraph')
     for s,p,o in bldg.graph.triples((None,None,None)):
         bldg_graph.add((s,p,o))
+    for s,p,o in g.triples((None,None,None)):
+        bldg_graph.add((s,p,o))
+    st = time()
 
     group_bldg_query_wrong = """
     SELECT ?dat ?vav ?ahu
@@ -151,7 +153,7 @@ for n in range(14):
         }
     }
     """
-    query_to_df(group_bldg_query, bldg_graph + g)
+    query_to_df(group_bldg_query, bldg_graph)
     condensed_t.append(time() - st)
     # breaking at 5 minutes
     model_length.append(len(bldg_graph))
@@ -161,18 +163,18 @@ for n in range(14):
 import csv
 # Combine arrays into a list of rows
 rows = [model_length, not_condensed_t, condensed_t]
-
-# Write to CSV
-with open('query-time.csv', 'w', newline='') as csvfile:
-    writer = csv.writer(csvfile)
-    writer.writerow(['model_length', 'not_condensed_t', 'condensed_t'])  # Write header)
-    writer.writerows(rows)
-# %%
 import matplotlib.pyplot as plt
+import pandas as pd 
+df = pd.DataFrame({
+    'model_length': model_length,
+    'not_condensed_t': not_condensed_t,
+    'condensed_t': condensed_t
+})
+df.to_csv('query-time-s223.csv')
 plt.ylabel('Query Time (seconds)')
-plt.plot(range(1,15),not_condensed_t, label='Without Condensed Representation')
-plt.plot(range(1,15),condensed_t, label='With Condensed Representation')
-plt.xlabel('Size of Model (Amt. "Floors")')
+plt.plot([f"{n/1000}k" for n in model_length],not_condensed_t, label='Without Condensed Representation')
+plt.plot([f"{n/1000}k" for n in model_length],condensed_t, label='With Condensed Representation')
+plt.xlabel('Size of Model (1000s of triples)')
 # plt.xticks(model_length, [f'{1+i} [{x}]' for i,x in enumerate(model_length)])
 plt.legend()
 plt.savefig('query-time.png')
