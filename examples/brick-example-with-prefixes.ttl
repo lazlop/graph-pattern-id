@@ -1,0 +1,4576 @@
+@prefix : <urn:example#> .
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:multiple-zone-ahu_name_0 a brick:AHU ;
+    rdfs:label "AHU" ;
+    brick:feeds :vav-cooling-only_name_0_0,
+        :vav-cooling-only_name_0_1,
+        :vav-cooling-only_name_0_10,
+        :vav-cooling-only_name_0_11,
+        :vav-cooling-only_name_0_12,
+        :vav-cooling-only_name_0_13,
+        :vav-cooling-only_name_0_14,
+        :vav-cooling-only_name_0_2,
+        :vav-cooling-only_name_0_3,
+        :vav-cooling-only_name_0_4,
+        :vav-cooling-only_name_0_5,
+        :vav-cooling-only_name_0_6,
+        :vav-cooling-only_name_0_7,
+        :vav-cooling-only_name_0_8,
+        :vav-cooling-only_name_0_9,
+        :vav-with-reheat_name_0_0,
+        :vav-with-reheat_name_0_1,
+        :vav-with-reheat_name_0_10,
+        :vav-with-reheat_name_0_11,
+        :vav-with-reheat_name_0_12,
+        :vav-with-reheat_name_0_13,
+        :vav-with-reheat_name_0_14,
+        :vav-with-reheat_name_0_2,
+        :vav-with-reheat_name_0_3,
+        :vav-with-reheat_name_0_4,
+        :vav-with-reheat_name_0_5,
+        :vav-with-reheat_name_0_6,
+        :vav-with-reheat_name_0_7,
+        :vav-with-reheat_name_0_8,
+        :vav-with-reheat_name_0_9 ;
+    brick:hasPart :multiple-zone-ahu_clg_coil_0,
+        :multiple-zone-ahu_htg_coil_0,
+        :multiple-zone-ahu_ra_damper_0,
+        :multiple-zone-ahu_sa_fan_0 ;
+    brick:hasPoint :multiple-zone-ahu_filter_pd_0,
+        :multiple-zone-ahu_ma_temp_0,
+        :multiple-zone-ahu_oa_temp_0,
+        :multiple-zone-ahu_ra_temp_0,
+        :multiple-zone-ahu_sa_temp_0 .
+
+:multiple-zone-ahu_name_1 a brick:AHU ;
+    rdfs:label "AHU" ;
+    brick:feeds :vav-cooling-only_name_1_0,
+        :vav-cooling-only_name_1_1,
+        :vav-cooling-only_name_1_10,
+        :vav-cooling-only_name_1_11,
+        :vav-cooling-only_name_1_12,
+        :vav-cooling-only_name_1_13,
+        :vav-cooling-only_name_1_14,
+        :vav-cooling-only_name_1_2,
+        :vav-cooling-only_name_1_3,
+        :vav-cooling-only_name_1_4,
+        :vav-cooling-only_name_1_5,
+        :vav-cooling-only_name_1_6,
+        :vav-cooling-only_name_1_7,
+        :vav-cooling-only_name_1_8,
+        :vav-cooling-only_name_1_9,
+        :vav-with-reheat_name_1_0,
+        :vav-with-reheat_name_1_1,
+        :vav-with-reheat_name_1_10,
+        :vav-with-reheat_name_1_11,
+        :vav-with-reheat_name_1_12,
+        :vav-with-reheat_name_1_13,
+        :vav-with-reheat_name_1_14,
+        :vav-with-reheat_name_1_2,
+        :vav-with-reheat_name_1_3,
+        :vav-with-reheat_name_1_4,
+        :vav-with-reheat_name_1_5,
+        :vav-with-reheat_name_1_6,
+        :vav-with-reheat_name_1_7,
+        :vav-with-reheat_name_1_8,
+        :vav-with-reheat_name_1_9 ;
+    brick:hasPart :multiple-zone-ahu_clg_coil_1,
+        :multiple-zone-ahu_htg_coil_1,
+        :multiple-zone-ahu_ra_damper_1,
+        :multiple-zone-ahu_sa_fan_1 ;
+    brick:hasPoint :multiple-zone-ahu_filter_pd_1,
+        :multiple-zone-ahu_ma_temp_1,
+        :multiple-zone-ahu_oa_temp_1,
+        :multiple-zone-ahu_ra_temp_1,
+        :multiple-zone-ahu_sa_temp_1 .
+
+:multiple-zone-ahu_name_2 a brick:AHU ;
+    rdfs:label "AHU" ;
+    brick:feeds :vav-cooling-only_name_2_0,
+        :vav-cooling-only_name_2_1,
+        :vav-cooling-only_name_2_10,
+        :vav-cooling-only_name_2_11,
+        :vav-cooling-only_name_2_12,
+        :vav-cooling-only_name_2_13,
+        :vav-cooling-only_name_2_14,
+        :vav-cooling-only_name_2_2,
+        :vav-cooling-only_name_2_3,
+        :vav-cooling-only_name_2_4,
+        :vav-cooling-only_name_2_5,
+        :vav-cooling-only_name_2_6,
+        :vav-cooling-only_name_2_7,
+        :vav-cooling-only_name_2_8,
+        :vav-cooling-only_name_2_9,
+        :vav-with-reheat_name_2_0,
+        :vav-with-reheat_name_2_1,
+        :vav-with-reheat_name_2_10,
+        :vav-with-reheat_name_2_11,
+        :vav-with-reheat_name_2_12,
+        :vav-with-reheat_name_2_13,
+        :vav-with-reheat_name_2_14,
+        :vav-with-reheat_name_2_2,
+        :vav-with-reheat_name_2_3,
+        :vav-with-reheat_name_2_4,
+        :vav-with-reheat_name_2_5,
+        :vav-with-reheat_name_2_6,
+        :vav-with-reheat_name_2_7,
+        :vav-with-reheat_name_2_8,
+        :vav-with-reheat_name_2_9 ;
+    brick:hasPart :multiple-zone-ahu_clg_coil_2,
+        :multiple-zone-ahu_htg_coil_2,
+        :multiple-zone-ahu_ra_damper_2,
+        :multiple-zone-ahu_sa_fan_2 ;
+    brick:hasPoint :multiple-zone-ahu_filter_pd_2,
+        :multiple-zone-ahu_ma_temp_2,
+        :multiple-zone-ahu_oa_temp_2,
+        :multiple-zone-ahu_ra_temp_2,
+        :multiple-zone-ahu_sa_temp_2 .
+
+:multiple-zone-ahu_name_3 a brick:AHU ;
+    rdfs:label "AHU" ;
+    brick:feeds :vav-cooling-only_name_3_0,
+        :vav-cooling-only_name_3_1,
+        :vav-cooling-only_name_3_10,
+        :vav-cooling-only_name_3_11,
+        :vav-cooling-only_name_3_12,
+        :vav-cooling-only_name_3_13,
+        :vav-cooling-only_name_3_14,
+        :vav-cooling-only_name_3_2,
+        :vav-cooling-only_name_3_3,
+        :vav-cooling-only_name_3_4,
+        :vav-cooling-only_name_3_5,
+        :vav-cooling-only_name_3_6,
+        :vav-cooling-only_name_3_7,
+        :vav-cooling-only_name_3_8,
+        :vav-cooling-only_name_3_9,
+        :vav-with-reheat_name_3_0,
+        :vav-with-reheat_name_3_1,
+        :vav-with-reheat_name_3_10,
+        :vav-with-reheat_name_3_11,
+        :vav-with-reheat_name_3_12,
+        :vav-with-reheat_name_3_13,
+        :vav-with-reheat_name_3_14,
+        :vav-with-reheat_name_3_2,
+        :vav-with-reheat_name_3_3,
+        :vav-with-reheat_name_3_4,
+        :vav-with-reheat_name_3_5,
+        :vav-with-reheat_name_3_6,
+        :vav-with-reheat_name_3_7,
+        :vav-with-reheat_name_3_8,
+        :vav-with-reheat_name_3_9 ;
+    brick:hasPart :multiple-zone-ahu_clg_coil_3,
+        :multiple-zone-ahu_htg_coil_3,
+        :multiple-zone-ahu_ra_damper_3,
+        :multiple-zone-ahu_sa_fan_3 ;
+    brick:hasPoint :multiple-zone-ahu_filter_pd_3,
+        :multiple-zone-ahu_ma_temp_3,
+        :multiple-zone-ahu_oa_temp_3,
+        :multiple-zone-ahu_ra_temp_3,
+        :multiple-zone-ahu_sa_temp_3 .
+
+:multiple-zone-ahu_clg_coil-valve_cmd_0 a brick:Valve_Position_Command ;
+    rdfs:label "Valve_Position_Command" .
+
+:multiple-zone-ahu_clg_coil-valve_cmd_1 a brick:Valve_Position_Command ;
+    rdfs:label "Valve_Position_Command" .
+
+:multiple-zone-ahu_clg_coil-valve_cmd_2 a brick:Valve_Position_Command ;
+    rdfs:label "Valve_Position_Command" .
+
+:multiple-zone-ahu_clg_coil-valve_cmd_3 a brick:Valve_Position_Command ;
+    rdfs:label "Valve_Position_Command" .
+
+:multiple-zone-ahu_clg_coil_0 a brick:Cooling_Coil ;
+    rdfs:label "Cooling_Coil" ;
+    brick:hasPoint :multiple-zone-ahu_clg_coil-valve_cmd_0 .
+
+:multiple-zone-ahu_clg_coil_1 a brick:Cooling_Coil ;
+    rdfs:label "Cooling_Coil" ;
+    brick:hasPoint :multiple-zone-ahu_clg_coil-valve_cmd_1 .
+
+:multiple-zone-ahu_clg_coil_2 a brick:Cooling_Coil ;
+    rdfs:label "Cooling_Coil" ;
+    brick:hasPoint :multiple-zone-ahu_clg_coil-valve_cmd_2 .
+
+:multiple-zone-ahu_clg_coil_3 a brick:Cooling_Coil ;
+    rdfs:label "Cooling_Coil" ;
+    brick:hasPoint :multiple-zone-ahu_clg_coil-valve_cmd_3 .
+
+:multiple-zone-ahu_filter_pd_0 a brick:Filter_Differential_Pressure_Sensor ;
+    rdfs:label "Filter_Differential_Pressure_Sensor" .
+
+:multiple-zone-ahu_filter_pd_1 a brick:Filter_Differential_Pressure_Sensor ;
+    rdfs:label "Filter_Differential_Pressure_Sensor" .
+
+:multiple-zone-ahu_filter_pd_2 a brick:Filter_Differential_Pressure_Sensor ;
+    rdfs:label "Filter_Differential_Pressure_Sensor" .
+
+:multiple-zone-ahu_filter_pd_3 a brick:Filter_Differential_Pressure_Sensor ;
+    rdfs:label "Filter_Differential_Pressure_Sensor" .
+
+:multiple-zone-ahu_htg_coil-valve_cmd_0 a brick:Valve_Position_Command ;
+    rdfs:label "Valve_Position_Command" .
+
+:multiple-zone-ahu_htg_coil-valve_cmd_1 a brick:Valve_Position_Command ;
+    rdfs:label "Valve_Position_Command" .
+
+:multiple-zone-ahu_htg_coil-valve_cmd_2 a brick:Valve_Position_Command ;
+    rdfs:label "Valve_Position_Command" .
+
+:multiple-zone-ahu_htg_coil-valve_cmd_3 a brick:Valve_Position_Command ;
+    rdfs:label "Valve_Position_Command" .
+
+:multiple-zone-ahu_htg_coil_0 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :multiple-zone-ahu_htg_coil-valve_cmd_0 .
+
+:multiple-zone-ahu_htg_coil_1 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :multiple-zone-ahu_htg_coil-valve_cmd_1 .
+
+:multiple-zone-ahu_htg_coil_2 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :multiple-zone-ahu_htg_coil-valve_cmd_2 .
+
+:multiple-zone-ahu_htg_coil_3 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :multiple-zone-ahu_htg_coil-valve_cmd_3 .
+
+:multiple-zone-ahu_ma_temp_0 a brick:Mixed_Air_Temperature_Sensor ;
+    rdfs:label "Mixed_Air_Temperature_Sensor" .
+
+:multiple-zone-ahu_ma_temp_1 a brick:Mixed_Air_Temperature_Sensor ;
+    rdfs:label "Mixed_Air_Temperature_Sensor" .
+
+:multiple-zone-ahu_ma_temp_2 a brick:Mixed_Air_Temperature_Sensor ;
+    rdfs:label "Mixed_Air_Temperature_Sensor" .
+
+:multiple-zone-ahu_ma_temp_3 a brick:Mixed_Air_Temperature_Sensor ;
+    rdfs:label "Mixed_Air_Temperature_Sensor" .
+
+:multiple-zone-ahu_oa_temp_0 a brick:Outside_Air_Temperature_Sensor ;
+    rdfs:label "Outside_Air_Temperature_Sensor" .
+
+:multiple-zone-ahu_oa_temp_1 a brick:Outside_Air_Temperature_Sensor ;
+    rdfs:label "Outside_Air_Temperature_Sensor" .
+
+:multiple-zone-ahu_oa_temp_2 a brick:Outside_Air_Temperature_Sensor ;
+    rdfs:label "Outside_Air_Temperature_Sensor" .
+
+:multiple-zone-ahu_oa_temp_3 a brick:Outside_Air_Temperature_Sensor ;
+    rdfs:label "Outside_Air_Temperature_Sensor" .
+
+:multiple-zone-ahu_ra_damper-dmppos_0 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:multiple-zone-ahu_ra_damper-dmppos_1 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:multiple-zone-ahu_ra_damper-dmppos_2 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:multiple-zone-ahu_ra_damper-dmppos_3 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:multiple-zone-ahu_ra_damper_0 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :multiple-zone-ahu_ra_damper-dmppos_0 .
+
+:multiple-zone-ahu_ra_damper_1 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :multiple-zone-ahu_ra_damper-dmppos_1 .
+
+:multiple-zone-ahu_ra_damper_2 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :multiple-zone-ahu_ra_damper-dmppos_2 .
+
+:multiple-zone-ahu_ra_damper_3 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :multiple-zone-ahu_ra_damper-dmppos_3 .
+
+:multiple-zone-ahu_ra_temp_0 a brick:Return_Air_Temperature_Sensor ;
+    rdfs:label "Return_Air_Temperature_Sensor" .
+
+:multiple-zone-ahu_ra_temp_1 a brick:Return_Air_Temperature_Sensor ;
+    rdfs:label "Return_Air_Temperature_Sensor" .
+
+:multiple-zone-ahu_ra_temp_2 a brick:Return_Air_Temperature_Sensor ;
+    rdfs:label "Return_Air_Temperature_Sensor" .
+
+:multiple-zone-ahu_ra_temp_3 a brick:Return_Air_Temperature_Sensor ;
+    rdfs:label "Return_Air_Temperature_Sensor" .
+
+:multiple-zone-ahu_sa_fan-speed_0 a brick:Frequency_Command ;
+    rdfs:label "Frequency_Command" .
+
+:multiple-zone-ahu_sa_fan-speed_1 a brick:Frequency_Command ;
+    rdfs:label "Frequency_Command" .
+
+:multiple-zone-ahu_sa_fan-speed_2 a brick:Frequency_Command ;
+    rdfs:label "Frequency_Command" .
+
+:multiple-zone-ahu_sa_fan-speed_3 a brick:Frequency_Command ;
+    rdfs:label "Frequency_Command" .
+
+:multiple-zone-ahu_sa_fan-start_stop_0 a brick:Start_Stop_Command ;
+    rdfs:label "Start_Stop_Command" .
+
+:multiple-zone-ahu_sa_fan-start_stop_1 a brick:Start_Stop_Command ;
+    rdfs:label "Start_Stop_Command" .
+
+:multiple-zone-ahu_sa_fan-start_stop_2 a brick:Start_Stop_Command ;
+    rdfs:label "Start_Stop_Command" .
+
+:multiple-zone-ahu_sa_fan-start_stop_3 a brick:Start_Stop_Command ;
+    rdfs:label "Start_Stop_Command" .
+
+:multiple-zone-ahu_sa_fan-status_0 a brick:Fan_Status ;
+    rdfs:label "Fan_Status" .
+
+:multiple-zone-ahu_sa_fan-status_1 a brick:Fan_Status ;
+    rdfs:label "Fan_Status" .
+
+:multiple-zone-ahu_sa_fan-status_2 a brick:Fan_Status ;
+    rdfs:label "Fan_Status" .
+
+:multiple-zone-ahu_sa_fan-status_3 a brick:Fan_Status ;
+    rdfs:label "Fan_Status" .
+
+:multiple-zone-ahu_sa_fan_0 a brick:Supply_Fan ;
+    rdfs:label "Supply_Fan" ;
+    brick:hasPoint :multiple-zone-ahu_sa_fan-speed_0,
+        :multiple-zone-ahu_sa_fan-start_stop_0,
+        :multiple-zone-ahu_sa_fan-status_0 .
+
+:multiple-zone-ahu_sa_fan_1 a brick:Supply_Fan ;
+    rdfs:label "Supply_Fan" ;
+    brick:hasPoint :multiple-zone-ahu_sa_fan-speed_1,
+        :multiple-zone-ahu_sa_fan-start_stop_1,
+        :multiple-zone-ahu_sa_fan-status_1 .
+
+:multiple-zone-ahu_sa_fan_2 a brick:Supply_Fan ;
+    rdfs:label "Supply_Fan" ;
+    brick:hasPoint :multiple-zone-ahu_sa_fan-speed_2,
+        :multiple-zone-ahu_sa_fan-start_stop_2,
+        :multiple-zone-ahu_sa_fan-status_2 .
+
+:multiple-zone-ahu_sa_fan_3 a brick:Supply_Fan ;
+    rdfs:label "Supply_Fan" ;
+    brick:hasPoint :multiple-zone-ahu_sa_fan-speed_3,
+        :multiple-zone-ahu_sa_fan-start_stop_3,
+        :multiple-zone-ahu_sa_fan-status_3 .
+
+:multiple-zone-ahu_sa_temp_0 a brick:Supply_Air_Temperature_Sensor ;
+    rdfs:label "Supply_Air_Temperature_Sensor" .
+
+:multiple-zone-ahu_sa_temp_1 a brick:Supply_Air_Temperature_Sensor ;
+    rdfs:label "Supply_Air_Temperature_Sensor" .
+
+:multiple-zone-ahu_sa_temp_2 a brick:Supply_Air_Temperature_Sensor ;
+    rdfs:label "Supply_Air_Temperature_Sensor" .
+
+:multiple-zone-ahu_sa_temp_3 a brick:Supply_Air_Temperature_Sensor ;
+    rdfs:label "Supply_Air_Temperature_Sensor" .
+
+:vav-cooling-only_co2_0_0 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_0_1 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_0_10 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_0_11 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_0_12 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_0_13 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_0_14 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_0_2 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_0_3 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_0_4 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_0_5 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_0_6 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_0_7 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_0_8 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_0_9 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_1_0 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_1_1 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_1_10 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_1_11 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_1_12 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_1_13 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_1_14 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_1_2 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_1_3 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_1_4 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_1_5 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_1_6 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_1_7 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_1_8 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_1_9 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_2_0 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_2_1 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_2_10 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_2_11 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_2_12 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_2_13 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_2_14 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_2_2 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_2_3 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_2_4 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_2_5 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_2_6 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_2_7 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_2_8 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_2_9 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_3_0 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_3_1 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_3_10 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_3_11 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_3_12 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_3_13 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_3_14 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_3_2 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_3_3 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_3_4 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_3_5 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_3_6 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_3_7 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_3_8 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_co2_3_9 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-cooling-only_dat_0_0 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_0_1 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_0_10 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_0_11 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_0_12 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_0_13 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_0_14 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_0_2 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_0_3 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_0_4 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_0_5 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_0_6 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_0_7 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_0_8 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_0_9 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_1_0 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_1_1 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_1_10 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_1_11 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_1_12 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_1_13 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_1_14 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_1_2 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_1_3 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_1_4 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_1_5 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_1_6 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_1_7 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_1_8 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_1_9 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_2_0 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_2_1 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_2_10 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_2_11 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_2_12 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_2_13 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_2_14 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_2_2 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_2_3 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_2_4 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_2_5 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_2_6 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_2_7 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_2_8 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_2_9 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_3_0 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_3_1 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_3_10 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_3_11 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_3_12 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_3_13 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_3_14 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_3_2 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_3_3 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_3_4 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_3_5 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_3_6 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_3_7 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_3_8 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dat_3_9 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-cooling-only_dmp-dmppos_0_0 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_0_1 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_0_10 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_0_11 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_0_12 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_0_13 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_0_14 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_0_2 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_0_3 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_0_4 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_0_5 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_0_6 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_0_7 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_0_8 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_0_9 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_1_0 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_1_1 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_1_10 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_1_11 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_1_12 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_1_13 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_1_14 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_1_2 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_1_3 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_1_4 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_1_5 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_1_6 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_1_7 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_1_8 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_1_9 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_2_0 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_2_1 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_2_10 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_2_11 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_2_12 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_2_13 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_2_14 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_2_2 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_2_3 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_2_4 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_2_5 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_2_6 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_2_7 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_2_8 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_2_9 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_3_0 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_3_1 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_3_10 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_3_11 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_3_12 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_3_13 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_3_14 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_3_2 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_3_3 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_3_4 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_3_5 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_3_6 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_3_7 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_3_8 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp-dmppos_3_9 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-cooling-only_dmp_0_0 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_0_0 .
+
+:vav-cooling-only_dmp_0_1 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_0_1 .
+
+:vav-cooling-only_dmp_0_10 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_0_10 .
+
+:vav-cooling-only_dmp_0_11 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_0_11 .
+
+:vav-cooling-only_dmp_0_12 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_0_12 .
+
+:vav-cooling-only_dmp_0_13 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_0_13 .
+
+:vav-cooling-only_dmp_0_14 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_0_14 .
+
+:vav-cooling-only_dmp_0_2 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_0_2 .
+
+:vav-cooling-only_dmp_0_3 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_0_3 .
+
+:vav-cooling-only_dmp_0_4 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_0_4 .
+
+:vav-cooling-only_dmp_0_5 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_0_5 .
+
+:vav-cooling-only_dmp_0_6 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_0_6 .
+
+:vav-cooling-only_dmp_0_7 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_0_7 .
+
+:vav-cooling-only_dmp_0_8 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_0_8 .
+
+:vav-cooling-only_dmp_0_9 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_0_9 .
+
+:vav-cooling-only_dmp_1_0 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_1_0 .
+
+:vav-cooling-only_dmp_1_1 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_1_1 .
+
+:vav-cooling-only_dmp_1_10 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_1_10 .
+
+:vav-cooling-only_dmp_1_11 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_1_11 .
+
+:vav-cooling-only_dmp_1_12 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_1_12 .
+
+:vav-cooling-only_dmp_1_13 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_1_13 .
+
+:vav-cooling-only_dmp_1_14 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_1_14 .
+
+:vav-cooling-only_dmp_1_2 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_1_2 .
+
+:vav-cooling-only_dmp_1_3 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_1_3 .
+
+:vav-cooling-only_dmp_1_4 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_1_4 .
+
+:vav-cooling-only_dmp_1_5 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_1_5 .
+
+:vav-cooling-only_dmp_1_6 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_1_6 .
+
+:vav-cooling-only_dmp_1_7 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_1_7 .
+
+:vav-cooling-only_dmp_1_8 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_1_8 .
+
+:vav-cooling-only_dmp_1_9 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_1_9 .
+
+:vav-cooling-only_dmp_2_0 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_2_0 .
+
+:vav-cooling-only_dmp_2_1 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_2_1 .
+
+:vav-cooling-only_dmp_2_10 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_2_10 .
+
+:vav-cooling-only_dmp_2_11 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_2_11 .
+
+:vav-cooling-only_dmp_2_12 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_2_12 .
+
+:vav-cooling-only_dmp_2_13 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_2_13 .
+
+:vav-cooling-only_dmp_2_14 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_2_14 .
+
+:vav-cooling-only_dmp_2_2 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_2_2 .
+
+:vav-cooling-only_dmp_2_3 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_2_3 .
+
+:vav-cooling-only_dmp_2_4 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_2_4 .
+
+:vav-cooling-only_dmp_2_5 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_2_5 .
+
+:vav-cooling-only_dmp_2_6 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_2_6 .
+
+:vav-cooling-only_dmp_2_7 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_2_7 .
+
+:vav-cooling-only_dmp_2_8 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_2_8 .
+
+:vav-cooling-only_dmp_2_9 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_2_9 .
+
+:vav-cooling-only_dmp_3_0 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_3_0 .
+
+:vav-cooling-only_dmp_3_1 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_3_1 .
+
+:vav-cooling-only_dmp_3_10 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_3_10 .
+
+:vav-cooling-only_dmp_3_11 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_3_11 .
+
+:vav-cooling-only_dmp_3_12 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_3_12 .
+
+:vav-cooling-only_dmp_3_13 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_3_13 .
+
+:vav-cooling-only_dmp_3_14 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_3_14 .
+
+:vav-cooling-only_dmp_3_2 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_3_2 .
+
+:vav-cooling-only_dmp_3_3 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_3_3 .
+
+:vav-cooling-only_dmp_3_4 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_3_4 .
+
+:vav-cooling-only_dmp_3_5 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_3_5 .
+
+:vav-cooling-only_dmp_3_6 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_3_6 .
+
+:vav-cooling-only_dmp_3_7 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_3_7 .
+
+:vav-cooling-only_dmp_3_8 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_3_8 .
+
+:vav-cooling-only_dmp_3_9 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-cooling-only_dmp-dmppos_3_9 .
+
+:vav-cooling-only_name_0_0 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_0_0 ;
+    brick:hasPart :vav-cooling-only_dmp_0_0 ;
+    brick:hasPoint :vav-cooling-only_co2_0_0,
+        :vav-cooling-only_dat_0_0,
+        :vav-cooling-only_occ_0_0,
+        :vav-cooling-only_ztemp_0_0 .
+
+:vav-cooling-only_name_0_1 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_0_1 ;
+    brick:hasPart :vav-cooling-only_dmp_0_1 ;
+    brick:hasPoint :vav-cooling-only_co2_0_1,
+        :vav-cooling-only_dat_0_1,
+        :vav-cooling-only_occ_0_1,
+        :vav-cooling-only_ztemp_0_1 .
+
+:vav-cooling-only_name_0_10 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_0_10 ;
+    brick:hasPart :vav-cooling-only_dmp_0_10 ;
+    brick:hasPoint :vav-cooling-only_co2_0_10,
+        :vav-cooling-only_dat_0_10,
+        :vav-cooling-only_occ_0_10,
+        :vav-cooling-only_ztemp_0_10 .
+
+:vav-cooling-only_name_0_11 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_0_11 ;
+    brick:hasPart :vav-cooling-only_dmp_0_11 ;
+    brick:hasPoint :vav-cooling-only_co2_0_11,
+        :vav-cooling-only_dat_0_11,
+        :vav-cooling-only_occ_0_11,
+        :vav-cooling-only_ztemp_0_11 .
+
+:vav-cooling-only_name_0_12 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_0_12 ;
+    brick:hasPart :vav-cooling-only_dmp_0_12 ;
+    brick:hasPoint :vav-cooling-only_co2_0_12,
+        :vav-cooling-only_dat_0_12,
+        :vav-cooling-only_occ_0_12,
+        :vav-cooling-only_ztemp_0_12 .
+
+:vav-cooling-only_name_0_13 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_0_13 ;
+    brick:hasPart :vav-cooling-only_dmp_0_13 ;
+    brick:hasPoint :vav-cooling-only_co2_0_13,
+        :vav-cooling-only_dat_0_13,
+        :vav-cooling-only_occ_0_13,
+        :vav-cooling-only_ztemp_0_13 .
+
+:vav-cooling-only_name_0_14 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_0_14 ;
+    brick:hasPart :vav-cooling-only_dmp_0_14 ;
+    brick:hasPoint :vav-cooling-only_co2_0_14,
+        :vav-cooling-only_dat_0_14,
+        :vav-cooling-only_occ_0_14,
+        :vav-cooling-only_ztemp_0_14 .
+
+:vav-cooling-only_name_0_2 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_0_2 ;
+    brick:hasPart :vav-cooling-only_dmp_0_2 ;
+    brick:hasPoint :vav-cooling-only_co2_0_2,
+        :vav-cooling-only_dat_0_2,
+        :vav-cooling-only_occ_0_2,
+        :vav-cooling-only_ztemp_0_2 .
+
+:vav-cooling-only_name_0_3 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_0_3 ;
+    brick:hasPart :vav-cooling-only_dmp_0_3 ;
+    brick:hasPoint :vav-cooling-only_co2_0_3,
+        :vav-cooling-only_dat_0_3,
+        :vav-cooling-only_occ_0_3,
+        :vav-cooling-only_ztemp_0_3 .
+
+:vav-cooling-only_name_0_4 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_0_4 ;
+    brick:hasPart :vav-cooling-only_dmp_0_4 ;
+    brick:hasPoint :vav-cooling-only_co2_0_4,
+        :vav-cooling-only_dat_0_4,
+        :vav-cooling-only_occ_0_4,
+        :vav-cooling-only_ztemp_0_4 .
+
+:vav-cooling-only_name_0_5 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_0_5 ;
+    brick:hasPart :vav-cooling-only_dmp_0_5 ;
+    brick:hasPoint :vav-cooling-only_co2_0_5,
+        :vav-cooling-only_dat_0_5,
+        :vav-cooling-only_occ_0_5,
+        :vav-cooling-only_ztemp_0_5 .
+
+:vav-cooling-only_name_0_6 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_0_6 ;
+    brick:hasPart :vav-cooling-only_dmp_0_6 ;
+    brick:hasPoint :vav-cooling-only_co2_0_6,
+        :vav-cooling-only_dat_0_6,
+        :vav-cooling-only_occ_0_6,
+        :vav-cooling-only_ztemp_0_6 .
+
+:vav-cooling-only_name_0_7 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_0_7 ;
+    brick:hasPart :vav-cooling-only_dmp_0_7 ;
+    brick:hasPoint :vav-cooling-only_co2_0_7,
+        :vav-cooling-only_dat_0_7,
+        :vav-cooling-only_occ_0_7,
+        :vav-cooling-only_ztemp_0_7 .
+
+:vav-cooling-only_name_0_8 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_0_8 ;
+    brick:hasPart :vav-cooling-only_dmp_0_8 ;
+    brick:hasPoint :vav-cooling-only_co2_0_8,
+        :vav-cooling-only_dat_0_8,
+        :vav-cooling-only_occ_0_8,
+        :vav-cooling-only_ztemp_0_8 .
+
+:vav-cooling-only_name_0_9 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_0_9 ;
+    brick:hasPart :vav-cooling-only_dmp_0_9 ;
+    brick:hasPoint :vav-cooling-only_co2_0_9,
+        :vav-cooling-only_dat_0_9,
+        :vav-cooling-only_occ_0_9,
+        :vav-cooling-only_ztemp_0_9 .
+
+:vav-cooling-only_name_1_0 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_1_0 ;
+    brick:hasPart :vav-cooling-only_dmp_1_0 ;
+    brick:hasPoint :vav-cooling-only_co2_1_0,
+        :vav-cooling-only_dat_1_0,
+        :vav-cooling-only_occ_1_0,
+        :vav-cooling-only_ztemp_1_0 .
+
+:vav-cooling-only_name_1_1 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_1_1 ;
+    brick:hasPart :vav-cooling-only_dmp_1_1 ;
+    brick:hasPoint :vav-cooling-only_co2_1_1,
+        :vav-cooling-only_dat_1_1,
+        :vav-cooling-only_occ_1_1,
+        :vav-cooling-only_ztemp_1_1 .
+
+:vav-cooling-only_name_1_10 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_1_10 ;
+    brick:hasPart :vav-cooling-only_dmp_1_10 ;
+    brick:hasPoint :vav-cooling-only_co2_1_10,
+        :vav-cooling-only_dat_1_10,
+        :vav-cooling-only_occ_1_10,
+        :vav-cooling-only_ztemp_1_10 .
+
+:vav-cooling-only_name_1_11 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_1_11 ;
+    brick:hasPart :vav-cooling-only_dmp_1_11 ;
+    brick:hasPoint :vav-cooling-only_co2_1_11,
+        :vav-cooling-only_dat_1_11,
+        :vav-cooling-only_occ_1_11,
+        :vav-cooling-only_ztemp_1_11 .
+
+:vav-cooling-only_name_1_12 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_1_12 ;
+    brick:hasPart :vav-cooling-only_dmp_1_12 ;
+    brick:hasPoint :vav-cooling-only_co2_1_12,
+        :vav-cooling-only_dat_1_12,
+        :vav-cooling-only_occ_1_12,
+        :vav-cooling-only_ztemp_1_12 .
+
+:vav-cooling-only_name_1_13 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_1_13 ;
+    brick:hasPart :vav-cooling-only_dmp_1_13 ;
+    brick:hasPoint :vav-cooling-only_co2_1_13,
+        :vav-cooling-only_dat_1_13,
+        :vav-cooling-only_occ_1_13,
+        :vav-cooling-only_ztemp_1_13 .
+
+:vav-cooling-only_name_1_14 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_1_14 ;
+    brick:hasPart :vav-cooling-only_dmp_1_14 ;
+    brick:hasPoint :vav-cooling-only_co2_1_14,
+        :vav-cooling-only_dat_1_14,
+        :vav-cooling-only_occ_1_14,
+        :vav-cooling-only_ztemp_1_14 .
+
+:vav-cooling-only_name_1_2 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_1_2 ;
+    brick:hasPart :vav-cooling-only_dmp_1_2 ;
+    brick:hasPoint :vav-cooling-only_co2_1_2,
+        :vav-cooling-only_dat_1_2,
+        :vav-cooling-only_occ_1_2,
+        :vav-cooling-only_ztemp_1_2 .
+
+:vav-cooling-only_name_1_3 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_1_3 ;
+    brick:hasPart :vav-cooling-only_dmp_1_3 ;
+    brick:hasPoint :vav-cooling-only_co2_1_3,
+        :vav-cooling-only_dat_1_3,
+        :vav-cooling-only_occ_1_3,
+        :vav-cooling-only_ztemp_1_3 .
+
+:vav-cooling-only_name_1_4 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_1_4 ;
+    brick:hasPart :vav-cooling-only_dmp_1_4 ;
+    brick:hasPoint :vav-cooling-only_co2_1_4,
+        :vav-cooling-only_dat_1_4,
+        :vav-cooling-only_occ_1_4,
+        :vav-cooling-only_ztemp_1_4 .
+
+:vav-cooling-only_name_1_5 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_1_5 ;
+    brick:hasPart :vav-cooling-only_dmp_1_5 ;
+    brick:hasPoint :vav-cooling-only_co2_1_5,
+        :vav-cooling-only_dat_1_5,
+        :vav-cooling-only_occ_1_5,
+        :vav-cooling-only_ztemp_1_5 .
+
+:vav-cooling-only_name_1_6 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_1_6 ;
+    brick:hasPart :vav-cooling-only_dmp_1_6 ;
+    brick:hasPoint :vav-cooling-only_co2_1_6,
+        :vav-cooling-only_dat_1_6,
+        :vav-cooling-only_occ_1_6,
+        :vav-cooling-only_ztemp_1_6 .
+
+:vav-cooling-only_name_1_7 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_1_7 ;
+    brick:hasPart :vav-cooling-only_dmp_1_7 ;
+    brick:hasPoint :vav-cooling-only_co2_1_7,
+        :vav-cooling-only_dat_1_7,
+        :vav-cooling-only_occ_1_7,
+        :vav-cooling-only_ztemp_1_7 .
+
+:vav-cooling-only_name_1_8 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_1_8 ;
+    brick:hasPart :vav-cooling-only_dmp_1_8 ;
+    brick:hasPoint :vav-cooling-only_co2_1_8,
+        :vav-cooling-only_dat_1_8,
+        :vav-cooling-only_occ_1_8,
+        :vav-cooling-only_ztemp_1_8 .
+
+:vav-cooling-only_name_1_9 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_1_9 ;
+    brick:hasPart :vav-cooling-only_dmp_1_9 ;
+    brick:hasPoint :vav-cooling-only_co2_1_9,
+        :vav-cooling-only_dat_1_9,
+        :vav-cooling-only_occ_1_9,
+        :vav-cooling-only_ztemp_1_9 .
+
+:vav-cooling-only_name_2_0 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_2_0 ;
+    brick:hasPart :vav-cooling-only_dmp_2_0 ;
+    brick:hasPoint :vav-cooling-only_co2_2_0,
+        :vav-cooling-only_dat_2_0,
+        :vav-cooling-only_occ_2_0,
+        :vav-cooling-only_ztemp_2_0 .
+
+:vav-cooling-only_name_2_1 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_2_1 ;
+    brick:hasPart :vav-cooling-only_dmp_2_1 ;
+    brick:hasPoint :vav-cooling-only_co2_2_1,
+        :vav-cooling-only_dat_2_1,
+        :vav-cooling-only_occ_2_1,
+        :vav-cooling-only_ztemp_2_1 .
+
+:vav-cooling-only_name_2_10 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_2_10 ;
+    brick:hasPart :vav-cooling-only_dmp_2_10 ;
+    brick:hasPoint :vav-cooling-only_co2_2_10,
+        :vav-cooling-only_dat_2_10,
+        :vav-cooling-only_occ_2_10,
+        :vav-cooling-only_ztemp_2_10 .
+
+:vav-cooling-only_name_2_11 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_2_11 ;
+    brick:hasPart :vav-cooling-only_dmp_2_11 ;
+    brick:hasPoint :vav-cooling-only_co2_2_11,
+        :vav-cooling-only_dat_2_11,
+        :vav-cooling-only_occ_2_11,
+        :vav-cooling-only_ztemp_2_11 .
+
+:vav-cooling-only_name_2_12 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_2_12 ;
+    brick:hasPart :vav-cooling-only_dmp_2_12 ;
+    brick:hasPoint :vav-cooling-only_co2_2_12,
+        :vav-cooling-only_dat_2_12,
+        :vav-cooling-only_occ_2_12,
+        :vav-cooling-only_ztemp_2_12 .
+
+:vav-cooling-only_name_2_13 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_2_13 ;
+    brick:hasPart :vav-cooling-only_dmp_2_13 ;
+    brick:hasPoint :vav-cooling-only_co2_2_13,
+        :vav-cooling-only_dat_2_13,
+        :vav-cooling-only_occ_2_13,
+        :vav-cooling-only_ztemp_2_13 .
+
+:vav-cooling-only_name_2_14 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_2_14 ;
+    brick:hasPart :vav-cooling-only_dmp_2_14 ;
+    brick:hasPoint :vav-cooling-only_co2_2_14,
+        :vav-cooling-only_dat_2_14,
+        :vav-cooling-only_occ_2_14,
+        :vav-cooling-only_ztemp_2_14 .
+
+:vav-cooling-only_name_2_2 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_2_2 ;
+    brick:hasPart :vav-cooling-only_dmp_2_2 ;
+    brick:hasPoint :vav-cooling-only_co2_2_2,
+        :vav-cooling-only_dat_2_2,
+        :vav-cooling-only_occ_2_2,
+        :vav-cooling-only_ztemp_2_2 .
+
+:vav-cooling-only_name_2_3 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_2_3 ;
+    brick:hasPart :vav-cooling-only_dmp_2_3 ;
+    brick:hasPoint :vav-cooling-only_co2_2_3,
+        :vav-cooling-only_dat_2_3,
+        :vav-cooling-only_occ_2_3,
+        :vav-cooling-only_ztemp_2_3 .
+
+:vav-cooling-only_name_2_4 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_2_4 ;
+    brick:hasPart :vav-cooling-only_dmp_2_4 ;
+    brick:hasPoint :vav-cooling-only_co2_2_4,
+        :vav-cooling-only_dat_2_4,
+        :vav-cooling-only_occ_2_4,
+        :vav-cooling-only_ztemp_2_4 .
+
+:vav-cooling-only_name_2_5 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_2_5 ;
+    brick:hasPart :vav-cooling-only_dmp_2_5 ;
+    brick:hasPoint :vav-cooling-only_co2_2_5,
+        :vav-cooling-only_dat_2_5,
+        :vav-cooling-only_occ_2_5,
+        :vav-cooling-only_ztemp_2_5 .
+
+:vav-cooling-only_name_2_6 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_2_6 ;
+    brick:hasPart :vav-cooling-only_dmp_2_6 ;
+    brick:hasPoint :vav-cooling-only_co2_2_6,
+        :vav-cooling-only_dat_2_6,
+        :vav-cooling-only_occ_2_6,
+        :vav-cooling-only_ztemp_2_6 .
+
+:vav-cooling-only_name_2_7 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_2_7 ;
+    brick:hasPart :vav-cooling-only_dmp_2_7 ;
+    brick:hasPoint :vav-cooling-only_co2_2_7,
+        :vav-cooling-only_dat_2_7,
+        :vav-cooling-only_occ_2_7,
+        :vav-cooling-only_ztemp_2_7 .
+
+:vav-cooling-only_name_2_8 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_2_8 ;
+    brick:hasPart :vav-cooling-only_dmp_2_8 ;
+    brick:hasPoint :vav-cooling-only_co2_2_8,
+        :vav-cooling-only_dat_2_8,
+        :vav-cooling-only_occ_2_8,
+        :vav-cooling-only_ztemp_2_8 .
+
+:vav-cooling-only_name_2_9 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_2_9 ;
+    brick:hasPart :vav-cooling-only_dmp_2_9 ;
+    brick:hasPoint :vav-cooling-only_co2_2_9,
+        :vav-cooling-only_dat_2_9,
+        :vav-cooling-only_occ_2_9,
+        :vav-cooling-only_ztemp_2_9 .
+
+:vav-cooling-only_name_3_0 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_3_0 ;
+    brick:hasPart :vav-cooling-only_dmp_3_0 ;
+    brick:hasPoint :vav-cooling-only_co2_3_0,
+        :vav-cooling-only_dat_3_0,
+        :vav-cooling-only_occ_3_0,
+        :vav-cooling-only_ztemp_3_0 .
+
+:vav-cooling-only_name_3_1 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_3_1 ;
+    brick:hasPart :vav-cooling-only_dmp_3_1 ;
+    brick:hasPoint :vav-cooling-only_co2_3_1,
+        :vav-cooling-only_dat_3_1,
+        :vav-cooling-only_occ_3_1,
+        :vav-cooling-only_ztemp_3_1 .
+
+:vav-cooling-only_name_3_10 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_3_10 ;
+    brick:hasPart :vav-cooling-only_dmp_3_10 ;
+    brick:hasPoint :vav-cooling-only_co2_3_10,
+        :vav-cooling-only_dat_3_10,
+        :vav-cooling-only_occ_3_10,
+        :vav-cooling-only_ztemp_3_10 .
+
+:vav-cooling-only_name_3_11 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_3_11 ;
+    brick:hasPart :vav-cooling-only_dmp_3_11 ;
+    brick:hasPoint :vav-cooling-only_co2_3_11,
+        :vav-cooling-only_dat_3_11,
+        :vav-cooling-only_occ_3_11,
+        :vav-cooling-only_ztemp_3_11 .
+
+:vav-cooling-only_name_3_12 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_3_12 ;
+    brick:hasPart :vav-cooling-only_dmp_3_12 ;
+    brick:hasPoint :vav-cooling-only_co2_3_12,
+        :vav-cooling-only_dat_3_12,
+        :vav-cooling-only_occ_3_12,
+        :vav-cooling-only_ztemp_3_12 .
+
+:vav-cooling-only_name_3_13 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_3_13 ;
+    brick:hasPart :vav-cooling-only_dmp_3_13 ;
+    brick:hasPoint :vav-cooling-only_co2_3_13,
+        :vav-cooling-only_dat_3_13,
+        :vav-cooling-only_occ_3_13,
+        :vav-cooling-only_ztemp_3_13 .
+
+:vav-cooling-only_name_3_14 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_3_14 ;
+    brick:hasPart :vav-cooling-only_dmp_3_14 ;
+    brick:hasPoint :vav-cooling-only_co2_3_14,
+        :vav-cooling-only_dat_3_14,
+        :vav-cooling-only_occ_3_14,
+        :vav-cooling-only_ztemp_3_14 .
+
+:vav-cooling-only_name_3_2 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_3_2 ;
+    brick:hasPart :vav-cooling-only_dmp_3_2 ;
+    brick:hasPoint :vav-cooling-only_co2_3_2,
+        :vav-cooling-only_dat_3_2,
+        :vav-cooling-only_occ_3_2,
+        :vav-cooling-only_ztemp_3_2 .
+
+:vav-cooling-only_name_3_3 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_3_3 ;
+    brick:hasPart :vav-cooling-only_dmp_3_3 ;
+    brick:hasPoint :vav-cooling-only_co2_3_3,
+        :vav-cooling-only_dat_3_3,
+        :vav-cooling-only_occ_3_3,
+        :vav-cooling-only_ztemp_3_3 .
+
+:vav-cooling-only_name_3_4 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_3_4 ;
+    brick:hasPart :vav-cooling-only_dmp_3_4 ;
+    brick:hasPoint :vav-cooling-only_co2_3_4,
+        :vav-cooling-only_dat_3_4,
+        :vav-cooling-only_occ_3_4,
+        :vav-cooling-only_ztemp_3_4 .
+
+:vav-cooling-only_name_3_5 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_3_5 ;
+    brick:hasPart :vav-cooling-only_dmp_3_5 ;
+    brick:hasPoint :vav-cooling-only_co2_3_5,
+        :vav-cooling-only_dat_3_5,
+        :vav-cooling-only_occ_3_5,
+        :vav-cooling-only_ztemp_3_5 .
+
+:vav-cooling-only_name_3_6 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_3_6 ;
+    brick:hasPart :vav-cooling-only_dmp_3_6 ;
+    brick:hasPoint :vav-cooling-only_co2_3_6,
+        :vav-cooling-only_dat_3_6,
+        :vav-cooling-only_occ_3_6,
+        :vav-cooling-only_ztemp_3_6 .
+
+:vav-cooling-only_name_3_7 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_3_7 ;
+    brick:hasPart :vav-cooling-only_dmp_3_7 ;
+    brick:hasPoint :vav-cooling-only_co2_3_7,
+        :vav-cooling-only_dat_3_7,
+        :vav-cooling-only_occ_3_7,
+        :vav-cooling-only_ztemp_3_7 .
+
+:vav-cooling-only_name_3_8 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_3_8 ;
+    brick:hasPart :vav-cooling-only_dmp_3_8 ;
+    brick:hasPoint :vav-cooling-only_co2_3_8,
+        :vav-cooling-only_dat_3_8,
+        :vav-cooling-only_occ_3_8,
+        :vav-cooling-only_ztemp_3_8 .
+
+:vav-cooling-only_name_3_9 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-cooling-only_zone_3_9 ;
+    brick:hasPart :vav-cooling-only_dmp_3_9 ;
+    brick:hasPoint :vav-cooling-only_co2_3_9,
+        :vav-cooling-only_dat_3_9,
+        :vav-cooling-only_occ_3_9,
+        :vav-cooling-only_ztemp_3_9 .
+
+:vav-cooling-only_occ_0_0 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_0_1 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_0_10 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_0_11 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_0_12 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_0_13 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_0_14 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_0_2 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_0_3 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_0_4 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_0_5 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_0_6 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_0_7 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_0_8 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_0_9 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_1_0 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_1_1 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_1_10 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_1_11 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_1_12 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_1_13 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_1_14 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_1_2 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_1_3 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_1_4 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_1_5 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_1_6 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_1_7 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_1_8 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_1_9 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_2_0 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_2_1 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_2_10 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_2_11 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_2_12 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_2_13 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_2_14 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_2_2 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_2_3 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_2_4 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_2_5 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_2_6 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_2_7 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_2_8 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_2_9 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_3_0 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_3_1 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_3_10 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_3_11 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_3_12 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_3_13 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_3_14 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_3_2 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_3_3 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_3_4 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_3_5 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_3_6 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_3_7 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_3_8 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_occ_3_9 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-cooling-only_zone_0_0 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_0_1 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_0_10 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_0_11 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_0_12 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_0_13 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_0_14 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_0_2 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_0_3 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_0_4 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_0_5 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_0_6 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_0_7 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_0_8 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_0_9 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_1_0 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_1_1 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_1_10 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_1_11 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_1_12 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_1_13 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_1_14 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_1_2 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_1_3 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_1_4 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_1_5 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_1_6 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_1_7 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_1_8 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_1_9 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_2_0 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_2_1 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_2_10 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_2_11 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_2_12 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_2_13 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_2_14 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_2_2 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_2_3 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_2_4 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_2_5 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_2_6 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_2_7 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_2_8 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_2_9 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_3_0 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_3_1 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_3_10 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_3_11 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_3_12 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_3_13 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_3_14 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_3_2 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_3_3 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_3_4 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_3_5 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_3_6 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_3_7 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_3_8 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_zone_3_9 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-cooling-only_ztemp_0_0 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_0_1 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_0_10 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_0_11 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_0_12 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_0_13 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_0_14 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_0_2 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_0_3 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_0_4 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_0_5 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_0_6 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_0_7 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_0_8 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_0_9 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_1_0 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_1_1 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_1_10 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_1_11 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_1_12 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_1_13 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_1_14 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_1_2 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_1_3 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_1_4 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_1_5 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_1_6 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_1_7 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_1_8 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_1_9 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_2_0 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_2_1 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_2_10 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_2_11 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_2_12 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_2_13 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_2_14 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_2_2 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_2_3 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_2_4 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_2_5 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_2_6 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_2_7 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_2_8 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_2_9 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_3_0 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_3_1 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_3_10 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_3_11 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_3_12 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_3_13 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_3_14 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_3_2 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_3_3 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_3_4 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_3_5 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_3_6 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_3_7 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_3_8 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-cooling-only_ztemp_3_9 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-co2_0_0 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_0_1 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_0_10 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_0_11 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_0_12 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_0_13 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_0_14 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_0_2 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_0_3 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_0_4 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_0_5 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_0_6 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_0_7 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_0_8 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_0_9 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_1_0 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_1_1 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_1_10 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_1_11 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_1_12 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_1_13 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_1_14 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_1_2 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_1_3 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_1_4 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_1_5 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_1_6 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_1_7 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_1_8 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_1_9 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_2_0 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_2_1 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_2_10 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_2_11 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_2_12 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_2_13 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_2_14 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_2_2 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_2_3 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_2_4 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_2_5 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_2_6 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_2_7 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_2_8 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_2_9 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_3_0 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_3_1 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_3_10 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_3_11 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_3_12 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_3_13 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_3_14 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_3_2 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_3_3 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_3_4 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_3_5 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_3_6 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_3_7 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_3_8 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-co2_3_9 a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor" .
+
+:vav-with-reheat_name-dat_0_0 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_0_1 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_0_10 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_0_11 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_0_12 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_0_13 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_0_14 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_0_2 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_0_3 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_0_4 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_0_5 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_0_6 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_0_7 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_0_8 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_0_9 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_1_0 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_1_1 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_1_10 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_1_11 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_1_12 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_1_13 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_1_14 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_1_2 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_1_3 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_1_4 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_1_5 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_1_6 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_1_7 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_1_8 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_1_9 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_2_0 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_2_1 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_2_10 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_2_11 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_2_12 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_2_13 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_2_14 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_2_2 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_2_3 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_2_4 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_2_5 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_2_6 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_2_7 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_2_8 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_2_9 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_3_0 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_3_1 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_3_10 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_3_11 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_3_12 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_3_13 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_3_14 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_3_2 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_3_3 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_3_4 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_3_5 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_3_6 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_3_7 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_3_8 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dat_3_9 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-dmp-dmppos_0_0 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_0_1 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_0_10 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_0_11 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_0_12 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_0_13 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_0_14 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_0_2 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_0_3 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_0_4 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_0_5 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_0_6 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_0_7 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_0_8 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_0_9 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_1_0 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_1_1 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_1_10 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_1_11 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_1_12 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_1_13 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_1_14 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_1_2 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_1_3 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_1_4 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_1_5 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_1_6 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_1_7 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_1_8 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_1_9 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_2_0 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_2_1 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_2_10 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_2_11 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_2_12 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_2_13 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_2_14 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_2_2 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_2_3 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_2_4 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_2_5 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_2_6 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_2_7 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_2_8 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_2_9 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_3_0 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_3_1 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_3_10 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_3_11 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_3_12 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_3_13 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_3_14 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_3_2 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_3_3 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_3_4 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_3_5 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_3_6 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_3_7 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_3_8 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp-dmppos_3_9 a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:vav-with-reheat_name-dmp_0_0 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_0_0 .
+
+:vav-with-reheat_name-dmp_0_1 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_0_1 .
+
+:vav-with-reheat_name-dmp_0_10 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_0_10 .
+
+:vav-with-reheat_name-dmp_0_11 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_0_11 .
+
+:vav-with-reheat_name-dmp_0_12 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_0_12 .
+
+:vav-with-reheat_name-dmp_0_13 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_0_13 .
+
+:vav-with-reheat_name-dmp_0_14 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_0_14 .
+
+:vav-with-reheat_name-dmp_0_2 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_0_2 .
+
+:vav-with-reheat_name-dmp_0_3 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_0_3 .
+
+:vav-with-reheat_name-dmp_0_4 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_0_4 .
+
+:vav-with-reheat_name-dmp_0_5 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_0_5 .
+
+:vav-with-reheat_name-dmp_0_6 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_0_6 .
+
+:vav-with-reheat_name-dmp_0_7 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_0_7 .
+
+:vav-with-reheat_name-dmp_0_8 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_0_8 .
+
+:vav-with-reheat_name-dmp_0_9 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_0_9 .
+
+:vav-with-reheat_name-dmp_1_0 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_1_0 .
+
+:vav-with-reheat_name-dmp_1_1 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_1_1 .
+
+:vav-with-reheat_name-dmp_1_10 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_1_10 .
+
+:vav-with-reheat_name-dmp_1_11 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_1_11 .
+
+:vav-with-reheat_name-dmp_1_12 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_1_12 .
+
+:vav-with-reheat_name-dmp_1_13 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_1_13 .
+
+:vav-with-reheat_name-dmp_1_14 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_1_14 .
+
+:vav-with-reheat_name-dmp_1_2 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_1_2 .
+
+:vav-with-reheat_name-dmp_1_3 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_1_3 .
+
+:vav-with-reheat_name-dmp_1_4 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_1_4 .
+
+:vav-with-reheat_name-dmp_1_5 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_1_5 .
+
+:vav-with-reheat_name-dmp_1_6 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_1_6 .
+
+:vav-with-reheat_name-dmp_1_7 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_1_7 .
+
+:vav-with-reheat_name-dmp_1_8 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_1_8 .
+
+:vav-with-reheat_name-dmp_1_9 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_1_9 .
+
+:vav-with-reheat_name-dmp_2_0 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_2_0 .
+
+:vav-with-reheat_name-dmp_2_1 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_2_1 .
+
+:vav-with-reheat_name-dmp_2_10 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_2_10 .
+
+:vav-with-reheat_name-dmp_2_11 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_2_11 .
+
+:vav-with-reheat_name-dmp_2_12 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_2_12 .
+
+:vav-with-reheat_name-dmp_2_13 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_2_13 .
+
+:vav-with-reheat_name-dmp_2_14 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_2_14 .
+
+:vav-with-reheat_name-dmp_2_2 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_2_2 .
+
+:vav-with-reheat_name-dmp_2_3 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_2_3 .
+
+:vav-with-reheat_name-dmp_2_4 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_2_4 .
+
+:vav-with-reheat_name-dmp_2_5 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_2_5 .
+
+:vav-with-reheat_name-dmp_2_6 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_2_6 .
+
+:vav-with-reheat_name-dmp_2_7 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_2_7 .
+
+:vav-with-reheat_name-dmp_2_8 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_2_8 .
+
+:vav-with-reheat_name-dmp_2_9 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_2_9 .
+
+:vav-with-reheat_name-dmp_3_0 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_3_0 .
+
+:vav-with-reheat_name-dmp_3_1 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_3_1 .
+
+:vav-with-reheat_name-dmp_3_10 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_3_10 .
+
+:vav-with-reheat_name-dmp_3_11 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_3_11 .
+
+:vav-with-reheat_name-dmp_3_12 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_3_12 .
+
+:vav-with-reheat_name-dmp_3_13 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_3_13 .
+
+:vav-with-reheat_name-dmp_3_14 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_3_14 .
+
+:vav-with-reheat_name-dmp_3_2 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_3_2 .
+
+:vav-with-reheat_name-dmp_3_3 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_3_3 .
+
+:vav-with-reheat_name-dmp_3_4 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_3_4 .
+
+:vav-with-reheat_name-dmp_3_5 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_3_5 .
+
+:vav-with-reheat_name-dmp_3_6 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_3_6 .
+
+:vav-with-reheat_name-dmp_3_7 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_3_7 .
+
+:vav-with-reheat_name-dmp_3_8 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_3_8 .
+
+:vav-with-reheat_name-dmp_3_9 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :vav-with-reheat_name-dmp-dmppos_3_9 .
+
+:vav-with-reheat_name-occ_0_0 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_0_1 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_0_10 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_0_11 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_0_12 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_0_13 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_0_14 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_0_2 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_0_3 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_0_4 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_0_5 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_0_6 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_0_7 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_0_8 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_0_9 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_1_0 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_1_1 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_1_10 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_1_11 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_1_12 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_1_13 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_1_14 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_1_2 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_1_3 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_1_4 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_1_5 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_1_6 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_1_7 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_1_8 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_1_9 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_2_0 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_2_1 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_2_10 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_2_11 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_2_12 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_2_13 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_2_14 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_2_2 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_2_3 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_2_4 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_2_5 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_2_6 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_2_7 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_2_8 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_2_9 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_3_0 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_3_1 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_3_10 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_3_11 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_3_12 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_3_13 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_3_14 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_3_2 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_3_3 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_3_4 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_3_5 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_3_6 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_3_7 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_3_8 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-occ_3_9 a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor" .
+
+:vav-with-reheat_name-zone_0_0 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_0_1 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_0_10 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_0_11 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_0_12 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_0_13 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_0_14 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_0_2 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_0_3 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_0_4 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_0_5 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_0_6 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_0_7 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_0_8 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_0_9 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_1_0 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_1_1 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_1_10 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_1_11 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_1_12 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_1_13 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_1_14 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_1_2 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_1_3 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_1_4 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_1_5 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_1_6 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_1_7 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_1_8 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_1_9 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_2_0 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_2_1 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_2_10 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_2_11 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_2_12 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_2_13 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_2_14 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_2_2 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_2_3 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_2_4 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_2_5 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_2_6 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_2_7 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_2_8 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_2_9 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_3_0 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_3_1 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_3_10 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_3_11 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_3_12 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_3_13 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_3_14 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_3_2 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_3_3 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_3_4 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_3_5 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_3_6 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_3_7 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_3_8 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-zone_3_9 a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone" .
+
+:vav-with-reheat_name-ztemp_0_0 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_0_1 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_0_10 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_0_11 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_0_12 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_0_13 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_0_14 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_0_2 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_0_3 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_0_4 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_0_5 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_0_6 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_0_7 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_0_8 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_0_9 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_1_0 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_1_1 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_1_10 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_1_11 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_1_12 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_1_13 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_1_14 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_1_2 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_1_3 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_1_4 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_1_5 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_1_6 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_1_7 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_1_8 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_1_9 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_2_0 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_2_1 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_2_10 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_2_11 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_2_12 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_2_13 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_2_14 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_2_2 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_2_3 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_2_4 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_2_5 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_2_6 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_2_7 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_2_8 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_2_9 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_3_0 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_3_1 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_3_10 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_3_11 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_3_12 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_3_13 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_3_14 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_3_2 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_3_3 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_3_4 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_3_5 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_3_6 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_3_7 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_3_8 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name-ztemp_3_9 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor" .
+
+:vav-with-reheat_name_0_0 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_0_0 ;
+    brick:hasPart :vav-with-reheat_name-dmp_0_0,
+        :vav-with-reheat_rhc_0_0 ;
+    brick:hasPoint :vav-with-reheat_name-co2_0_0,
+        :vav-with-reheat_name-dat_0_0,
+        :vav-with-reheat_name-occ_0_0,
+        :vav-with-reheat_name-ztemp_0_0 .
+
+:vav-with-reheat_name_0_1 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_0_1 ;
+    brick:hasPart :vav-with-reheat_name-dmp_0_1,
+        :vav-with-reheat_rhc_0_1 ;
+    brick:hasPoint :vav-with-reheat_name-co2_0_1,
+        :vav-with-reheat_name-dat_0_1,
+        :vav-with-reheat_name-occ_0_1,
+        :vav-with-reheat_name-ztemp_0_1 .
+
+:vav-with-reheat_name_0_10 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_0_10 ;
+    brick:hasPart :vav-with-reheat_name-dmp_0_10,
+        :vav-with-reheat_rhc_0_10 ;
+    brick:hasPoint :vav-with-reheat_name-co2_0_10,
+        :vav-with-reheat_name-dat_0_10,
+        :vav-with-reheat_name-occ_0_10,
+        :vav-with-reheat_name-ztemp_0_10 .
+
+:vav-with-reheat_name_0_11 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_0_11 ;
+    brick:hasPart :vav-with-reheat_name-dmp_0_11,
+        :vav-with-reheat_rhc_0_11 ;
+    brick:hasPoint :vav-with-reheat_name-co2_0_11,
+        :vav-with-reheat_name-dat_0_11,
+        :vav-with-reheat_name-occ_0_11,
+        :vav-with-reheat_name-ztemp_0_11 .
+
+:vav-with-reheat_name_0_12 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_0_12 ;
+    brick:hasPart :vav-with-reheat_name-dmp_0_12,
+        :vav-with-reheat_rhc_0_12 ;
+    brick:hasPoint :vav-with-reheat_name-co2_0_12,
+        :vav-with-reheat_name-dat_0_12,
+        :vav-with-reheat_name-occ_0_12,
+        :vav-with-reheat_name-ztemp_0_12 .
+
+:vav-with-reheat_name_0_13 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_0_13 ;
+    brick:hasPart :vav-with-reheat_name-dmp_0_13,
+        :vav-with-reheat_rhc_0_13 ;
+    brick:hasPoint :vav-with-reheat_name-co2_0_13,
+        :vav-with-reheat_name-dat_0_13,
+        :vav-with-reheat_name-occ_0_13,
+        :vav-with-reheat_name-ztemp_0_13 .
+
+:vav-with-reheat_name_0_14 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_0_14 ;
+    brick:hasPart :vav-with-reheat_name-dmp_0_14,
+        :vav-with-reheat_rhc_0_14 ;
+    brick:hasPoint :vav-with-reheat_name-co2_0_14,
+        :vav-with-reheat_name-dat_0_14,
+        :vav-with-reheat_name-occ_0_14,
+        :vav-with-reheat_name-ztemp_0_14 .
+
+:vav-with-reheat_name_0_2 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_0_2 ;
+    brick:hasPart :vav-with-reheat_name-dmp_0_2,
+        :vav-with-reheat_rhc_0_2 ;
+    brick:hasPoint :vav-with-reheat_name-co2_0_2,
+        :vav-with-reheat_name-dat_0_2,
+        :vav-with-reheat_name-occ_0_2,
+        :vav-with-reheat_name-ztemp_0_2 .
+
+:vav-with-reheat_name_0_3 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_0_3 ;
+    brick:hasPart :vav-with-reheat_name-dmp_0_3,
+        :vav-with-reheat_rhc_0_3 ;
+    brick:hasPoint :vav-with-reheat_name-co2_0_3,
+        :vav-with-reheat_name-dat_0_3,
+        :vav-with-reheat_name-occ_0_3,
+        :vav-with-reheat_name-ztemp_0_3 .
+
+:vav-with-reheat_name_0_4 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_0_4 ;
+    brick:hasPart :vav-with-reheat_name-dmp_0_4,
+        :vav-with-reheat_rhc_0_4 ;
+    brick:hasPoint :vav-with-reheat_name-co2_0_4,
+        :vav-with-reheat_name-dat_0_4,
+        :vav-with-reheat_name-occ_0_4,
+        :vav-with-reheat_name-ztemp_0_4 .
+
+:vav-with-reheat_name_0_5 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_0_5 ;
+    brick:hasPart :vav-with-reheat_name-dmp_0_5,
+        :vav-with-reheat_rhc_0_5 ;
+    brick:hasPoint :vav-with-reheat_name-co2_0_5,
+        :vav-with-reheat_name-dat_0_5,
+        :vav-with-reheat_name-occ_0_5,
+        :vav-with-reheat_name-ztemp_0_5 .
+
+:vav-with-reheat_name_0_6 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_0_6 ;
+    brick:hasPart :vav-with-reheat_name-dmp_0_6,
+        :vav-with-reheat_rhc_0_6 ;
+    brick:hasPoint :vav-with-reheat_name-co2_0_6,
+        :vav-with-reheat_name-dat_0_6,
+        :vav-with-reheat_name-occ_0_6,
+        :vav-with-reheat_name-ztemp_0_6 .
+
+:vav-with-reheat_name_0_7 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_0_7 ;
+    brick:hasPart :vav-with-reheat_name-dmp_0_7,
+        :vav-with-reheat_rhc_0_7 ;
+    brick:hasPoint :vav-with-reheat_name-co2_0_7,
+        :vav-with-reheat_name-dat_0_7,
+        :vav-with-reheat_name-occ_0_7,
+        :vav-with-reheat_name-ztemp_0_7 .
+
+:vav-with-reheat_name_0_8 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_0_8 ;
+    brick:hasPart :vav-with-reheat_name-dmp_0_8,
+        :vav-with-reheat_rhc_0_8 ;
+    brick:hasPoint :vav-with-reheat_name-co2_0_8,
+        :vav-with-reheat_name-dat_0_8,
+        :vav-with-reheat_name-occ_0_8,
+        :vav-with-reheat_name-ztemp_0_8 .
+
+:vav-with-reheat_name_0_9 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_0_9 ;
+    brick:hasPart :vav-with-reheat_name-dmp_0_9,
+        :vav-with-reheat_rhc_0_9 ;
+    brick:hasPoint :vav-with-reheat_name-co2_0_9,
+        :vav-with-reheat_name-dat_0_9,
+        :vav-with-reheat_name-occ_0_9,
+        :vav-with-reheat_name-ztemp_0_9 .
+
+:vav-with-reheat_name_1_0 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_1_0 ;
+    brick:hasPart :vav-with-reheat_name-dmp_1_0,
+        :vav-with-reheat_rhc_1_0 ;
+    brick:hasPoint :vav-with-reheat_name-co2_1_0,
+        :vav-with-reheat_name-dat_1_0,
+        :vav-with-reheat_name-occ_1_0,
+        :vav-with-reheat_name-ztemp_1_0 .
+
+:vav-with-reheat_name_1_1 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_1_1 ;
+    brick:hasPart :vav-with-reheat_name-dmp_1_1,
+        :vav-with-reheat_rhc_1_1 ;
+    brick:hasPoint :vav-with-reheat_name-co2_1_1,
+        :vav-with-reheat_name-dat_1_1,
+        :vav-with-reheat_name-occ_1_1,
+        :vav-with-reheat_name-ztemp_1_1 .
+
+:vav-with-reheat_name_1_10 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_1_10 ;
+    brick:hasPart :vav-with-reheat_name-dmp_1_10,
+        :vav-with-reheat_rhc_1_10 ;
+    brick:hasPoint :vav-with-reheat_name-co2_1_10,
+        :vav-with-reheat_name-dat_1_10,
+        :vav-with-reheat_name-occ_1_10,
+        :vav-with-reheat_name-ztemp_1_10 .
+
+:vav-with-reheat_name_1_11 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_1_11 ;
+    brick:hasPart :vav-with-reheat_name-dmp_1_11,
+        :vav-with-reheat_rhc_1_11 ;
+    brick:hasPoint :vav-with-reheat_name-co2_1_11,
+        :vav-with-reheat_name-dat_1_11,
+        :vav-with-reheat_name-occ_1_11,
+        :vav-with-reheat_name-ztemp_1_11 .
+
+:vav-with-reheat_name_1_12 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_1_12 ;
+    brick:hasPart :vav-with-reheat_name-dmp_1_12,
+        :vav-with-reheat_rhc_1_12 ;
+    brick:hasPoint :vav-with-reheat_name-co2_1_12,
+        :vav-with-reheat_name-dat_1_12,
+        :vav-with-reheat_name-occ_1_12,
+        :vav-with-reheat_name-ztemp_1_12 .
+
+:vav-with-reheat_name_1_13 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_1_13 ;
+    brick:hasPart :vav-with-reheat_name-dmp_1_13,
+        :vav-with-reheat_rhc_1_13 ;
+    brick:hasPoint :vav-with-reheat_name-co2_1_13,
+        :vav-with-reheat_name-dat_1_13,
+        :vav-with-reheat_name-occ_1_13,
+        :vav-with-reheat_name-ztemp_1_13 .
+
+:vav-with-reheat_name_1_14 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_1_14 ;
+    brick:hasPart :vav-with-reheat_name-dmp_1_14,
+        :vav-with-reheat_rhc_1_14 ;
+    brick:hasPoint :vav-with-reheat_name-co2_1_14,
+        :vav-with-reheat_name-dat_1_14,
+        :vav-with-reheat_name-occ_1_14,
+        :vav-with-reheat_name-ztemp_1_14 .
+
+:vav-with-reheat_name_1_2 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_1_2 ;
+    brick:hasPart :vav-with-reheat_name-dmp_1_2,
+        :vav-with-reheat_rhc_1_2 ;
+    brick:hasPoint :vav-with-reheat_name-co2_1_2,
+        :vav-with-reheat_name-dat_1_2,
+        :vav-with-reheat_name-occ_1_2,
+        :vav-with-reheat_name-ztemp_1_2 .
+
+:vav-with-reheat_name_1_3 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_1_3 ;
+    brick:hasPart :vav-with-reheat_name-dmp_1_3,
+        :vav-with-reheat_rhc_1_3 ;
+    brick:hasPoint :vav-with-reheat_name-co2_1_3,
+        :vav-with-reheat_name-dat_1_3,
+        :vav-with-reheat_name-occ_1_3,
+        :vav-with-reheat_name-ztemp_1_3 .
+
+:vav-with-reheat_name_1_4 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_1_4 ;
+    brick:hasPart :vav-with-reheat_name-dmp_1_4,
+        :vav-with-reheat_rhc_1_4 ;
+    brick:hasPoint :vav-with-reheat_name-co2_1_4,
+        :vav-with-reheat_name-dat_1_4,
+        :vav-with-reheat_name-occ_1_4,
+        :vav-with-reheat_name-ztemp_1_4 .
+
+:vav-with-reheat_name_1_5 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_1_5 ;
+    brick:hasPart :vav-with-reheat_name-dmp_1_5,
+        :vav-with-reheat_rhc_1_5 ;
+    brick:hasPoint :vav-with-reheat_name-co2_1_5,
+        :vav-with-reheat_name-dat_1_5,
+        :vav-with-reheat_name-occ_1_5,
+        :vav-with-reheat_name-ztemp_1_5 .
+
+:vav-with-reheat_name_1_6 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_1_6 ;
+    brick:hasPart :vav-with-reheat_name-dmp_1_6,
+        :vav-with-reheat_rhc_1_6 ;
+    brick:hasPoint :vav-with-reheat_name-co2_1_6,
+        :vav-with-reheat_name-dat_1_6,
+        :vav-with-reheat_name-occ_1_6,
+        :vav-with-reheat_name-ztemp_1_6 .
+
+:vav-with-reheat_name_1_7 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_1_7 ;
+    brick:hasPart :vav-with-reheat_name-dmp_1_7,
+        :vav-with-reheat_rhc_1_7 ;
+    brick:hasPoint :vav-with-reheat_name-co2_1_7,
+        :vav-with-reheat_name-dat_1_7,
+        :vav-with-reheat_name-occ_1_7,
+        :vav-with-reheat_name-ztemp_1_7 .
+
+:vav-with-reheat_name_1_8 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_1_8 ;
+    brick:hasPart :vav-with-reheat_name-dmp_1_8,
+        :vav-with-reheat_rhc_1_8 ;
+    brick:hasPoint :vav-with-reheat_name-co2_1_8,
+        :vav-with-reheat_name-dat_1_8,
+        :vav-with-reheat_name-occ_1_8,
+        :vav-with-reheat_name-ztemp_1_8 .
+
+:vav-with-reheat_name_1_9 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_1_9 ;
+    brick:hasPart :vav-with-reheat_name-dmp_1_9,
+        :vav-with-reheat_rhc_1_9 ;
+    brick:hasPoint :vav-with-reheat_name-co2_1_9,
+        :vav-with-reheat_name-dat_1_9,
+        :vav-with-reheat_name-occ_1_9,
+        :vav-with-reheat_name-ztemp_1_9 .
+
+:vav-with-reheat_name_2_0 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_2_0 ;
+    brick:hasPart :vav-with-reheat_name-dmp_2_0,
+        :vav-with-reheat_rhc_2_0 ;
+    brick:hasPoint :vav-with-reheat_name-co2_2_0,
+        :vav-with-reheat_name-dat_2_0,
+        :vav-with-reheat_name-occ_2_0,
+        :vav-with-reheat_name-ztemp_2_0 .
+
+:vav-with-reheat_name_2_1 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_2_1 ;
+    brick:hasPart :vav-with-reheat_name-dmp_2_1,
+        :vav-with-reheat_rhc_2_1 ;
+    brick:hasPoint :vav-with-reheat_name-co2_2_1,
+        :vav-with-reheat_name-dat_2_1,
+        :vav-with-reheat_name-occ_2_1,
+        :vav-with-reheat_name-ztemp_2_1 .
+
+:vav-with-reheat_name_2_10 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_2_10 ;
+    brick:hasPart :vav-with-reheat_name-dmp_2_10,
+        :vav-with-reheat_rhc_2_10 ;
+    brick:hasPoint :vav-with-reheat_name-co2_2_10,
+        :vav-with-reheat_name-dat_2_10,
+        :vav-with-reheat_name-occ_2_10,
+        :vav-with-reheat_name-ztemp_2_10 .
+
+:vav-with-reheat_name_2_11 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_2_11 ;
+    brick:hasPart :vav-with-reheat_name-dmp_2_11,
+        :vav-with-reheat_rhc_2_11 ;
+    brick:hasPoint :vav-with-reheat_name-co2_2_11,
+        :vav-with-reheat_name-dat_2_11,
+        :vav-with-reheat_name-occ_2_11,
+        :vav-with-reheat_name-ztemp_2_11 .
+
+:vav-with-reheat_name_2_12 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_2_12 ;
+    brick:hasPart :vav-with-reheat_name-dmp_2_12,
+        :vav-with-reheat_rhc_2_12 ;
+    brick:hasPoint :vav-with-reheat_name-co2_2_12,
+        :vav-with-reheat_name-dat_2_12,
+        :vav-with-reheat_name-occ_2_12,
+        :vav-with-reheat_name-ztemp_2_12 .
+
+:vav-with-reheat_name_2_13 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_2_13 ;
+    brick:hasPart :vav-with-reheat_name-dmp_2_13,
+        :vav-with-reheat_rhc_2_13 ;
+    brick:hasPoint :vav-with-reheat_name-co2_2_13,
+        :vav-with-reheat_name-dat_2_13,
+        :vav-with-reheat_name-occ_2_13,
+        :vav-with-reheat_name-ztemp_2_13 .
+
+:vav-with-reheat_name_2_14 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_2_14 ;
+    brick:hasPart :vav-with-reheat_name-dmp_2_14,
+        :vav-with-reheat_rhc_2_14 ;
+    brick:hasPoint :vav-with-reheat_name-co2_2_14,
+        :vav-with-reheat_name-dat_2_14,
+        :vav-with-reheat_name-occ_2_14,
+        :vav-with-reheat_name-ztemp_2_14 .
+
+:vav-with-reheat_name_2_2 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_2_2 ;
+    brick:hasPart :vav-with-reheat_name-dmp_2_2,
+        :vav-with-reheat_rhc_2_2 ;
+    brick:hasPoint :vav-with-reheat_name-co2_2_2,
+        :vav-with-reheat_name-dat_2_2,
+        :vav-with-reheat_name-occ_2_2,
+        :vav-with-reheat_name-ztemp_2_2 .
+
+:vav-with-reheat_name_2_3 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_2_3 ;
+    brick:hasPart :vav-with-reheat_name-dmp_2_3,
+        :vav-with-reheat_rhc_2_3 ;
+    brick:hasPoint :vav-with-reheat_name-co2_2_3,
+        :vav-with-reheat_name-dat_2_3,
+        :vav-with-reheat_name-occ_2_3,
+        :vav-with-reheat_name-ztemp_2_3 .
+
+:vav-with-reheat_name_2_4 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_2_4 ;
+    brick:hasPart :vav-with-reheat_name-dmp_2_4,
+        :vav-with-reheat_rhc_2_4 ;
+    brick:hasPoint :vav-with-reheat_name-co2_2_4,
+        :vav-with-reheat_name-dat_2_4,
+        :vav-with-reheat_name-occ_2_4,
+        :vav-with-reheat_name-ztemp_2_4 .
+
+:vav-with-reheat_name_2_5 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_2_5 ;
+    brick:hasPart :vav-with-reheat_name-dmp_2_5,
+        :vav-with-reheat_rhc_2_5 ;
+    brick:hasPoint :vav-with-reheat_name-co2_2_5,
+        :vav-with-reheat_name-dat_2_5,
+        :vav-with-reheat_name-occ_2_5,
+        :vav-with-reheat_name-ztemp_2_5 .
+
+:vav-with-reheat_name_2_6 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_2_6 ;
+    brick:hasPart :vav-with-reheat_name-dmp_2_6,
+        :vav-with-reheat_rhc_2_6 ;
+    brick:hasPoint :vav-with-reheat_name-co2_2_6,
+        :vav-with-reheat_name-dat_2_6,
+        :vav-with-reheat_name-occ_2_6,
+        :vav-with-reheat_name-ztemp_2_6 .
+
+:vav-with-reheat_name_2_7 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_2_7 ;
+    brick:hasPart :vav-with-reheat_name-dmp_2_7,
+        :vav-with-reheat_rhc_2_7 ;
+    brick:hasPoint :vav-with-reheat_name-co2_2_7,
+        :vav-with-reheat_name-dat_2_7,
+        :vav-with-reheat_name-occ_2_7,
+        :vav-with-reheat_name-ztemp_2_7 .
+
+:vav-with-reheat_name_2_8 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_2_8 ;
+    brick:hasPart :vav-with-reheat_name-dmp_2_8,
+        :vav-with-reheat_rhc_2_8 ;
+    brick:hasPoint :vav-with-reheat_name-co2_2_8,
+        :vav-with-reheat_name-dat_2_8,
+        :vav-with-reheat_name-occ_2_8,
+        :vav-with-reheat_name-ztemp_2_8 .
+
+:vav-with-reheat_name_2_9 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_2_9 ;
+    brick:hasPart :vav-with-reheat_name-dmp_2_9,
+        :vav-with-reheat_rhc_2_9 ;
+    brick:hasPoint :vav-with-reheat_name-co2_2_9,
+        :vav-with-reheat_name-dat_2_9,
+        :vav-with-reheat_name-occ_2_9,
+        :vav-with-reheat_name-ztemp_2_9 .
+
+:vav-with-reheat_name_3_0 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_3_0 ;
+    brick:hasPart :vav-with-reheat_name-dmp_3_0,
+        :vav-with-reheat_rhc_3_0 ;
+    brick:hasPoint :vav-with-reheat_name-co2_3_0,
+        :vav-with-reheat_name-dat_3_0,
+        :vav-with-reheat_name-occ_3_0,
+        :vav-with-reheat_name-ztemp_3_0 .
+
+:vav-with-reheat_name_3_1 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_3_1 ;
+    brick:hasPart :vav-with-reheat_name-dmp_3_1,
+        :vav-with-reheat_rhc_3_1 ;
+    brick:hasPoint :vav-with-reheat_name-co2_3_1,
+        :vav-with-reheat_name-dat_3_1,
+        :vav-with-reheat_name-occ_3_1,
+        :vav-with-reheat_name-ztemp_3_1 .
+
+:vav-with-reheat_name_3_10 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_3_10 ;
+    brick:hasPart :vav-with-reheat_name-dmp_3_10,
+        :vav-with-reheat_rhc_3_10 ;
+    brick:hasPoint :vav-with-reheat_name-co2_3_10,
+        :vav-with-reheat_name-dat_3_10,
+        :vav-with-reheat_name-occ_3_10,
+        :vav-with-reheat_name-ztemp_3_10 .
+
+:vav-with-reheat_name_3_11 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_3_11 ;
+    brick:hasPart :vav-with-reheat_name-dmp_3_11,
+        :vav-with-reheat_rhc_3_11 ;
+    brick:hasPoint :vav-with-reheat_name-co2_3_11,
+        :vav-with-reheat_name-dat_3_11,
+        :vav-with-reheat_name-occ_3_11,
+        :vav-with-reheat_name-ztemp_3_11 .
+
+:vav-with-reheat_name_3_12 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_3_12 ;
+    brick:hasPart :vav-with-reheat_name-dmp_3_12,
+        :vav-with-reheat_rhc_3_12 ;
+    brick:hasPoint :vav-with-reheat_name-co2_3_12,
+        :vav-with-reheat_name-dat_3_12,
+        :vav-with-reheat_name-occ_3_12,
+        :vav-with-reheat_name-ztemp_3_12 .
+
+:vav-with-reheat_name_3_13 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_3_13 ;
+    brick:hasPart :vav-with-reheat_name-dmp_3_13,
+        :vav-with-reheat_rhc_3_13 ;
+    brick:hasPoint :vav-with-reheat_name-co2_3_13,
+        :vav-with-reheat_name-dat_3_13,
+        :vav-with-reheat_name-occ_3_13,
+        :vav-with-reheat_name-ztemp_3_13 .
+
+:vav-with-reheat_name_3_14 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_3_14 ;
+    brick:hasPart :vav-with-reheat_name-dmp_3_14,
+        :vav-with-reheat_rhc_3_14 ;
+    brick:hasPoint :vav-with-reheat_name-co2_3_14,
+        :vav-with-reheat_name-dat_3_14,
+        :vav-with-reheat_name-occ_3_14,
+        :vav-with-reheat_name-ztemp_3_14 .
+
+:vav-with-reheat_name_3_2 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_3_2 ;
+    brick:hasPart :vav-with-reheat_name-dmp_3_2,
+        :vav-with-reheat_rhc_3_2 ;
+    brick:hasPoint :vav-with-reheat_name-co2_3_2,
+        :vav-with-reheat_name-dat_3_2,
+        :vav-with-reheat_name-occ_3_2,
+        :vav-with-reheat_name-ztemp_3_2 .
+
+:vav-with-reheat_name_3_3 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_3_3 ;
+    brick:hasPart :vav-with-reheat_name-dmp_3_3,
+        :vav-with-reheat_rhc_3_3 ;
+    brick:hasPoint :vav-with-reheat_name-co2_3_3,
+        :vav-with-reheat_name-dat_3_3,
+        :vav-with-reheat_name-occ_3_3,
+        :vav-with-reheat_name-ztemp_3_3 .
+
+:vav-with-reheat_name_3_4 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_3_4 ;
+    brick:hasPart :vav-with-reheat_name-dmp_3_4,
+        :vav-with-reheat_rhc_3_4 ;
+    brick:hasPoint :vav-with-reheat_name-co2_3_4,
+        :vav-with-reheat_name-dat_3_4,
+        :vav-with-reheat_name-occ_3_4,
+        :vav-with-reheat_name-ztemp_3_4 .
+
+:vav-with-reheat_name_3_5 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_3_5 ;
+    brick:hasPart :vav-with-reheat_name-dmp_3_5,
+        :vav-with-reheat_rhc_3_5 ;
+    brick:hasPoint :vav-with-reheat_name-co2_3_5,
+        :vav-with-reheat_name-dat_3_5,
+        :vav-with-reheat_name-occ_3_5,
+        :vav-with-reheat_name-ztemp_3_5 .
+
+:vav-with-reheat_name_3_6 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_3_6 ;
+    brick:hasPart :vav-with-reheat_name-dmp_3_6,
+        :vav-with-reheat_rhc_3_6 ;
+    brick:hasPoint :vav-with-reheat_name-co2_3_6,
+        :vav-with-reheat_name-dat_3_6,
+        :vav-with-reheat_name-occ_3_6,
+        :vav-with-reheat_name-ztemp_3_6 .
+
+:vav-with-reheat_name_3_7 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_3_7 ;
+    brick:hasPart :vav-with-reheat_name-dmp_3_7,
+        :vav-with-reheat_rhc_3_7 ;
+    brick:hasPoint :vav-with-reheat_name-co2_3_7,
+        :vav-with-reheat_name-dat_3_7,
+        :vav-with-reheat_name-occ_3_7,
+        :vav-with-reheat_name-ztemp_3_7 .
+
+:vav-with-reheat_name_3_8 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_3_8 ;
+    brick:hasPart :vav-with-reheat_name-dmp_3_8,
+        :vav-with-reheat_rhc_3_8 ;
+    brick:hasPoint :vav-with-reheat_name-co2_3_8,
+        :vav-with-reheat_name-dat_3_8,
+        :vav-with-reheat_name-occ_3_8,
+        :vav-with-reheat_name-ztemp_3_8 .
+
+:vav-with-reheat_name_3_9 a brick:VAV ;
+    rdfs:label "VAV" ;
+    brick:feeds :vav-with-reheat_name-zone_3_9 ;
+    brick:hasPart :vav-with-reheat_name-dmp_3_9,
+        :vav-with-reheat_rhc_3_9 ;
+    brick:hasPoint :vav-with-reheat_name-co2_3_9,
+        :vav-with-reheat_name-dat_3_9,
+        :vav-with-reheat_name-occ_3_9,
+        :vav-with-reheat_name-ztemp_3_9 .
+
+:vav-with-reheat_rhc-cmd_0_0 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_0_1 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_0_10 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_0_11 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_0_12 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_0_13 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_0_14 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_0_2 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_0_3 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_0_4 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_0_5 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_0_6 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_0_7 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_0_8 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_0_9 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_1_0 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_1_1 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_1_10 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_1_11 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_1_12 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_1_13 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_1_14 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_1_2 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_1_3 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_1_4 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_1_5 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_1_6 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_1_7 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_1_8 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_1_9 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_2_0 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_2_1 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_2_10 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_2_11 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_2_12 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_2_13 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_2_14 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_2_2 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_2_3 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_2_4 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_2_5 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_2_6 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_2_7 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_2_8 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_2_9 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_3_0 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_3_1 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_3_10 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_3_11 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_3_12 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_3_13 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_3_14 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_3_2 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_3_3 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_3_4 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_3_5 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_3_6 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_3_7 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_3_8 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc-cmd_3_9 a brick:Position_Command ;
+    rdfs:label "Position_Command" .
+
+:vav-with-reheat_rhc_0_0 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_0_0 .
+
+:vav-with-reheat_rhc_0_1 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_0_1 .
+
+:vav-with-reheat_rhc_0_10 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_0_10 .
+
+:vav-with-reheat_rhc_0_11 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_0_11 .
+
+:vav-with-reheat_rhc_0_12 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_0_12 .
+
+:vav-with-reheat_rhc_0_13 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_0_13 .
+
+:vav-with-reheat_rhc_0_14 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_0_14 .
+
+:vav-with-reheat_rhc_0_2 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_0_2 .
+
+:vav-with-reheat_rhc_0_3 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_0_3 .
+
+:vav-with-reheat_rhc_0_4 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_0_4 .
+
+:vav-with-reheat_rhc_0_5 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_0_5 .
+
+:vav-with-reheat_rhc_0_6 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_0_6 .
+
+:vav-with-reheat_rhc_0_7 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_0_7 .
+
+:vav-with-reheat_rhc_0_8 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_0_8 .
+
+:vav-with-reheat_rhc_0_9 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_0_9 .
+
+:vav-with-reheat_rhc_1_0 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_1_0 .
+
+:vav-with-reheat_rhc_1_1 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_1_1 .
+
+:vav-with-reheat_rhc_1_10 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_1_10 .
+
+:vav-with-reheat_rhc_1_11 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_1_11 .
+
+:vav-with-reheat_rhc_1_12 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_1_12 .
+
+:vav-with-reheat_rhc_1_13 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_1_13 .
+
+:vav-with-reheat_rhc_1_14 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_1_14 .
+
+:vav-with-reheat_rhc_1_2 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_1_2 .
+
+:vav-with-reheat_rhc_1_3 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_1_3 .
+
+:vav-with-reheat_rhc_1_4 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_1_4 .
+
+:vav-with-reheat_rhc_1_5 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_1_5 .
+
+:vav-with-reheat_rhc_1_6 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_1_6 .
+
+:vav-with-reheat_rhc_1_7 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_1_7 .
+
+:vav-with-reheat_rhc_1_8 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_1_8 .
+
+:vav-with-reheat_rhc_1_9 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_1_9 .
+
+:vav-with-reheat_rhc_2_0 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_2_0 .
+
+:vav-with-reheat_rhc_2_1 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_2_1 .
+
+:vav-with-reheat_rhc_2_10 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_2_10 .
+
+:vav-with-reheat_rhc_2_11 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_2_11 .
+
+:vav-with-reheat_rhc_2_12 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_2_12 .
+
+:vav-with-reheat_rhc_2_13 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_2_13 .
+
+:vav-with-reheat_rhc_2_14 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_2_14 .
+
+:vav-with-reheat_rhc_2_2 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_2_2 .
+
+:vav-with-reheat_rhc_2_3 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_2_3 .
+
+:vav-with-reheat_rhc_2_4 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_2_4 .
+
+:vav-with-reheat_rhc_2_5 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_2_5 .
+
+:vav-with-reheat_rhc_2_6 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_2_6 .
+
+:vav-with-reheat_rhc_2_7 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_2_7 .
+
+:vav-with-reheat_rhc_2_8 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_2_8 .
+
+:vav-with-reheat_rhc_2_9 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_2_9 .
+
+:vav-with-reheat_rhc_3_0 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_3_0 .
+
+:vav-with-reheat_rhc_3_1 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_3_1 .
+
+:vav-with-reheat_rhc_3_10 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_3_10 .
+
+:vav-with-reheat_rhc_3_11 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_3_11 .
+
+:vav-with-reheat_rhc_3_12 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_3_12 .
+
+:vav-with-reheat_rhc_3_13 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_3_13 .
+
+:vav-with-reheat_rhc_3_14 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_3_14 .
+
+:vav-with-reheat_rhc_3_2 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_3_2 .
+
+:vav-with-reheat_rhc_3_3 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_3_3 .
+
+:vav-with-reheat_rhc_3_4 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_3_4 .
+
+:vav-with-reheat_rhc_3_5 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_3_5 .
+
+:vav-with-reheat_rhc_3_6 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_3_6 .
+
+:vav-with-reheat_rhc_3_7 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_3_7 .
+
+:vav-with-reheat_rhc_3_8 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_3_8 .
+
+:vav-with-reheat_rhc_3_9 a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :vav-with-reheat_rhc-cmd_3_9 .
+

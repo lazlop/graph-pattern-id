@@ -1,57 +1,36 @@
 @prefix bldg: <urn:example#> .
 @prefix ns1: <http://data.ashrae.org/standard223#> .
 @prefix ns2: <http://qudt.org/schema/qudt/> .
+@prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 bldg:vav-cooling-only-zone a ns1:DomainSpace,
         rdf:Seq ;
-    rdfs:label "zone" ;
     ns1:hasDomain ns1:Domain-HVAC .
 
 bldg:vav-with-reheat-zone a ns1:DomainSpace,
         rdf:Seq ;
-    rdfs:label "zone" ;
     ns1:hasDomain ns1:Domain-HVAC .
-
-ns1:Aspect-Filter rdfs:label "Filter" .
-
-ns1:Role-Cooling rdfs:label "Cooling" .
-
-ns1:Role-OutdoorAirIntake rdfs:label "OutdoorAirIntake" .
-
-ns1:Role-Return rdfs:label "Return" .
-
-ns1:Role-Supply rdfs:label "Supply" .
-
-ns1:Role-SupplyAir rdfs:label "SupplyAir" .
-
-<http://qudt.org/vocab/quantitykind/PressureDifference> rdfs:label "http://qudt.org/vocab/quantitykind/PressureDifference" .
 
 bldg:multiple-zone-ahu-clg_coil a ns1:Coil,
         rdf:Seq ;
-    rdfs:label "clg_coil" ;
     ns1:hasAspect ns1:Role-Cooling .
 
 bldg:multiple-zone-ahu-filter_pd a ns1:QuantifiableObservableProperty,
         rdf:Seq ;
-    rdfs:label "filter_pd" ;
     ns1:hasAspect ns1:Aspect-Filter ;
-    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/PressureDifference> .
+    ns1:hasQuantityKind quantitykind:PressureDifference .
 
 bldg:multiple-zone-ahu-htg_coil a ns1:Coil,
         rdf:Seq ;
-    rdfs:label "htg_coil" ;
     ns1:hasAspect ns1:Role-Heating .
 
 bldg:multiple-zone-ahu-ma_temp a ns1:QuantifiableObservableProperty,
         rdf:Seq ;
-    rdfs:label "ma_temp" ;
-    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> .
+    ns1:hasQuantityKind quantitykind:Temperature .
 
 bldg:multiple-zone-ahu-name a ns1:AirHandlingUnit,
         rdf:Seq ;
-    rdfs:label "ahu" ;
     ns1:cnx bldg:multiple-zone-ahu-name_out ;
     ns1:connectsTo bldg:vav-cooling-only-name,
         bldg:vav-with-reheat-name ;
@@ -67,199 +46,152 @@ bldg:multiple-zone-ahu-name a ns1:AirHandlingUnit,
 
 bldg:multiple-zone-ahu-oa_temp a ns1:QuantifiableObservableProperty,
         rdf:Seq ;
-    rdfs:label "oa_temp" ;
     ns1:hasAspect ns1:Role-OutdoorAirIntake ;
-    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> .
+    ns1:hasQuantityKind quantitykind:Temperature .
 
 bldg:multiple-zone-ahu-ra_damper a ns1:Damper,
         rdf:Seq ;
-    rdfs:label "ra_damper" ;
     ns1:hasProperty bldg:multiple-zone-ahu-ra_damper-dmppos .
 
 bldg:multiple-zone-ahu-ra_damper-dmppos a ns1:QuantifiableActuatableProperty,
         rdf:Seq ;
-    rdfs:label "dmppos" ;
-    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/PositionRatio> .
+    ns1:hasQuantityKind quantitykind:PositionRatio .
 
 bldg:multiple-zone-ahu-ra_temp a ns1:QuantifiableObservableProperty,
         rdf:Seq ;
-    rdfs:label "ra_temp" ;
     ns1:hasAspect ns1:Role-Return ;
-    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> .
+    ns1:hasQuantityKind quantitykind:Temperature .
 
 bldg:multiple-zone-ahu-sa_fan a ns1:Fan,
         rdf:Seq ;
-    rdfs:label "sa_fan" ;
     ns1:hasAspect ns1:Role-SupplyAir .
 
 bldg:multiple-zone-ahu-sa_temp a ns1:QuantifiableObservableProperty,
         rdf:Seq ;
-    rdfs:label "sa_temp" ;
     ns1:hasAspect ns1:Role-Supply ;
-    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> .
+    ns1:hasQuantityKind quantitykind:Temperature .
 
 bldg:vav-cooling-only-air-inlet-connectionpoint a ns1:InletConnectionPoint,
         rdf:Seq ;
-    rdfs:label "connectionpoint" ;
     ns1:cnx bldg:vav-cooling-only-name ;
     ns1:hasMedium ns1:Medium-Air .
 
 bldg:vav-cooling-only-air-outlet-connectionpoint a ns1:OutletConnectionPoint,
         rdf:Seq ;
-    rdfs:label "connectionpoint" ;
     ns1:cnx bldg:vav-cooling-only-name ;
     ns1:hasMedium ns1:Medium-Air ;
     ns1:hasProperty bldg:vav-cooling-only-dat .
 
 bldg:vav-cooling-only-co2 a ns1:QuantifiableObservableProperty,
         rdf:Seq ;
-    rdfs:label "co2" ;
-    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Concentration> ;
+    ns1:hasQuantityKind quantitykind:Concentration ;
     ns1:ofConstituent ns1:Constituent-CO2 ;
     ns1:ofMedium ns1:Medium-Air .
 
 bldg:vav-cooling-only-dat a ns1:QuantifiableObservableProperty,
         rdf:Seq ;
-    rdfs:label "dat" ;
     ns1:hasAspect ns1:Role-Discharge ;
-    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> .
+    ns1:hasQuantityKind quantitykind:Temperature .
 
 bldg:vav-cooling-only-dmp a ns1:Damper,
         rdf:Seq ;
-    rdfs:label "dmp" ;
     ns1:hasProperty bldg:vav-cooling-only-dmp-dmppos .
 
 bldg:vav-cooling-only-dmp-dmppos a ns1:QuantifiableActuatableProperty,
         rdf:Seq ;
-    rdfs:label "dmppos" ;
-    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/PositionRatio> .
+    ns1:hasQuantityKind quantitykind:PositionRatio .
 
 bldg:vav-cooling-only-occ a ns1:QuantifiableObservableProperty,
         rdf:Seq ;
-    rdfs:label "occ" ;
     ns1:hasEnumerationKind ns1:EnumerationKind-Occupancy .
 
 bldg:vav-cooling-only-ztemp a ns1:QuantifiableObservableProperty,
         rdf:Seq ;
-    rdfs:label "ztemp" ;
     ns1:hasAspect ns1:Aspect-Setpoint ;
-    ns2:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> .
+    ns2:hasQuantityKind quantitykind:Temperature .
 
 bldg:vav-with-reheat-air-inlet-connectionpoint a ns1:InletConnectionPoint,
         rdf:Seq ;
-    rdfs:label "connectionpoint" ;
     ns1:cnx bldg:vav-with-reheat-name ;
     ns1:hasMedium ns1:Medium-Air .
 
 bldg:vav-with-reheat-air-outlet-connectionpoint a ns1:OutletConnectionPoint,
         rdf:Seq ;
-    rdfs:label "connectionpoint" ;
     ns1:cnx bldg:vav-with-reheat-name ;
     ns1:hasMedium ns1:Medium-Air ;
     ns1:hasProperty bldg:vav-with-reheat-dat .
 
 bldg:vav-with-reheat-co2 a ns1:QuantifiableObservableProperty,
         rdf:Seq ;
-    rdfs:label "co2" ;
-    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Concentration> ;
+    ns1:hasQuantityKind quantitykind:Concentration ;
     ns1:ofConstituent ns1:Constituent-CO2 ;
     ns1:ofMedium ns1:Medium-Air .
 
 bldg:vav-with-reheat-dat a ns1:QuantifiableObservableProperty,
         rdf:Seq ;
-    rdfs:label "dat" ;
     ns1:hasAspect ns1:Role-Discharge ;
-    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> .
+    ns1:hasQuantityKind quantitykind:Temperature .
 
 bldg:vav-with-reheat-dmp a ns1:Damper,
         rdf:Seq ;
-    rdfs:label "dmp" ;
     ns1:hasProperty bldg:vav-with-reheat-dmp-dmppos .
 
 bldg:vav-with-reheat-dmp-dmppos a ns1:QuantifiableActuatableProperty,
         rdf:Seq ;
-    rdfs:label "dmppos" ;
-    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/PositionRatio> .
+    ns1:hasQuantityKind quantitykind:PositionRatio .
 
 bldg:vav-with-reheat-occ a ns1:QuantifiableObservableProperty,
         rdf:Seq ;
-    rdfs:label "occ" ;
     ns1:hasEnumerationKind ns1:EnumerationKind-Occupancy .
 
 bldg:vav-with-reheat-rhc-air-inlet-connectionpoint a ns1:InletConnectionPoint,
         rdf:Seq ;
-    rdfs:label "connectionpoint" ;
     ns1:cnx bldg:vav-with-reheat-rhc ;
     ns1:hasMedium ns1:Medium-Air .
 
 bldg:vav-with-reheat-rhc-air-outlet-connectionpoint a ns1:OutletConnectionPoint,
         rdf:Seq ;
-    rdfs:label "connectionpoint" ;
     ns1:cnx bldg:vav-with-reheat-rhc ;
     ns1:hasMedium ns1:Medium-Air .
 
 bldg:vav-with-reheat-rhc-cmd a ns1:QuantifiableActuatableProperty,
         rdf:Seq ;
-    rdfs:label "cmd" ;
-    ns1:hasQuantityKind <http://qudt.org/vocab/quantitykind/PositionRatio> .
+    ns1:hasQuantityKind quantitykind:PositionRatio .
 
 bldg:vav-with-reheat-ztemp a ns1:QuantifiableObservableProperty,
         rdf:Seq ;
-    rdfs:label "ztemp" ;
     ns1:hasAspect ns1:Aspect-Setpoint ;
-    ns2:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> .
-
-ns1:Aspect-Setpoint rdfs:label "Setpoint" .
-
-ns1:Constituent-CO2 rdfs:label "CO2" .
-
-ns1:Domain-HVAC rdfs:label "HVAC" .
-
-ns1:EnumerationKind-Occupancy rdfs:label "Occupancy" .
-
-ns1:Role-Discharge rdfs:label "Discharge" .
-
-ns1:Role-Heating rdfs:label "Heating" .
-
-<http://qudt.org/vocab/quantitykind/Concentration> rdfs:label "http://qudt.org/vocab/quantitykind/Concentration" .
+    ns2:hasQuantityKind quantitykind:Temperature .
 
 bldg:multiple-zone-ahu-name_out a ns1:OutletConnectionPoint ;
-    rdfs:label "name_out" ;
     ns1:cnx bldg:multiple-zone-ahu-name,
         bldg:multiple-zone-ahu-name_cn ;
     ns1:hasMedium ns1:Medium-Air .
 
 bldg:vav-cooling-only-name_in a ns1:InletConnectionPoint ;
-    rdfs:label "name_in" ;
     ns1:cnx bldg:multiple-zone-ahu-name_cn,
         bldg:vav-cooling-only-name ;
     ns1:hasMedium ns1:Medium-Air .
 
 bldg:vav-with-reheat-name_in a ns1:InletConnectionPoint ;
-    rdfs:label "name_in" ;
     ns1:cnx bldg:multiple-zone-ahu-name_cn,
         bldg:vav-with-reheat-name ;
     ns1:hasMedium ns1:Medium-Air .
 
 bldg:multiple-zone-ahu-name_cn a ns1:Connection ;
-    rdfs:label "name_cn" ;
     ns1:cnx bldg:multiple-zone-ahu-name_out,
         bldg:vav-cooling-only-name_in,
         bldg:vav-with-reheat-name_in .
 
 bldg:vav-with-reheat-rhc a ns1:Coil,
         rdf:Seq ;
-    rdfs:label "rhc" ;
     ns1:cnx bldg:vav-with-reheat-rhc-air-inlet-connectionpoint,
         bldg:vav-with-reheat-rhc-air-outlet-connectionpoint ;
     ns1:hasAspect ns1:Role-Heating ;
     ns1:hasProperty bldg:vav-with-reheat-rhc-cmd .
 
-<http://qudt.org/vocab/quantitykind/PositionRatio> rdfs:label "http://qudt.org/vocab/quantitykind/PositionRatio" .
-
 bldg:vav-cooling-only-name a ns1:SingleDuctTerminal,
         rdf:Seq ;
-    rdfs:label "only" ;
     ns1:cnx bldg:vav-cooling-only-air-inlet-connectionpoint,
         bldg:vav-cooling-only-air-outlet-connectionpoint,
         bldg:vav-cooling-only-name_in ;
@@ -270,7 +202,6 @@ bldg:vav-cooling-only-name a ns1:SingleDuctTerminal,
 
 bldg:vav-with-reheat-name a ns1:SingleDuctTerminal,
         rdf:Seq ;
-    rdfs:label "reheat" ;
     ns1:cnx bldg:vav-with-reheat-air-inlet-connectionpoint,
         bldg:vav-with-reheat-air-outlet-connectionpoint,
         bldg:vav-with-reheat-name_in ;
@@ -279,8 +210,4 @@ bldg:vav-with-reheat-name a ns1:SingleDuctTerminal,
     ns1:hasProperty bldg:vav-with-reheat-co2,
         bldg:vav-with-reheat-occ,
         bldg:vav-with-reheat-ztemp .
-
-<http://qudt.org/vocab/quantitykind/Temperature> rdfs:label "http://qudt.org/vocab/quantitykind/Temperature" .
-
-ns1:Medium-Air rdfs:label "Air" .
 

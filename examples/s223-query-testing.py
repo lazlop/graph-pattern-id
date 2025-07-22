@@ -258,10 +258,13 @@ for n in range(20):
 
     # import pyshacl 
     # ont = Graph()
+    # print("parsing ontology")
     # ont.parse('../ontologies/223p.ttl')
+    # print("copying graph")
     # for s,p,o in bldg_graph.triples((None,None,None)):
     #     ont.add((s,p,o))
     # st = time()
+    # print('validating')
     # pyshacl.validate(ont, ont)
     # et = time()
     # not_condensed_reasoning_t.append(et-st)

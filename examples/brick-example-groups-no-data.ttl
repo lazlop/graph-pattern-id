@@ -1,9 +1,7 @@
 @prefix bldg: <urn:example#> .
 @prefix brick: <https://brickschema.org/schema/Brick#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 bldg:multiple-zone-ahu-name a brick:AHU ;
-    rdfs:label "ahu" ;
     brick:feeds bldg:vav-cooling-only-name,
         bldg:vav-with-reheat-name ;
     brick:hasPart bldg:multiple-zone-ahu-clg_coil,
@@ -17,85 +15,51 @@ bldg:multiple-zone-ahu-name a brick:AHU ;
         bldg:multiple-zone-ahu-sa_temp .
 
 bldg:multiple-zone-ahu-clg_coil a brick:Cooling_Coil ;
-    rdfs:label "clg_coil" ;
     brick:hasPoint bldg:multiple-zone-ahu-clg_coil-valve_cmd .
 
-bldg:multiple-zone-ahu-clg_coil-valve_cmd a brick:Point,
-        brick:Valve_Position_Command ;
-    rdfs:label "valve_cmd" .
+bldg:multiple-zone-ahu-clg_coil-valve_cmd a brick:Valve_Position_Command .
 
-bldg:multiple-zone-ahu-filter_pd a brick:Filter_Differential_Pressure_Sensor,
-        brick:Point ;
-    rdfs:label "filter_pd" .
+bldg:multiple-zone-ahu-filter_pd a brick:Filter_Differential_Pressure_Sensor .
 
 bldg:multiple-zone-ahu-htg_coil a brick:Heating_Coil ;
-    rdfs:label "htg_coil" ;
     brick:hasPoint bldg:multiple-zone-ahu-htg_coil-valve_cmd .
 
-bldg:multiple-zone-ahu-htg_coil-valve_cmd a brick:Point,
-        brick:Valve_Position_Command ;
-    rdfs:label "valve_cmd" .
+bldg:multiple-zone-ahu-htg_coil-valve_cmd a brick:Valve_Position_Command .
 
-bldg:multiple-zone-ahu-ma_temp a brick:Mixed_Air_Temperature_Sensor,
-        brick:Point ;
-    rdfs:label "ma_temp" .
+bldg:multiple-zone-ahu-ma_temp a brick:Mixed_Air_Temperature_Sensor .
 
-bldg:multiple-zone-ahu-oa_temp a brick:Outside_Air_Temperature_Sensor,
-        brick:Point ;
-    rdfs:label "oa_temp" .
+bldg:multiple-zone-ahu-oa_temp a brick:Outside_Air_Temperature_Sensor .
 
 bldg:multiple-zone-ahu-ra_damper a brick:Damper ;
-    rdfs:label "ra_damper" ;
     brick:hasPoint bldg:multiple-zone-ahu-ra_damper-dmppos .
 
-bldg:multiple-zone-ahu-ra_damper-dmppos a brick:Damper_Position_Command,
-        brick:Point ;
-    rdfs:label "dmppos" .
+bldg:multiple-zone-ahu-ra_damper-dmppos a brick:Damper_Position_Command .
 
-bldg:multiple-zone-ahu-ra_temp a brick:Point,
-        brick:Return_Air_Temperature_Sensor ;
-    rdfs:label "ra_temp" .
+bldg:multiple-zone-ahu-ra_temp a brick:Return_Air_Temperature_Sensor .
 
 bldg:multiple-zone-ahu-sa_fan a brick:Supply_Fan ;
-    rdfs:label "sa_fan" ;
     brick:hasPoint bldg:multiple-zone-ahu-sa_fan-speed,
         bldg:multiple-zone-ahu-sa_fan-start_stop,
         bldg:multiple-zone-ahu-sa_fan-status .
 
-bldg:multiple-zone-ahu-sa_fan-speed a brick:Frequency_Command,
-        brick:Point ;
-    rdfs:label "speed" .
+bldg:multiple-zone-ahu-sa_fan-speed a brick:Frequency_Command .
 
-bldg:multiple-zone-ahu-sa_fan-start_stop a brick:Point,
-        brick:Start_Stop_Command ;
-    rdfs:label "start_stop" .
+bldg:multiple-zone-ahu-sa_fan-start_stop a brick:Start_Stop_Command .
 
-bldg:multiple-zone-ahu-sa_fan-status a brick:Fan_Status,
-        brick:Point ;
-    rdfs:label "status" .
+bldg:multiple-zone-ahu-sa_fan-status a brick:Fan_Status .
 
-bldg:multiple-zone-ahu-sa_temp a brick:Point,
-        brick:Supply_Air_Temperature_Sensor ;
-    rdfs:label "sa_temp" .
+bldg:multiple-zone-ahu-sa_temp a brick:Supply_Air_Temperature_Sensor .
 
-bldg:vav-cooling-only-co2 a brick:CO2_Level_Sensor,
-        brick:Point ;
-    rdfs:label "co2" .
+bldg:vav-cooling-only-co2 a brick:CO2_Level_Sensor .
 
-bldg:vav-cooling-only-dat a brick:Discharge_Air_Temperature_Sensor,
-        brick:Point ;
-    rdfs:label "dat" .
+bldg:vav-cooling-only-dat a brick:Discharge_Air_Temperature_Sensor .
 
 bldg:vav-cooling-only-dmp a brick:Damper ;
-    rdfs:label "dmp" ;
     brick:hasPoint bldg:vav-cooling-only-dmp-dmppos .
 
-bldg:vav-cooling-only-dmp-dmppos a brick:Damper_Position_Command,
-        brick:Point ;
-    rdfs:label "dmppos" .
+bldg:vav-cooling-only-dmp-dmppos a brick:Damper_Position_Command .
 
 bldg:vav-cooling-only-name a brick:VAV ;
-    rdfs:label "only" ;
     brick:feeds bldg:vav-cooling-only-zone ;
     brick:hasPart bldg:vav-cooling-only-dmp ;
     brick:hasPoint bldg:vav-cooling-only-co2,
@@ -103,35 +67,22 @@ bldg:vav-cooling-only-name a brick:VAV ;
         bldg:vav-cooling-only-occ,
         bldg:vav-cooling-only-ztemp .
 
-bldg:vav-cooling-only-occ a brick:Occupancy_Sensor,
-        brick:Point ;
-    rdfs:label "occ" .
+bldg:vav-cooling-only-occ a brick:Occupancy_Sensor .
 
-bldg:vav-cooling-only-zone a brick:HVAC_Zone ;
-    rdfs:label "zone" .
+bldg:vav-cooling-only-zone a brick:HVAC_Zone .
 
-bldg:vav-cooling-only-ztemp a brick:Point,
-        brick:Zone_Air_Temperature_Sensor ;
-    rdfs:label "ztemp" .
+bldg:vav-cooling-only-ztemp a brick:Zone_Air_Temperature_Sensor .
 
-bldg:vav-with-reheat-co2 a brick:CO2_Level_Sensor,
-        brick:Point ;
-    rdfs:label "co2" .
+bldg:vav-with-reheat-co2 a brick:CO2_Level_Sensor .
 
-bldg:vav-with-reheat-dat a brick:Discharge_Air_Temperature_Sensor,
-        brick:Point ;
-    rdfs:label "dat" .
+bldg:vav-with-reheat-dat a brick:Discharge_Air_Temperature_Sensor .
 
 bldg:vav-with-reheat-dmp a brick:Damper ;
-    rdfs:label "dmp" ;
     brick:hasPoint bldg:vav-with-reheat-dmp-dmppos .
 
-bldg:vav-with-reheat-dmp-dmppos a brick:Damper_Position_Command,
-        brick:Point ;
-    rdfs:label "dmppos" .
+bldg:vav-with-reheat-dmp-dmppos a brick:Damper_Position_Command .
 
 bldg:vav-with-reheat-name a brick:VAV ;
-    rdfs:label "reheat" ;
     brick:feeds bldg:vav-with-reheat-zone ;
     brick:hasPart bldg:vav-with-reheat-dmp,
         bldg:vav-with-reheat-rhc ;
@@ -140,22 +91,14 @@ bldg:vav-with-reheat-name a brick:VAV ;
         bldg:vav-with-reheat-occ,
         bldg:vav-with-reheat-ztemp .
 
-bldg:vav-with-reheat-occ a brick:Occupancy_Sensor,
-        brick:Point ;
-    rdfs:label "occ" .
+bldg:vav-with-reheat-occ a brick:Occupancy_Sensor .
 
 bldg:vav-with-reheat-rhc a brick:Heating_Coil ;
-    rdfs:label "rhc" ;
     brick:hasPoint bldg:vav-with-reheat-rhc-cmd .
 
-bldg:vav-with-reheat-rhc-cmd a brick:Point,
-        brick:Position_Command ;
-    rdfs:label "cmd" .
+bldg:vav-with-reheat-rhc-cmd a brick:Position_Command .
 
-bldg:vav-with-reheat-zone a brick:HVAC_Zone ;
-    rdfs:label "zone" .
+bldg:vav-with-reheat-zone a brick:HVAC_Zone .
 
-bldg:vav-with-reheat-ztemp a brick:Point,
-        brick:Zone_Air_Temperature_Sensor ;
-    rdfs:label "ztemp" .
+bldg:vav-with-reheat-ztemp a brick:Zone_Air_Temperature_Sensor .
 
