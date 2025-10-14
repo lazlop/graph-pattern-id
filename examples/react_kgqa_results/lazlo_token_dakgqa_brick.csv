@@ -1,0 +1,53 @@
+Timestamp,Model,Question,Prompt Tokens,Completion Tokens,Total Tokens,Final SPARQL Query,Number of Rows,Question Source,Question ID,Question Number
+2025-10-08T12:49:11.831089,openai/gpt-4.1,What are the discharge air temperature sensor instances for all VAVs and their associated AHUs?,7799,1026,8825,"PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?vav ?vavLabel ?sensor ?sensorLabel ?ahu ?ahuLabel
+WHERE {
+  ?vav a brick:VAV .
+  OPTIONAL { ?vav rdfs:label ?vavLabel }
+  ?sensor a brick:Discharge_Air_Temperature_Sensor .
+  OPTIONAL { ?sensor rdfs:label ?sensorLabel }
+  ?sensor brick:isPointOf ?vav .
+  OPTIONAL {
+    ?vav (brick:feeds|^brick:feeds|brick:isFedBy|^brick:isFedBy)+ ?ahu .
+    ?ahu a brick:AHU .
+    OPTIONAL { ?ahu rdfs:label ?ahuLabel }
+  }
+}",120,lazlo,lazlo,1
+2025-10-08T12:50:49.904634,openai/gpt-4.1,What are all the components of each air handling unit?,6765,631,7396,"PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?ahu ?ahuLabel ?component ?componentLabel WHERE {
+  ?ahu a brick:Air_Handling_Unit ;
+       rdfs:label ?ahuLabel .
+  ?ahu ?rel ?component .
+  FILTER(?rel IN (brick:Relationship, brick:hasAssociatedTag))
+  OPTIONAL { ?component rdfs:label ?componentLabel }
+}",156,lazlo,lazlo,1
+2025-10-08T12:53:14.167053,openai/gpt-4.1,What are all the instances of valve commands for cooling only VAVs?,8707,681,9388,"PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX tag: <https://brickschema.org/schema/BrickTag#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?valveCommand
+WHERE {
+  ?valveCommand rdf:type brick:Valve_Command .
+}",8,lazlo,lazlo,1
+2025-10-08T12:55:06.873278,openai/gpt-4.1,"I'm too cold, find the components most likely at fault.",5407,620,6027,"PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX tag: <https://brickschema.org/schema/BrickTag#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?component ?label ?faultTag WHERE {
+  {
+    ?component (brick:Relationship|brick:hasAssociatedTag) tag:Cold .
+  } UNION {
+    ?component (brick:Relationship|brick:hasAssociatedTag) tag:Box .
+  }
+  OPTIONAL { ?component rdfs:label ?label }
+  OPTIONAL {
+    ?faultTag a brick:Tag ;
+      brick:isAssociatedWith ?component .
+    FILTER regex(str(?faultTag), ""Fault"", ""i"")
+  }
+}",10,lazlo,lazlo,1

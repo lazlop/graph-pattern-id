@@ -1,0 +1,68 @@
+query_id,question_number,source,question,model,ground_truth_sparql,generated_sparql,syntax_ok,returns_results,perfect_match,gt_num_rows,gt_num_cols,gen_num_rows,gen_num_cols,precision,recall,f1,prompt_tokens,completion_tokens,total_tokens,col_precision,col_recall,col_f1,row_precision,row_recall,row_f1,less_columns_flag
+custom_q_1,N/A,custom_list,What are all the instances of valve commands for cooling only VAVs?,openai/gpt-4.1,,"PREFIX brick: <https://brickschema.org/schema/Brick#>
+
+SELECT ?vav ?valve_cmd WHERE {
+  ?vav a brick:VAV .
+  FILTER NOT EXISTS {
+    ?vav brick:hasPart ?heating_coil .
+    ?heating_coil a brick:Heating_Coil .
+  }
+  ?vav brick:hasPoint ?valve_cmd .
+  ?valve_cmd a brick:Position_Command .
+}",True,False,False,0,0,0,2,0.0,0.0,0.0,177881,977,178858,0.0,0.0,0.0,0.0,0.0,0.0,False
+custom_q_2,N/A,custom_list,What are all the components of each air handling unit?,openai/gpt-4.1,,"PREFIX brick: <https://brickschema.org/schema/Brick#>
+SELECT ?ahu ?component WHERE {
+  ?ahu a brick:Air_Handling_Unit .
+  ?ahu brick:hasPart+ ?component .
+}",True,True,False,0,0,16,2,0.0,0.0,0.0,178369,571,178940,0.0,0.0,0.0,0.0,0.0,0.0,False
+custom_q_3,N/A,custom_list,What are the discharge air temperature sensors for all VAVs and their associated AHUs?,openai/gpt-4.1,,"PREFIX brick: <https://brickschema.org/schema/Brick#>
+
+SELECT ?vav ?ahu ?sensor WHERE {
+  ?vav a brick:VAV .
+  ?vav brick:hasPoint ?sensor .
+  ?sensor a brick:Discharge_Air_Temperature_Sensor .
+  ?ahu brick:feeds ?vav .
+  ?ahu a ?ahu_type .
+  FILTER(?ahu_type IN (brick:AHU, brick:Air_Handling_Unit))
+}
+",True,True,False,0,0,240,3,0.0,0.0,0.0,119122,581,119703,0.0,0.0,0.0,0.0,0.0,0.0,False
+custom_q_1,N/A,custom_list,"I'm too cold, find the components most likely at fault.",openai/gpt-4.1,,"PREFIX brick: <https://brickschema.org/schema/Brick#>
+PREFIX tag: <https://brickschema.org/schema/BrickTag#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Replace this with the specific zone or room URI if known, e.g., :vav-cooling-only_zone_1_1
+# For demonstration, we select all HVAC_Zone instances as possible affected zones
+SELECT DISTINCT ?zone ?zone_label ?component ?component_label WHERE {
+  ?zone a brick:HVAC_Zone .
+  OPTIONAL { ?zone rdfs:label ?zone_label }
+
+  # Find VAVs or terminal units that serve the zone
+  ?vav (brick:feeds|^brick:feeds)* ?zone .
+  ?vav a brick:VAV .
+
+  # Find heating-related components that are part of the VAV or its upstream AHU
+  {
+    VALUES ?ctype {
+      brick:Heating_Coil
+      brick:Reheat_Valve
+      brick:Hot_Water_Valve
+      brick:Hot_Water_Circulator_Pump
+      brick:Boiler
+      brick:Radiator
+      brick:Baseboard_Radiator
+      brick:Fan_Coil_Unit
+      brick:Damper
+    }
+    ?component a ?ctype .
+    # Component is part of the VAV or its upstream AHU
+    { ?vav brick:hasPart ?component }
+    UNION
+    { ?ahu brick:feeds ?vav . ?ahu brick:hasPart ?component }
+    UNION
+    { ?component brick:feeds ?vav }
+    UNION
+    { ?component brick:feeds ?ahu . ?ahu brick:feeds ?vav }
+    OPTIONAL { ?component rdfs:label ?component_label }
+  }
+}
+ORDER BY ?zone_label ?component_label",True,True,False,0,0,5640,4,0.0,0.0,0.0,178917,2113,181030,0.0,0.0,0.0,0.0,0.0,0.0,False

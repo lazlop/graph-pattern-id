@@ -1,0 +1,149 @@
+query_id,question_number,source,question,model,ground_truth_sparql,generated_sparql,syntax_ok,returns_results,perfect_match,gt_num_rows,gt_num_cols,gen_num_rows,gen_num_cols,precision,recall,f1,prompt_tokens,completion_tokens,total_tokens,col_precision,col_recall,col_f1,row_precision,row_recall,row_f1,less_columns_flag
+custom_q_1,N/A,custom_list,"I'm too cold, find the components most likely at fault.",openai/gpt-4.1,,"PREFIX s223: <http://data.ashrae.org/standard223#>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX quantitykind: <http://qudt.org/vocab/quantitykind/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT DISTINCT ?component ?label WHERE {
+  # Restrict to physical components (devices, equipment, points, or s223:Component)
+  ?component a ?type .
+  FILTER(
+    ?type IN (
+      s223:Component,
+      s223:QuantifiableObservableProperty,
+      s223:QuantifiableActuatableProperty
+    )
+  )
+  # Look for components involved in temperature control
+  OPTIONAL { ?component rdfs:label ?label }
+  FILTER (
+    (BOUND(?label) && (
+      CONTAINS(LCASE(STR(?label)), ""damper"") ||
+      CONTAINS(LCASE(STR(?label)), ""reheat"") ||
+      CONTAINS(LCASE(STR(?label)), ""coil"") ||
+      CONTAINS(LCASE(STR(?label)), ""heater"") ||
+      CONTAINS(LCASE(STR(?label)), ""thermostat"") ||
+      CONTAINS(LCASE(STR(?label)), ""temp"")
+    ))
+    ||
+    EXISTS { ?component qudt:hasQuantityKind quantitykind:Temperature }
+    ||
+    EXISTS { ?component s223:hasQuantityKind quantitykind:Temperature }
+  )
+}
+ORDER BY ?label",True,True,False,0,0,256,2,0.0,0.0,0.0,12830,1456,14286,0.0,0.0,0.0,0.0,0.0,0.0,False
+custom_q_1,N/A,custom_list,What are all the instances of valve commands for cooling only VAVs?,openai/gpt-4.1,,"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX s223: <http://data.ashrae.org/standard223#>
+
+SELECT ?vav ?vav_label ?valve_command ?valve_command_label WHERE {
+  # Find all VAVs (assuming a generic VAV class)
+  ?vav rdf:type s223:VAV .
+  OPTIONAL { ?vav rdfs:label ?vav_label }
+  
+  # Filter for cooling-only VAVs via label or property (if available)
+  FILTER(
+    (BOUND(?vav_label) && CONTAINS(LCASE(?vav_label), ""cooling-only""))
+    # Add additional FILTERs here if a property or tag for cooling-only exists, e.g.:
+    # || EXISTS { ?vav s223:hasCoolingOnly true }
+  )
+  
+  # Find associated valve command points via possible relationships
+  {
+    ?vav s223:hasPoint ?valve_command .
+  } UNION {
+    ?vav s223:hasValveCommand ?valve_command .
+  } UNION {
+    ?vav s223:hasProperty ?valve_command .
+  }
+  
+  # Valve command type (if available)
+  ?valve_command rdf:type ?cmd_type .
+  FILTER(
+    ?cmd_type = s223:Valve_Command ||
+    ?cmd_type = s223:QuantifiableActuatableProperty # e.g., for command points
+  )
+  OPTIONAL { ?valve_command rdfs:label ?valve_command_label }
+}",True,False,False,0,0,0,4,0.0,0.0,0.0,10853,1449,12302,0.0,0.0,0.0,0.0,0.0,0.0,False
+custom_q_2,N/A,custom_list,What are all the components of each air handling unit?,openai/gpt-4.1,,"PREFIX s223: <http://data.ashrae.org/standard223#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX : <urn:example#>
+
+SELECT ?ahu ?ahu_label ?component ?component_label WHERE {
+  # Identify AHUs by class or label
+  {
+    ?ahu a s223:AirHandlingUnit .
+  } UNION {
+    ?ahu rdfs:label ?ahu_label_raw .
+    FILTER(CONTAINS(LCASE(STR(?ahu_label_raw)), ""air handling unit""))
+  }
+  # Find components via likely relationships
+  OPTIONAL { ?ahu s223:hasComponent ?component . }
+  OPTIONAL { ?ahu :hasComponent ?component . }
+  OPTIONAL { ?ahu :hasPart ?component . }
+  # Only keep actual components (not classes or properties)
+  ?component a ?component_type .
+  FILTER(
+    ?component_type != rdf:Property &&
+    ?component_type != rdfs:Class &&
+    !STRSTARTS(STR(?component_type), ""http://www.w3.org/2002/07/owl#"") &&
+    !STRSTARTS(STR(?component_type), ""http://www.w3.org/ns/shacl#"")
+  )
+  # Optionally restrict to likely component classes if present
+  # OPTIONAL { ?component a s223:Component }
+  # Get labels
+  OPTIONAL { ?ahu rdfs:label ?ahu_label }
+  OPTIONAL { ?component rdfs:label ?component_label }
+}",True,True,False,0,0,296425,4,0.0,0.0,0.0,12823,1386,14209,0.0,0.0,0.0,0.0,0.0,0.0,False
+custom_q_3,N/A,custom_list,What are the discharge air temperature sensors for all VAVs and their associated AHUs?,openai/gpt-4.1,,"PREFIX s223: <http://data.ashrae.org/standard223#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX quantitykind: <http://qudt.org/vocab/quantitykind/>
+
+SELECT ?vav ?vav_label ?sensor ?sensor_label ?ahu ?ahu_label WHERE {
+  # Find VAVs by class or subclass
+  ?vav rdf:type ?vav_class .
+  ?vav_class rdfs:label ?vav_class_label .
+  FILTER(REGEX(LCASE(STR(?vav_class_label)), ""vav""))
+  OPTIONAL { ?vav rdfs:label ?vav_label }
+
+  # Find points or sensors associated with the VAV
+  {
+    ?vav ?point_pred ?sensor .
+    FILTER(?point_pred IN (s223:hasPoint, s223:hasProperty, s223:hasSensor))
+  } UNION {
+    ?vav s223:hasProperty ?point .
+    ?point rdf:type ?sensor_class .
+    ?sensor_class rdfs:label ?sensor_class_label .
+    FILTER(REGEX(LCASE(STR(?sensor_class_label)), ""discharge.*air.*temperature.*sensor""))
+    BIND(?point AS ?sensor)
+  } UNION {
+    ?vav s223:hasPoint ?point .
+    ?point rdf:type ?sensor_class .
+    ?sensor_class rdfs:label ?sensor_class_label2 .
+    FILTER(REGEX(LCASE(STR(?sensor_class_label2)), ""discharge.*air.*temperature.*sensor""))
+    BIND(?point AS ?sensor)
+  }
+  # Sensor must be a discharge air temperature sensor (by label or quantity kind)
+  OPTIONAL { ?sensor rdfs:label ?sensor_label }
+  OPTIONAL { ?sensor qudt:hasQuantityKind quantitykind:Temperature }
+
+  # Find associated AHU for each VAV
+  {
+    ?ahu rdf:type ?ahu_class .
+    ?ahu_class rdfs:label ?ahu_class_label .
+    FILTER(REGEX(LCASE(STR(?ahu_class_label)), ""ahu|air handling unit""))
+    {
+      ?ahu ?feeds_pred ?vav .
+      FILTER(?feeds_pred IN (s223:feeds, s223:serves))
+    } UNION {
+      ?vav ?fedby_pred ?ahu .
+      FILTER(?fedby_pred IN (s223:isFedBy, s223:hasServedBy))
+    }
+  }
+  OPTIONAL { ?ahu rdfs:label ?ahu_label }
+}
+",True,False,False,0,0,0,6,0.0,0.0,0.0,11415,1974,13389,0.0,0.0,0.0,0.0,0.0,0.0,False
