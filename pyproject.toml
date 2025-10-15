@@ -23,6 +23,7 @@ dependencies = [
     "pyvis>=0.3.2",
     "pyshacl>=0.30.1",
     "seaborn>=0.13.2",
+    "brick-tq-shacl>=0.3.4a2",
 ]
 
 

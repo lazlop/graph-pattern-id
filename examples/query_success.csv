@@ -1,0 +1,5 @@
+question,ReAct(w100)_brick.csv,ReAct(w100)_s223.csv,ReAct(w5000)_brick.csv,ReAct(w5000)_s223.csv,lazlo_token_dakgqa_brick.csv
+"I'm too cold, find the components most likely at fault.",False,True,True,False,False
+What are all the components of each air handling unit?,True,True,True,True,False
+What are all the instances of valve commands for cooling only VAVs?,False,False,False,False,False
+What are the discharge air temperature sensors for all VAVs and their associated AHUs?,True,False,True,False,False
