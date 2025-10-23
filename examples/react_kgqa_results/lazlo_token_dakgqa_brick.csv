@@ -1,4 +1,4 @@
-Timestamp,Model,question,Prompt Tokens,Completion Tokens,Total Tokens,generated_sparql,Number of Rows,Question Source,Question ID,Question Number
+Timestamp,Model,question,Prompt Tokens,Completion Tokens,prompt_tokens,generated_sparql,Number of Rows,Question Source,Question ID,Question Number
 2025-10-08T12:49:11.831089,openai/gpt-4.1,What are the discharge air temperature sensors for all VAVs and their associated AHUs?,7799,1026,8825,"PREFIX brick: <https://brickschema.org/schema/Brick#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
