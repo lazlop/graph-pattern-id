@@ -180,6 +180,8 @@ class BSchemaGenerator:
         self.data_graph = data_graph
         self.b_schema_statements: List[BSchemaStatement] = []
         self.all_triples = self._extract_all_triples()
+        # to test if order matters, reversing order of triples
+        # self.all_triples = self.all_triples[::-1]
         self.covered_triples: Set[Triple] = set()
         
         print(f"[INIT] Total triples in graph: {len(self.all_triples)}")
@@ -396,6 +398,7 @@ class BSchemaGenerator:
 
         # base_query = query_obj.get_construct_query()
         base_query = query_obj.get_ask_query()
+        self.base_query = base_query
         
         # print(f"[TEST] Base query:\n{base_query}\n")
         
