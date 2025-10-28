@@ -4,6 +4,8 @@ from matplotlib import pyplot as plt
 import time 
 from dataclasses import dataclass
 from pyoxigraph import *
+import sys 
+sys.path.append('../utils')
 from namespaces import *
 from rdflib import Graph, URIRef
 from collections import defaultdict
@@ -86,7 +88,8 @@ class PatternQuery:
 
     def get_query(self):
         # may need to add prefixes
-        query = f"""{self.prefixes}\nSELECT DISTINCT * WHERE {{ {self.where}\n{self.filters} }}"""
+        # query = f"""{self.prefixes}\nSELECT DISTINCT * WHERE {{ {self.where}\n{self.filters} }}"""
+        query = f"""{self.prefixes}\nSELECT DISTINCT * WHERE {{ {self.where}\n{self.filters} LIMIT 1}}"""
         return query
 
 

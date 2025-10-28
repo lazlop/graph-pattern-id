@@ -7,8 +7,8 @@ BLDG = Namespace("urn:example#")
 bm = BuildingMOTIF("sqlite://", "topquadrant")
 bldg = Model.create("urn:example#")
 bldg.graph.bind('',BLDG)
-brick = Library.load(ontology_graph="examples/Brick.ttl")
-brick_tmpl = Library.load(directory='examples/brick-templates')
+brick = Library.load(ontology_graph="../ontologies/Brick.ttl")
+brick_tmpl = Library.load(directory='../examples/brick-templates')
 import time
 
 from group_nodes import * 
@@ -44,13 +44,13 @@ for j in range(40):
             ctx['feeds'](name = ahu['name'], target = hvav['name'])
 
     bldg.add_graph(ctx.compile())
-    bldg.graph.serialize('brick-example.ttl', format = 'ttl')
+    bldg.graph.serialize('brick-variable-len-example.ttl', format = 'ttl')
     csv_row['graph_size'] = len(bldg.graph)
 
     start_time = time.time()
 
-    TEST_GRAPH_FILE = 'brick-example.ttl'
-    SCHEMA_GRAPH_FILE = 'examples/Brick.ttl'
+    TEST_GRAPH_FILE = 'brick-variable-len-example.ttl'
+    SCHEMA_GRAPH_FILE = '../ontologies/Brick.ttl'
     processor = GraphPatternProcessor(test_graph_file=TEST_GRAPH_FILE, 
                     schema_graph_file=SCHEMA_GRAPH_FILE, 
                     namespace=BRICK)

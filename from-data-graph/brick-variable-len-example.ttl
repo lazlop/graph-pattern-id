@@ -1,0 +1,54 @@
+@prefix : <urn:example#> .
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+: a owl:Ontology .
+
+:ahu_0 a brick:AHU ;
+    rdfs:label "AHU" ;
+    brick:hasPart :clg_coil_593b558d,
+        :htg_coil_9526f15c,
+        :ra_damper_3fe82b42,
+        :sa_fan_8665d3a2 ;
+    brick:hasPoint :oa_temp_612a01da,
+        :sa_temp_6741b771 .
+
+:clg_coil-valve_cmd_982131c9 a brick:Valve_Position_Command ;
+    rdfs:label "Valve_Position_Command" .
+
+:clg_coil_593b558d a brick:Cooling_Coil ;
+    rdfs:label "Cooling_Coil" ;
+    brick:hasPoint :clg_coil-valve_cmd_982131c9 .
+
+:htg_coil-valve_cmd_38a29a41 a brick:Valve_Position_Command ;
+    rdfs:label "Valve_Position_Command" .
+
+:htg_coil_9526f15c a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil" ;
+    brick:hasPoint :htg_coil-valve_cmd_38a29a41 .
+
+:oa_temp_612a01da a brick:Outside_Air_Temperature_Sensor ;
+    rdfs:label "Outside_Air_Temperature_Sensor" .
+
+:ra_damper-dmppos_02a12e0f a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command" .
+
+:ra_damper_3fe82b42 a brick:Damper ;
+    rdfs:label "Damper" ;
+    brick:hasPoint :ra_damper-dmppos_02a12e0f .
+
+:sa_fan-speed_09e87130 a brick:Frequency_Command ;
+    rdfs:label "Frequency_Command" .
+
+:sa_fan-start_stop_1b8bb462 a brick:Start_Stop_Command ;
+    rdfs:label "Start_Stop_Command" .
+
+:sa_fan_8665d3a2 a brick:Supply_Fan ;
+    rdfs:label "Supply_Fan" ;
+    brick:hasPoint :sa_fan-speed_09e87130,
+        :sa_fan-start_stop_1b8bb462 .
+
+:sa_temp_6741b771 a brick:Supply_Air_Temperature_Sensor ;
+    rdfs:label "Supply_Air_Temperature_Sensor" .
+
