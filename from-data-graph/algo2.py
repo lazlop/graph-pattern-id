@@ -408,10 +408,8 @@ class BSchemaGenerator:
         # Execute query with LIMIT 1
         try:
             results = self.data_graph.query(bound_query)
-            result_count = len(results)
-            print(f"[TEST] Query returned {result_count} results")
             
-            if result_count > 0:
+            if results.askAnswer:
                 print(f"[TEST] ✓ MATCH FOUND")
                 return True
             else:
