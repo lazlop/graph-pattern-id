@@ -419,7 +419,8 @@ class BSchemaGenerator:
         except Exception as e:
             print(f"[TEST] ✗ Query execution error: {e}")
             print(f"[TEST] Query was: {bound_query}")
-            return False
+            raise ValueError(f"Query Execution Error: {e}") from e
+            
     
     def generate_b_schema(self) -> List[BSchemaStatement]:
         """Main algorithm to generate b-schema"""
