@@ -37,6 +37,12 @@ class Triple:
     p: Union[str, URIRef]
     o: Union[str, URIRef]
 
+# TODO: Should probably move from typle of triples to a better data structure
+# @dataclass(frozen=True)
+# class BSchemaTriple:
+#     classes: Triple 
+#     vars: Triple
+
 
 class PatternQuery:
     def __init__(self, triples, graph=None):
@@ -219,7 +225,7 @@ class BSchemaGenerator:
             o_var = self._get_or_create_var(triple.o, var_counter)
             
             class_triple = Triple(str(s_class), str(triple.p), str(o_class))
-            var_triple = Triple(s_var, str(triple.p), o_var)
+            var_triple = Triple(s_var, triple.p, o_var)
             
             pattern.append((class_triple, var_triple))
         
@@ -387,7 +393,7 @@ class BSchemaGenerator:
         
         # Create query from statement pattern
         query_obj = PatternQuery(all_var_triples, self.data_graph)
-        
+
         # base_query = query_obj.get_construct_query()
         base_query = query_obj.get_ask_query()
         
@@ -543,3 +549,10 @@ if __name__ == "__main__":
     for i, stmt in enumerate(b_schema_statements):
         print(f"\nStatement {i}:")
         print(stmt)
+
+    
+    b_schema_trpls = [stmt.pattern[0][1] for stmt in b_schema_statements]
+    b_schema_graph = Graph(store = 'Oxigraph')
+    for trpl in b_schema_trpls:
+        b_schema_graph.add((trpl.s, trpl.p, trpl.o))
+    b_schema_graph.serialize("b-schema-algo2.ttl", format="turtle")
