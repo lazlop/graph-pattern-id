@@ -76,21 +76,14 @@ class PatternQuery:
     def make_var_names(self, triples):
         query_triples = []
         for class_triple, var_triple in triples:
-            subject = self.get_local_name(var_triple.s).replace("-", "_")
-            object = self.get_local_name(var_triple.o).replace("-", "_")
+            subject = get_local_name(var_triple.s).replace("-", "_")
+            object = get_local_name(var_triple.o).replace("-", "_")
             if class_triple.p.startswith("<"):
                 p_var = class_triple.p.split("<")[1].split(">")[0]
             else:
                 p_var = class_triple.p
             query_triples.append((class_triple, Triple(subject, p_var, object)))
         return query_triples
-
-    def get_local_name(self, node):
-        node = str(node).replace("<", "").replace(">", "")
-        if "#" in node:
-            return node.rpartition("#")[-1]
-        else:
-            return node.rpartition("/")[-1]
     
     # NOTE: Shouldn't have used AI generated code for this - took as long or longer to debug as it would have taken to just write... 
     def add_where(self, query_triples):
@@ -165,6 +158,8 @@ class BSchemaStatement:
     """Represents a statement in the b-schema with its pattern and covered triples"""
     pattern: List[Tuple[Triple, Triple]]  # (class_triple, var_triple) pairs
     covered_triples: Set[Triple]
+    # when the query changes, some triples will be made invalid. 
+    # invalid_triples: Set[Triple]
     
     def __init__(self, pattern):
         self.pattern = pattern
@@ -181,15 +176,19 @@ class BSchemaGenerator:
         self.b_schema_statements: List[BSchemaStatement] = []
         self.all_triples = self._extract_all_triples()
         # to test if order matters, reversing order of triples
-        # self.all_triples = self.all_triples[::-1]
+        self.all_triples = self.all_triples[::-1]
         self.covered_triples: Set[Triple] = set()
         
         print(f"[INIT] Total triples in graph: {len(self.all_triples)}")
         
+    # can do some cleaning here. 
     def _extract_all_triples(self) -> List[Triple]:
         """Extract all triples from the data graph"""
         triples = []
         for s, p, o in self.data_graph:
+            if str(get_local_name(s)).strip() == "":
+                print("skipping subject empty string")
+                continue
             triples.append(Triple(s, p, o))
         print(f"[EXTRACT] Extracted {len(triples)} triples")
         return triples
@@ -311,14 +310,6 @@ class BSchemaGenerator:
         # print(f"    [COMPAT] Patterns are compatible!")
         return True
     
-    def get_local_name(self, node):
-        """Helper to get local name from URI"""
-        node = str(node).replace("<", "").replace(">", "")
-        if "#" in node:
-            return node.rpartition("#")[-1]
-        else:
-            return node.rpartition("/")[-1]
-    
     def _bind_triples_to_query(self, query: str, triples: List[Triple], statement: BSchemaStatement) -> str:
         """Bind triples' values to query variables. 
         All triples have the same subject and object, so we only bind once."""
@@ -345,8 +336,8 @@ class BSchemaGenerator:
                     stmt_class_triple.p == new_class_triple.p and 
                     stmt_class_triple.o == new_class_triple.o):
                     
-                    s_var = clean_var_name(self.get_local_name(stmt_var_triple.s))
-                    o_var = clean_var_name(self.get_local_name(stmt_var_triple.o))
+                    s_var = clean_var_name(get_local_name(stmt_var_triple.s))
+                    o_var = clean_var_name(get_local_name(stmt_var_triple.o))
                     print(f"[BIND] Found matching pattern, vars: ?{s_var}, ?{o_var}")
                     break
             
@@ -410,6 +401,8 @@ class BSchemaGenerator:
             results = self.data_graph.query(bound_query)
             
             if results.askAnswer:
+            # Can skip running the query for node edge aggregation
+            # if len(results) > 0:
                 print(f"[TEST] ✓ MATCH FOUND")
                 return True
             else:
@@ -449,6 +442,7 @@ class BSchemaGenerator:
         print(f"\n[STEP 1] Created initial statement covering {len(initial_triples)} triples")
         print(f"[STEP 1] Coverage: {len(self.covered_triples)}/{len(self.all_triples)} triples")
         
+        self.invalid_triples = set()
         iteration = 0
         # Step 5: Repeat until all triples are covered
         while len(self.covered_triples) < len(self.all_triples):
@@ -502,6 +496,8 @@ class BSchemaGenerator:
             # If no match, create new statement
             if not matched:
                 print(f"\n[STEP 4] ✗ No match found, creating NEW statement")
+                # Query will change, so add existing triples to invalid triples patterns
+                self.invalid_triples.update(self.covered_triples.copy())
                 new_pattern = self._create_class_pattern(new_triples)
                 new_stmt = BSchemaStatement(new_pattern)
                 new_stmt.covered_triples.update(new_triples)
@@ -511,12 +507,15 @@ class BSchemaGenerator:
             
             print(f"\n[ITERATION END] Coverage: {len(self.covered_triples)}/{len(self.all_triples)} triples")
             print(f"[ITERATION END] Total statements: {len(self.b_schema_statements)}")
-        
-        print(f"\n{'='*80}")
-        print("B-SCHEMA GENERATION COMPLETE")
-        print(f"Final statements: {len(self.b_schema_statements)}")
-        print(f"Total coverage: {len(self.covered_triples)}/{len(self.all_triples)} triples")
-        print(f"{'='*80}\n")
+
+            # print(f"\n{'='*80}")
+            # print(f"Amt. invalid triples: {len(self.invalid_triples)}")
+            # print(f"Percent Invalid: {len(self.invalid_triples)/len(self.all_triples)}")
+            # print(f"{'='*80}\n")
+            # if len(self.covered_triples) >= len(self.all_triples):
+            #     print("[ITERATION END] All triples covered! Now Reviewing Invalidated Triples...")
+            #     self.covered_triples = self.covered_triples - self.invalid_triples
+            #     self.invalid_triples = set()
         
         return self.b_schema_statements
 
@@ -536,6 +535,13 @@ def get_prefixes(graph):
     for prefix, namespace in graph.namespaces():
         prefixes.append(f"PREFIX {prefix}: <{namespace}>")
     return "\n".join(prefixes)
+
+def get_local_name(node):
+        node = str(node).replace("<", "").replace(">", "")
+        if "#" in node:
+            return node.rpartition("#")[-1]
+        else:
+            return node.rpartition("/")[-1]
 
 if __name__ == "__main__":
     # Example usage
