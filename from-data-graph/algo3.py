@@ -14,6 +14,7 @@ import sys
 import hashlib
 import rdflib
 sys.path.append('../utils')
+sys.path.append('utils')
 from namespaces import *
 from utils import * 
 from dataclasses import dataclass
@@ -75,7 +76,7 @@ class PatternQuery:
 
     def make_var_names(self, triples):
         query_triples = []
-        for class_triple, var_triple in triples:
+        for class_triple, var_triple, original_triple in triples:
             subject = get_local_name(var_triple.s).replace("-", "_")
             object = get_local_name(var_triple.o).replace("-", "_")
             if class_triple.p.startswith("<"):
@@ -235,8 +236,9 @@ class BSchemaGenerator:
             
             class_triple = Triple(str(s_class), str(triple.p), str(o_class))
             var_triple = Triple(s_var, triple.p, o_var)
+            original_triple = Triple(triple.s, triple.p, triple.o)
             
-            pattern.append((class_triple, var_triple))
+            pattern.append((class_triple, var_triple, original_triple))
         
         # print(f"[PATTERN] Created pattern with {len(pattern)} triples")
         # for ct, vt in pattern:

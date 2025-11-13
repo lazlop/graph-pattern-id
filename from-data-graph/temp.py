@@ -6,17 +6,22 @@ def create_class_graph(mini_bs):
     triple_graph = Graph(store = 'Oxigraph')
     triple_schema = []
     for triple in mini_bs.all_triples:
+        if RDFS.Resource in [triple.s, triple.p, triple.o]:
+            continue
         pattern = mini_bs._create_class_pattern([triple])[0]
+        print(pattern)
         class_pattern = pattern[0]
+        var_pattern = pattern[1]
+        original_pattern = pattern[2]
         class_triple = (URIRef(class_pattern.s), URIRef(class_pattern.p), URIRef(class_pattern.o))
         if class_triple in class_graph:
             continue
         else:
             class_graph.add(class_triple)
-            triple_schema.append(pattern)
-            triple_graph.add((triple.s, triple.p, triple.o))
-            if not ('#' in triple.o):
-                print('TRIPLE SHOULD BE NAMESPACED')
+            triple_schema.append(original_pattern)
+            triple_graph.add((original_pattern.s, original_pattern.p, original_pattern.o))
+            # if not ('#' in triple.o):
+            #     print('TRIPLE SHOULD BE NAMESPACED')
     # add any triples to triple_graph connecting things already present 
     all_nodes = set([s for s, p, o in triple_graph] + [o for s, p, o in triple_graph])
     for node in all_nodes:
@@ -91,15 +96,16 @@ def get_subgraph_with_hops(
 def compare_to_query(subject, data_graph, triple_graph):
     one_hop_graph = get_subgraph_with_hops(data_graph, subject, 1)
     bschema = BSchemaGenerator(one_hop_graph)
-    _, one_hop_triple_schema, _ = create_class_graph(bschema)
+    _, one_hop_triple_schema, one_hop_triple_graph = create_class_graph(bschema)
 
+    # all_nodes = set()
+    # for s, p, o in one_hop_triple_graph:
+    #     all_nodes.add(s)
+    #     all_nodes.add(o)
+    # for node in list(all_nodes):
+    #     if not ('#' in node):
+    #         print(node)
     pq = PatternQuery(one_hop_triple_schema, one_hop_graph)
-    
-    if len(one_hop_triple_schema) < 1:
-        # print("SHORT one hop schema")
-        # print(subject)
-        # one_hop_graph.print()
-        return True, pq, None
     
     # print(pq.get_ask_query())
     res = triple_graph.query(pq.get_ask_query())
@@ -166,7 +172,7 @@ def compare_all_nodes(data_graph, triple_graph, add_hops = 10):
     return matches, not_matches, unmatched_subjects, added_to_triples, triple_graph
 
 s223_data_graph = Graph(store = 'Oxigraph')
-s223_data_graph.parse("s223-example.ttl", format="turtle")
+s223_data_graph.parse("/Users/lazlopaul/Desktop/223p/experiments/graph-pattern-id/from-data-graph/s223-example.ttl", format="turtle")
 s223_bschema = BSchemaGenerator(s223_data_graph)
 s223_class_graph, s223_triple_schema, s223_triple_graph = create_class_graph(s223_bschema)
 matches, not_matches, unmatched_subjects, added_to_triples, s223_new_triple_graph = compare_all_nodes(data_graph = s223_data_graph, triple_graph = s223_triple_graph)
