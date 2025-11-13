@@ -236,6 +236,18 @@
         :multiple-zone-ahu_sa_temp_2,
         :multiple-zone-ahu_sa_temp_3 .
 
+:out-maps-to-name a rdf:Seq ;
+    s223:cnx :out-maps-to-outlet_cp .
+
+:out-maps-to-target a rdf:Seq ;
+    s223:cnx :out-maps-to-target_cp .
+
+:out-maps-to-target_cp a s223:OutletConnectionPoint,
+        rdf:Seq ;
+    s223:cnx :out-maps-to-target ;
+    s223:hasMedium s223:Medium-Air ;
+    s223:mapsTo :out-maps-to-outlet_cp .
+
 :vav-cooling-only-air-inlet-connectionpoint a s223:InletConnectionPoint,
         rdf:Seq ;
     s223:cnx :vav-cooling-only-name ;
@@ -1471,6 +1483,11 @@
 :multiple-zone-ahu-name_out a s223:OutletConnectionPoint ;
     s223:cnx :multiple-zone-ahu-name,
         :multiple-zone-ahu-name_cn ;
+    s223:hasMedium s223:Medium-Air .
+
+:out-maps-to-outlet_cp a s223:OutletConnectionPoint,
+        rdf:Seq ;
+    s223:cnx :out-maps-to-name ;
     s223:hasMedium s223:Medium-Air .
 
 :vav-cooling-only-name_in a s223:InletConnectionPoint ;

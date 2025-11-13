@@ -71,6 +71,18 @@ bldg:multiple-zone-ahu-sa_temp a ns1:QuantifiableObservableProperty,
     ns1:hasAspect ns1:Role-Supply ;
     ns1:hasQuantityKind quantitykind:Temperature .
 
+bldg:out-maps-to-name a rdf:Seq ;
+    ns1:cnx bldg:out-maps-to-outlet_cp .
+
+bldg:out-maps-to-target a rdf:Seq ;
+    ns1:cnx bldg:out-maps-to-target_cp .
+
+bldg:out-maps-to-target_cp a ns1:OutletConnectionPoint,
+        rdf:Seq ;
+    ns1:cnx bldg:out-maps-to-target ;
+    ns1:hasMedium ns1:Medium-Air ;
+    ns1:mapsTo bldg:out-maps-to-outlet_cp .
+
 bldg:vav-cooling-only-air-inlet-connectionpoint a ns1:InletConnectionPoint,
         rdf:Seq ;
     ns1:cnx bldg:vav-cooling-only-name ;
@@ -166,6 +178,11 @@ bldg:vav-with-reheat-ztemp a ns1:QuantifiableObservableProperty,
 bldg:multiple-zone-ahu-name_out a ns1:OutletConnectionPoint ;
     ns1:cnx bldg:multiple-zone-ahu-name,
         bldg:multiple-zone-ahu-name_cn ;
+    ns1:hasMedium ns1:Medium-Air .
+
+bldg:out-maps-to-outlet_cp a ns1:OutletConnectionPoint,
+        rdf:Seq ;
+    ns1:cnx bldg:out-maps-to-name ;
     ns1:hasMedium ns1:Medium-Air .
 
 bldg:vav-cooling-only-name_in a ns1:InletConnectionPoint ;

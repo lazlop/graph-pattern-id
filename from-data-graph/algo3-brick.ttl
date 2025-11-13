@@ -1,0 +1,128 @@
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<urn:example#multiple-zone-ahu_name_0> a brick:AHU ;
+    rdfs:label "AHU"^^xsd:string ;
+    brick:feeds <urn:example#vav-cooling-only_name_0_0>,
+        <urn:example#vav-with-reheat_name_0_0> ;
+    brick:hasPart <urn:example#multiple-zone-ahu_clg_coil_0>,
+        <urn:example#multiple-zone-ahu_htg_coil_0>,
+        <urn:example#multiple-zone-ahu_ra_damper_0>,
+        <urn:example#multiple-zone-ahu_sa_fan_0> ;
+    brick:hasPoint <urn:example#multiple-zone-ahu_filter_pd_0>,
+        <urn:example#multiple-zone-ahu_ma_temp_0>,
+        <urn:example#multiple-zone-ahu_oa_temp_0>,
+        <urn:example#multiple-zone-ahu_ra_temp_0>,
+        <urn:example#multiple-zone-ahu_sa_temp_0> .
+
+<urn:example#multiple-zone-ahu_clg_coil-valve_cmd_0> a brick:Valve_Position_Command ;
+    rdfs:label "Valve_Position_Command"^^xsd:string .
+
+<urn:example#multiple-zone-ahu_clg_coil_0> a brick:Cooling_Coil ;
+    rdfs:label "Cooling_Coil"^^xsd:string ;
+    brick:hasPoint <urn:example#multiple-zone-ahu_clg_coil-valve_cmd_0> .
+
+<urn:example#multiple-zone-ahu_filter_pd_0> a brick:Filter_Differential_Pressure_Sensor ;
+    rdfs:label "Filter_Differential_Pressure_Sensor"^^xsd:string .
+
+<urn:example#multiple-zone-ahu_htg_coil-valve_cmd_0> a brick:Valve_Position_Command ;
+    rdfs:label "Valve_Position_Command"^^xsd:string .
+
+<urn:example#multiple-zone-ahu_htg_coil_0> a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil"^^xsd:string ;
+    brick:hasPoint <urn:example#multiple-zone-ahu_htg_coil-valve_cmd_0> .
+
+<urn:example#multiple-zone-ahu_ma_temp_0> a brick:Mixed_Air_Temperature_Sensor ;
+    rdfs:label "Mixed_Air_Temperature_Sensor"^^xsd:string .
+
+<urn:example#multiple-zone-ahu_oa_temp_0> a brick:Outside_Air_Temperature_Sensor ;
+    rdfs:label "Outside_Air_Temperature_Sensor"^^xsd:string .
+
+<urn:example#multiple-zone-ahu_ra_damper-dmppos_0> a brick:Damper_Position_Command ;
+    rdfs:label "Damper_Position_Command"^^xsd:string .
+
+<urn:example#multiple-zone-ahu_ra_damper_0> a brick:Damper ;
+    rdfs:label "Damper"^^xsd:string ;
+    brick:hasPoint <urn:example#multiple-zone-ahu_ra_damper-dmppos_0> .
+
+<urn:example#multiple-zone-ahu_ra_temp_0> a brick:Return_Air_Temperature_Sensor ;
+    rdfs:label "Return_Air_Temperature_Sensor"^^xsd:string .
+
+<urn:example#multiple-zone-ahu_sa_fan-speed_0> a brick:Frequency_Command ;
+    rdfs:label "Frequency_Command"^^xsd:string .
+
+<urn:example#multiple-zone-ahu_sa_fan-start_stop_0> a brick:Start_Stop_Command ;
+    rdfs:label "Start_Stop_Command"^^xsd:string .
+
+<urn:example#multiple-zone-ahu_sa_fan-status_0> a brick:Fan_Status ;
+    rdfs:label "Fan_Status"^^xsd:string .
+
+<urn:example#multiple-zone-ahu_sa_fan_0> a brick:Supply_Fan ;
+    rdfs:label "Supply_Fan"^^xsd:string ;
+    brick:hasPoint <urn:example#multiple-zone-ahu_sa_fan-speed_0>,
+        <urn:example#multiple-zone-ahu_sa_fan-start_stop_0>,
+        <urn:example#multiple-zone-ahu_sa_fan-status_0> .
+
+<urn:example#multiple-zone-ahu_sa_temp_0> a brick:Supply_Air_Temperature_Sensor ;
+    rdfs:label "Supply_Air_Temperature_Sensor"^^xsd:string .
+
+<urn:example#vav-cooling-only_co2_0_0> a brick:CO2_Level_Sensor ;
+    rdfs:label "CO2_Level_Sensor"^^xsd:string .
+
+<urn:example#vav-cooling-only_dat_0_0> a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label "Discharge_Air_Temperature_Sensor"^^xsd:string .
+
+<urn:example#vav-cooling-only_dmp-dmppos_0_0> a brick:Damper_Position_Command .
+
+<urn:example#vav-cooling-only_dmp_0_0> a brick:Damper ;
+    rdfs:label "Damper"^^xsd:string ;
+    brick:hasPoint <urn:example#vav-cooling-only_dmp-dmppos_0_0> .
+
+<urn:example#vav-cooling-only_name_0_0> a brick:VAV ;
+    rdfs:label "VAV"^^xsd:string ;
+    brick:feeds <urn:example#vav-cooling-only_zone_0_0> ;
+    brick:hasPart <urn:example#vav-cooling-only_dmp_0_0> ;
+    brick:hasPoint <urn:example#vav-cooling-only_co2_0_0>,
+        <urn:example#vav-cooling-only_dat_0_0>,
+        <urn:example#vav-cooling-only_occ_0_0>,
+        <urn:example#vav-cooling-only_ztemp_0_0> .
+
+<urn:example#vav-cooling-only_occ_0_0> a brick:Occupancy_Sensor ;
+    rdfs:label "Occupancy_Sensor"^^xsd:string .
+
+<urn:example#vav-cooling-only_zone_0_0> a brick:HVAC_Zone ;
+    rdfs:label "HVAC_Zone"^^xsd:string .
+
+<urn:example#vav-cooling-only_ztemp_0_0> a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "Zone_Air_Temperature_Sensor"^^xsd:string .
+
+<urn:example#vav-with-reheat_name-co2_0_0> a brick:CO2_Level_Sensor .
+
+<urn:example#vav-with-reheat_name-dat_0_0> a brick:Discharge_Air_Temperature_Sensor .
+
+<urn:example#vav-with-reheat_name-dmp_0_0> a brick:Damper .
+
+<urn:example#vav-with-reheat_name-occ_0_0> a brick:Occupancy_Sensor .
+
+<urn:example#vav-with-reheat_name-zone_0_0> a brick:HVAC_Zone .
+
+<urn:example#vav-with-reheat_name-ztemp_0_0> a brick:Zone_Air_Temperature_Sensor .
+
+<urn:example#vav-with-reheat_name_0_0> a brick:VAV ;
+    rdfs:label "VAV"^^xsd:string ;
+    brick:feeds <urn:example#vav-with-reheat_name-zone_0_0> ;
+    brick:hasPart <urn:example#vav-with-reheat_name-dmp_0_0>,
+        <urn:example#vav-with-reheat_rhc_0_0> ;
+    brick:hasPoint <urn:example#vav-with-reheat_name-co2_0_0>,
+        <urn:example#vav-with-reheat_name-dat_0_0>,
+        <urn:example#vav-with-reheat_name-occ_0_0>,
+        <urn:example#vav-with-reheat_name-ztemp_0_0> .
+
+<urn:example#vav-with-reheat_rhc-cmd_0_0> a brick:Position_Command ;
+    rdfs:label "Position_Command"^^xsd:string .
+
+<urn:example#vav-with-reheat_rhc_0_0> a brick:Heating_Coil ;
+    rdfs:label "Heating_Coil"^^xsd:string ;
+    brick:hasPoint <urn:example#vav-with-reheat_rhc-cmd_0_0> .
+

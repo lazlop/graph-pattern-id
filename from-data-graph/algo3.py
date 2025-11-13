@@ -45,7 +45,7 @@ class Triple:
 
 
 class PatternQuery:
-    def __init__(self, triples, graph=None):
+    def __init__(self, triples, graph):
         self.triples = triples
         self.graph = graph
         self.prefixes = get_prefixes(graph)
@@ -106,6 +106,14 @@ class PatternQuery:
                 
             if URIRef(var.p) == A:
                 continue 
+
+            # TODO: handle named nodes better 
+            if URIRef(var.p) in [S223.hasAspect, S223.hasQuantityKind, S223.hasEnumerationKind]:
+                # print(var.s, var.p, var.o)
+                # print(f"?{clean_var_name(var.s)} {convert_to_prefixed(URIRef(var.p), self.graph)} {convert_to_prefixed(S223[var.o], self.graph)} .") 
+                where.append(f"?{clean_var_name(var.s)} {convert_to_prefixed(URIRef(var.p), self.graph)} {convert_to_prefixed(S223[var.o], self.graph)} .") 
+                continue
+
             where.append(f"?{clean_var_name(var.s)} {convert_to_prefixed(URIRef(var.p), self.graph)} ?{clean_var_name(var.o)} .")
         
         return "\n".join(where)
@@ -179,7 +187,7 @@ class BSchemaGenerator:
         self.all_triples = self.all_triples[::-1]
         self.covered_triples: Set[Triple] = set()
         
-        print(f"[INIT] Total triples in graph: {len(self.all_triples)}")
+        # print(f"[INIT] Total triples in graph: {len(self.all_triples)}")
         
     # can do some cleaning here. 
     def _extract_all_triples(self) -> List[Triple]:
@@ -190,7 +198,7 @@ class BSchemaGenerator:
                 print("skipping subject empty string")
                 continue
             triples.append(Triple(s, p, o))
-        print(f"[EXTRACT] Extracted {len(triples)} triples")
+        # print(f"[EXTRACT] Extracted {len(triples)} triples")
         return triples
     
     def _get_triples_same_subject_object(self, triple: Triple) -> List[Triple]:
@@ -230,9 +238,9 @@ class BSchemaGenerator:
             
             pattern.append((class_triple, var_triple))
         
-        print(f"[PATTERN] Created pattern with {len(pattern)} triples")
-        for ct, vt in pattern:
-            print(f"  {ct.s} --{ct.p}--> {ct.o}")
+        # print(f"[PATTERN] Created pattern with {len(pattern)} triples")
+        # for ct, vt in pattern:
+        #     print(f"  {ct.s} --{ct.p}--> {ct.o}")
         
         return pattern
     
