@@ -7,7 +7,8 @@ TODO:
 - Fix how I'm getting aspects and named nodes again so these show up in class graph for isomorphism. 
 - Getting the class names relies on how graph is serialized to get most recently added class label. This may cause a bug in the future.
 - Fix relaxed version of b_schema using jaccard similarity. May not converge exactly right since different subgraphs can be selected for each loop
-- For Jaccard similarity, would be good to save the version of the isomorphism that is the union of the graphs, so that we don't lose any important information, it just gets more aggregated. 
+- Need to check stop condition for jaccard similarity version. NOT working correctly for mortar
+    A hint about what may be going wrong is that the graphs are getting bigger per iteration. I think they shouldn't be getting bigger after the 1st iteration because I'm just removing and replacing labels
 """
 
 from rdflib.compare import isomorphic, graph_diff
@@ -220,7 +221,7 @@ def get_class_isomorphisms(data_graph, similarity_threshold = None):
         #         break
         #     else:
         #         add_subgraph = True
-        
+
         if indices == []:
             add_subgraph = True
 

@@ -1,3 +1,8 @@
+"""
+NOTE: Routinely hitting max iterations even with low required similarity thresholds. Would be good to discover why. 
+The amount of max iterations is related to the shortest length between a distinguishing characteristic and another class. In these graphs that shortest distance could possibly be larger than 10 (though it is surprising that it seems to be higher than 10 for all of them)
+"""
+
 import os 
 import sys 
 sys.path.append('../../')
@@ -25,13 +30,13 @@ if __name__ == "__main__":
     gs = []
     cgs = []
     file_names = []
-    threshold = 0.7
+    threshold = 0.5
     i = 0 
     # TODO: see what it looks like removing labels and stuff like that. 
     for file_name, g in get_mortar_graphs(directory_path):
         gs.append(g)
         file_names.append(file_name)
-        cg, mg = run_algo(g, similarity_threshold=threshold)
+        cg, mg = run_algo(g, iterations=2,similarity_threshold=threshold)
         # removing extraneous classes
         for s,p,o in cg:
             if (p == A) & (str(HPFS) in str(o)):
@@ -40,9 +45,9 @@ if __name__ == "__main__":
         cgs.append(cg)
         print("compressed to ", len(cg)/len(g)*100, "% of its original size")
         # cg.print()
-        if i >= 10:
+        if i >= 2:
             break
         i += 1
     # size of original graph vs size of compressed graph 
-    plt.plot([len(g) for g in gs], [len(cg) for cg in cgs])
+    plt.plot([len(g) for g in gs], [len(cg) for cg in cgs], 'o')
     plt.savefig("mortar_graph_sizes.png")

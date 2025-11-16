@@ -1,0 +1,3319 @@
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix ns1: <https://brickschema.org/schema/Brick/ref#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:hpflex/shapes#Air_Handler_Unit_version_65> a brick:Air_Handler_Unit ;
+    brick:hasPoint <urn:hpflex/shapes#Command_version_23>,
+        <urn:hpflex/shapes#Supply_Air_Temperature_Sensor_version_29>,
+        <urn:hpflex/shapes#Supply_Air_Temperature_Setpoint_version_16> ;
+    brick:isFedBy <urn:hpflex/shapes#Chiller_version_28> .
+
+<urn:hpflex/shapes#Air_Handler_Unit_version_66> a brick:Air_Handler_Unit ;
+    brick:feeds <urn:hpflex/shapes#VAV_version_56>,
+        <urn:hpflex/shapes#VAV_version_57> .
+
+<urn:hpflex/shapes#Air_Handler_Unit_version_67> a brick:Air_Handler_Unit ;
+    brick:feeds <urn:hpflex/shapes#VAV_version_59>,
+        <urn:hpflex/shapes#VAV_version_60> .
+
+<urn:hpflex/shapes#Air_Handler_Unit_version_68> a brick:Air_Handler_Unit ;
+    brick:hasPoint <urn:hpflex/shapes#Chilled_Water_Supply_Temperature_Sensor_version_34>,
+        <urn:hpflex/shapes#Cooling_Command_version_10> ;
+    brick:isFedBy <urn:hpflex/shapes#Chiller_version_28> .
+
+<urn:hpflex/shapes#Air_Handler_Unit_version_69> a brick:Air_Handler_Unit ;
+    brick:hasPoint <urn:hpflex/shapes#Supply_Air_Static_Pressure_Sensor_version_17>,
+        <urn:hpflex/shapes#Supply_Air_Temperature_Sensor_version_30>,
+        <urn:hpflex/shapes#Supply_Air_Temperature_Setpoint_version_17>,
+        <urn:hpflex/shapes#Zone_Air_Temperature_Sensor_version_37> ;
+    brick:isFedBy <urn:hpflex/shapes#Chiller_version_28> .
+
+<urn:hpflex/shapes#Air_Handler_Unit_version_70> a brick:Air_Handler_Unit ;
+    brick:hasPoint <urn:hpflex/shapes#Command_version_22>,
+        <urn:hpflex/shapes#Cooling_Command_version_10>,
+        <urn:hpflex/shapes#Mixed_Air_Temperature_Sensor_version_10>,
+        <urn:hpflex/shapes#Outside_Air_Temperature_Sensor_version_10>,
+        <urn:hpflex/shapes#Supply_Air_Temperature_Sensor_version_28> ;
+    brick:isFedBy <urn:hpflex/shapes#Chiller_version_27> .
+
+<urn:hpflex/shapes#Air_Handler_Unit_version_71> a brick:Air_Handler_Unit ;
+    brick:feeds <urn:hpflex/shapes#VAV_version_56>,
+        <urn:hpflex/shapes#VAV_version_58>,
+        <urn:hpflex/shapes#VAV_version_59>,
+        <urn:hpflex/shapes#VAV_version_61> ;
+    brick:hasPoint <urn:hpflex/shapes#Chilled_Water_Return_Temperature_Sensor_version_25>,
+        <urn:hpflex/shapes#Chilled_Water_Supply_Temperature_Sensor_version_33>,
+        <urn:hpflex/shapes#Command_version_22>,
+        <urn:hpflex/shapes#Cooling_Command_version_10>,
+        <urn:hpflex/shapes#Hot_Water_Valve_Command_version_10>,
+        <urn:hpflex/shapes#Mixed_Air_Temperature_Sensor_version_10>,
+        <urn:hpflex/shapes#Mode_version_10>,
+        <urn:hpflex/shapes#Outside_Air_Temperature_Sensor_version_10>,
+        <urn:hpflex/shapes#Return_Air_Temperature_Sensor_version_10>,
+        <urn:hpflex/shapes#Supply_Air_Static_Pressure_Sensor_version_16>,
+        <urn:hpflex/shapes#Supply_Air_Temperature_Sensor_version_28>,
+        <urn:hpflex/shapes#Supply_Air_Temperature_Setpoint_version_16>,
+        <urn:hpflex/shapes#Supply_Air_flow_version_10>,
+        <urn:hpflex/shapes#Zone_Air_Temperature_Sensor_version_37> ;
+    brick:isFedBy <urn:hpflex/shapes#Chiller_version_26>,
+        <urn:hpflex/shapes#Chiller_version_28> .
+
+<urn:hpflex/shapes#Air_Handler_Unit_version_72> a brick:Air_Handler_Unit ;
+    brick:hasPoint <urn:hpflex/shapes#Chilled_Water_Return_Temperature_Sensor_version_24>,
+        <urn:hpflex/shapes#Chilled_Water_Supply_Temperature_Sensor_version_32> ;
+    brick:isFedBy <urn:hpflex/shapes#Chiller_version_28> .
+
+<urn:hpflex/shapes#Building_Electric_Meter_version_10> a brick:Building_Electric_Meter ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_8915>,
+        <urn:hpflex/shapes#Resource_version_8916>,
+        <urn:hpflex/shapes#Resource_version_8917>,
+        <urn:hpflex/shapes#Resource_version_8918>,
+        <urn:hpflex/shapes#Resource_version_8919>,
+        <urn:hpflex/shapes#Resource_version_8920>,
+        <urn:hpflex/shapes#Resource_version_8921> .
+
+<urn:hpflex/shapes#Building_version_10> a brick:Building ;
+    brick:area rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8923>,
+        <urn:hpflex/shapes#Resource_version_8924>,
+        <urn:hpflex/shapes#Resource_version_8935>,
+        <urn:hpflex/shapes#Resource_version_9009>,
+        <urn:hpflex/shapes#Resource_version_9010>,
+        <urn:hpflex/shapes#Resource_version_9608>,
+        <urn:hpflex/shapes#Resource_version_9610> .
+
+<urn:hpflex/shapes#Damper_version_10> a brick:Damper ;
+    brick:hasPoint <urn:hpflex/shapes#Damper_Position_Setpoint_version_10> ;
+    brick:isPartOf <urn:hpflex/shapes#VAV_version_58>,
+        <urn:hpflex/shapes#VAV_version_59> .
+
+<urn:hpflex/shapes#Electric_Meter_version_10> a brick:Electric_Meter ;
+    rdfs:label rdfs:Resource ;
+    brick:isPointOf <urn:hpflex/shapes#Chiller_version_28> ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_8922> .
+
+<urn:hpflex/shapes#Floor_version_10> a brick:Floor ;
+    brick:hasPart <urn:hpflex/shapes#Room_version_14>,
+        <urn:hpflex/shapes#Room_version_15> .
+
+<urn:hpflex/shapes#Ontology_version_10> a owl:Ontology ;
+    rdfs:label rdfs:Resource ;
+    owl:imports rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9609> brick:hasPoint <urn:hpflex/shapes#Heating_Command_version_10> .
+
+<urn:hpflex/shapes#VAV_version_62> a brick:VAV ;
+    brick:feeds <urn:hpflex/shapes#HVAC_Zone_version_31> ;
+    brick:hasPoint <urn:hpflex/shapes#Valve_Command_version_24> .
+
+<urn:hpflex/shapes#Air_Flow_Sensor_version_10> a brick:Air_Flow_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+<urn:hpflex/shapes#Chilled_Water_Differential_Pressure_Sensor_version_10> a brick:Chilled_Water_Differential_Pressure_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_9542> .
+
+<urn:hpflex/shapes#Chilled_Water_Differential_Pressure_Setpoint_version_10> a brick:Chilled_Water_Differential_Pressure_Setpoint ;
+    rdfs:label rdfs:Resource .
+
+<urn:hpflex/shapes#Chilled_Water_Differential_Temperature_Sensor_version_10> a brick:Chilled_Water_Differential_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8898>,
+        <urn:hpflex/shapes#Resource_version_9549> .
+
+<urn:hpflex/shapes#Chilled_Water_Return_Pressure_version_10> a brick:Chilled_Water_Return_Pressure ;
+    rdfs:label rdfs:Resource .
+
+<urn:hpflex/shapes#Chilled_Water_Return_Temperature_Sensor_version_23> a brick:Chilled_Water_Return_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_8939> .
+
+<urn:hpflex/shapes#Chilled_Water_Return_Temperature_Sensor_version_25> a brick:Chilled_Water_Return_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_9614> .
+
+<urn:hpflex/shapes#Chilled_Water_Return_Temperature_Setpoint_version_16> a brick:Chilled_Water_Return_Temperature_Setpoint ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_9540> .
+
+<urn:hpflex/shapes#Chilled_Water_Return_Temperature_Setpoint_version_17> a brick:Chilled_Water_Return_Temperature_Setpoint ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_8927> .
+
+<urn:hpflex/shapes#Chilled_Water_Supply_Pressure_version_10> a brick:Chilled_Water_Supply_Pressure ;
+    rdfs:label rdfs:Resource .
+
+<urn:hpflex/shapes#Chilled_Water_Supply_Temperature_Sensor_version_31> a brick:Chilled_Water_Supply_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_8938> .
+
+<urn:hpflex/shapes#Chilled_Water_Supply_Temperature_Sensor_version_33> a brick:Chilled_Water_Supply_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8650>,
+        <urn:hpflex/shapes#Resource_version_9611> .
+
+<urn:hpflex/shapes#Chilled_Water_Supply_Temperature_Sensor_version_34> a brick:Chilled_Water_Supply_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+<urn:hpflex/shapes#Chiller_version_26> a brick:Chiller ;
+    brick:hasPoint <urn:hpflex/shapes#Chilled_Water_Flow_Sensor_version_10>,
+        <urn:hpflex/shapes#Chilled_Water_Return_Temperature_Sensor_version_23>,
+        <urn:hpflex/shapes#Chilled_Water_Supply_Temperature_Sensor_version_31>,
+        <urn:hpflex/shapes#On_Off_Status_version_10>,
+        <urn:hpflex/shapes#Speed_Status_version_10> .
+
+<urn:hpflex/shapes#Chiller_version_27> a brick:Chiller ;
+    brick:hasPoint <urn:hpflex/shapes#Chilled_Water_Return_Temperature_Sensor_version_24>,
+        <urn:hpflex/shapes#Chilled_Water_Return_Temperature_Setpoint_version_17>,
+        <urn:hpflex/shapes#Chilled_Water_Supply_Temperature_Sensor_version_32>,
+        <urn:hpflex/shapes#Chilled_Water_Supply_Temperature_Setpoint_version_10>,
+        <urn:hpflex/shapes#Damper_Position_Command_version_10> .
+
+<urn:hpflex/shapes#Command_version_23> a brick:Command ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_9554> .
+
+<urn:hpflex/shapes#Command_version_24> a brick:Command ;
+    rdfs:label rdfs:Resource .
+
+<urn:hpflex/shapes#Damper_Position_Setpoint_version_10> a brick:Damper_Position_Setpoint ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8673>,
+        <urn:hpflex/shapes#Resource_version_8682>,
+        <urn:hpflex/shapes#Resource_version_8684>,
+        <urn:hpflex/shapes#Resource_version_8686>,
+        <urn:hpflex/shapes#Resource_version_8688>,
+        <urn:hpflex/shapes#Resource_version_8690>,
+        <urn:hpflex/shapes#Resource_version_8753> .
+
+<urn:hpflex/shapes#Differential_Pressure_Sensor_version_10> a brick:Differential_Pressure_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+<urn:hpflex/shapes#Enable_Command_version_10> a brick:Enable_Command ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_9543> .
+
+<urn:hpflex/shapes#HVAC_Zone_version_29> a brick:HVAC_Zone ;
+    brick:hasPart <urn:hpflex/shapes#Room_version_14> .
+
+<urn:hpflex/shapes#HVAC_Zone_version_31> a brick:HVAC_Zone ;
+    brick:hasPart <urn:hpflex/shapes#Room_version_15> .
+
+<urn:hpflex/shapes#Hot_Water_Valve_Command_version_10> a brick:Hot_Water_Valve_Command ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_8949>,
+        <urn:hpflex/shapes#Resource_version_8956>,
+        <urn:hpflex/shapes#Resource_version_8964>,
+        <urn:hpflex/shapes#Resource_version_8972>,
+        <urn:hpflex/shapes#Resource_version_8993>,
+        <urn:hpflex/shapes#Resource_version_9000>,
+        <urn:hpflex/shapes#Resource_version_9007> .
+
+<urn:hpflex/shapes#Mode_version_10> a brick:Mode ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_9567>,
+        <urn:hpflex/shapes#Resource_version_9574>,
+        <urn:hpflex/shapes#Resource_version_9582>,
+        <urn:hpflex/shapes#Resource_version_9589>,
+        <urn:hpflex/shapes#Resource_version_9597> .
+
+<urn:hpflex/shapes#On_Off_Status_version_10> a brick:On_Off_Status ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_8940>,
+        <urn:hpflex/shapes#Resource_version_8941> .
+
+<urn:hpflex/shapes#Outside_Air_Damper_Command_version_10> a brick:Outside_Air_Damper_Command ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_9537> .
+
+<urn:hpflex/shapes#Power_Sensor_version_10> a brick:Power_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_8878>,
+        <urn:hpflex/shapes#Resource_version_8883> .
+
+<urn:hpflex/shapes#Pump_Command_version_10> a brick:Pump_Command ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8882>,
+        <urn:hpflex/shapes#Resource_version_8887> .
+
+<urn:hpflex/shapes#Resource_version_8650> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8651> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8652> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8653> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8654> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8655> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8656> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8657> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8658> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8659> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8660> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8661> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8662> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8663> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8664> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8665> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8666> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8667> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8668> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8669> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8670> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8671> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8672> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8673> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8674> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8675> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8676> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8677> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8678> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8679> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8680> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8681> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8682> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8683> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8684> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8685> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8686> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8687> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8688> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8689> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8690> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8691> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8692> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8693> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8694> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8695> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8696> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8697> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8698> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8699> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8700> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8701> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8702> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8703> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8704> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8705> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8706> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8707> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8708> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8709> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8710> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8711> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8712> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8713> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8714> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8715> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8716> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8717> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8718> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8719> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8720> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8721> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8722> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8723> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8724> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8725> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8726> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8727> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8728> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8729> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8730> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8731> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8732> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8733> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8734> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8735> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8736> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8737> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8738> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8739> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8740> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8741> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8742> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8743> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8744> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8745> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8746> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8747> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8748> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8749> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8750> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8751> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8752> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8753> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8754> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8755> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8756> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8757> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8758> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8759> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8760> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8761> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8762> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8763> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8764> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8765> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8766> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8767> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8768> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8769> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8770> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8771> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8772> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8773> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8774> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8775> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8776> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8777> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8778> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8779> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8780> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8781> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8782> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8783> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8784> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8785> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8786> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8787> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8788> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8789> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8790> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8791> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8792> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8793> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8794> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8795> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8796> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8797> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8798> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8799> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8800> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8801> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8802> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8803> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8804> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8805> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8806> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8807> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8808> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8809> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8810> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8811> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8812> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8813> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8814> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8815> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8816> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8817> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8818> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8819> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8820> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8821> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8822> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8823> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8824> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8825> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8826> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8827> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8828> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8829> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8830> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8831> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8832> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8833> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8834> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8835> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8836> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8837> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8838> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8839> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8840> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8841> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8842> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8843> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8844> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8845> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8846> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8847> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8848> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8849> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8850> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8851> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8852> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8853> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8854> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8855> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8856> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8857> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8858> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8859> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8860> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8861> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8862> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8863> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8864> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8865> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8866> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8867> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8868> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8869> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8870> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8871> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8872> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8873> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8874> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8875> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8876> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8877> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8878> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8879> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8880> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8881> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8882> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8883> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8884> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8885> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8886> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8887> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8888> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8889> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8890> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8891> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8892> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8893> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8894> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8895> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8896> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8897> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8898> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8899> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8900> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8901> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8902> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8903> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8904> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8905> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8906> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8907> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8908> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8909> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8910> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8911> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8912> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8913> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8914> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8915> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8916> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8917> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8918> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8919> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8920> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8921> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8922> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8923> brick:hasUnits rdfs:Resource ;
+    brick:value rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8924> brick:hasUnits rdfs:Resource ;
+    brick:value rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8925> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8926> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8927> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8928> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8929> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8930> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8931> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8932> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8933> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8934> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8935> brick:hasUnits rdfs:Resource ;
+    brick:value rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8936> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8937> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8938> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8939> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8940> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8941> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8942> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8943> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8944> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8945> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8946> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8947> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8948> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8949> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8950> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8951> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8952> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8953> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8954> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8955> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8956> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8957> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8958> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8959> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8960> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8961> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8962> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8963> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8964> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8965> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8966> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8967> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8968> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8969> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8970> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8971> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8972> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8973> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8974> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8975> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8976> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8977> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8978> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8979> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8980> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8981> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8982> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8983> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8984> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8985> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8986> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8987> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8988> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8989> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8990> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8991> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8992> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8993> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8994> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8995> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8996> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8997> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8998> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8999> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9000> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9001> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9002> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9003> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9004> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9005> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9006> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9007> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9008> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9009> brick:hasUnits rdfs:Resource ;
+    brick:value rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9010> brick:hasUnits rdfs:Resource ;
+    brick:value rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9011> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9012> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9013> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9014> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9015> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9016> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9017> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9018> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9019> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9020> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9021> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9022> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9023> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9024> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9025> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9026> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9027> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9028> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9029> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9030> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9031> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9032> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9033> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9034> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9035> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9036> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9037> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9038> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9039> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9040> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9041> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9042> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9043> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9044> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9045> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9046> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9047> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9048> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9049> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9050> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9051> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9052> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9053> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9054> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9055> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9056> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9057> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9058> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9059> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9060> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9061> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9062> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9063> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9064> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9065> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9066> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9067> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9068> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9069> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9070> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9071> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9072> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9073> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9074> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9075> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9076> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9077> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9078> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9079> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9080> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9081> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9082> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9083> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9084> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9085> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9086> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9087> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9088> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9089> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9090> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9091> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9092> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9093> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9094> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9095> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9096> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9097> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9098> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9099> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9100> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9101> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9102> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9103> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9104> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9105> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9106> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9107> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9108> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9109> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9110> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9111> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9112> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9113> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9114> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9115> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9116> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9117> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9118> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9119> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9120> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9121> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9122> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9123> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9124> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9125> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9126> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9127> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9128> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9129> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9130> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9131> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9132> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9133> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9134> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9135> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9136> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9137> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9138> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9139> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9140> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9141> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9142> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9143> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9144> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9145> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9146> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9147> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9148> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9149> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9150> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9151> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9152> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9153> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9154> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9155> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9156> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9157> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9158> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9159> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9160> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9161> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9162> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9163> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9164> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9165> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9166> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9167> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9168> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9169> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9170> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9171> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9172> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9173> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9174> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9175> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9176> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9177> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9178> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9179> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9180> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9181> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9182> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9183> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9184> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9185> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9186> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9187> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9188> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9189> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9190> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9191> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9192> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9193> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9194> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9195> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9196> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9197> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9198> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9199> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9200> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9201> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9202> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9203> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9204> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9205> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9206> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9207> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9208> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9209> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9210> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9211> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9212> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9213> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9214> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9215> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9216> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9217> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9218> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9219> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9220> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9221> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9222> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9223> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9224> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9225> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9226> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9227> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9228> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9229> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9230> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9231> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9232> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9233> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9234> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9235> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9236> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9237> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9238> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9239> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9240> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9241> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9242> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9243> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9244> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9245> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9246> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9247> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9248> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9249> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9250> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9251> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9252> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9253> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9254> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9255> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9256> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9257> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9258> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9259> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9260> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9261> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9262> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9263> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9264> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9265> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9266> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9267> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9268> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9269> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9270> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9271> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9272> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9273> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9274> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9275> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9276> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9277> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9278> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9279> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9280> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9281> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9282> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9283> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9284> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9285> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9286> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9287> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9288> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9289> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9290> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9291> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9292> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9293> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9294> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9295> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9296> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9297> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9298> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9299> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9300> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9301> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9302> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9303> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9304> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9305> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9306> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9307> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9308> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9309> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9310> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9311> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9312> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9313> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9314> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9315> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9316> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9317> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9318> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9319> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9320> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9321> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9322> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9323> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9324> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9325> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9326> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9327> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9328> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9329> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9330> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9331> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9332> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9333> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9334> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9335> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9336> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9337> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9338> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9339> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9340> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9341> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9342> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9343> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9344> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9345> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9346> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9347> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9348> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9349> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9350> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9351> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9352> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9353> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9354> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9355> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9356> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9357> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9358> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9359> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9360> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9361> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9362> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9363> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9364> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9365> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9366> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9367> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9368> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9369> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9370> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9371> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9372> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9373> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9374> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9375> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9376> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9377> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9378> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9379> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9380> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9381> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9382> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9383> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9384> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9385> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9386> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9387> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9388> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9389> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9390> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9391> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9392> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9393> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9394> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9395> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9396> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9397> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9398> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9399> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9400> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9401> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9402> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9403> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9404> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9405> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9406> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9407> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9408> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9409> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9410> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9411> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9412> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9413> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9414> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9415> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9416> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9417> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9418> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9419> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9420> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9421> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9422> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9423> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9424> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9425> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9426> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9427> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9428> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9429> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9430> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9431> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9432> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9433> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9434> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9435> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9436> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9437> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9438> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9439> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9440> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9441> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9442> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9443> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9444> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9445> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9446> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9447> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9448> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9449> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9450> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9451> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9452> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9453> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9454> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9455> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9456> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9457> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9458> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9459> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9460> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9461> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9462> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9463> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9464> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9465> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9466> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9467> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9468> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9469> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9470> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9471> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9472> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9473> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9474> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9475> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9476> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9477> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9478> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9479> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9480> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9481> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9482> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9483> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9484> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9485> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9486> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9487> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9488> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9489> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9490> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9491> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9492> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9493> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9494> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9495> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9496> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9497> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9498> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9499> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9500> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9501> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9502> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9503> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9504> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9505> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9506> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9507> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9508> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9509> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9510> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9511> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9512> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9513> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9514> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9515> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9516> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9517> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9518> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9519> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9520> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9521> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9522> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9523> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9524> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9525> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9526> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9527> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9528> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9529> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9530> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9531> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9532> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9533> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9534> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9535> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9536> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9537> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9538> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9539> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9540> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9541> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9542> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9543> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9544> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9545> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9546> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9547> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9548> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9549> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9550> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9551> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9552> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9553> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9554> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9555> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9556> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9557> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9558> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9559> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9560> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9561> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9562> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9563> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9564> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9565> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9566> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9567> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9568> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9569> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9570> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9571> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9572> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9573> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9574> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9575> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9576> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9577> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9578> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9579> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9580> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9581> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9582> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9583> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9584> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9585> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9586> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9587> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9588> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9589> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9590> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9591> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9592> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9593> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9594> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9595> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9596> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9597> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9598> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9599> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9600> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9601> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9602> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9603> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9604> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9605> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9606> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9607> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9608> brick:hasUnits rdfs:Resource ;
+    brick:value rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9610> brick:hasUnits rdfs:Resource ;
+    brick:value rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9611> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9612> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9613> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9614> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9615> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Return_Air_Temperature_Sensor_version_10> a brick:Return_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8902>,
+        <urn:hpflex/shapes#Resource_version_8910>,
+        <urn:hpflex/shapes#Resource_version_8947>,
+        <urn:hpflex/shapes#Resource_version_8962>,
+        <urn:hpflex/shapes#Resource_version_8970>,
+        <urn:hpflex/shapes#Resource_version_8978>,
+        <urn:hpflex/shapes#Resource_version_8985>,
+        <urn:hpflex/shapes#Resource_version_9565>,
+        <urn:hpflex/shapes#Resource_version_9580>,
+        <urn:hpflex/shapes#Resource_version_9595>,
+        <urn:hpflex/shapes#Resource_version_9603> .
+
+<urn:hpflex/shapes#Speed_Setpoint_version_10> a brick:Speed_Setpoint ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8880>,
+        <urn:hpflex/shapes#Resource_version_8885> .
+
+<urn:hpflex/shapes#Start_Stop_Command_version_10> a brick:Start_Stop_Command ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8879>,
+        <urn:hpflex/shapes#Resource_version_8884>,
+        <urn:hpflex/shapes#Resource_version_9532>,
+        <urn:hpflex/shapes#Resource_version_9534> .
+
+<urn:hpflex/shapes#Status_version_10> a brick:Status ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+<urn:hpflex/shapes#Supply_Air_Flow_Sensor_version_10> a brick:Supply_Air_Flow_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8654>,
+        <urn:hpflex/shapes#Resource_version_8657>,
+        <urn:hpflex/shapes#Resource_version_8660>,
+        <urn:hpflex/shapes#Resource_version_8663>,
+        <urn:hpflex/shapes#Resource_version_8666>,
+        <urn:hpflex/shapes#Resource_version_8669>,
+        <urn:hpflex/shapes#Resource_version_8674>,
+        <urn:hpflex/shapes#Resource_version_8678>,
+        <urn:hpflex/shapes#Resource_version_8691>,
+        <urn:hpflex/shapes#Resource_version_8694>,
+        <urn:hpflex/shapes#Resource_version_8697>,
+        <urn:hpflex/shapes#Resource_version_8700>,
+        <urn:hpflex/shapes#Resource_version_8702>,
+        <urn:hpflex/shapes#Resource_version_8705>,
+        <urn:hpflex/shapes#Resource_version_8708>,
+        <urn:hpflex/shapes#Resource_version_8711>,
+        <urn:hpflex/shapes#Resource_version_8714>,
+        <urn:hpflex/shapes#Resource_version_8717>,
+        <urn:hpflex/shapes#Resource_version_8720>,
+        <urn:hpflex/shapes#Resource_version_8723>,
+        <urn:hpflex/shapes#Resource_version_8726>,
+        <urn:hpflex/shapes#Resource_version_8729>,
+        <urn:hpflex/shapes#Resource_version_8732>,
+        <urn:hpflex/shapes#Resource_version_8735>,
+        <urn:hpflex/shapes#Resource_version_8738>,
+        <urn:hpflex/shapes#Resource_version_8740>,
+        <urn:hpflex/shapes#Resource_version_8743>,
+        <urn:hpflex/shapes#Resource_version_8746>,
+        <urn:hpflex/shapes#Resource_version_8749>,
+        <urn:hpflex/shapes#Resource_version_8754>,
+        <urn:hpflex/shapes#Resource_version_8757>,
+        <urn:hpflex/shapes#Resource_version_8760>,
+        <urn:hpflex/shapes#Resource_version_8763>,
+        <urn:hpflex/shapes#Resource_version_8766>,
+        <urn:hpflex/shapes#Resource_version_8769>,
+        <urn:hpflex/shapes#Resource_version_8772>,
+        <urn:hpflex/shapes#Resource_version_8775>,
+        <urn:hpflex/shapes#Resource_version_8778>,
+        <urn:hpflex/shapes#Resource_version_8781>,
+        <urn:hpflex/shapes#Resource_version_8785>,
+        <urn:hpflex/shapes#Resource_version_8787>,
+        <urn:hpflex/shapes#Resource_version_8790>,
+        <urn:hpflex/shapes#Resource_version_8793>,
+        <urn:hpflex/shapes#Resource_version_8796>,
+        <urn:hpflex/shapes#Resource_version_8799>,
+        <urn:hpflex/shapes#Resource_version_8802>,
+        <urn:hpflex/shapes#Resource_version_8805>,
+        <urn:hpflex/shapes#Resource_version_8808>,
+        <urn:hpflex/shapes#Resource_version_8811>,
+        <urn:hpflex/shapes#Resource_version_8814>,
+        <urn:hpflex/shapes#Resource_version_8817>,
+        <urn:hpflex/shapes#Resource_version_8820>,
+        <urn:hpflex/shapes#Resource_version_8823>,
+        <urn:hpflex/shapes#Resource_version_8826>,
+        <urn:hpflex/shapes#Resource_version_8829>,
+        <urn:hpflex/shapes#Resource_version_8832>,
+        <urn:hpflex/shapes#Resource_version_8835>,
+        <urn:hpflex/shapes#Resource_version_8838>,
+        <urn:hpflex/shapes#Resource_version_8841>,
+        <urn:hpflex/shapes#Resource_version_8844>,
+        <urn:hpflex/shapes#Resource_version_8847>,
+        <urn:hpflex/shapes#Resource_version_8850>,
+        <urn:hpflex/shapes#Resource_version_8853>,
+        <urn:hpflex/shapes#Resource_version_8857>,
+        <urn:hpflex/shapes#Resource_version_8860>,
+        <urn:hpflex/shapes#Resource_version_8864>,
+        <urn:hpflex/shapes#Resource_version_8868>,
+        <urn:hpflex/shapes#Resource_version_8871>,
+        <urn:hpflex/shapes#Resource_version_8874> .
+
+<urn:hpflex/shapes#Supply_Air_Static_Pressure_Sensor_version_16> a brick:Supply_Air_Static_Pressure_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8901>,
+        <urn:hpflex/shapes#Resource_version_8909>,
+        <urn:hpflex/shapes#Resource_version_8945>,
+        <urn:hpflex/shapes#Resource_version_8953>,
+        <urn:hpflex/shapes#Resource_version_8960>,
+        <urn:hpflex/shapes#Resource_version_8968>,
+        <urn:hpflex/shapes#Resource_version_8976>,
+        <urn:hpflex/shapes#Resource_version_8983>,
+        <urn:hpflex/shapes#Resource_version_8990>,
+        <urn:hpflex/shapes#Resource_version_8997>,
+        <urn:hpflex/shapes#Resource_version_9004> .
+
+<urn:hpflex/shapes#Supply_Air_Static_Pressure_Sensor_version_17> a brick:Supply_Air_Static_Pressure_Sensor ;
+    rdfs:label rdfs:Resource .
+
+<urn:hpflex/shapes#Supply_Air_Temperature_Sensor_version_29> a brick:Supply_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_9553> .
+
+<urn:hpflex/shapes#Supply_Air_Temperature_Sensor_version_30> a brick:Supply_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource .
+
+<urn:hpflex/shapes#Supply_Air_Temperature_Sensor_version_31> a brick:Supply_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource .
+
+<urn:hpflex/shapes#Supply_Air_Temperature_Setpoint_version_17> a brick:Supply_Air_Temperature_Setpoint ;
+    rdfs:label rdfs:Resource .
+
+<urn:hpflex/shapes#Supply_Air_flow_version_10> a brick:Supply_Air_flow ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8946>,
+        <urn:hpflex/shapes#Resource_version_8954>,
+        <urn:hpflex/shapes#Resource_version_8961>,
+        <urn:hpflex/shapes#Resource_version_8969>,
+        <urn:hpflex/shapes#Resource_version_8977>,
+        <urn:hpflex/shapes#Resource_version_8984> .
+
+<urn:hpflex/shapes#Temperature_Setpoint_version_15> a brick:Temperature_Setpoint ;
+    rdfs:label rdfs:Resource .
+
+<urn:hpflex/shapes#VAV_version_57> a brick:VAV ;
+    brick:feeds <urn:hpflex/shapes#HVAC_Zone_version_28> ;
+    brick:hasPoint <urn:hpflex/shapes#Fan_Status_version_10>,
+        <urn:hpflex/shapes#Valve_Command_version_22> .
+
+<urn:hpflex/shapes#VAV_version_60> a brick:VAV ;
+    brick:feeds <urn:hpflex/shapes#HVAC_Zone_version_30> ;
+    brick:hasPoint <urn:hpflex/shapes#Temperature_Setpoint_version_15>,
+        <urn:hpflex/shapes#Valve_Command_version_23>,
+        <urn:hpflex/shapes#Zone_Air_Temperature_Sensor_version_39> .
+
+<urn:hpflex/shapes#VAV_version_61> a brick:VAV ;
+    brick:feeds <urn:hpflex/shapes#HVAC_Zone_version_30> ;
+    brick:hasPoint <urn:hpflex/shapes#Temperature_Setpoint_version_16>,
+        <urn:hpflex/shapes#Zone_Air_Temperature_Sensor_version_41> .
+
+<urn:hpflex/shapes#Valve_Command_version_22> a brick:Valve_Command ;
+    rdfs:label rdfs:Resource .
+
+<urn:hpflex/shapes#Valve_Command_version_23> a brick:Valve_Command ;
+    rdfs:label rdfs:Resource .
+
+<urn:hpflex/shapes#Water_Flow_Sensor_version_10> a brick:Water_Flow_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_8892> .
+
+<urn:hpflex/shapes#Zone_Air_Temperature_Sensor_version_38> a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource .
+
+<urn:hpflex/shapes#Zone_Air_Temperature_Sensor_version_39> a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource .
+
+<urn:hpflex/shapes#Zone_Air_Temperature_Sensor_version_41> a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+<urn:hpflex/shapes#Zone_Air_Temperature_Setpoint_version_18> a brick:Zone_Air_Temperature_Setpoint ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8655>,
+        <urn:hpflex/shapes#Resource_version_8658>,
+        <urn:hpflex/shapes#Resource_version_8661>,
+        <urn:hpflex/shapes#Resource_version_8664>,
+        <urn:hpflex/shapes#Resource_version_8667>,
+        <urn:hpflex/shapes#Resource_version_8670>,
+        <urn:hpflex/shapes#Resource_version_8675>,
+        <urn:hpflex/shapes#Resource_version_8679>,
+        <urn:hpflex/shapes#Resource_version_8692>,
+        <urn:hpflex/shapes#Resource_version_8695>,
+        <urn:hpflex/shapes#Resource_version_8698>,
+        <urn:hpflex/shapes#Resource_version_8703>,
+        <urn:hpflex/shapes#Resource_version_8706>,
+        <urn:hpflex/shapes#Resource_version_8709>,
+        <urn:hpflex/shapes#Resource_version_8712>,
+        <urn:hpflex/shapes#Resource_version_8715>,
+        <urn:hpflex/shapes#Resource_version_8718>,
+        <urn:hpflex/shapes#Resource_version_8721>,
+        <urn:hpflex/shapes#Resource_version_8724>,
+        <urn:hpflex/shapes#Resource_version_8727>,
+        <urn:hpflex/shapes#Resource_version_8730>,
+        <urn:hpflex/shapes#Resource_version_8733>,
+        <urn:hpflex/shapes#Resource_version_8736>,
+        <urn:hpflex/shapes#Resource_version_8741>,
+        <urn:hpflex/shapes#Resource_version_8744>,
+        <urn:hpflex/shapes#Resource_version_8747>,
+        <urn:hpflex/shapes#Resource_version_8751>,
+        <urn:hpflex/shapes#Resource_version_8755>,
+        <urn:hpflex/shapes#Resource_version_8758>,
+        <urn:hpflex/shapes#Resource_version_8761>,
+        <urn:hpflex/shapes#Resource_version_8764>,
+        <urn:hpflex/shapes#Resource_version_8767>,
+        <urn:hpflex/shapes#Resource_version_8770>,
+        <urn:hpflex/shapes#Resource_version_8773>,
+        <urn:hpflex/shapes#Resource_version_8776>,
+        <urn:hpflex/shapes#Resource_version_8779>,
+        <urn:hpflex/shapes#Resource_version_8782>,
+        <urn:hpflex/shapes#Resource_version_8788>,
+        <urn:hpflex/shapes#Resource_version_8791>,
+        <urn:hpflex/shapes#Resource_version_8794>,
+        <urn:hpflex/shapes#Resource_version_8797>,
+        <urn:hpflex/shapes#Resource_version_8800>,
+        <urn:hpflex/shapes#Resource_version_8803>,
+        <urn:hpflex/shapes#Resource_version_8806>,
+        <urn:hpflex/shapes#Resource_version_8809>,
+        <urn:hpflex/shapes#Resource_version_8812>,
+        <urn:hpflex/shapes#Resource_version_8815>,
+        <urn:hpflex/shapes#Resource_version_8818>,
+        <urn:hpflex/shapes#Resource_version_8821>,
+        <urn:hpflex/shapes#Resource_version_8824>,
+        <urn:hpflex/shapes#Resource_version_8827>,
+        <urn:hpflex/shapes#Resource_version_8830>,
+        <urn:hpflex/shapes#Resource_version_8833>,
+        <urn:hpflex/shapes#Resource_version_8836>,
+        <urn:hpflex/shapes#Resource_version_8839>,
+        <urn:hpflex/shapes#Resource_version_8842>,
+        <urn:hpflex/shapes#Resource_version_8845>,
+        <urn:hpflex/shapes#Resource_version_8848>,
+        <urn:hpflex/shapes#Resource_version_8851>,
+        <urn:hpflex/shapes#Resource_version_8854>,
+        <urn:hpflex/shapes#Resource_version_8858>,
+        <urn:hpflex/shapes#Resource_version_8862>,
+        <urn:hpflex/shapes#Resource_version_8866>,
+        <urn:hpflex/shapes#Resource_version_8869>,
+        <urn:hpflex/shapes#Resource_version_8872>,
+        <urn:hpflex/shapes#Resource_version_8876>,
+        <urn:hpflex/shapes#Resource_version_9013>,
+        <urn:hpflex/shapes#Resource_version_9017>,
+        <urn:hpflex/shapes#Resource_version_9021>,
+        <urn:hpflex/shapes#Resource_version_9025>,
+        <urn:hpflex/shapes#Resource_version_9029>,
+        <urn:hpflex/shapes#Resource_version_9033>,
+        <urn:hpflex/shapes#Resource_version_9037>,
+        <urn:hpflex/shapes#Resource_version_9041>,
+        <urn:hpflex/shapes#Resource_version_9045>,
+        <urn:hpflex/shapes#Resource_version_9049>,
+        <urn:hpflex/shapes#Resource_version_9053>,
+        <urn:hpflex/shapes#Resource_version_9057>,
+        <urn:hpflex/shapes#Resource_version_9061>,
+        <urn:hpflex/shapes#Resource_version_9065>,
+        <urn:hpflex/shapes#Resource_version_9069>,
+        <urn:hpflex/shapes#Resource_version_9073>,
+        <urn:hpflex/shapes#Resource_version_9077>,
+        <urn:hpflex/shapes#Resource_version_9081>,
+        <urn:hpflex/shapes#Resource_version_9085>,
+        <urn:hpflex/shapes#Resource_version_9089>,
+        <urn:hpflex/shapes#Resource_version_9093>,
+        <urn:hpflex/shapes#Resource_version_9097>,
+        <urn:hpflex/shapes#Resource_version_9101>,
+        <urn:hpflex/shapes#Resource_version_9105>,
+        <urn:hpflex/shapes#Resource_version_9109>,
+        <urn:hpflex/shapes#Resource_version_9113>,
+        <urn:hpflex/shapes#Resource_version_9117>,
+        <urn:hpflex/shapes#Resource_version_9121>,
+        <urn:hpflex/shapes#Resource_version_9125>,
+        <urn:hpflex/shapes#Resource_version_9129>,
+        <urn:hpflex/shapes#Resource_version_9133>,
+        <urn:hpflex/shapes#Resource_version_9137>,
+        <urn:hpflex/shapes#Resource_version_9141>,
+        <urn:hpflex/shapes#Resource_version_9145>,
+        <urn:hpflex/shapes#Resource_version_9149>,
+        <urn:hpflex/shapes#Resource_version_9153>,
+        <urn:hpflex/shapes#Resource_version_9157>,
+        <urn:hpflex/shapes#Resource_version_9161>,
+        <urn:hpflex/shapes#Resource_version_9165>,
+        <urn:hpflex/shapes#Resource_version_9169>,
+        <urn:hpflex/shapes#Resource_version_9173>,
+        <urn:hpflex/shapes#Resource_version_9177>,
+        <urn:hpflex/shapes#Resource_version_9182>,
+        <urn:hpflex/shapes#Resource_version_9186>,
+        <urn:hpflex/shapes#Resource_version_9190>,
+        <urn:hpflex/shapes#Resource_version_9194>,
+        <urn:hpflex/shapes#Resource_version_9198>,
+        <urn:hpflex/shapes#Resource_version_9202>,
+        <urn:hpflex/shapes#Resource_version_9206>,
+        <urn:hpflex/shapes#Resource_version_9210>,
+        <urn:hpflex/shapes#Resource_version_9214>,
+        <urn:hpflex/shapes#Resource_version_9218>,
+        <urn:hpflex/shapes#Resource_version_9222>,
+        <urn:hpflex/shapes#Resource_version_9226>,
+        <urn:hpflex/shapes#Resource_version_9230>,
+        <urn:hpflex/shapes#Resource_version_9234>,
+        <urn:hpflex/shapes#Resource_version_9238>,
+        <urn:hpflex/shapes#Resource_version_9242>,
+        <urn:hpflex/shapes#Resource_version_9246>,
+        <urn:hpflex/shapes#Resource_version_9250>,
+        <urn:hpflex/shapes#Resource_version_9254>,
+        <urn:hpflex/shapes#Resource_version_9258>,
+        <urn:hpflex/shapes#Resource_version_9262>,
+        <urn:hpflex/shapes#Resource_version_9266>,
+        <urn:hpflex/shapes#Resource_version_9270>,
+        <urn:hpflex/shapes#Resource_version_9274>,
+        <urn:hpflex/shapes#Resource_version_9278>,
+        <urn:hpflex/shapes#Resource_version_9282>,
+        <urn:hpflex/shapes#Resource_version_9286>,
+        <urn:hpflex/shapes#Resource_version_9290>,
+        <urn:hpflex/shapes#Resource_version_9294>,
+        <urn:hpflex/shapes#Resource_version_9298>,
+        <urn:hpflex/shapes#Resource_version_9302>,
+        <urn:hpflex/shapes#Resource_version_9306>,
+        <urn:hpflex/shapes#Resource_version_9310>,
+        <urn:hpflex/shapes#Resource_version_9314>,
+        <urn:hpflex/shapes#Resource_version_9318>,
+        <urn:hpflex/shapes#Resource_version_9322>,
+        <urn:hpflex/shapes#Resource_version_9326>,
+        <urn:hpflex/shapes#Resource_version_9330>,
+        <urn:hpflex/shapes#Resource_version_9334>,
+        <urn:hpflex/shapes#Resource_version_9338>,
+        <urn:hpflex/shapes#Resource_version_9342>,
+        <urn:hpflex/shapes#Resource_version_9346>,
+        <urn:hpflex/shapes#Resource_version_9350>,
+        <urn:hpflex/shapes#Resource_version_9354>,
+        <urn:hpflex/shapes#Resource_version_9358>,
+        <urn:hpflex/shapes#Resource_version_9362>,
+        <urn:hpflex/shapes#Resource_version_9366>,
+        <urn:hpflex/shapes#Resource_version_9370>,
+        <urn:hpflex/shapes#Resource_version_9374>,
+        <urn:hpflex/shapes#Resource_version_9378>,
+        <urn:hpflex/shapes#Resource_version_9382>,
+        <urn:hpflex/shapes#Resource_version_9386>,
+        <urn:hpflex/shapes#Resource_version_9390>,
+        <urn:hpflex/shapes#Resource_version_9394>,
+        <urn:hpflex/shapes#Resource_version_9398>,
+        <urn:hpflex/shapes#Resource_version_9402>,
+        <urn:hpflex/shapes#Resource_version_9406>,
+        <urn:hpflex/shapes#Resource_version_9410>,
+        <urn:hpflex/shapes#Resource_version_9414>,
+        <urn:hpflex/shapes#Resource_version_9418>,
+        <urn:hpflex/shapes#Resource_version_9422>,
+        <urn:hpflex/shapes#Resource_version_9426>,
+        <urn:hpflex/shapes#Resource_version_9430>,
+        <urn:hpflex/shapes#Resource_version_9434>,
+        <urn:hpflex/shapes#Resource_version_9438>,
+        <urn:hpflex/shapes#Resource_version_9442>,
+        <urn:hpflex/shapes#Resource_version_9446>,
+        <urn:hpflex/shapes#Resource_version_9450>,
+        <urn:hpflex/shapes#Resource_version_9454>,
+        <urn:hpflex/shapes#Resource_version_9458>,
+        <urn:hpflex/shapes#Resource_version_9462>,
+        <urn:hpflex/shapes#Resource_version_9466>,
+        <urn:hpflex/shapes#Resource_version_9470>,
+        <urn:hpflex/shapes#Resource_version_9474>,
+        <urn:hpflex/shapes#Resource_version_9478>,
+        <urn:hpflex/shapes#Resource_version_9482>,
+        <urn:hpflex/shapes#Resource_version_9486>,
+        <urn:hpflex/shapes#Resource_version_9490>,
+        <urn:hpflex/shapes#Resource_version_9494>,
+        <urn:hpflex/shapes#Resource_version_9498>,
+        <urn:hpflex/shapes#Resource_version_9502>,
+        <urn:hpflex/shapes#Resource_version_9506>,
+        <urn:hpflex/shapes#Resource_version_9510>,
+        <urn:hpflex/shapes#Resource_version_9514>,
+        <urn:hpflex/shapes#Resource_version_9518>,
+        <urn:hpflex/shapes#Resource_version_9522>,
+        <urn:hpflex/shapes#Resource_version_9526>,
+        <urn:hpflex/shapes#Resource_version_9530> .
+
+<urn:hpflex/shapes#Zone_Air_Temperature_Setpoint_version_19> a brick:Zone_Air_Temperature_Setpoint ;
+    rdfs:label rdfs:Resource .
+
+<urn:hpflex/shapes#Chilled_Water_Flow_Sensor_version_10> a brick:Chilled_Water_Flow_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8891>,
+        <urn:hpflex/shapes#Resource_version_8897>,
+        <urn:hpflex/shapes#Resource_version_8942>,
+        <urn:hpflex/shapes#Resource_version_9548> .
+
+<urn:hpflex/shapes#Chilled_Water_Supply_Temperature_Setpoint_version_10> a brick:Chilled_Water_Supply_Temperature_Setpoint ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8894>,
+        <urn:hpflex/shapes#Resource_version_8925>,
+        <urn:hpflex/shapes#Resource_version_8930>,
+        <urn:hpflex/shapes#Resource_version_9538>,
+        <urn:hpflex/shapes#Resource_version_9545> .
+
+<urn:hpflex/shapes#Damper_Position_Command_version_10> a brick:Damper_Position_Command ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8893>,
+        <urn:hpflex/shapes#Resource_version_8929>,
+        <urn:hpflex/shapes#Resource_version_9544> .
+
+<urn:hpflex/shapes#Fan_Status_version_10> a brick:Fan_Status ;
+    rdfs:label rdfs:Resource .
+
+<urn:hpflex/shapes#HVAC_Zone_version_28> a brick:HVAC_Zone ;
+    brick:hasPart <urn:hpflex/shapes#Room_version_14> .
+
+<urn:hpflex/shapes#Heating_Command_version_10> a brick:Heating_Command ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8861>,
+        <urn:hpflex/shapes#Resource_version_8865>,
+        <urn:hpflex/shapes#Resource_version_8875> .
+
+<urn:hpflex/shapes#Mixed_Air_Temperature_Sensor_version_10> a brick:Mixed_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource .
+
+<urn:hpflex/shapes#Room_version_15> a brick:Room .
+
+<urn:hpflex/shapes#Speed_Status_version_10> a brick:Speed_Status ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8881>,
+        <urn:hpflex/shapes#Resource_version_8886>,
+        <urn:hpflex/shapes#Resource_version_8936>,
+        <urn:hpflex/shapes#Resource_version_8937>,
+        <urn:hpflex/shapes#Resource_version_9533>,
+        <urn:hpflex/shapes#Resource_version_9535> .
+
+<urn:hpflex/shapes#Supply_Air_Temperature_Setpoint_version_16> a brick:Supply_Air_Temperature_Setpoint ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8651>,
+        <urn:hpflex/shapes#Resource_version_8899>,
+        <urn:hpflex/shapes#Resource_version_8907>,
+        <urn:hpflex/shapes#Resource_version_8943>,
+        <urn:hpflex/shapes#Resource_version_8951>,
+        <urn:hpflex/shapes#Resource_version_8958>,
+        <urn:hpflex/shapes#Resource_version_8966>,
+        <urn:hpflex/shapes#Resource_version_8974>,
+        <urn:hpflex/shapes#Resource_version_8981>,
+        <urn:hpflex/shapes#Resource_version_8995>,
+        <urn:hpflex/shapes#Resource_version_9002>,
+        <urn:hpflex/shapes#Resource_version_9552>,
+        <urn:hpflex/shapes#Resource_version_9555>,
+        <urn:hpflex/shapes#Resource_version_9559>,
+        <urn:hpflex/shapes#Resource_version_9563>,
+        <urn:hpflex/shapes#Resource_version_9571>,
+        <urn:hpflex/shapes#Resource_version_9578>,
+        <urn:hpflex/shapes#Resource_version_9586>,
+        <urn:hpflex/shapes#Resource_version_9593>,
+        <urn:hpflex/shapes#Resource_version_9601> .
+
+<urn:hpflex/shapes#Temperature_Setpoint_version_16> a brick:Temperature_Setpoint ;
+    rdfs:label rdfs:Resource .
+
+<urn:hpflex/shapes#VAV_version_56> a brick:VAV ;
+    brick:feeds <urn:hpflex/shapes#HVAC_Zone_version_28> ;
+    brick:hasPoint <urn:hpflex/shapes#Command_version_24>,
+        <urn:hpflex/shapes#Zone_Air_Temperature_Sensor_version_38>,
+        <urn:hpflex/shapes#Zone_Air_Temperature_Sensor_version_40>,
+        <urn:hpflex/shapes#Zone_Air_Temperature_Setpoint_version_19> .
+
+<urn:hpflex/shapes#VAV_version_58> a brick:VAV ;
+    brick:feeds <urn:hpflex/shapes#HVAC_Zone_version_29> ;
+    brick:hasPoint <urn:hpflex/shapes#Zone_Air_Temperature_Sensor_version_40> .
+
+<urn:hpflex/shapes#Valve_Command_version_24> a brick:Valve_Command ;
+    rdfs:label rdfs:Resource .
+
+<urn:hpflex/shapes#Zone_Air_Temperature_Sensor_version_37> a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource .
+
+<urn:hpflex/shapes#Chilled_Water_Return_Temperature_Sensor_version_24> a brick:Chilled_Water_Return_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8890>,
+        <urn:hpflex/shapes#Resource_version_8896>,
+        <urn:hpflex/shapes#Resource_version_8928>,
+        <urn:hpflex/shapes#Resource_version_9541>,
+        <urn:hpflex/shapes#Resource_version_9547> .
+
+<urn:hpflex/shapes#Chilled_Water_Supply_Temperature_Sensor_version_32> a brick:Chilled_Water_Supply_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8889>,
+        <urn:hpflex/shapes#Resource_version_8895>,
+        <urn:hpflex/shapes#Resource_version_8926>,
+        <urn:hpflex/shapes#Resource_version_9539>,
+        <urn:hpflex/shapes#Resource_version_9546> .
+
+<urn:hpflex/shapes#Command_version_22> a brick:Command ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8750>,
+        <urn:hpflex/shapes#Resource_version_8904>,
+        <urn:hpflex/shapes#Resource_version_8912>,
+        <urn:hpflex/shapes#Resource_version_8933>,
+        <urn:hpflex/shapes#Resource_version_8948>,
+        <urn:hpflex/shapes#Resource_version_8955>,
+        <urn:hpflex/shapes#Resource_version_8963>,
+        <urn:hpflex/shapes#Resource_version_8971>,
+        <urn:hpflex/shapes#Resource_version_8979>,
+        <urn:hpflex/shapes#Resource_version_8987>,
+        <urn:hpflex/shapes#Resource_version_8992>,
+        <urn:hpflex/shapes#Resource_version_8999>,
+        <urn:hpflex/shapes#Resource_version_9006>,
+        <urn:hpflex/shapes#Resource_version_9012>,
+        <urn:hpflex/shapes#Resource_version_9016>,
+        <urn:hpflex/shapes#Resource_version_9020>,
+        <urn:hpflex/shapes#Resource_version_9024>,
+        <urn:hpflex/shapes#Resource_version_9028>,
+        <urn:hpflex/shapes#Resource_version_9032>,
+        <urn:hpflex/shapes#Resource_version_9036>,
+        <urn:hpflex/shapes#Resource_version_9040>,
+        <urn:hpflex/shapes#Resource_version_9044>,
+        <urn:hpflex/shapes#Resource_version_9048>,
+        <urn:hpflex/shapes#Resource_version_9052>,
+        <urn:hpflex/shapes#Resource_version_9056>,
+        <urn:hpflex/shapes#Resource_version_9060>,
+        <urn:hpflex/shapes#Resource_version_9064>,
+        <urn:hpflex/shapes#Resource_version_9068>,
+        <urn:hpflex/shapes#Resource_version_9072>,
+        <urn:hpflex/shapes#Resource_version_9076>,
+        <urn:hpflex/shapes#Resource_version_9080>,
+        <urn:hpflex/shapes#Resource_version_9084>,
+        <urn:hpflex/shapes#Resource_version_9088>,
+        <urn:hpflex/shapes#Resource_version_9092>,
+        <urn:hpflex/shapes#Resource_version_9096>,
+        <urn:hpflex/shapes#Resource_version_9100>,
+        <urn:hpflex/shapes#Resource_version_9104>,
+        <urn:hpflex/shapes#Resource_version_9108>,
+        <urn:hpflex/shapes#Resource_version_9112>,
+        <urn:hpflex/shapes#Resource_version_9116>,
+        <urn:hpflex/shapes#Resource_version_9120>,
+        <urn:hpflex/shapes#Resource_version_9124>,
+        <urn:hpflex/shapes#Resource_version_9128>,
+        <urn:hpflex/shapes#Resource_version_9132>,
+        <urn:hpflex/shapes#Resource_version_9136>,
+        <urn:hpflex/shapes#Resource_version_9140>,
+        <urn:hpflex/shapes#Resource_version_9144>,
+        <urn:hpflex/shapes#Resource_version_9148>,
+        <urn:hpflex/shapes#Resource_version_9152>,
+        <urn:hpflex/shapes#Resource_version_9156>,
+        <urn:hpflex/shapes#Resource_version_9160>,
+        <urn:hpflex/shapes#Resource_version_9164>,
+        <urn:hpflex/shapes#Resource_version_9168>,
+        <urn:hpflex/shapes#Resource_version_9172>,
+        <urn:hpflex/shapes#Resource_version_9176>,
+        <urn:hpflex/shapes#Resource_version_9180>,
+        <urn:hpflex/shapes#Resource_version_9181>,
+        <urn:hpflex/shapes#Resource_version_9185>,
+        <urn:hpflex/shapes#Resource_version_9189>,
+        <urn:hpflex/shapes#Resource_version_9193>,
+        <urn:hpflex/shapes#Resource_version_9197>,
+        <urn:hpflex/shapes#Resource_version_9201>,
+        <urn:hpflex/shapes#Resource_version_9205>,
+        <urn:hpflex/shapes#Resource_version_9209>,
+        <urn:hpflex/shapes#Resource_version_9213>,
+        <urn:hpflex/shapes#Resource_version_9217>,
+        <urn:hpflex/shapes#Resource_version_9221>,
+        <urn:hpflex/shapes#Resource_version_9225>,
+        <urn:hpflex/shapes#Resource_version_9229>,
+        <urn:hpflex/shapes#Resource_version_9233>,
+        <urn:hpflex/shapes#Resource_version_9237>,
+        <urn:hpflex/shapes#Resource_version_9241>,
+        <urn:hpflex/shapes#Resource_version_9245>,
+        <urn:hpflex/shapes#Resource_version_9249>,
+        <urn:hpflex/shapes#Resource_version_9253>,
+        <urn:hpflex/shapes#Resource_version_9257>,
+        <urn:hpflex/shapes#Resource_version_9261>,
+        <urn:hpflex/shapes#Resource_version_9265>,
+        <urn:hpflex/shapes#Resource_version_9269>,
+        <urn:hpflex/shapes#Resource_version_9273>,
+        <urn:hpflex/shapes#Resource_version_9277>,
+        <urn:hpflex/shapes#Resource_version_9281>,
+        <urn:hpflex/shapes#Resource_version_9285>,
+        <urn:hpflex/shapes#Resource_version_9289>,
+        <urn:hpflex/shapes#Resource_version_9293>,
+        <urn:hpflex/shapes#Resource_version_9297>,
+        <urn:hpflex/shapes#Resource_version_9301>,
+        <urn:hpflex/shapes#Resource_version_9305>,
+        <urn:hpflex/shapes#Resource_version_9309>,
+        <urn:hpflex/shapes#Resource_version_9313>,
+        <urn:hpflex/shapes#Resource_version_9317>,
+        <urn:hpflex/shapes#Resource_version_9321>,
+        <urn:hpflex/shapes#Resource_version_9325>,
+        <urn:hpflex/shapes#Resource_version_9329>,
+        <urn:hpflex/shapes#Resource_version_9333>,
+        <urn:hpflex/shapes#Resource_version_9337>,
+        <urn:hpflex/shapes#Resource_version_9341>,
+        <urn:hpflex/shapes#Resource_version_9345>,
+        <urn:hpflex/shapes#Resource_version_9349>,
+        <urn:hpflex/shapes#Resource_version_9353>,
+        <urn:hpflex/shapes#Resource_version_9357>,
+        <urn:hpflex/shapes#Resource_version_9361>,
+        <urn:hpflex/shapes#Resource_version_9365>,
+        <urn:hpflex/shapes#Resource_version_9369>,
+        <urn:hpflex/shapes#Resource_version_9373>,
+        <urn:hpflex/shapes#Resource_version_9377>,
+        <urn:hpflex/shapes#Resource_version_9381>,
+        <urn:hpflex/shapes#Resource_version_9385>,
+        <urn:hpflex/shapes#Resource_version_9389>,
+        <urn:hpflex/shapes#Resource_version_9393>,
+        <urn:hpflex/shapes#Resource_version_9397>,
+        <urn:hpflex/shapes#Resource_version_9401>,
+        <urn:hpflex/shapes#Resource_version_9405>,
+        <urn:hpflex/shapes#Resource_version_9409>,
+        <urn:hpflex/shapes#Resource_version_9413>,
+        <urn:hpflex/shapes#Resource_version_9417>,
+        <urn:hpflex/shapes#Resource_version_9421>,
+        <urn:hpflex/shapes#Resource_version_9425>,
+        <urn:hpflex/shapes#Resource_version_9429>,
+        <urn:hpflex/shapes#Resource_version_9433>,
+        <urn:hpflex/shapes#Resource_version_9437>,
+        <urn:hpflex/shapes#Resource_version_9441>,
+        <urn:hpflex/shapes#Resource_version_9445>,
+        <urn:hpflex/shapes#Resource_version_9449>,
+        <urn:hpflex/shapes#Resource_version_9453>,
+        <urn:hpflex/shapes#Resource_version_9457>,
+        <urn:hpflex/shapes#Resource_version_9461>,
+        <urn:hpflex/shapes#Resource_version_9465>,
+        <urn:hpflex/shapes#Resource_version_9469>,
+        <urn:hpflex/shapes#Resource_version_9473>,
+        <urn:hpflex/shapes#Resource_version_9477>,
+        <urn:hpflex/shapes#Resource_version_9481>,
+        <urn:hpflex/shapes#Resource_version_9485>,
+        <urn:hpflex/shapes#Resource_version_9489>,
+        <urn:hpflex/shapes#Resource_version_9493>,
+        <urn:hpflex/shapes#Resource_version_9497>,
+        <urn:hpflex/shapes#Resource_version_9501>,
+        <urn:hpflex/shapes#Resource_version_9505>,
+        <urn:hpflex/shapes#Resource_version_9509>,
+        <urn:hpflex/shapes#Resource_version_9513>,
+        <urn:hpflex/shapes#Resource_version_9517>,
+        <urn:hpflex/shapes#Resource_version_9521>,
+        <urn:hpflex/shapes#Resource_version_9525>,
+        <urn:hpflex/shapes#Resource_version_9529>,
+        <urn:hpflex/shapes#Resource_version_9568>,
+        <urn:hpflex/shapes#Resource_version_9575>,
+        <urn:hpflex/shapes#Resource_version_9583>,
+        <urn:hpflex/shapes#Resource_version_9590>,
+        <urn:hpflex/shapes#Resource_version_9598>,
+        <urn:hpflex/shapes#Resource_version_9605>,
+        <urn:hpflex/shapes#Resource_version_9612> .
+
+<urn:hpflex/shapes#Cooling_Command_version_10> a brick:Cooling_Command,
+        brick:Valve_Command ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8653>,
+        <urn:hpflex/shapes#Resource_version_8905>,
+        <urn:hpflex/shapes#Resource_version_8906>,
+        <urn:hpflex/shapes#Resource_version_8913>,
+        <urn:hpflex/shapes#Resource_version_8914>,
+        <urn:hpflex/shapes#Resource_version_8934>,
+        <urn:hpflex/shapes#Resource_version_8950>,
+        <urn:hpflex/shapes#Resource_version_8957>,
+        <urn:hpflex/shapes#Resource_version_8965>,
+        <urn:hpflex/shapes#Resource_version_8973>,
+        <urn:hpflex/shapes#Resource_version_8980>,
+        <urn:hpflex/shapes#Resource_version_8988>,
+        <urn:hpflex/shapes#Resource_version_8994>,
+        <urn:hpflex/shapes#Resource_version_9001>,
+        <urn:hpflex/shapes#Resource_version_9008>,
+        <urn:hpflex/shapes#Resource_version_9550>,
+        <urn:hpflex/shapes#Resource_version_9551>,
+        <urn:hpflex/shapes#Resource_version_9558>,
+        <urn:hpflex/shapes#Resource_version_9562>,
+        <urn:hpflex/shapes#Resource_version_9569>,
+        <urn:hpflex/shapes#Resource_version_9570>,
+        <urn:hpflex/shapes#Resource_version_9576>,
+        <urn:hpflex/shapes#Resource_version_9577>,
+        <urn:hpflex/shapes#Resource_version_9584>,
+        <urn:hpflex/shapes#Resource_version_9585>,
+        <urn:hpflex/shapes#Resource_version_9591>,
+        <urn:hpflex/shapes#Resource_version_9592>,
+        <urn:hpflex/shapes#Resource_version_9599>,
+        <urn:hpflex/shapes#Resource_version_9600>,
+        <urn:hpflex/shapes#Resource_version_9606>,
+        <urn:hpflex/shapes#Resource_version_9607>,
+        <urn:hpflex/shapes#Resource_version_9615> .
+
+<urn:hpflex/shapes#HVAC_Zone_version_30> a brick:HVAC_Zone ;
+    brick:hasPart <urn:hpflex/shapes#Room_version_14> .
+
+<urn:hpflex/shapes#Outside_Air_Temperature_Sensor_version_10> a brick:Outside_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8652>,
+        <urn:hpflex/shapes#Resource_version_8888>,
+        <urn:hpflex/shapes#Resource_version_8903>,
+        <urn:hpflex/shapes#Resource_version_8911>,
+        <urn:hpflex/shapes#Resource_version_8932>,
+        <urn:hpflex/shapes#Resource_version_8986>,
+        <urn:hpflex/shapes#Resource_version_8991>,
+        <urn:hpflex/shapes#Resource_version_8998>,
+        <urn:hpflex/shapes#Resource_version_9005>,
+        <urn:hpflex/shapes#Resource_version_9536>,
+        <urn:hpflex/shapes#Resource_version_9557>,
+        <urn:hpflex/shapes#Resource_version_9561>,
+        <urn:hpflex/shapes#Resource_version_9566>,
+        <urn:hpflex/shapes#Resource_version_9573>,
+        <urn:hpflex/shapes#Resource_version_9581>,
+        <urn:hpflex/shapes#Resource_version_9588>,
+        <urn:hpflex/shapes#Resource_version_9596>,
+        <urn:hpflex/shapes#Resource_version_9604> .
+
+<urn:hpflex/shapes#Supply_Air_Temperature_Sensor_version_28> a brick:Supply_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8900>,
+        <urn:hpflex/shapes#Resource_version_8908>,
+        <urn:hpflex/shapes#Resource_version_8931>,
+        <urn:hpflex/shapes#Resource_version_8944>,
+        <urn:hpflex/shapes#Resource_version_8952>,
+        <urn:hpflex/shapes#Resource_version_8959>,
+        <urn:hpflex/shapes#Resource_version_8967>,
+        <urn:hpflex/shapes#Resource_version_8975>,
+        <urn:hpflex/shapes#Resource_version_8982>,
+        <urn:hpflex/shapes#Resource_version_8989>,
+        <urn:hpflex/shapes#Resource_version_8996>,
+        <urn:hpflex/shapes#Resource_version_9003>,
+        <urn:hpflex/shapes#Resource_version_9011>,
+        <urn:hpflex/shapes#Resource_version_9015>,
+        <urn:hpflex/shapes#Resource_version_9019>,
+        <urn:hpflex/shapes#Resource_version_9023>,
+        <urn:hpflex/shapes#Resource_version_9027>,
+        <urn:hpflex/shapes#Resource_version_9031>,
+        <urn:hpflex/shapes#Resource_version_9035>,
+        <urn:hpflex/shapes#Resource_version_9039>,
+        <urn:hpflex/shapes#Resource_version_9043>,
+        <urn:hpflex/shapes#Resource_version_9047>,
+        <urn:hpflex/shapes#Resource_version_9051>,
+        <urn:hpflex/shapes#Resource_version_9055>,
+        <urn:hpflex/shapes#Resource_version_9059>,
+        <urn:hpflex/shapes#Resource_version_9063>,
+        <urn:hpflex/shapes#Resource_version_9067>,
+        <urn:hpflex/shapes#Resource_version_9071>,
+        <urn:hpflex/shapes#Resource_version_9075>,
+        <urn:hpflex/shapes#Resource_version_9079>,
+        <urn:hpflex/shapes#Resource_version_9083>,
+        <urn:hpflex/shapes#Resource_version_9087>,
+        <urn:hpflex/shapes#Resource_version_9091>,
+        <urn:hpflex/shapes#Resource_version_9095>,
+        <urn:hpflex/shapes#Resource_version_9099>,
+        <urn:hpflex/shapes#Resource_version_9103>,
+        <urn:hpflex/shapes#Resource_version_9107>,
+        <urn:hpflex/shapes#Resource_version_9111>,
+        <urn:hpflex/shapes#Resource_version_9115>,
+        <urn:hpflex/shapes#Resource_version_9119>,
+        <urn:hpflex/shapes#Resource_version_9123>,
+        <urn:hpflex/shapes#Resource_version_9127>,
+        <urn:hpflex/shapes#Resource_version_9131>,
+        <urn:hpflex/shapes#Resource_version_9135>,
+        <urn:hpflex/shapes#Resource_version_9139>,
+        <urn:hpflex/shapes#Resource_version_9143>,
+        <urn:hpflex/shapes#Resource_version_9147>,
+        <urn:hpflex/shapes#Resource_version_9151>,
+        <urn:hpflex/shapes#Resource_version_9155>,
+        <urn:hpflex/shapes#Resource_version_9159>,
+        <urn:hpflex/shapes#Resource_version_9163>,
+        <urn:hpflex/shapes#Resource_version_9167>,
+        <urn:hpflex/shapes#Resource_version_9171>,
+        <urn:hpflex/shapes#Resource_version_9175>,
+        <urn:hpflex/shapes#Resource_version_9179>,
+        <urn:hpflex/shapes#Resource_version_9184>,
+        <urn:hpflex/shapes#Resource_version_9188>,
+        <urn:hpflex/shapes#Resource_version_9192>,
+        <urn:hpflex/shapes#Resource_version_9196>,
+        <urn:hpflex/shapes#Resource_version_9200>,
+        <urn:hpflex/shapes#Resource_version_9204>,
+        <urn:hpflex/shapes#Resource_version_9208>,
+        <urn:hpflex/shapes#Resource_version_9212>,
+        <urn:hpflex/shapes#Resource_version_9216>,
+        <urn:hpflex/shapes#Resource_version_9220>,
+        <urn:hpflex/shapes#Resource_version_9224>,
+        <urn:hpflex/shapes#Resource_version_9228>,
+        <urn:hpflex/shapes#Resource_version_9232>,
+        <urn:hpflex/shapes#Resource_version_9236>,
+        <urn:hpflex/shapes#Resource_version_9240>,
+        <urn:hpflex/shapes#Resource_version_9244>,
+        <urn:hpflex/shapes#Resource_version_9248>,
+        <urn:hpflex/shapes#Resource_version_9252>,
+        <urn:hpflex/shapes#Resource_version_9256>,
+        <urn:hpflex/shapes#Resource_version_9260>,
+        <urn:hpflex/shapes#Resource_version_9264>,
+        <urn:hpflex/shapes#Resource_version_9268>,
+        <urn:hpflex/shapes#Resource_version_9272>,
+        <urn:hpflex/shapes#Resource_version_9276>,
+        <urn:hpflex/shapes#Resource_version_9280>,
+        <urn:hpflex/shapes#Resource_version_9284>,
+        <urn:hpflex/shapes#Resource_version_9288>,
+        <urn:hpflex/shapes#Resource_version_9292>,
+        <urn:hpflex/shapes#Resource_version_9296>,
+        <urn:hpflex/shapes#Resource_version_9300>,
+        <urn:hpflex/shapes#Resource_version_9304>,
+        <urn:hpflex/shapes#Resource_version_9308>,
+        <urn:hpflex/shapes#Resource_version_9312>,
+        <urn:hpflex/shapes#Resource_version_9316>,
+        <urn:hpflex/shapes#Resource_version_9320>,
+        <urn:hpflex/shapes#Resource_version_9324>,
+        <urn:hpflex/shapes#Resource_version_9328>,
+        <urn:hpflex/shapes#Resource_version_9332>,
+        <urn:hpflex/shapes#Resource_version_9336>,
+        <urn:hpflex/shapes#Resource_version_9340>,
+        <urn:hpflex/shapes#Resource_version_9344>,
+        <urn:hpflex/shapes#Resource_version_9348>,
+        <urn:hpflex/shapes#Resource_version_9352>,
+        <urn:hpflex/shapes#Resource_version_9356>,
+        <urn:hpflex/shapes#Resource_version_9360>,
+        <urn:hpflex/shapes#Resource_version_9364>,
+        <urn:hpflex/shapes#Resource_version_9368>,
+        <urn:hpflex/shapes#Resource_version_9372>,
+        <urn:hpflex/shapes#Resource_version_9376>,
+        <urn:hpflex/shapes#Resource_version_9380>,
+        <urn:hpflex/shapes#Resource_version_9384>,
+        <urn:hpflex/shapes#Resource_version_9388>,
+        <urn:hpflex/shapes#Resource_version_9392>,
+        <urn:hpflex/shapes#Resource_version_9396>,
+        <urn:hpflex/shapes#Resource_version_9400>,
+        <urn:hpflex/shapes#Resource_version_9404>,
+        <urn:hpflex/shapes#Resource_version_9408>,
+        <urn:hpflex/shapes#Resource_version_9412>,
+        <urn:hpflex/shapes#Resource_version_9416>,
+        <urn:hpflex/shapes#Resource_version_9420>,
+        <urn:hpflex/shapes#Resource_version_9424>,
+        <urn:hpflex/shapes#Resource_version_9428>,
+        <urn:hpflex/shapes#Resource_version_9432>,
+        <urn:hpflex/shapes#Resource_version_9436>,
+        <urn:hpflex/shapes#Resource_version_9440>,
+        <urn:hpflex/shapes#Resource_version_9444>,
+        <urn:hpflex/shapes#Resource_version_9448>,
+        <urn:hpflex/shapes#Resource_version_9452>,
+        <urn:hpflex/shapes#Resource_version_9456>,
+        <urn:hpflex/shapes#Resource_version_9460>,
+        <urn:hpflex/shapes#Resource_version_9464>,
+        <urn:hpflex/shapes#Resource_version_9468>,
+        <urn:hpflex/shapes#Resource_version_9472>,
+        <urn:hpflex/shapes#Resource_version_9476>,
+        <urn:hpflex/shapes#Resource_version_9480>,
+        <urn:hpflex/shapes#Resource_version_9484>,
+        <urn:hpflex/shapes#Resource_version_9488>,
+        <urn:hpflex/shapes#Resource_version_9492>,
+        <urn:hpflex/shapes#Resource_version_9496>,
+        <urn:hpflex/shapes#Resource_version_9500>,
+        <urn:hpflex/shapes#Resource_version_9504>,
+        <urn:hpflex/shapes#Resource_version_9508>,
+        <urn:hpflex/shapes#Resource_version_9512>,
+        <urn:hpflex/shapes#Resource_version_9516>,
+        <urn:hpflex/shapes#Resource_version_9520>,
+        <urn:hpflex/shapes#Resource_version_9524>,
+        <urn:hpflex/shapes#Resource_version_9528>,
+        <urn:hpflex/shapes#Resource_version_9556>,
+        <urn:hpflex/shapes#Resource_version_9560>,
+        <urn:hpflex/shapes#Resource_version_9564>,
+        <urn:hpflex/shapes#Resource_version_9572>,
+        <urn:hpflex/shapes#Resource_version_9579>,
+        <urn:hpflex/shapes#Resource_version_9587>,
+        <urn:hpflex/shapes#Resource_version_9594>,
+        <urn:hpflex/shapes#Resource_version_9602>,
+        <urn:hpflex/shapes#Resource_version_9613> .
+
+<urn:hpflex/shapes#VAV_version_59> a brick:VAV ;
+    brick:feeds <urn:hpflex/shapes#HVAC_Zone_version_30> ;
+    brick:hasPoint <urn:hpflex/shapes#Air_Flow_Sensor_version_10>,
+        <urn:hpflex/shapes#Command_version_22>,
+        <urn:hpflex/shapes#Fan_Status_version_10>,
+        <urn:hpflex/shapes#Heating_Command_version_10>,
+        <urn:hpflex/shapes#Supply_Air_Flow_Sensor_version_10>,
+        <urn:hpflex/shapes#Supply_Air_Temperature_Sensor_version_28>,
+        <urn:hpflex/shapes#Supply_Air_Temperature_Sensor_version_31>,
+        <urn:hpflex/shapes#Temperature_Setpoint_version_16>,
+        <urn:hpflex/shapes#Valve_Command_version_24>,
+        <urn:hpflex/shapes#Zone_Air_Temperature_Sensor_version_40>,
+        <urn:hpflex/shapes#Zone_Air_Temperature_Setpoint_version_18> .
+
+<urn:hpflex/shapes#Zone_Air_Temperature_Sensor_version_40> a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource,
+        <urn:hpflex/shapes#Resource_version_8656>,
+        <urn:hpflex/shapes#Resource_version_8659>,
+        <urn:hpflex/shapes#Resource_version_8662>,
+        <urn:hpflex/shapes#Resource_version_8665>,
+        <urn:hpflex/shapes#Resource_version_8668>,
+        <urn:hpflex/shapes#Resource_version_8671>,
+        <urn:hpflex/shapes#Resource_version_8672>,
+        <urn:hpflex/shapes#Resource_version_8676>,
+        <urn:hpflex/shapes#Resource_version_8677>,
+        <urn:hpflex/shapes#Resource_version_8680>,
+        <urn:hpflex/shapes#Resource_version_8681>,
+        <urn:hpflex/shapes#Resource_version_8683>,
+        <urn:hpflex/shapes#Resource_version_8685>,
+        <urn:hpflex/shapes#Resource_version_8687>,
+        <urn:hpflex/shapes#Resource_version_8689>,
+        <urn:hpflex/shapes#Resource_version_8693>,
+        <urn:hpflex/shapes#Resource_version_8696>,
+        <urn:hpflex/shapes#Resource_version_8699>,
+        <urn:hpflex/shapes#Resource_version_8701>,
+        <urn:hpflex/shapes#Resource_version_8704>,
+        <urn:hpflex/shapes#Resource_version_8707>,
+        <urn:hpflex/shapes#Resource_version_8710>,
+        <urn:hpflex/shapes#Resource_version_8713>,
+        <urn:hpflex/shapes#Resource_version_8716>,
+        <urn:hpflex/shapes#Resource_version_8719>,
+        <urn:hpflex/shapes#Resource_version_8722>,
+        <urn:hpflex/shapes#Resource_version_8725>,
+        <urn:hpflex/shapes#Resource_version_8728>,
+        <urn:hpflex/shapes#Resource_version_8731>,
+        <urn:hpflex/shapes#Resource_version_8734>,
+        <urn:hpflex/shapes#Resource_version_8737>,
+        <urn:hpflex/shapes#Resource_version_8739>,
+        <urn:hpflex/shapes#Resource_version_8742>,
+        <urn:hpflex/shapes#Resource_version_8745>,
+        <urn:hpflex/shapes#Resource_version_8748>,
+        <urn:hpflex/shapes#Resource_version_8752>,
+        <urn:hpflex/shapes#Resource_version_8756>,
+        <urn:hpflex/shapes#Resource_version_8759>,
+        <urn:hpflex/shapes#Resource_version_8762>,
+        <urn:hpflex/shapes#Resource_version_8765>,
+        <urn:hpflex/shapes#Resource_version_8768>,
+        <urn:hpflex/shapes#Resource_version_8771>,
+        <urn:hpflex/shapes#Resource_version_8774>,
+        <urn:hpflex/shapes#Resource_version_8777>,
+        <urn:hpflex/shapes#Resource_version_8780>,
+        <urn:hpflex/shapes#Resource_version_8783>,
+        <urn:hpflex/shapes#Resource_version_8784>,
+        <urn:hpflex/shapes#Resource_version_8786>,
+        <urn:hpflex/shapes#Resource_version_8789>,
+        <urn:hpflex/shapes#Resource_version_8792>,
+        <urn:hpflex/shapes#Resource_version_8795>,
+        <urn:hpflex/shapes#Resource_version_8798>,
+        <urn:hpflex/shapes#Resource_version_8801>,
+        <urn:hpflex/shapes#Resource_version_8804>,
+        <urn:hpflex/shapes#Resource_version_8807>,
+        <urn:hpflex/shapes#Resource_version_8810>,
+        <urn:hpflex/shapes#Resource_version_8813>,
+        <urn:hpflex/shapes#Resource_version_8816>,
+        <urn:hpflex/shapes#Resource_version_8819>,
+        <urn:hpflex/shapes#Resource_version_8822>,
+        <urn:hpflex/shapes#Resource_version_8825>,
+        <urn:hpflex/shapes#Resource_version_8828>,
+        <urn:hpflex/shapes#Resource_version_8831>,
+        <urn:hpflex/shapes#Resource_version_8834>,
+        <urn:hpflex/shapes#Resource_version_8837>,
+        <urn:hpflex/shapes#Resource_version_8840>,
+        <urn:hpflex/shapes#Resource_version_8843>,
+        <urn:hpflex/shapes#Resource_version_8846>,
+        <urn:hpflex/shapes#Resource_version_8849>,
+        <urn:hpflex/shapes#Resource_version_8852>,
+        <urn:hpflex/shapes#Resource_version_8855>,
+        <urn:hpflex/shapes#Resource_version_8856>,
+        <urn:hpflex/shapes#Resource_version_8859>,
+        <urn:hpflex/shapes#Resource_version_8863>,
+        <urn:hpflex/shapes#Resource_version_8867>,
+        <urn:hpflex/shapes#Resource_version_8870>,
+        <urn:hpflex/shapes#Resource_version_8873>,
+        <urn:hpflex/shapes#Resource_version_8877>,
+        <urn:hpflex/shapes#Resource_version_9014>,
+        <urn:hpflex/shapes#Resource_version_9018>,
+        <urn:hpflex/shapes#Resource_version_9022>,
+        <urn:hpflex/shapes#Resource_version_9026>,
+        <urn:hpflex/shapes#Resource_version_9030>,
+        <urn:hpflex/shapes#Resource_version_9034>,
+        <urn:hpflex/shapes#Resource_version_9038>,
+        <urn:hpflex/shapes#Resource_version_9042>,
+        <urn:hpflex/shapes#Resource_version_9046>,
+        <urn:hpflex/shapes#Resource_version_9050>,
+        <urn:hpflex/shapes#Resource_version_9054>,
+        <urn:hpflex/shapes#Resource_version_9058>,
+        <urn:hpflex/shapes#Resource_version_9062>,
+        <urn:hpflex/shapes#Resource_version_9066>,
+        <urn:hpflex/shapes#Resource_version_9070>,
+        <urn:hpflex/shapes#Resource_version_9074>,
+        <urn:hpflex/shapes#Resource_version_9078>,
+        <urn:hpflex/shapes#Resource_version_9082>,
+        <urn:hpflex/shapes#Resource_version_9086>,
+        <urn:hpflex/shapes#Resource_version_9090>,
+        <urn:hpflex/shapes#Resource_version_9094>,
+        <urn:hpflex/shapes#Resource_version_9098>,
+        <urn:hpflex/shapes#Resource_version_9102>,
+        <urn:hpflex/shapes#Resource_version_9106>,
+        <urn:hpflex/shapes#Resource_version_9110>,
+        <urn:hpflex/shapes#Resource_version_9114>,
+        <urn:hpflex/shapes#Resource_version_9118>,
+        <urn:hpflex/shapes#Resource_version_9122>,
+        <urn:hpflex/shapes#Resource_version_9126>,
+        <urn:hpflex/shapes#Resource_version_9130>,
+        <urn:hpflex/shapes#Resource_version_9134>,
+        <urn:hpflex/shapes#Resource_version_9138>,
+        <urn:hpflex/shapes#Resource_version_9142>,
+        <urn:hpflex/shapes#Resource_version_9146>,
+        <urn:hpflex/shapes#Resource_version_9150>,
+        <urn:hpflex/shapes#Resource_version_9154>,
+        <urn:hpflex/shapes#Resource_version_9158>,
+        <urn:hpflex/shapes#Resource_version_9162>,
+        <urn:hpflex/shapes#Resource_version_9166>,
+        <urn:hpflex/shapes#Resource_version_9170>,
+        <urn:hpflex/shapes#Resource_version_9174>,
+        <urn:hpflex/shapes#Resource_version_9178>,
+        <urn:hpflex/shapes#Resource_version_9183>,
+        <urn:hpflex/shapes#Resource_version_9187>,
+        <urn:hpflex/shapes#Resource_version_9191>,
+        <urn:hpflex/shapes#Resource_version_9195>,
+        <urn:hpflex/shapes#Resource_version_9199>,
+        <urn:hpflex/shapes#Resource_version_9203>,
+        <urn:hpflex/shapes#Resource_version_9207>,
+        <urn:hpflex/shapes#Resource_version_9211>,
+        <urn:hpflex/shapes#Resource_version_9215>,
+        <urn:hpflex/shapes#Resource_version_9219>,
+        <urn:hpflex/shapes#Resource_version_9223>,
+        <urn:hpflex/shapes#Resource_version_9227>,
+        <urn:hpflex/shapes#Resource_version_9231>,
+        <urn:hpflex/shapes#Resource_version_9235>,
+        <urn:hpflex/shapes#Resource_version_9239>,
+        <urn:hpflex/shapes#Resource_version_9243>,
+        <urn:hpflex/shapes#Resource_version_9247>,
+        <urn:hpflex/shapes#Resource_version_9251>,
+        <urn:hpflex/shapes#Resource_version_9255>,
+        <urn:hpflex/shapes#Resource_version_9259>,
+        <urn:hpflex/shapes#Resource_version_9263>,
+        <urn:hpflex/shapes#Resource_version_9267>,
+        <urn:hpflex/shapes#Resource_version_9271>,
+        <urn:hpflex/shapes#Resource_version_9275>,
+        <urn:hpflex/shapes#Resource_version_9279>,
+        <urn:hpflex/shapes#Resource_version_9283>,
+        <urn:hpflex/shapes#Resource_version_9287>,
+        <urn:hpflex/shapes#Resource_version_9291>,
+        <urn:hpflex/shapes#Resource_version_9295>,
+        <urn:hpflex/shapes#Resource_version_9299>,
+        <urn:hpflex/shapes#Resource_version_9303>,
+        <urn:hpflex/shapes#Resource_version_9307>,
+        <urn:hpflex/shapes#Resource_version_9311>,
+        <urn:hpflex/shapes#Resource_version_9315>,
+        <urn:hpflex/shapes#Resource_version_9319>,
+        <urn:hpflex/shapes#Resource_version_9323>,
+        <urn:hpflex/shapes#Resource_version_9327>,
+        <urn:hpflex/shapes#Resource_version_9331>,
+        <urn:hpflex/shapes#Resource_version_9335>,
+        <urn:hpflex/shapes#Resource_version_9339>,
+        <urn:hpflex/shapes#Resource_version_9343>,
+        <urn:hpflex/shapes#Resource_version_9347>,
+        <urn:hpflex/shapes#Resource_version_9351>,
+        <urn:hpflex/shapes#Resource_version_9355>,
+        <urn:hpflex/shapes#Resource_version_9359>,
+        <urn:hpflex/shapes#Resource_version_9363>,
+        <urn:hpflex/shapes#Resource_version_9367>,
+        <urn:hpflex/shapes#Resource_version_9371>,
+        <urn:hpflex/shapes#Resource_version_9375>,
+        <urn:hpflex/shapes#Resource_version_9379>,
+        <urn:hpflex/shapes#Resource_version_9383>,
+        <urn:hpflex/shapes#Resource_version_9387>,
+        <urn:hpflex/shapes#Resource_version_9391>,
+        <urn:hpflex/shapes#Resource_version_9395>,
+        <urn:hpflex/shapes#Resource_version_9399>,
+        <urn:hpflex/shapes#Resource_version_9403>,
+        <urn:hpflex/shapes#Resource_version_9407>,
+        <urn:hpflex/shapes#Resource_version_9411>,
+        <urn:hpflex/shapes#Resource_version_9415>,
+        <urn:hpflex/shapes#Resource_version_9419>,
+        <urn:hpflex/shapes#Resource_version_9423>,
+        <urn:hpflex/shapes#Resource_version_9427>,
+        <urn:hpflex/shapes#Resource_version_9431>,
+        <urn:hpflex/shapes#Resource_version_9435>,
+        <urn:hpflex/shapes#Resource_version_9439>,
+        <urn:hpflex/shapes#Resource_version_9443>,
+        <urn:hpflex/shapes#Resource_version_9447>,
+        <urn:hpflex/shapes#Resource_version_9451>,
+        <urn:hpflex/shapes#Resource_version_9455>,
+        <urn:hpflex/shapes#Resource_version_9459>,
+        <urn:hpflex/shapes#Resource_version_9463>,
+        <urn:hpflex/shapes#Resource_version_9467>,
+        <urn:hpflex/shapes#Resource_version_9471>,
+        <urn:hpflex/shapes#Resource_version_9475>,
+        <urn:hpflex/shapes#Resource_version_9479>,
+        <urn:hpflex/shapes#Resource_version_9483>,
+        <urn:hpflex/shapes#Resource_version_9487>,
+        <urn:hpflex/shapes#Resource_version_9491>,
+        <urn:hpflex/shapes#Resource_version_9495>,
+        <urn:hpflex/shapes#Resource_version_9499>,
+        <urn:hpflex/shapes#Resource_version_9503>,
+        <urn:hpflex/shapes#Resource_version_9507>,
+        <urn:hpflex/shapes#Resource_version_9511>,
+        <urn:hpflex/shapes#Resource_version_9515>,
+        <urn:hpflex/shapes#Resource_version_9519>,
+        <urn:hpflex/shapes#Resource_version_9523>,
+        <urn:hpflex/shapes#Resource_version_9527>,
+        <urn:hpflex/shapes#Resource_version_9531> .
+
+<urn:hpflex/shapes#Room_version_14> a brick:Room .
+
+<urn:hpflex/shapes#Chiller_version_28> a brick:Chiller ;
+    brick:hasPoint <urn:hpflex/shapes#Chilled_Water_Differential_Pressure_Sensor_version_10>,
+        <urn:hpflex/shapes#Chilled_Water_Differential_Pressure_Setpoint_version_10>,
+        <urn:hpflex/shapes#Chilled_Water_Differential_Temperature_Sensor_version_10>,
+        <urn:hpflex/shapes#Chilled_Water_Flow_Sensor_version_10>,
+        <urn:hpflex/shapes#Chilled_Water_Return_Pressure_version_10>,
+        <urn:hpflex/shapes#Chilled_Water_Return_Temperature_Sensor_version_24>,
+        <urn:hpflex/shapes#Chilled_Water_Return_Temperature_Setpoint_version_16>,
+        <urn:hpflex/shapes#Chilled_Water_Supply_Pressure_version_10>,
+        <urn:hpflex/shapes#Chilled_Water_Supply_Temperature_Sensor_version_32>,
+        <urn:hpflex/shapes#Chilled_Water_Supply_Temperature_Setpoint_version_10>,
+        <urn:hpflex/shapes#Damper_Position_Command_version_10>,
+        <urn:hpflex/shapes#Differential_Pressure_Sensor_version_10>,
+        <urn:hpflex/shapes#Enable_Command_version_10>,
+        <urn:hpflex/shapes#Outside_Air_Damper_Command_version_10>,
+        <urn:hpflex/shapes#Outside_Air_Temperature_Sensor_version_10>,
+        <urn:hpflex/shapes#Power_Sensor_version_10>,
+        <urn:hpflex/shapes#Pump_Command_version_10>,
+        <urn:hpflex/shapes#Speed_Setpoint_version_10>,
+        <urn:hpflex/shapes#Speed_Status_version_10>,
+        <urn:hpflex/shapes#Start_Stop_Command_version_10>,
+        <urn:hpflex/shapes#Status_version_10>,
+        <urn:hpflex/shapes#Water_Flow_Sensor_version_10> .
+
+rdfs:Resource brick:hasUnits rdfs:Resource ;
+    brick:value rdfs:Resource ;
+    ns1:hasTimeseriesId rdfs:Resource .
+
