@@ -354,50 +354,50 @@ def compare_all_nodes(data_graph, triple_graph, add_hops = 10):
     return matches, not_matches, unmatched_subjects, added_to_triples, triple_graph
 
 # %%
+if __name__ == 'main':
+    data_graph = Graph(store = 'Oxigraph')
+    data_graph.parse("/Users/lazlopaul/Desktop/223p/experiments/graph-pattern-id/from-data-graph/brick-example.ttl", format="turtle")
+    # need to remove empty subject 
+    remove_triples = []
+    for s, p, o in data_graph:
+        if str(get_local_name(s)).strip() == "":
+            # print("skipping subject empty string")
+            remove_triples.append((s,p,o))
+    for triple in remove_triples:
+        data_graph.remove(triple)
+            
+    class_graph, triple_schema, triple_graph = create_class_graph(data_graph)
+    matches, not_matches, unmatched_subjects, added_to_triples, new_triple_graph = compare_all_nodes(data_graph = data_graph, triple_graph = triple_graph, add_hops = 5)
+    new_triple_graph.serialize('algo4-brick.ttl', format = 'ttl')
 
-data_graph = Graph(store = 'Oxigraph')
-data_graph.parse("/Users/lazlopaul/Desktop/223p/experiments/graph-pattern-id/from-data-graph/brick-example.ttl", format="turtle")
-# need to remove empty subject 
-remove_triples = []
-for s, p, o in data_graph:
-    if str(get_local_name(s)).strip() == "":
-        # print("skipping subject empty string")
-        remove_triples.append((s,p,o))
-for triple in remove_triples:
-    data_graph.remove(triple)
+    # %%
+    print("Matched: ", matches, " Not matched: ", not_matches, "Unique unmatched subjects: ", len(unmatched_subjects))
+    print("Added to triples_graph: ", added_to_triples, " times")
+
+    # %%
+    triple_graph.print()
+
+    # %%
+    for s, p, o in new_triple_graph:
+        s_class = get_class(s, new_triple_graph)
+        pq = PatternQuery(triple_schema, new_triple_graph)
+        # print(pq.get_ask_query())
+        bound_queries = bind_triples_to_query(s, s_class, pq)
+        break
+
         
-class_graph, triple_schema, triple_graph = create_class_graph(data_graph)
-matches, not_matches, unmatched_subjects, added_to_triples, new_triple_graph = compare_all_nodes(data_graph = data_graph, triple_graph = triple_graph, add_hops = 5)
-new_triple_graph.serialize('algo4-brick.ttl', format = 'ttl')
+    for query in bound_queries:
+        # print(query)
+        print(new_triple_graph.query(query).askAnswer)
 
-# %%
-print("Matched: ", matches, " Not matched: ", not_matches, "Unique unmatched subjects: ", len(unmatched_subjects))
-print("Added to triples_graph: ", added_to_triples, " times")
+    # %%
 
-# %%
-triple_graph.print()
+    s223_data_graph = Graph(store = 'Oxigraph')
+    s223_data_graph.parse("/Users/lazlopaul/Desktop/223p/experiments/graph-pattern-id/from-data-graph/s223-example.ttl", format="turtle")
+    s223_bschema = BSchemaGenerator(s223_data_graph)
+    s223_class_graph, s223_triple_schema, s223_triple_graph = create_class_graph(s223_data_graph)
 
-# %%
-for s, p, o in new_triple_graph:
-    s_class = get_class(s, new_triple_graph)
-    pq = PatternQuery(triple_schema, new_triple_graph)
-    # print(pq.get_ask_query())
-    bound_queries = bind_triples_to_query(s, s_class, pq)
-    break
-
-    
-for query in bound_queries:
-    # print(query)
-    print(new_triple_graph.query(query).askAnswer)
-
-# %%
-
-s223_data_graph = Graph(store = 'Oxigraph')
-s223_data_graph.parse("/Users/lazlopaul/Desktop/223p/experiments/graph-pattern-id/from-data-graph/s223-example.ttl", format="turtle")
-s223_bschema = BSchemaGenerator(s223_data_graph)
-s223_class_graph, s223_triple_schema, s223_triple_graph = create_class_graph(s223_data_graph)
-
-# %%
+    # %%
 
 
 

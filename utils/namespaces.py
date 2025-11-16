@@ -11,6 +11,8 @@ from buildingmotif.namespaces import (
     RDF,
 )
 
+EX = Namespace("urn:example#")
+
 HPF = Namespace(f"urn:hpflex#")
 HPFS = Namespace("urn:hpflex/shapes#")
 
@@ -70,6 +72,7 @@ def bind_prefixes(graph):
     graph.bind("hpflex", HPF)
     graph.bind("hpfs", HPFS)
     graph.bind("s223", S223)
+    graph.bind("ex", EX)
 
 
 namespace_dict = {
@@ -92,6 +95,7 @@ namespace_dict = {
     "hpfs": HPFS,
     "s223": S223,
     "ex1": "http://data.ashrae.org/standard223/data/scb-vrf#",
+    "ex":EX,
 }
 
 prefix_dict = {value: key for key, value in namespace_dict.items()}
