@@ -5,6 +5,7 @@ Using GPT OSS run by CBORG, creating new class names was decent
 TODO: 
 - works right for brick, but class graph currently only contains one class. This may create bugs, so I will need to consider other methods. Working so far because it happens to gets the most recently added class, which is alphabetically the latest because of the version tag I'm adding. Instead of directly doing the class relations it may make sense to separate instance and class once again 
 - Fix how I'm getting aspects and named nodes again so these show up in class graph for isomorphism. 
+- Getting the class names relies on how graph is serialized to get most recently added class label. This may cause a bug in the future.
 """
 
 from rdflib.compare import isomorphic
