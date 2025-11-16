@@ -177,11 +177,11 @@ def get_class_isomorphisms(data_graph, similarity_threshold = None):
                     # NOTE: also replacing matched graph with union of class graph and g
                     if similarity_score > similarity_threshold:
                         # NOTE: May not want to use + because we lose oxigraph as the store, also not sure it works correctly. Maybe just take the bigger graph?
-                        # distinct_class_subgraphs[i] = class_graph + g
-                        if len(class_graph) > len(g):
-                            distinct_class_subgraphs[i] = class_graph
-                        else:
-                            distinct_class_subgraphs[i] = g
+                        distinct_class_subgraphs[i] = class_graph + g
+                        # if len(class_graph) > len(g):
+                        #     distinct_class_subgraphs[i] = class_graph
+                        # else:
+                        #     distinct_class_subgraphs[i] = g
                         
                         equivalent_subjects[i].append(s)
                         found_in_preferred = True
@@ -190,7 +190,6 @@ def get_class_isomorphisms(data_graph, similarity_threshold = None):
                     else:
                         found_in_preferred = False
                         add_subgraph = True
-                break
             # NOTE: It may be good to look for isomorphic first then within jaccard similarity second to prefer exact matches. But it would run slower, and jaccard is just for testing on mortar rn
             else:
                 if isomorphic(class_graph, g): 
@@ -206,17 +205,25 @@ def get_class_isomorphisms(data_graph, similarity_threshold = None):
             continue
 
         # NOTE: may be a more efficient way to do this. Not sure it does anything since for an isomorphism to be found the subject classes must be the same. This is also an extra condition for jaccard similarity
+        # In mortar I'm finding many more isomorphisms, maybe this is because the one hop graphs are identical for subjects with different classes? 
+        # TODO: Finding unexpected isomorphisms for empty graphs. Should handle somehow
         # for i, g in enumerate(distinct_class_subgraphs):
         #     if isomorphic(class_graph, g): 
+        #         pprint(subject_class)
+        #         pprint(subject_classes)
         #         print('FOUND unexpected isomorphism')
+        #         class_graph.print()
+        #         g.print()
+        #         raise Exception
         #         equivalent_subjects[i].append(s)
         #         add_subgraph = False
         #         break
         #     else:
         #         add_subgraph = True
+        
         if indices == []:
             add_subgraph = True
-            
+
         if add_subgraph == True:
             distinct_class_subgraphs.append(class_graph)
             equivalent_subjects.append([s])
