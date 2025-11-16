@@ -164,6 +164,7 @@ def get_class_isomorphisms(data_graph, similarity_threshold = None):
             
         indices = [i for i, x in enumerate(subject_classes) if x == subject_class]
         # check indices first 
+        # NOTE: checking indices like this places an extra condition on the jaccard similarity.
         for i in indices:
             g = distinct_class_subgraphs[i]
             if similarity_threshold is not None:
@@ -175,15 +176,19 @@ def get_class_isomorphisms(data_graph, similarity_threshold = None):
                     similarity_score = intersection_size / union_size
                     # NOTE: also replacing matched graph with union of class graph and g
                     if similarity_score > similarity_threshold:
-                        equivalent_subjects[i].append(s)
                         # NOTE: May not want to use + because we lose oxigraph as the store, also not sure it works correctly. Maybe just take the bigger graph?
                         # distinct_class_subgraphs[i] = class_graph + g
                         if len(class_graph) > len(g):
                             distinct_class_subgraphs[i] = class_graph
                         else:
                             distinct_class_subgraphs[i] = g
+                        
+                        equivalent_subjects[i].append(s)
                         found_in_preferred = True
+                        add_subgraph = False
+                        break
                     else:
+                        found_in_preferred = False
                         add_subgraph = True
                 break
             # NOTE: It may be good to look for isomorphic first then within jaccard similarity second to prefer exact matches. But it would run slower, and jaccard is just for testing on mortar rn
@@ -191,22 +196,27 @@ def get_class_isomorphisms(data_graph, similarity_threshold = None):
                 if isomorphic(class_graph, g): 
                     equivalent_subjects[i].append(s)
                     found_in_preferred = True
+                    add_subgraph = False
                     break
                 else:
+                    found_in_preferred = False
                     add_subgraph = True
 
         if found_in_preferred:
             continue
 
-        # TODO: consider if there can ever be an isomorphism this way. I think not because the subjects MUST have the same class for their to be an isomorphism
+        # NOTE: may be a more efficient way to do this. Not sure it does anything since for an isomorphism to be found the subject classes must be the same. This is also an extra condition for jaccard similarity
         # for i, g in enumerate(distinct_class_subgraphs):
         #     if isomorphic(class_graph, g): 
+        #         print('FOUND unexpected isomorphism')
         #         equivalent_subjects[i].append(s)
         #         add_subgraph = False
         #         break
         #     else:
         #         add_subgraph = True
-        
+        if indices == []:
+            add_subgraph = True
+            
         if add_subgraph == True:
             distinct_class_subgraphs.append(class_graph)
             equivalent_subjects.append([s])
