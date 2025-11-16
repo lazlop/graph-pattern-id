@@ -195,7 +195,7 @@ for n in range(20):
     import os
     # current_dir = os.path.dirname(__file__)
     # utils_path = os.path.abspath(os.path.join(current_dir, '..', 'utils'))
-    sys.path.insert(0, '../utils')
+    sys.path.insert(0, '../../utils')
     from utils import query_to_df, get_prefixes
     model_length.append(len(bldg.graph))
     # %%

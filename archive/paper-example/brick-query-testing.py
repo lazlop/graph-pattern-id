@@ -1,5 +1,4 @@
 #%% 
-import pandas as pd 
 from rdflib import Namespace, URIRef, RDFS, Graph, Literal
 from buildingmotif import BuildingMOTIF
 from buildingmotif.dataclasses import Model, Library
@@ -10,15 +9,14 @@ import sys
 import os
 # current_dir = os.path.dirname(__file__)
 # utils_path = os.path.abspath(os.path.join(current_dir, '..', 'utils'))
-sys.path.insert(0, '../utils')
+sys.path.insert(0, '../../utils')
 from utils import query_to_df, get_prefixes
 # %%
 BLDG = Namespace("urn:example#")
 bm = BuildingMOTIF("sqlite://", "topquadrant")
 bldg = Model.create("urn:example#")
 bldg.graph.bind('',BLDG)
-brick = Library.load(ontology_graph="../ontologies/Brick.ttl")
-
+brick = Library.load(ontology_graph="Brick.ttl")
 
 # %%
 brick_tmpl = Library.load(directory='brick-templates')
@@ -44,8 +42,6 @@ print(template_types)
 # %%
 not_condensed_t = []
 condensed_t = []
-condensed_reasoning_t = []
-not_condensed_reasoning_t = []
 model_length = []
 for n in range(20):
     bldg = Model.create("urn:example#")
@@ -124,23 +120,58 @@ for n in range(20):
         bldg_graph.add((s,p,o))
     for s,p,o in g.triples((None,None,None)):
         bldg_graph.add((s,p,o))
+    st = time()
+
+    group_bldg_query_wrong = """
+    SELECT ?dat ?vav ?ahu
+    WHERE {
+        ?dat a brick:Discharge_Air_Temperature_Sensor .
+        ?vav a brick:VAV .
+        ?vav brick:hasPoint ?dat .
+        ?ahu brick:feeds ?vav
+        FILTER NOT EXISTS {
+            ?vav brick:hasPart ?rc .
+            ?rc a brick:Heating_Coil .
+        }
+    }
+    """
+    query_to_df(group_bldg_query_wrong, bldg_graph)
+    not_condensed_t.append(time() - st)
 
     st = time()
-    ont = brick
-    bldg.validate([ont.get_shape_collection()])
-    et = time()
-    not_condensed_reasoning_t.append(et-st)
-    bldg_schema = Model.create('urn:example#')
-    bldg_schema.add_graph(g)
-    st = time()
-    bldg_schema.validate([ont.get_shape_collection()])
-    et = time()
-    condensed_reasoning_t.append(et-st)  
-    model_length.append(len(bldg.graph))
-
-    df = pd.DataFrame({
-        'model_length': model_length,
-        'not_condensed_reasoning_t': not_condensed_reasoning_t,
-        'condensed_reasoning_t': condensed_reasoning_t,
-    })
-    df.to_csv('reasoning-time-brick.csv')
+    group_bldg_query = """
+    SELECT ?dat ?vav ?ahu
+    WHERE {
+        ?vavC a brick:VAV .
+        ?vavC rdfs:member ?vav .
+        ?ahu brick:feeds ?vav .
+        ?vav brick:hasPoint ?dat .
+        ?dat a brick:Discharge_Air_Temperature_Sensor .
+        FILTER NOT EXISTS {
+            ?vavC brick:hasPart ?rc .
+            ?rc a brick:Heating_Coil .
+        }
+    }
+    """
+    query_to_df(group_bldg_query, bldg_graph)
+    condensed_t.append(time() - st)
+    # breaking at 5 minutes
+    model_length.append(len(bldg_graph))
+    if not_condensed_t[-1] >= 600:
+        break 
+# %%
+import matplotlib.pyplot as plt
+import pandas as pd 
+df = pd.DataFrame({
+    'model_length': model_length,
+    'not_condensed_t': not_condensed_t,
+    'condensed_t': condensed_t
+})
+df.to_csv('query-time.csv')
+plt.ylabel('Query Time (seconds)')
+plt.plot([f"{n/1000}k" for n in model_length],not_condensed_t, label='Without Condensed Representation')
+plt.plot([f"{n/1000}k" for n in model_length],condensed_t, label='With Condensed Representation')
+plt.xlabel('Size of Model (1000s of triples)')
+# plt.xticks(model_length, [f'{1+i} [{x}]' for i,x in enumerate(model_length)])
+plt.legend()
+plt.savefig('query-time.png')

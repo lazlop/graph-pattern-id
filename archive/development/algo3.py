@@ -14,6 +14,7 @@ import sys
 import hashlib
 import rdflib
 sys.path.append('../utils')
+sys.path.append('../../utils')
 sys.path.append('utils')
 from namespaces import *
 from utils import * 

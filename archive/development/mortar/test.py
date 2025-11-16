@@ -3,8 +3,7 @@ Notes:
 for mortar bldg1, iri parsing fails...  
 """
 import sys 
-sys.path.append('..', )
-sys.path.append('../../utils', )
+sys.path.append('../../../utils')
 from algo2 import * 
 data_graph = Graph(store = 'Oxigraph')
 data_graph.parse("buildings/bldg1.ttl", format="turtle")

@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from pyoxigraph import *
 import sys 
 sys.path.append('../utils')
+sys.path.append('../../utils')
 from namespaces import *
 from rdflib import Graph, URIRef
 from collections import defaultdict

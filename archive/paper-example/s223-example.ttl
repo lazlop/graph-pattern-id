@@ -598,29 +598,29 @@
     s223:hasAspect s223:Role-Supply ;
     s223:hasQuantityKind <http://qudt.org/vocab/quantitykind/Temperature> .
 
-:target_cp_15bb3ad0 a s223:OutletConnectionPoint ;
-    rdfs:label "OutletConnectionPoint" ;
-    s223:cnx :multiple-zone-ahu_htg_coil_1 ;
-    s223:hasMedium s223:Medium-Air ;
-    s223:mapsTo :outlet_cp_1225c30d .
-
-:target_cp_2e9b002e a s223:OutletConnectionPoint ;
+:target_cp_3331c624 a s223:OutletConnectionPoint ;
     rdfs:label "OutletConnectionPoint" ;
     s223:cnx :multiple-zone-ahu_htg_coil_3 ;
     s223:hasMedium s223:Medium-Air ;
-    s223:mapsTo :outlet_cp_fee02644 .
+    s223:mapsTo :outlet_cp_aabc7dad .
 
-:target_cp_7ff9596c a s223:OutletConnectionPoint ;
+:target_cp_3bcd3b0a a s223:OutletConnectionPoint ;
     rdfs:label "OutletConnectionPoint" ;
     s223:cnx :multiple-zone-ahu_htg_coil_0 ;
     s223:hasMedium s223:Medium-Air ;
-    s223:mapsTo :outlet_cp_ad451a02 .
+    s223:mapsTo :outlet_cp_a78fd34c .
 
-:target_cp_a911e63a a s223:OutletConnectionPoint ;
+:target_cp_799f4964 a s223:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    s223:cnx :multiple-zone-ahu_htg_coil_1 ;
+    s223:hasMedium s223:Medium-Air ;
+    s223:mapsTo :outlet_cp_8cde860f .
+
+:target_cp_893eb97c a s223:OutletConnectionPoint ;
     rdfs:label "OutletConnectionPoint" ;
     s223:cnx :multiple-zone-ahu_htg_coil_2 ;
     s223:hasMedium s223:Medium-Air ;
-    s223:mapsTo :outlet_cp_72c4be6f .
+    s223:mapsTo :outlet_cp_25e9c64f .
 
 :vav-cooling-only_air-outlet-connectionpoint_0_0 a s223:OutletConnectionPoint ;
     rdfs:label "OutletConnectionPoint" ;
@@ -5566,142 +5566,142 @@
         :multiple-zone-ahu_name_3 ;
     s223:hasMedium s223:Medium-Air .
 
-:connection_1acd19ad a s223:Connection ;
+:connection_1404c64d a s223:Connection ;
     rdfs:label "Connection" ;
-    s223:cnx :inlet_cp_ed61c626,
-        :outlet_cp_f73ccada .
+    s223:cnx :inlet_cp_b5350351,
+        :outlet_cp_8eb51f57 .
 
-:connection_1fd24ce3 a s223:Connection ;
+:connection_2df4cca6 a s223:Connection ;
     rdfs:label "Connection" ;
-    s223:cnx :inlet_cp_ad10a72f,
-        :outlet_cp_fd5de9a5 .
+    s223:cnx :inlet_cp_213b7a98,
+        :outlet_cp_79051a4b .
 
-:connection_3b4ac2e2 a s223:Connection ;
+:connection_50d47388 a s223:Connection ;
     rdfs:label "Connection" ;
-    s223:cnx :inlet_cp_ce8b892e,
-        :outlet_cp_2e46476b .
+    s223:cnx :inlet_cp_a12cad96,
+        :outlet_cp_fa7eaf09 .
 
-:connection_44e373b8 a s223:Connection ;
+:connection_5c27015f a s223:Connection ;
     rdfs:label "Connection" ;
-    s223:cnx :inlet_cp_7aaf2b0f,
-        :outlet_cp_69174235 .
+    s223:cnx :inlet_cp_7670f784,
+        :outlet_cp_36244bac .
 
-:connection_581d5f80 a s223:Connection ;
+:connection_7701f1de a s223:Connection ;
     rdfs:label "Connection" ;
-    s223:cnx :inlet_cp_5e2bf803,
-        :outlet_cp_08719d3e .
+    s223:cnx :inlet_cp_58ba7126,
+        :outlet_cp_553de671 .
 
-:connection_86bf7afe a s223:Connection ;
+:connection_9da7186c a s223:Connection ;
     rdfs:label "Connection" ;
-    s223:cnx :inlet_cp_eb0e8617,
-        :outlet_cp_8209f03e .
+    s223:cnx :inlet_cp_645020f0,
+        :outlet_cp_ebac0799 .
 
-:connection_9c5a94c9 a s223:Connection ;
+:connection_ac06544e a s223:Connection ;
     rdfs:label "Connection" ;
-    s223:cnx :inlet_cp_898e0821,
-        :outlet_cp_46357b02 .
+    s223:cnx :inlet_cp_44e3fc81,
+        :outlet_cp_060bcf18 .
 
-:connection_c5bbef44 a s223:Connection ;
+:connection_ae04e16e a s223:Connection ;
     rdfs:label "Connection" ;
-    s223:cnx :inlet_cp_27f3f4ee,
-        :outlet_cp_b2dfd334 .
+    s223:cnx :inlet_cp_eb4feda7,
+        :outlet_cp_ea8f8baf .
 
-:connection_c5beb3e7 a s223:Connection ;
+:connection_b2f51fe5 a s223:Connection ;
     rdfs:label "Connection" ;
-    s223:cnx :inlet_cp_1e64ecc2,
-        :outlet_cp_ceec26a2 .
+    s223:cnx :inlet_cp_c638fc25,
+        :outlet_cp_a62a2f9d .
 
-:connection_caee10fe a s223:Connection ;
+:connection_bb9a1797 a s223:Connection ;
     rdfs:label "Connection" ;
-    s223:cnx :inlet_cp_ac0686d8,
-        :outlet_cp_78f71a02 .
+    s223:cnx :inlet_cp_6d3d9dcd,
+        :outlet_cp_9e0f772b .
 
-:connection_d42d7b83 a s223:Connection ;
+:connection_c043c1ce a s223:Connection ;
     rdfs:label "Connection" ;
-    s223:cnx :inlet_cp_b3d259a5,
-        :outlet_cp_fabcfe80 .
+    s223:cnx :inlet_cp_e949565f,
+        :outlet_cp_fee20fc0 .
 
-:connection_ffb196cc a s223:Connection ;
+:connection_ce5db503 a s223:Connection ;
     rdfs:label "Connection" ;
-    s223:cnx :inlet_cp_5b811537,
-        :outlet_cp_e06e2fb3 .
+    s223:cnx :inlet_cp_84772bf1,
+        :outlet_cp_4a20129d .
 
-:inlet_cp_1e64ecc2 a s223:InletConnectionPoint ;
+:inlet_cp_213b7a98 a s223:InletConnectionPoint ;
     rdfs:label "InletConnectionPoint" ;
-    s223:cnx :connection_c5beb3e7,
-        :multiple-zone-ahu_htg_coil_2 ;
-    s223:hasMedium s223:Medium-Air .
-
-:inlet_cp_27f3f4ee a s223:InletConnectionPoint ;
-    rdfs:label "InletConnectionPoint" ;
-    s223:cnx :connection_c5bbef44,
+    s223:cnx :connection_2df4cca6,
         :multiple-zone-ahu_clg_coil_1 ;
     s223:hasMedium s223:Medium-Air .
 
-:inlet_cp_5b811537 a s223:InletConnectionPoint ;
+:inlet_cp_44e3fc81 a s223:InletConnectionPoint ;
     rdfs:label "InletConnectionPoint" ;
-    s223:cnx :connection_ffb196cc,
-        :multiple-zone-ahu_htg_coil_0 ;
-    s223:hasMedium s223:Medium-Air .
-
-:inlet_cp_5e2bf803 a s223:InletConnectionPoint ;
-    rdfs:label "InletConnectionPoint" ;
-    s223:cnx :connection_581d5f80,
-        :multiple-zone-ahu_ra_damper_1 ;
-    s223:hasMedium s223:Medium-Air .
-
-:inlet_cp_7aaf2b0f a s223:InletConnectionPoint ;
-    rdfs:label "InletConnectionPoint" ;
-    s223:cnx :connection_44e373b8,
-        :multiple-zone-ahu_clg_coil_0 ;
-    s223:hasMedium s223:Medium-Air .
-
-:inlet_cp_898e0821 a s223:InletConnectionPoint ;
-    rdfs:label "InletConnectionPoint" ;
-    s223:cnx :connection_9c5a94c9,
-        :multiple-zone-ahu_htg_coil_1 ;
-    s223:hasMedium s223:Medium-Air .
-
-:inlet_cp_ac0686d8 a s223:InletConnectionPoint ;
-    rdfs:label "InletConnectionPoint" ;
-    s223:cnx :connection_caee10fe,
-        :multiple-zone-ahu_ra_damper_3 ;
-    s223:hasMedium s223:Medium-Air .
-
-:inlet_cp_ad10a72f a s223:InletConnectionPoint ;
-    rdfs:label "InletConnectionPoint" ;
-    s223:cnx :connection_1fd24ce3,
-        :multiple-zone-ahu_clg_coil_3 ;
-    s223:hasMedium s223:Medium-Air .
-
-:inlet_cp_b3d259a5 a s223:InletConnectionPoint ;
-    rdfs:label "InletConnectionPoint" ;
-    s223:cnx :connection_d42d7b83,
+    s223:cnx :connection_ac06544e,
         :multiple-zone-ahu_ra_damper_0 ;
     s223:hasMedium s223:Medium-Air .
 
-:inlet_cp_ce8b892e a s223:InletConnectionPoint ;
+:inlet_cp_58ba7126 a s223:InletConnectionPoint ;
     rdfs:label "InletConnectionPoint" ;
-    s223:cnx :connection_3b4ac2e2,
+    s223:cnx :connection_7701f1de,
+        :multiple-zone-ahu_htg_coil_3 ;
+    s223:hasMedium s223:Medium-Air .
+
+:inlet_cp_645020f0 a s223:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    s223:cnx :connection_9da7186c,
+        :multiple-zone-ahu_htg_coil_0 ;
+    s223:hasMedium s223:Medium-Air .
+
+:inlet_cp_6d3d9dcd a s223:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    s223:cnx :connection_bb9a1797,
         :multiple-zone-ahu_ra_damper_2 ;
     s223:hasMedium s223:Medium-Air .
 
-:inlet_cp_eb0e8617 a s223:InletConnectionPoint ;
+:inlet_cp_7670f784 a s223:InletConnectionPoint ;
     rdfs:label "InletConnectionPoint" ;
-    s223:cnx :connection_86bf7afe,
+    s223:cnx :connection_5c27015f,
+        :multiple-zone-ahu_clg_coil_3 ;
+    s223:hasMedium s223:Medium-Air .
+
+:inlet_cp_84772bf1 a s223:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    s223:cnx :connection_ce5db503,
+        :multiple-zone-ahu_htg_coil_1 ;
+    s223:hasMedium s223:Medium-Air .
+
+:inlet_cp_a12cad96 a s223:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    s223:cnx :connection_50d47388,
+        :multiple-zone-ahu_clg_coil_0 ;
+    s223:hasMedium s223:Medium-Air .
+
+:inlet_cp_b5350351 a s223:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    s223:cnx :connection_1404c64d,
+        :multiple-zone-ahu_ra_damper_3 ;
+    s223:hasMedium s223:Medium-Air .
+
+:inlet_cp_c638fc25 a s223:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    s223:cnx :connection_b2f51fe5,
+        :multiple-zone-ahu_ra_damper_1 ;
+    s223:hasMedium s223:Medium-Air .
+
+:inlet_cp_e949565f a s223:InletConnectionPoint ;
+    rdfs:label "InletConnectionPoint" ;
+    s223:cnx :connection_c043c1ce,
         :multiple-zone-ahu_clg_coil_2 ;
     s223:hasMedium s223:Medium-Air .
 
-:inlet_cp_ed61c626 a s223:InletConnectionPoint ;
+:inlet_cp_eb4feda7 a s223:InletConnectionPoint ;
     rdfs:label "InletConnectionPoint" ;
-    s223:cnx :connection_1acd19ad,
-        :multiple-zone-ahu_htg_coil_3 ;
+    s223:cnx :connection_ae04e16e,
+        :multiple-zone-ahu_htg_coil_2 ;
     s223:hasMedium s223:Medium-Air .
 
 :multiple-zone-ahu_name_0 a s223:AirHandlingUnit ;
     rdfs:label "AirHandlingUnit" ;
     s223:cnx :ahu_0out,
-        :outlet_cp_ad451a02 ;
+        :outlet_cp_a78fd34c ;
     s223:connectsTo :vav-cooling-only_name_0_0,
         :vav-cooling-only_name_0_1,
         :vav-cooling-only_name_0_10,
@@ -5745,7 +5745,7 @@
 :multiple-zone-ahu_name_1 a s223:AirHandlingUnit ;
     rdfs:label "AirHandlingUnit" ;
     s223:cnx :ahu_1out,
-        :outlet_cp_1225c30d ;
+        :outlet_cp_8cde860f ;
     s223:connectsTo :vav-cooling-only_name_1_0,
         :vav-cooling-only_name_1_1,
         :vav-cooling-only_name_1_10,
@@ -5789,7 +5789,7 @@
 :multiple-zone-ahu_name_2 a s223:AirHandlingUnit ;
     rdfs:label "AirHandlingUnit" ;
     s223:cnx :ahu_2out,
-        :outlet_cp_72c4be6f ;
+        :outlet_cp_25e9c64f ;
     s223:connectsTo :vav-cooling-only_name_2_0,
         :vav-cooling-only_name_2_1,
         :vav-cooling-only_name_2_10,
@@ -5833,7 +5833,7 @@
 :multiple-zone-ahu_name_3 a s223:AirHandlingUnit ;
     rdfs:label "AirHandlingUnit" ;
     s223:cnx :ahu_3out,
-        :outlet_cp_fee02644 ;
+        :outlet_cp_aabc7dad ;
     s223:connectsTo :vav-cooling-only_name_3_0,
         :vav-cooling-only_name_3_1,
         :vav-cooling-only_name_3_10,
@@ -5876,118 +5876,118 @@
 
 :multiple-zone-ahu_sa_fan_0 a s223:Fan ;
     rdfs:label "Fan" ;
-    s223:cnx :outlet_cp_fabcfe80 ;
+    s223:cnx :outlet_cp_060bcf18 ;
     s223:connectsTo :multiple-zone-ahu_ra_damper_0 ;
     s223:hasAspect s223:Role-SupplyAir .
 
 :multiple-zone-ahu_sa_fan_1 a s223:Fan ;
     rdfs:label "Fan" ;
-    s223:cnx :outlet_cp_08719d3e ;
+    s223:cnx :outlet_cp_a62a2f9d ;
     s223:connectsTo :multiple-zone-ahu_ra_damper_1 ;
     s223:hasAspect s223:Role-SupplyAir .
 
 :multiple-zone-ahu_sa_fan_2 a s223:Fan ;
     rdfs:label "Fan" ;
-    s223:cnx :outlet_cp_2e46476b ;
+    s223:cnx :outlet_cp_9e0f772b ;
     s223:connectsTo :multiple-zone-ahu_ra_damper_2 ;
     s223:hasAspect s223:Role-SupplyAir .
 
 :multiple-zone-ahu_sa_fan_3 a s223:Fan ;
     rdfs:label "Fan" ;
-    s223:cnx :outlet_cp_78f71a02 ;
+    s223:cnx :outlet_cp_8eb51f57 ;
     s223:connectsTo :multiple-zone-ahu_ra_damper_3 ;
     s223:hasAspect s223:Role-SupplyAir .
 
-:outlet_cp_08719d3e a s223:OutletConnectionPoint ;
+:outlet_cp_060bcf18 a s223:OutletConnectionPoint ;
     rdfs:label "OutletConnectionPoint" ;
-    s223:cnx :connection_581d5f80,
-        :multiple-zone-ahu_sa_fan_1 ;
+    s223:cnx :connection_ac06544e,
+        :multiple-zone-ahu_sa_fan_0 ;
     s223:hasMedium s223:Medium-Air .
 
-:outlet_cp_1225c30d a s223:OutletConnectionPoint ;
-    rdfs:label "OutletConnectionPoint" ;
-    s223:cnx :multiple-zone-ahu_name_1 ;
-    s223:hasMedium s223:Medium-Air .
-
-:outlet_cp_2e46476b a s223:OutletConnectionPoint ;
-    rdfs:label "OutletConnectionPoint" ;
-    s223:cnx :connection_3b4ac2e2,
-        :multiple-zone-ahu_sa_fan_2 ;
-    s223:hasMedium s223:Medium-Air .
-
-:outlet_cp_46357b02 a s223:OutletConnectionPoint ;
-    rdfs:label "OutletConnectionPoint" ;
-    s223:cnx :connection_9c5a94c9,
-        :multiple-zone-ahu_clg_coil_1 ;
-    s223:hasMedium s223:Medium-Air .
-
-:outlet_cp_69174235 a s223:OutletConnectionPoint ;
-    rdfs:label "OutletConnectionPoint" ;
-    s223:cnx :connection_44e373b8,
-        :multiple-zone-ahu_ra_damper_0 ;
-    s223:hasMedium s223:Medium-Air .
-
-:outlet_cp_72c4be6f a s223:OutletConnectionPoint ;
+:outlet_cp_25e9c64f a s223:OutletConnectionPoint ;
     rdfs:label "OutletConnectionPoint" ;
     s223:cnx :multiple-zone-ahu_name_2 ;
     s223:hasMedium s223:Medium-Air .
 
-:outlet_cp_78f71a02 a s223:OutletConnectionPoint ;
+:outlet_cp_36244bac a s223:OutletConnectionPoint ;
     rdfs:label "OutletConnectionPoint" ;
-    s223:cnx :connection_caee10fe,
+    s223:cnx :connection_5c27015f,
+        :multiple-zone-ahu_ra_damper_3 ;
+    s223:hasMedium s223:Medium-Air .
+
+:outlet_cp_4a20129d a s223:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    s223:cnx :connection_ce5db503,
+        :multiple-zone-ahu_clg_coil_1 ;
+    s223:hasMedium s223:Medium-Air .
+
+:outlet_cp_553de671 a s223:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    s223:cnx :connection_7701f1de,
+        :multiple-zone-ahu_clg_coil_3 ;
+    s223:hasMedium s223:Medium-Air .
+
+:outlet_cp_79051a4b a s223:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    s223:cnx :connection_2df4cca6,
+        :multiple-zone-ahu_ra_damper_1 ;
+    s223:hasMedium s223:Medium-Air .
+
+:outlet_cp_8cde860f a s223:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    s223:cnx :multiple-zone-ahu_name_1 ;
+    s223:hasMedium s223:Medium-Air .
+
+:outlet_cp_8eb51f57 a s223:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    s223:cnx :connection_1404c64d,
         :multiple-zone-ahu_sa_fan_3 ;
     s223:hasMedium s223:Medium-Air .
 
-:outlet_cp_8209f03e a s223:OutletConnectionPoint ;
+:outlet_cp_9e0f772b a s223:OutletConnectionPoint ;
     rdfs:label "OutletConnectionPoint" ;
-    s223:cnx :connection_86bf7afe,
-        :multiple-zone-ahu_ra_damper_2 ;
+    s223:cnx :connection_bb9a1797,
+        :multiple-zone-ahu_sa_fan_2 ;
     s223:hasMedium s223:Medium-Air .
 
-:outlet_cp_ad451a02 a s223:OutletConnectionPoint ;
+:outlet_cp_a62a2f9d a s223:OutletConnectionPoint ;
+    rdfs:label "OutletConnectionPoint" ;
+    s223:cnx :connection_b2f51fe5,
+        :multiple-zone-ahu_sa_fan_1 ;
+    s223:hasMedium s223:Medium-Air .
+
+:outlet_cp_a78fd34c a s223:OutletConnectionPoint ;
     rdfs:label "OutletConnectionPoint" ;
     s223:cnx :multiple-zone-ahu_name_0 ;
     s223:hasMedium s223:Medium-Air .
 
-:outlet_cp_b2dfd334 a s223:OutletConnectionPoint ;
+:outlet_cp_aabc7dad a s223:OutletConnectionPoint ;
     rdfs:label "OutletConnectionPoint" ;
-    s223:cnx :connection_c5bbef44,
-        :multiple-zone-ahu_ra_damper_1 ;
+    s223:cnx :multiple-zone-ahu_name_3 ;
     s223:hasMedium s223:Medium-Air .
 
-:outlet_cp_ceec26a2 a s223:OutletConnectionPoint ;
+:outlet_cp_ea8f8baf a s223:OutletConnectionPoint ;
     rdfs:label "OutletConnectionPoint" ;
-    s223:cnx :connection_c5beb3e7,
+    s223:cnx :connection_ae04e16e,
         :multiple-zone-ahu_clg_coil_2 ;
     s223:hasMedium s223:Medium-Air .
 
-:outlet_cp_e06e2fb3 a s223:OutletConnectionPoint ;
+:outlet_cp_ebac0799 a s223:OutletConnectionPoint ;
     rdfs:label "OutletConnectionPoint" ;
-    s223:cnx :connection_ffb196cc,
+    s223:cnx :connection_9da7186c,
         :multiple-zone-ahu_clg_coil_0 ;
     s223:hasMedium s223:Medium-Air .
 
-:outlet_cp_f73ccada a s223:OutletConnectionPoint ;
+:outlet_cp_fa7eaf09 a s223:OutletConnectionPoint ;
     rdfs:label "OutletConnectionPoint" ;
-    s223:cnx :connection_1acd19ad,
-        :multiple-zone-ahu_clg_coil_3 ;
+    s223:cnx :connection_50d47388,
+        :multiple-zone-ahu_ra_damper_0 ;
     s223:hasMedium s223:Medium-Air .
 
-:outlet_cp_fabcfe80 a s223:OutletConnectionPoint ;
+:outlet_cp_fee20fc0 a s223:OutletConnectionPoint ;
     rdfs:label "OutletConnectionPoint" ;
-    s223:cnx :connection_d42d7b83,
-        :multiple-zone-ahu_sa_fan_0 ;
-    s223:hasMedium s223:Medium-Air .
-
-:outlet_cp_fd5de9a5 a s223:OutletConnectionPoint ;
-    rdfs:label "OutletConnectionPoint" ;
-    s223:cnx :connection_1fd24ce3,
-        :multiple-zone-ahu_ra_damper_3 ;
-    s223:hasMedium s223:Medium-Air .
-
-:outlet_cp_fee02644 a s223:OutletConnectionPoint ;
-    rdfs:label "OutletConnectionPoint" ;
-    s223:cnx :multiple-zone-ahu_name_3 ;
+    s223:cnx :connection_c043c1ce,
+        :multiple-zone-ahu_ra_damper_2 ;
     s223:hasMedium s223:Medium-Air .
 
 :vav-cooling-only_air-inlet-connectionpoint_0_0 a s223:InletConnectionPoint ;
@@ -8272,81 +8272,81 @@
 
 :multiple-zone-ahu_clg_coil_0 a s223:Coil ;
     rdfs:label "Coil" ;
-    s223:cnx :inlet_cp_7aaf2b0f,
-        :outlet_cp_e06e2fb3 ;
+    s223:cnx :inlet_cp_a12cad96,
+        :outlet_cp_ebac0799 ;
     s223:connectsTo :multiple-zone-ahu_htg_coil_0 ;
     s223:hasAspect s223:Role-Cooling .
 
 :multiple-zone-ahu_clg_coil_1 a s223:Coil ;
     rdfs:label "Coil" ;
-    s223:cnx :inlet_cp_27f3f4ee,
-        :outlet_cp_46357b02 ;
+    s223:cnx :inlet_cp_213b7a98,
+        :outlet_cp_4a20129d ;
     s223:connectsTo :multiple-zone-ahu_htg_coil_1 ;
     s223:hasAspect s223:Role-Cooling .
 
 :multiple-zone-ahu_clg_coil_2 a s223:Coil ;
     rdfs:label "Coil" ;
-    s223:cnx :inlet_cp_eb0e8617,
-        :outlet_cp_ceec26a2 ;
+    s223:cnx :inlet_cp_e949565f,
+        :outlet_cp_ea8f8baf ;
     s223:connectsTo :multiple-zone-ahu_htg_coil_2 ;
     s223:hasAspect s223:Role-Cooling .
 
 :multiple-zone-ahu_clg_coil_3 a s223:Coil ;
     rdfs:label "Coil" ;
-    s223:cnx :inlet_cp_ad10a72f,
-        :outlet_cp_f73ccada ;
+    s223:cnx :inlet_cp_7670f784,
+        :outlet_cp_553de671 ;
     s223:connectsTo :multiple-zone-ahu_htg_coil_3 ;
     s223:hasAspect s223:Role-Cooling .
 
 :multiple-zone-ahu_htg_coil_0 a s223:Coil ;
     rdfs:label "Coil" ;
-    s223:cnx :inlet_cp_5b811537,
-        :target_cp_7ff9596c ;
+    s223:cnx :inlet_cp_645020f0,
+        :target_cp_3bcd3b0a ;
     s223:hasAspect s223:Role-Heating .
 
 :multiple-zone-ahu_htg_coil_1 a s223:Coil ;
     rdfs:label "Coil" ;
-    s223:cnx :inlet_cp_898e0821,
-        :target_cp_15bb3ad0 ;
+    s223:cnx :inlet_cp_84772bf1,
+        :target_cp_799f4964 ;
     s223:hasAspect s223:Role-Heating .
 
 :multiple-zone-ahu_htg_coil_2 a s223:Coil ;
     rdfs:label "Coil" ;
-    s223:cnx :inlet_cp_1e64ecc2,
-        :target_cp_a911e63a ;
+    s223:cnx :inlet_cp_eb4feda7,
+        :target_cp_893eb97c ;
     s223:hasAspect s223:Role-Heating .
 
 :multiple-zone-ahu_htg_coil_3 a s223:Coil ;
     rdfs:label "Coil" ;
-    s223:cnx :inlet_cp_ed61c626,
-        :target_cp_2e9b002e ;
+    s223:cnx :inlet_cp_58ba7126,
+        :target_cp_3331c624 ;
     s223:hasAspect s223:Role-Heating .
 
 :multiple-zone-ahu_ra_damper_0 a s223:Damper ;
     rdfs:label "Damper" ;
-    s223:cnx :inlet_cp_b3d259a5,
-        :outlet_cp_69174235 ;
+    s223:cnx :inlet_cp_44e3fc81,
+        :outlet_cp_fa7eaf09 ;
     s223:connectsTo :multiple-zone-ahu_clg_coil_0 ;
     s223:hasProperty :multiple-zone-ahu_ra_damper-dmppos_0 .
 
 :multiple-zone-ahu_ra_damper_1 a s223:Damper ;
     rdfs:label "Damper" ;
-    s223:cnx :inlet_cp_5e2bf803,
-        :outlet_cp_b2dfd334 ;
+    s223:cnx :inlet_cp_c638fc25,
+        :outlet_cp_79051a4b ;
     s223:connectsTo :multiple-zone-ahu_clg_coil_1 ;
     s223:hasProperty :multiple-zone-ahu_ra_damper-dmppos_1 .
 
 :multiple-zone-ahu_ra_damper_2 a s223:Damper ;
     rdfs:label "Damper" ;
-    s223:cnx :inlet_cp_ce8b892e,
-        :outlet_cp_8209f03e ;
+    s223:cnx :inlet_cp_6d3d9dcd,
+        :outlet_cp_fee20fc0 ;
     s223:connectsTo :multiple-zone-ahu_clg_coil_2 ;
     s223:hasProperty :multiple-zone-ahu_ra_damper-dmppos_2 .
 
 :multiple-zone-ahu_ra_damper_3 a s223:Damper ;
     rdfs:label "Damper" ;
-    s223:cnx :inlet_cp_ac0686d8,
-        :outlet_cp_fd5de9a5 ;
+    s223:cnx :inlet_cp_b5350351,
+        :outlet_cp_36244bac ;
     s223:connectsTo :multiple-zone-ahu_clg_coil_3 ;
     s223:hasProperty :multiple-zone-ahu_ra_damper-dmppos_3 .
 

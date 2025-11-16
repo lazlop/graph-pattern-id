@@ -1,0 +1,116 @@
+2025-11-16 11:15:29,099 | buildingmotif.database.graph_connection |  DEBUG: Creating tables for graph storage
+2025-11-16 11:15:29,117 | buildingmotif.database.table_connection |  DEBUG: Creating shape collection in model: 'urn:example#'
+2025-11-16 11:15:29,120 | buildingmotif.database.table_connection |  DEBUG: Creating model: 'urn:example#', with graph: '05a22e1e-8416-49b4-adce-76f0f90cce8a'
+2025-11-16 11:15:29,121 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: '05a22e1e-8416-49b4-adce-76f0f90cce8a' in database with: 1 triples
+2025-11-16 11:15:29,136 | buildingmotif.database.table_connection |  DEBUG: Creating shape collection in library: 's223-templates'
+2025-11-16 11:15:29,137 | buildingmotif.database.table_connection |  DEBUG: Creating database library: 's223-templates'
+2025-11-16 11:15:29,145 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'vav-cooling-only'
+2025-11-16 11:15:29,146 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: '85daec45-eed8-448a-ba44-a0843f0e0f35' in database with: 8 triples
+2025-11-16 11:15:29,148 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'vav-with-reheat'
+2025-11-16 11:15:29,149 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: '348725e3-4e21-4f0c-9b54-f04f3e0f9123' in database with: 1 triples
+2025-11-16 11:15:29,150 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'heating-coil'
+2025-11-16 11:15:29,150 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: '1baa46fd-628d-4007-946b-15591f753eeb' in database with: 5 triples
+2025-11-16 11:15:29,151 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'cmd'
+2025-11-16 11:15:29,151 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: '83149644-03b6-4fb7-bf8a-86137d51b0eb' in database with: 2 triples
+2025-11-16 11:15:29,152 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'damper'
+2025-11-16 11:15:29,152 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: '1936cb6b-13b4-4e5b-af09-0adf1aad14e0' in database with: 2 triples
+2025-11-16 11:15:29,153 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'zone'
+2025-11-16 11:15:29,153 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: '8e545862-4991-4814-8487-3143752be6ea' in database with: 2 triples
+2025-11-16 11:15:29,154 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'ztemp'
+2025-11-16 11:15:29,154 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: '8375f14b-28ef-43de-a52e-ab86dd1d149b' in database with: 3 triples
+2025-11-16 11:15:29,155 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'occ'
+2025-11-16 11:15:29,155 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: 'fd9f31f9-5ca3-439a-9cad-b0ab65e34b6f' in database with: 2 triples
+2025-11-16 11:15:29,156 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'co2'
+2025-11-16 11:15:29,156 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: '1ea30f75-a6ff-4434-8107-69cc22ed7fef' in database with: 4 triples
+2025-11-16 11:15:29,157 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'dat'
+2025-11-16 11:15:29,157 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: '9489d870-f9dd-4ce3-99b5-862f111d1ac1' in database with: 3 triples
+2025-11-16 11:15:29,159 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'feeds'
+2025-11-16 11:15:29,159 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: '6fa014d1-f292-4095-87ff-03ef6e80ec76' in database with: 5 triples
+2025-11-16 11:15:29,160 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'air-outlet-connectionpoint'
+2025-11-16 11:15:29,160 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: 'f76cb0e9-400d-4948-93e3-39a82626c537' in database with: 2 triples
+2025-11-16 11:15:29,161 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'air-inlet-connectionpoint'
+2025-11-16 11:15:29,162 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: '9038e2a9-78e2-4615-9cb8-ba4136dc56ad' in database with: 2 triples
+2025-11-16 11:15:29,162 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'connection'
+2025-11-16 11:15:29,163 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: 'c9baf076-6f31-4268-9f81-6db822ec502e' in database with: 1 triples
+2025-11-16 11:15:29,163 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'in-maps-to'
+2025-11-16 11:15:29,164 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: 'a7c668f6-2250-4872-8f25-d60609540583' in database with: 3 triples
+2025-11-16 11:15:29,165 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'out-maps-to'
+2025-11-16 11:15:29,165 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: '4fa1cd0d-5892-4432-9777-669bb6ba7d40' in database with: 3 triples
+2025-11-16 11:15:29,166 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'multiple-zone-ahu'
+2025-11-16 11:15:29,166 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: '2d459b77-0b96-4f7c-90c3-fe5fe8553b96' in database with: 10 triples
+2025-11-16 11:15:29,167 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'sa_fan'
+2025-11-16 11:15:29,168 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: '2bc27512-f2b0-4108-b590-2eb11407e656' in database with: 2 triples
+2025-11-16 11:15:29,168 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'htg_coil'
+2025-11-16 11:15:29,169 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: '3e960045-3058-4fa2-a27a-b0ea1c0bc51a' in database with: 2 triples
+2025-11-16 11:15:29,169 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'clg_coil'
+2025-11-16 11:15:29,170 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: '0a4b1aeb-29fe-4a39-a2b1-a761f32202c5' in database with: 2 triples
+2025-11-16 11:15:29,170 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'sa_temp'
+2025-11-16 11:15:29,171 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: 'dd3fb68f-ccd9-44aa-a0ac-924b06a589ee' in database with: 3 triples
+2025-11-16 11:15:29,171 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'oa_temp'
+2025-11-16 11:15:29,172 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: 'f9874567-81e8-4398-ad7f-6938cbed714d' in database with: 3 triples
+2025-11-16 11:15:29,172 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'ma_temp'
+2025-11-16 11:15:29,173 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: 'ebc25ad4-c891-4312-b7db-09de5fd1975c' in database with: 2 triples
+2025-11-16 11:15:29,173 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'ra_temp'
+2025-11-16 11:15:29,174 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: 'e729bd19-f53d-4ff6-9b0b-33b77c6568bd' in database with: 3 triples
+2025-11-16 11:15:29,174 | buildingmotif.database.table_connection |  DEBUG: Creating database template: 'filter_pd'
+2025-11-16 11:15:29,175 | buildingmotif.database.graph_connection |  DEBUG: Creating graph: '54f92b35-702f-4ff1-94d7-b910bd15649e' in database with: 3 triples
+2025-11-16 11:15:29,179 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '1' and: '5'
+2025-11-16 11:15:29,180 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '1' and: '6'
+2025-11-16 11:15:29,180 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '1' and: '7'
+2025-11-16 11:15:29,180 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '1' and: '8'
+2025-11-16 11:15:29,181 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '1' and: '9'
+2025-11-16 11:15:29,181 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '1' and: '10'
+2025-11-16 11:15:29,181 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '1' and: '12'
+2025-11-16 11:15:29,182 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '1' and: '13'
+2025-11-16 11:15:29,182 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '2' and: '1'
+2025-11-16 11:15:29,182 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '2' and: '3'
+2025-11-16 11:15:29,183 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '3' and: '4'
+2025-11-16 11:15:29,183 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '3' and: '12'
+2025-11-16 11:15:29,183 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '3' and: '13'
+2025-11-16 11:15:29,184 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '5' and: '4'
+2025-11-16 11:15:29,184 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '11' and: '12'
+2025-11-16 11:15:29,184 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '11' and: '13'
+2025-11-16 11:15:29,184 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '11' and: '14'
+2025-11-16 11:15:29,185 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '15' and: '13'
+2025-11-16 11:15:29,185 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '15' and: '13'
+2025-11-16 11:15:29,185 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '16' and: '12'
+2025-11-16 11:15:29,186 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '16' and: '12'
+2025-11-16 11:15:29,186 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '17' and: '18'
+2025-11-16 11:15:29,186 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '17' and: '5'
+2025-11-16 11:15:29,187 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '17' and: '19'
+2025-11-16 11:15:29,187 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '17' and: '20'
+2025-11-16 11:15:29,187 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '17' and: '21'
+2025-11-16 11:15:29,187 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '17' and: '22'
+2025-11-16 11:15:29,188 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '17' and: '23'
+2025-11-16 11:15:29,188 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '17' and: '24'
+2025-11-16 11:15:29,188 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '17' and: '25'
+2025-11-16 11:15:29,192 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '1' and: '5'
+2025-11-16 11:15:29,203 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '1' and: '6'
+2025-11-16 11:15:29,211 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '1' and: '7'
+2025-11-16 11:15:29,219 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '1' and: '8'
+2025-11-16 11:15:29,227 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '1' and: '9'
+2025-11-16 11:15:29,234 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '1' and: '10'
+2025-11-16 11:15:29,242 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '1' and: '12'
+2025-11-16 11:15:29,250 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '1' and: '13'
+2025-11-16 11:15:29,258 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '2' and: '1'
+2025-11-16 11:15:29,276 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '2' and: '3'
+2025-11-16 11:15:29,290 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '3' and: '4'
+2025-11-16 11:15:29,293 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '3' and: '12'
+2025-11-16 11:15:29,297 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '3' and: '13'
+2025-11-16 11:15:29,301 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '5' and: '4'
+2025-11-16 11:15:29,304 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '11' and: '12'
+2025-11-16 11:15:29,307 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '11' and: '13'
+2025-11-16 11:15:29,310 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '11' and: '14'
+2025-11-16 11:15:29,315 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '15' and: '13'
+2025-11-16 11:15:29,318 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '15' and: '13'
+2025-11-16 11:15:29,321 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '16' and: '12'
+2025-11-16 11:15:29,323 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '16' and: '12'
+2025-11-16 11:15:29,346 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '17' and: '5'
+2025-11-16 11:15:29,355 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '17' and: '18'
+2025-11-16 11:15:29,364 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '17' and: '19'
+2025-11-16 11:15:29,373 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '17' and: '20'
+2025-11-16 11:15:29,381 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '17' and: '21'
+2025-11-16 11:15:29,389 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '17' and: '22'
+2025-11-16 11:15:29,398 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '17' and: '23'
+2025-11-16 11:15:29,406 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '17' and: '24'
+2025-11-16 11:15:29,415 | buildingmotif.database.table_connection |  DEBUG: Creating depencency from templates with ids: '17' and: '25'
