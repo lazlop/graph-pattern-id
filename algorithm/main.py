@@ -9,6 +9,11 @@ TODO:
 - Fix relaxed version of b_schema using jaccard similarity. May not converge exactly right since different subgraphs can be selected for each loop
 - Need to check stop condition for jaccard similarity version. NOT working correctly for mortar
     A hint about what may be going wrong is that the graphs are getting bigger per iteration. I think they shouldn't be getting bigger after the 1st iteration because I'm just removing and replacing labels
+    Ran with 20 iterations and the graph got one longer per iteration, and the summarized graph got 3 longer.
+    Appears that there were different amounts of rooms and the amount of rooms per floor changed a bit
+    Also appears that there was an extra external reference version added 
+    This indicates a bug with the rdfs:Resource usage. Line 108 in bldg5-20iter shows this. There should not be multiple external references on this sensor
+    BUG IS BLANK NODES. Will skolemize graph before doing anything.
 """
 
 from rdflib.compare import isomorphic, graph_diff
@@ -323,6 +328,7 @@ def run_algo(original_data_graph, iterations = 10, similarity_threshold = None):
     class_mappings = []
     original_data_graph.remove((URIRef('urn:example#'), A, OWL.Ontology))
     data_graph = copy_graph(original_data_graph)
+    data_graph = data_graph.skolemize()
     for i in range(iterations):
         distinct_class_subgraphs, seen_subjects, equivalent_subjects, subject_classes = get_class_isomorphisms(data_graph, similarity_threshold)
         new_subject_classes, new_class_mappings = assign_new_classes(data_graph, distinct_class_subgraphs, equivalent_subjects, subject_classes)
@@ -351,6 +357,18 @@ def run_algo(original_data_graph, iterations = 10, similarity_threshold = None):
         
         prev_subject_classes = new_subject_classes
         print("Summarized Graph Length: ", len(create_class_graph(data_graph)))
+        # NOTE: bug check
+        strikes = {}
+        for s, p, o in data_graph:
+            if p == A and (str(HPFS) in str(o)):
+                if s in strikes:
+                    strikes[o] += 1
+                else:
+                    strikes[o] = 1
+        for k, v in strikes.items():
+            if v > 1:
+                raise Exception(f"shouldn't be more than one HPFS label on a class: {k} {v}") #print(k, v)
+                
     
     
     # H, in the paper

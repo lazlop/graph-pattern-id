@@ -36,7 +36,7 @@ if __name__ == "__main__":
     for file_name, g in get_mortar_graphs(directory_path):
         gs.append(g)
         file_names.append(file_name)
-        cg, mg = run_algo(g, iterations=2,similarity_threshold=threshold)
+        cg, mg = run_algo(g, iterations=10,similarity_threshold=threshold)
         # removing extraneous classes
         for s,p,o in cg:
             if (p == A) & (str(HPFS) in str(o)):
