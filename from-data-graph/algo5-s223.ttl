@@ -1,0 +1,227 @@
+@prefix hpfs: <urn:hpflex/shapes#> .
+@prefix ns1: <http://data.ashrae.org/standard223#> .
+@prefix ns2: <http://qudt.org/schema/qudt/> .
+@prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+hpfs:DomainSpace_version_3 a ns1:DomainSpace ;
+    ns1:hasDomain rdfs:Resource .
+
+hpfs:Damper_version_6 a ns1:Damper ;
+    ns1:hasProperty hpfs:QuantifiableActuatableProperty_version_7 .
+
+hpfs:Damper_version_7 a ns1:Damper ;
+    ns1:hasProperty hpfs:QuantifiableActuatableProperty_version_8 .
+
+hpfs:InletConnectionPoint_version_11 a ns1:InletConnectionPoint ;
+    ns1:cnx hpfs:Coil_version_7 ;
+    ns1:hasMedium rdfs:Resource .
+
+hpfs:OutletConnectionPoint_version_18 a ns1:OutletConnectionPoint ;
+    ns1:cnx hpfs:Coil_version_9 ;
+    ns1:hasMedium rdfs:Resource ;
+    ns1:mapsTo hpfs:OutletConnectionPoint_version_24 .
+
+hpfs:OutletConnectionPoint_version_19 a ns1:OutletConnectionPoint ;
+    ns1:cnx hpfs:SingleDuctTerminal_version_5 ;
+    ns1:hasMedium rdfs:Resource ;
+    ns1:hasProperty hpfs:QuantifiableObservableProperty_version_29 .
+
+hpfs:OutletConnectionPoint_version_20 a ns1:OutletConnectionPoint ;
+    ns1:cnx hpfs:SingleDuctTerminal_version_6 ;
+    ns1:hasMedium rdfs:Resource ;
+    ns1:hasProperty hpfs:QuantifiableObservableProperty_version_30 .
+
+hpfs:OutletConnectionPoint_version_21 a ns1:OutletConnectionPoint ;
+    ns1:cnx hpfs:Coil_version_7 ;
+    ns1:hasMedium rdfs:Resource .
+
+hpfs:QuantifiableActuatableProperty_version_6 a ns1:QuantifiableActuatableProperty ;
+    ns1:hasQuantityKind quantitykind:PositionRatio .
+
+hpfs:QuantifiableActuatableProperty_version_7 a ns1:QuantifiableActuatableProperty ;
+    ns1:hasQuantityKind quantitykind:PositionRatio .
+
+hpfs:QuantifiableActuatableProperty_version_8 a ns1:QuantifiableActuatableProperty ;
+    ns1:hasQuantityKind quantitykind:PositionRatio .
+
+hpfs:QuantifiableActuatableProperty_version_9 a ns1:QuantifiableActuatableProperty ;
+    ns1:hasQuantityKind quantitykind:PositionRatio .
+
+hpfs:QuantifiableObservableProperty_version_22 a ns1:QuantifiableObservableProperty ;
+    ns1:hasAspect ns1:Aspect-Filter ;
+    ns1:hasQuantityKind quantitykind:PressureDifference .
+
+hpfs:QuantifiableObservableProperty_version_23 a ns1:QuantifiableObservableProperty ;
+    ns1:hasQuantityKind quantitykind:Temperature .
+
+hpfs:QuantifiableObservableProperty_version_24 a ns1:QuantifiableObservableProperty ;
+    ns1:hasAspect ns1:Role-OutdoorAirIntake ;
+    ns1:hasQuantityKind quantitykind:Temperature .
+
+hpfs:QuantifiableObservableProperty_version_25 a ns1:QuantifiableObservableProperty ;
+    ns1:hasAspect ns1:Role-Return ;
+    ns1:hasQuantityKind quantitykind:Temperature .
+
+hpfs:QuantifiableObservableProperty_version_26 a ns1:QuantifiableObservableProperty ;
+    ns1:hasAspect ns1:Role-Supply ;
+    ns1:hasQuantityKind quantitykind:Temperature .
+
+hpfs:QuantifiableObservableProperty_version_27 a ns1:QuantifiableObservableProperty ;
+    ns1:hasQuantityKind quantitykind:Concentration ;
+    ns1:ofConstituent rdfs:Resource ;
+    ns1:ofMedium rdfs:Resource .
+
+hpfs:QuantifiableObservableProperty_version_28 a ns1:QuantifiableObservableProperty ;
+    ns1:hasQuantityKind quantitykind:Concentration ;
+    ns1:ofConstituent rdfs:Resource ;
+    ns1:ofMedium rdfs:Resource .
+
+hpfs:QuantifiableObservableProperty_version_29 a ns1:QuantifiableObservableProperty ;
+    ns1:hasAspect ns1:Role-Discharge ;
+    ns1:hasQuantityKind quantitykind:Temperature .
+
+hpfs:QuantifiableObservableProperty_version_30 a ns1:QuantifiableObservableProperty ;
+    ns1:hasAspect ns1:Role-Discharge ;
+    ns1:hasQuantityKind quantitykind:Temperature .
+
+hpfs:QuantifiableObservableProperty_version_31 a ns1:QuantifiableObservableProperty ;
+    ns1:hasEnumerationKind ns1:EnumerationKind-Occupancy .
+
+hpfs:QuantifiableObservableProperty_version_32 a ns1:QuantifiableObservableProperty ;
+    ns1:hasEnumerationKind ns1:EnumerationKind-Occupancy .
+
+hpfs:QuantifiableObservableProperty_version_33 a ns1:QuantifiableObservableProperty ;
+    ns1:hasAspect ns1:Aspect-Setpoint ;
+    ns2:hasQuantityKind rdfs:Resource .
+
+hpfs:QuantifiableObservableProperty_version_34 a ns1:QuantifiableObservableProperty ;
+    ns1:hasAspect ns1:Aspect-Setpoint ;
+    ns2:hasQuantityKind rdfs:Resource .
+
+hpfs:AirHandlingUnit_version_3 a ns1:AirHandlingUnit ;
+    ns1:cnx hpfs:OutletConnectionPoint_version_22,
+        hpfs:OutletConnectionPoint_version_24 ;
+    ns1:connectsTo hpfs:SingleDuctTerminal_version_5,
+        hpfs:SingleDuctTerminal_version_6 ;
+    ns1:contains hpfs:Coil_version_8,
+        hpfs:Coil_version_9,
+        hpfs:Damper_version_8,
+        hpfs:Fan_version_3 ;
+    ns1:hasProperty hpfs:QuantifiableObservableProperty_version_22,
+        hpfs:QuantifiableObservableProperty_version_23,
+        hpfs:QuantifiableObservableProperty_version_24,
+        hpfs:QuantifiableObservableProperty_version_25,
+        hpfs:QuantifiableObservableProperty_version_26 .
+
+hpfs:Connection_version_6 a ns1:Connection ;
+    ns1:cnx hpfs:InletConnectionPoint_version_12,
+        hpfs:OutletConnectionPoint_version_26 .
+
+hpfs:Connection_version_7 a ns1:Connection ;
+    ns1:cnx hpfs:InletConnectionPoint_version_14,
+        hpfs:OutletConnectionPoint_version_23 .
+
+hpfs:Connection_version_8 a ns1:Connection ;
+    ns1:cnx hpfs:InletConnectionPoint_version_13,
+        hpfs:OutletConnectionPoint_version_25 .
+
+hpfs:Fan_version_3 a ns1:Fan ;
+    ns1:cnx hpfs:OutletConnectionPoint_version_23 ;
+    ns1:connectsTo hpfs:Damper_version_8 ;
+    ns1:hasAspect ns1:Role-SupplyAir .
+
+hpfs:InletConnectionPoint_version_12 a ns1:InletConnectionPoint ;
+    ns1:cnx hpfs:Coil_version_8,
+        hpfs:Connection_version_6 ;
+    ns1:hasMedium rdfs:Resource .
+
+hpfs:InletConnectionPoint_version_13 a ns1:InletConnectionPoint ;
+    ns1:cnx hpfs:Coil_version_9,
+        hpfs:Connection_version_8 ;
+    ns1:hasMedium rdfs:Resource .
+
+hpfs:InletConnectionPoint_version_14 a ns1:InletConnectionPoint ;
+    ns1:cnx hpfs:Connection_version_7,
+        hpfs:Damper_version_8 ;
+    ns1:hasMedium rdfs:Resource .
+
+hpfs:InletConnectionPoint_version_15 a ns1:InletConnectionPoint ;
+    ns1:cnx hpfs:Connection_version_9,
+        hpfs:SingleDuctTerminal_version_5 ;
+    ns1:hasMedium rdfs:Resource .
+
+hpfs:InletConnectionPoint_version_16 a ns1:InletConnectionPoint ;
+    ns1:cnx hpfs:Connection_version_9,
+        hpfs:SingleDuctTerminal_version_6 ;
+    ns1:hasMedium rdfs:Resource .
+
+hpfs:OutletConnectionPoint_version_22 a ns1:OutletConnectionPoint ;
+    ns1:cnx hpfs:AirHandlingUnit_version_3,
+        hpfs:Connection_version_9 ;
+    ns1:hasMedium rdfs:Resource .
+
+hpfs:OutletConnectionPoint_version_23 a ns1:OutletConnectionPoint ;
+    ns1:cnx hpfs:Connection_version_7,
+        hpfs:Fan_version_3 ;
+    ns1:hasMedium rdfs:Resource .
+
+hpfs:OutletConnectionPoint_version_24 a ns1:OutletConnectionPoint ;
+    ns1:cnx hpfs:AirHandlingUnit_version_3 ;
+    ns1:hasMedium rdfs:Resource .
+
+hpfs:OutletConnectionPoint_version_25 a ns1:OutletConnectionPoint ;
+    ns1:cnx hpfs:Coil_version_8,
+        hpfs:Connection_version_8 ;
+    ns1:hasMedium rdfs:Resource .
+
+hpfs:OutletConnectionPoint_version_26 a ns1:OutletConnectionPoint ;
+    ns1:cnx hpfs:Connection_version_6,
+        hpfs:Damper_version_8 ;
+    ns1:hasMedium rdfs:Resource .
+
+hpfs:Coil_version_7 a ns1:Coil ;
+    ns1:cnx hpfs:InletConnectionPoint_version_11,
+        hpfs:OutletConnectionPoint_version_21 ;
+    ns1:hasAspect ns1:Role-Heating ;
+    ns1:hasProperty hpfs:QuantifiableActuatableProperty_version_9 .
+
+hpfs:Connection_version_9 a ns1:Connection ;
+    ns1:cnx hpfs:InletConnectionPoint_version_15,
+        hpfs:InletConnectionPoint_version_16,
+        hpfs:OutletConnectionPoint_version_22 .
+
+hpfs:SingleDuctTerminal_version_5 a ns1:SingleDuctTerminal ;
+    ns1:cnx hpfs:InletConnectionPoint_version_15,
+        hpfs:OutletConnectionPoint_version_19 ;
+    ns1:contains hpfs:Damper_version_6 ;
+    ns1:hasProperty hpfs:QuantifiableObservableProperty_version_27,
+        hpfs:QuantifiableObservableProperty_version_31,
+        hpfs:QuantifiableObservableProperty_version_33 .
+
+hpfs:SingleDuctTerminal_version_6 a ns1:SingleDuctTerminal ;
+    ns1:cnx hpfs:InletConnectionPoint_version_16,
+        hpfs:OutletConnectionPoint_version_20 ;
+    ns1:contains hpfs:Coil_version_7,
+        hpfs:Damper_version_7 ;
+    ns1:hasProperty hpfs:QuantifiableObservableProperty_version_28,
+        hpfs:QuantifiableObservableProperty_version_32,
+        hpfs:QuantifiableObservableProperty_version_34 .
+
+hpfs:Coil_version_8 a ns1:Coil ;
+    ns1:cnx hpfs:InletConnectionPoint_version_12,
+        hpfs:OutletConnectionPoint_version_25 ;
+    ns1:connectsTo hpfs:Coil_version_9 ;
+    ns1:hasAspect ns1:Role-Cooling .
+
+hpfs:Coil_version_9 a ns1:Coil ;
+    ns1:cnx hpfs:InletConnectionPoint_version_13,
+        hpfs:OutletConnectionPoint_version_18 ;
+    ns1:hasAspect ns1:Role-Heating .
+
+hpfs:Damper_version_8 a ns1:Damper ;
+    ns1:cnx hpfs:InletConnectionPoint_version_14,
+        hpfs:OutletConnectionPoint_version_26 ;
+    ns1:connectsTo hpfs:Coil_version_8 ;
+    ns1:hasProperty hpfs:QuantifiableActuatableProperty_version_6 .
+
