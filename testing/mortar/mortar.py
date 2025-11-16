@@ -54,7 +54,13 @@ if __name__ == "__main__":
         i += 1
     # size of original graph vs size of compressed graph 
     plt.plot(g_lens, cg_lens, 'o')
+    plt.xlabel("Original Graph Size")
+    plt.ylabel("Compressed Graph Size")
+    plt.title(f"Mortar Building Compression By Graph Size (Threshold: {threshold})")
     plt.savefig("mortar_graph_sizes.png")
     plt.show()
     plt.plot(g_lens, [(cg_len/g_len) for cg_len, g_len in zip(cg_lens, g_lens)], 'o')
+    plt.xlabel("Original Graph Size")
+    plt.ylabel("Compression Ratio")
+    plt.title(f"Mortar Building Compression Ratio By Graph Size (Threshold: {threshold})")
     plt.savefig("compression_ratios.png")

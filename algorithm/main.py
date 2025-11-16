@@ -13,7 +13,7 @@ TODO:
     Appears that there were different amounts of rooms and the amount of rooms per floor changed a bit
     Also appears that there was an extra external reference version added 
     This indicates a bug with the rdfs:Resource usage. Line 108 in bldg5-20iter shows this. There should not be multiple external references on this sensor
-    BUG IS BLANK NODES. Will skolemize graph before doing anything.
+    BUG IS BLANK NODES. Will skolemize graph before doing anything. Now stop condition is doing something for jaccard at least.
 """
 
 from rdflib.compare import isomorphic, graph_diff
