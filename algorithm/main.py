@@ -23,6 +23,7 @@ from utils import *
 from tqdm import tqdm
 
 counter = {}
+PRINT_GRAPHS = False
 
 def get_subgraph_with_hops(
     graph: Graph, 
@@ -282,8 +283,9 @@ def run_algo(original_data_graph, iterations = 5):
             # stop condition is no subjects are being distinguished from each other
             if lists_have_same_members(equivalent_subjects, prev_equivalent_subjects):
                 print('Algorithm stopped, since no further distinguishing classes found. Process took ',i, 'iterations')
-                print('Printing Last Set Difference')
-                pprint(last_set_diff)
+                if PRINT_GRAPHS:
+                    print('Printing Last Set Difference')
+                    pprint(last_set_diff)
                 break
             else:
                 last_set_diff = find_similar_sublists(equivalent_subjects, prev_equivalent_subjects)
@@ -291,32 +293,45 @@ def run_algo(original_data_graph, iterations = 5):
         prev_equivalent_subjects = equivalent_subjects
         for s, cls_name in new_subject_classes.items():
             data_graph.add((s, A, cls_name))
-
-
+    
+    # H, in the paper
     class_graph = create_class_graph(data_graph)
-    return class_graph, data_graph, class_mappings
+    # M, in the paper 
+    member_graph = Graph(store = "Oxigraph")
+    for i in range(len(equivalent_subjects)):
+        # TODO: Seq should probably actually be Alt or other Bag, not much value in the sequence
+        member_graph.add((subject_classes[i], A, RDF.Seq))
+        for s in equivalent_subjects[i]:
+            member_graph.add((subject_classes[i], RDFS.member, s))
+    # could optionally also return data_graph, class_mappings
+    return class_graph, member_graph
 
 
 
 if __name__ == "__main__":
     data_graph = Graph(store = 'Oxigraph')
-    data_graph.parse("/Users/lazlopaul/Desktop/223p/experiments/graph-pattern-id/from-data-graph/brick-example.ttl", format="turtle")
+    data_graph.parse("/Users/lazlopaul/Desktop/223p/experiments/graph-pattern-id/archive/development/brick-example.ttl", format="turtle")
     s223_data_graph = Graph(store = 'Oxigraph')
-    s223_data_graph.parse("/Users/lazlopaul/Desktop/223p/experiments/graph-pattern-id/from-data-graph/s223-example.ttl", format="turtle")
-    cg, dg, cm = run_algo(data_graph, 4)
+    s223_data_graph.parse("/Users/lazlopaul/Desktop/223p/experiments/graph-pattern-id/archive/development/s223-example.ttl", format="turtle")
+    cg, mg = run_algo(data_graph, 4)
     for s,p,o in cg:
         if (p == A) & (str(HPFS) in str(o)):
             cg.remove((s,p,o))
         if p == RDFS.label:
             cg.remove((s,p,o))
     bind_prefixes(cg)
-    cg.serialize('algo5-brick.ttl')
+    # cg.serialize('algo5-brick.ttl')
+    # mg.print()
+    if PRINT_GRAPHS:
+        cg.print()
 
-    cg, dg, cm = run_algo(s223_data_graph, 5)
+    cg, mg = run_algo(s223_data_graph, 5)
     for s,p,o in cg:
         if (p == A) & (str(HPFS) in str(o)):
             cg.remove((s,p,o))
         if p == RDFS.label:
             cg.remove((s,p,o))
     bind_prefixes(cg)
-    cg.serialize('algo5-s223.ttl')
+    # cg.serialize('algo5-s223.ttl')
+    if PRINT_GRAPHS:
+        cg.print()
