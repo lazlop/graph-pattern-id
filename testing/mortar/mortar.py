@@ -29,14 +29,17 @@ if __name__ == "__main__":
     directory_path = "from-website"
     gs = []
     cgs = []
+    g_lens = []
+    cg_lens = []
     file_names = []
     threshold = 0.5
     i = 0 
     # TODO: see what it looks like removing labels and stuff like that. 
     for file_name, g in get_mortar_graphs(directory_path):
         gs.append(g)
+        g_lens.append(len(g))
         file_names.append(file_name)
-        cg, mg = run_algo(g, iterations=10,similarity_threshold=threshold)
+        cg, mg = run_algo(g, iterations=5,similarity_threshold=threshold)
         # removing extraneous classes
         for s,p,o in cg:
             if (p == A) & (str(HPFS) in str(o)):
@@ -45,9 +48,13 @@ if __name__ == "__main__":
         cgs.append(cg)
         print("compressed to ", len(cg)/len(g)*100, "% of its original size")
         # cg.print()
-        if i >= 2:
+        cg_lens.append(len(cg))
+        if i >= 15:
             break
         i += 1
     # size of original graph vs size of compressed graph 
-    plt.plot([len(g) for g in gs], [len(cg) for cg in cgs], 'o')
+    plt.plot(g_lens, cg_lens, 'o')
     plt.savefig("mortar_graph_sizes.png")
+    plt.show()
+    plt.plot(g_lens, [(cg_len/g_len) for cg_len, g_len in zip(cg_lens, g_lens)], 'o')
+    plt.savefig("compression_ratios.png")
