@@ -1,0 +1,71 @@
+@prefix bldg17: <http://buildsys.org/ontologies/bldg17#> .
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg17:bldg17 a brick:Building ;
+    brick:area [ brick:hasUnit unit:FT2 ;
+            brick:value 92555 ] .
+
+bldg17:chiller a brick:Chiller ;
+    brick:hasPoint bldg17:bldg17.CHW.Building_Chilled_Water_Return_Temp,
+        bldg17:bldg17.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg17:bldg17.CHW.Building_Chilled_Water_Supply_Temp_Sp,
+        bldg17:bldg17.CHW.ECONOMIZER,
+        bldg17:bldg17.CHW.ENABLE,
+        bldg17:bldg17.CHW.LOOP_DP,
+        bldg17:bldg17.CHW.Loop_Chilled_Water_Flow,
+        bldg17:bldg17.CHW.Loop_Chilled_Water_Return_Temp,
+        bldg17:bldg17.CHW.Loop_Chilled_Water_Supply_Temp,
+        bldg17:bldg17.CHW.Outside_Air_Temp,
+        bldg17:bldg17.CHW.PUMPENABLE .
+
+owl:Class rdfs:subClassOf rdfs:Class .
+
+owl:DatatypeProperty rdfs:subClassOf rdf:Property .
+
+bldg17:bldg17.CHW.Building_Chilled_Water_Return_Temp a brick:Entering_Chilled_Water_Temperature_Sensor ;
+    rdfs:label "bldg17.CHW.Building Chilled Water Return Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "621a91f0-3f9b-41f1-bed9-2ccf9dd7c37d" ] .
+
+bldg17:bldg17.CHW.Building_Chilled_Water_Supply_Temp a brick:Leaving_Chilled_Water_Temperature_Sensor ;
+    rdfs:label "bldg17.CHW.Building Chilled Water Supply Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "e9b59947-62b2-4b12-8e34-98dbe92126c3" ] .
+
+bldg17:bldg17.CHW.Building_Chilled_Water_Supply_Temp_Sp a brick:Leaving_Chilled_Water_Temperature_Setpoint ;
+    rdfs:label "bldg17.CHW.Building Chilled Water Supply Temp Sp" ;
+    brick:timeseries [ brick:hasTimeseriesId "6a4c0de9-eb7a-4d71-956a-054a00a94114" ] .
+
+bldg17:bldg17.CHW.ECONOMIZER a brick:Damper_Position_Command ;
+    rdfs:label "bldg17.CHW.ECONOMIZER" ;
+    brick:timeseries [ brick:hasTimeseriesId "17c0bb05-c084-48e5-a77c-bc3b9efee2cc" ] .
+
+bldg17:bldg17.CHW.ENABLE a brick:Enable_Command ;
+    rdfs:label "bldg17.CHW.ENABLE" .
+
+bldg17:bldg17.CHW.LOOP_DP a brick:Chilled_Water_Differential_Pressure_Sensor ;
+    rdfs:label "bldg17.CHW.LOOP DP" ;
+    brick:timeseries [ brick:hasTimeseriesId "09e50848-511a-4cd2-bcf9-7b301dbd7f99" ] .
+
+bldg17:bldg17.CHW.Loop_Chilled_Water_Flow a brick:Chilled_Water_Flow_Sensor ;
+    rdfs:label "bldg17.CHW.Loop Chilled Water Flow" ;
+    brick:timeseries [ brick:hasTimeseriesId "a4243033-32f0-45fa-b274-fad3b863c8b7" ] .
+
+bldg17:bldg17.CHW.Loop_Chilled_Water_Return_Temp a brick:Entering_Chilled_Water_Temperature_Sensor ;
+    rdfs:label "bldg17.CHW.Loop Chilled Water Return Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "1893757c-0c5d-4c26-819f-2c43e67dadd6" ] .
+
+bldg17:bldg17.CHW.Loop_Chilled_Water_Supply_Temp a brick:Leaving_Chilled_Water_Temperature_Sensor ;
+    rdfs:label "bldg17.CHW.Loop Chilled Water Supply Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "b9701c31-5783-41ee-8f7b-a2560a50068c" ] .
+
+bldg17:bldg17.CHW.Outside_Air_Temp a brick:Outside_Air_Temperature_Sensor ;
+    rdfs:label "bldg17.CHW.Outside Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "3c42794c-a092-474e-b469-95061ae6e82c" ] .
+
+bldg17:bldg17.CHW.PUMPENABLE a brick:Pump_Command ;
+    rdfs:label "bldg17.CHW.PUMPENABLE" .
+

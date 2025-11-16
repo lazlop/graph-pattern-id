@@ -1,0 +1,974 @@
+@prefix bldg36: <http://buildsys.org/ontologies/bldg36#> .
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg36:AHU01 a brick:Air_Handler_Unit ;
+    brick:feeds bldg36:VAVRM104,
+        bldg36:VAVRM106,
+        bldg36:VAVRM111,
+        bldg36:VAVRM113,
+        bldg36:VAVRM116,
+        bldg36:VAVRM119,
+        bldg36:VAVRM120,
+        bldg36:VAVRM120B,
+        bldg36:VAVRM121,
+        bldg36:VAVRM123,
+        bldg36:VAVRM125,
+        bldg36:VAVRM126,
+        bldg36:VAVRM126A,
+        bldg36:VAVRM127,
+        bldg36:VAVRM129,
+        bldg36:VAVRM131,
+        bldg36:VAVRM133,
+        bldg36:VAVRM134,
+        bldg36:VAVRM135,
+        bldg36:VAVRM136,
+        bldg36:VAVRM137,
+        bldg36:VAVRM138,
+        bldg36:VAVRM139,
+        bldg36:VAVRM206,
+        bldg36:VAVRM207,
+        bldg36:VAVRM211,
+        bldg36:VAVRM212,
+        bldg36:VAVRM213,
+        bldg36:VAVRM215,
+        bldg36:VAVRM219,
+        bldg36:VAVRM224,
+        bldg36:VAVRM225,
+        bldg36:VAVRM228,
+        bldg36:VAVRM229,
+        bldg36:VAVRM231,
+        bldg36:VAVRM235,
+        bldg36:VAVRM236,
+        bldg36:VAVRM236B,
+        bldg36:VAVRM236C,
+        bldg36:VAVRM237,
+        bldg36:VAVRM239,
+        bldg36:VAVRM241,
+        bldg36:VAVRM242 .
+
+bldg36:bldg36 a brick:Building ;
+    brick:area [ brick:hasUnit unit:FT2 ;
+            brick:value 27165 ] .
+
+bldg36:chiller a brick:Chiller ;
+    brick:hasPoint bldg36:bldg36.CHW.BCHWR,
+        bldg36:bldg36.CHW.BCHWS,
+        bldg36:bldg36.CHW.Chilled_Water_Return_Temp,
+        bldg36:bldg36.CHW.Chilled_Water_Supply_Temp,
+        bldg36:bldg36.CHW.ECONOMIZER,
+        bldg36:bldg36.CHW.Enable,
+        bldg36:bldg36.CHW.Pump1_SPEED,
+        <http://buildsys.org/ontologies/bldg36#bldg36.CHW.Pump1_Start/Stop>,
+        bldg36:bldg36.CHW.Pump1_VFD_FREQ_OUTPUT,
+        bldg36:bldg36.CHW.Pump1_VFD_PCT_OUTPUT,
+        bldg36:bldg36.CHW.Pump1_VFD_POWER,
+        bldg36:bldg36.CHW.Pump1_VFD_SPEED,
+        bldg36:bldg36.CHW.Pump2_SPEED,
+        <http://buildsys.org/ontologies/bldg36#bldg36.CHW.Pump2_Start/Stop>,
+        bldg36:bldg36.CHW.Pump2_VFD_FREQ_OUTPUT,
+        bldg36:bldg36.CHW.Pump2_VFD_PCT_OUTPUT,
+        bldg36:bldg36.CHW.Pump2_VFD_POWER,
+        bldg36:bldg36.CHW.Pump2_VFD_SPEED .
+
+bldg36:floor1 a brick:Floor ;
+    brick:hasPart bldg36:RM104_room,
+        bldg36:RM106_room,
+        bldg36:RM111_room,
+        bldg36:RM113_room,
+        bldg36:RM116_room,
+        bldg36:RM119_room,
+        bldg36:RM120B_room,
+        bldg36:RM120_room,
+        bldg36:RM121_room,
+        bldg36:RM123_room,
+        bldg36:RM125_room,
+        bldg36:RM126A_room,
+        bldg36:RM126_room,
+        bldg36:RM127_room,
+        bldg36:RM129_room,
+        bldg36:RM131_room,
+        bldg36:RM133_room,
+        bldg36:RM134_room,
+        bldg36:RM135_room,
+        bldg36:RM136_room,
+        bldg36:RM137_room,
+        bldg36:RM138_room,
+        bldg36:RM139_room .
+
+bldg36:floor2 a brick:Floor ;
+    brick:hasPart bldg36:RM206_room,
+        bldg36:RM207_room,
+        bldg36:RM211_room,
+        bldg36:RM212_room,
+        bldg36:RM213_room,
+        bldg36:RM215_room,
+        bldg36:RM219_room,
+        bldg36:RM224_room,
+        bldg36:RM225_room,
+        bldg36:RM228_room,
+        bldg36:RM229_room,
+        bldg36:RM231_room,
+        bldg36:RM235_room,
+        bldg36:RM236B_room,
+        bldg36:RM236C_room,
+        bldg36:RM236_room,
+        bldg36:RM237_room,
+        bldg36:RM239_room,
+        bldg36:RM241_room,
+        bldg36:RM242_room .
+
+owl:Class rdfs:subClassOf rdfs:Class .
+
+owl:DatatypeProperty rdfs:subClassOf rdf:Property .
+
+bldg36:RM104 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM104_room .
+
+bldg36:RM106 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM106_room .
+
+bldg36:RM111 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM111_room .
+
+bldg36:RM113 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM113_room .
+
+bldg36:RM116 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM116_room .
+
+bldg36:RM119 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM119_room .
+
+bldg36:RM120 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM120_room .
+
+bldg36:RM120B a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM120B_room .
+
+bldg36:RM121 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM121_room .
+
+bldg36:RM123 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM123_room .
+
+bldg36:RM125 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM125_room .
+
+bldg36:RM126 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM126_room .
+
+bldg36:RM126A a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM126A_room .
+
+bldg36:RM127 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM127_room .
+
+bldg36:RM129 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM129_room .
+
+bldg36:RM131 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM131_room .
+
+bldg36:RM133 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM133_room .
+
+bldg36:RM134 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM134_room .
+
+bldg36:RM135 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM135_room .
+
+bldg36:RM136 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM136_room .
+
+bldg36:RM137 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM137_room .
+
+bldg36:RM138 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM138_room .
+
+bldg36:RM139 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM139_room .
+
+bldg36:RM206 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM206_room .
+
+bldg36:RM207 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM207_room .
+
+bldg36:RM211 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM211_room .
+
+bldg36:RM212 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM212_room .
+
+bldg36:RM213 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM213_room .
+
+bldg36:RM215 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM215_room .
+
+bldg36:RM219 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM219_room .
+
+bldg36:RM224 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM224_room .
+
+bldg36:RM225 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM225_room .
+
+bldg36:RM228 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM228_room .
+
+bldg36:RM229 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM229_room .
+
+bldg36:RM231 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM231_room .
+
+bldg36:RM235 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM235_room .
+
+bldg36:RM236 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM236_room .
+
+bldg36:RM236B a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM236B_room .
+
+bldg36:RM236C a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM236C_room .
+
+bldg36:RM237 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM237_room .
+
+bldg36:RM239 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM239_room .
+
+bldg36:RM241 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM241_room .
+
+bldg36:RM242 a brick:HVAC_Zone ;
+    brick:hasPart bldg36:RM242_room .
+
+bldg36:VAVRM104 a brick:VAV ;
+    brick:feeds bldg36:RM104 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM104.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM104.Zone_Heating_Mode .
+
+bldg36:VAVRM106 a brick:VAV ;
+    brick:feeds bldg36:RM106 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM106.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM106.Zone_Heating_Mode .
+
+bldg36:VAVRM111 a brick:VAV ;
+    brick:feeds bldg36:RM111 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM111.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM111.Zone_Heating_Mode .
+
+bldg36:VAVRM113 a brick:VAV ;
+    brick:feeds bldg36:RM113 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM113.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM113.Zone_Heating_Mode .
+
+bldg36:VAVRM116 a brick:VAV ;
+    brick:feeds bldg36:RM116 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM116.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM116.Zone_Heating_Mode .
+
+bldg36:VAVRM119 a brick:VAV ;
+    brick:feeds bldg36:RM119 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM119.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM119.Zone_Heating_Mode .
+
+bldg36:VAVRM120 a brick:VAV ;
+    brick:feeds bldg36:RM120 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM120.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM120.Zone_Heating_Mode .
+
+bldg36:VAVRM120B a brick:VAV ;
+    brick:feeds bldg36:RM120B ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM120B.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM120B.Zone_Heating_Mode .
+
+bldg36:VAVRM121 a brick:VAV ;
+    brick:feeds bldg36:RM121 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM121.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM121.Zone_Heating_Mode .
+
+bldg36:VAVRM123 a brick:VAV ;
+    brick:feeds bldg36:RM123 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM123.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM123.Zone_Heating_Mode .
+
+bldg36:VAVRM125 a brick:VAV ;
+    brick:feeds bldg36:RM125 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM125.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM125.Zone_Heating_Mode .
+
+bldg36:VAVRM126 a brick:VAV ;
+    brick:feeds bldg36:RM126 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM126.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM126.Zone_Heating_Mode .
+
+bldg36:VAVRM126A a brick:VAV ;
+    brick:feeds bldg36:RM126A ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM126A.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM126A.Zone_Heating_Mode .
+
+bldg36:VAVRM127 a brick:VAV ;
+    brick:feeds bldg36:RM127 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM127.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM127.Zone_Heating_Mode .
+
+bldg36:VAVRM129 a brick:VAV ;
+    brick:feeds bldg36:RM129 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM129.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM129.Zone_Heating_Mode .
+
+bldg36:VAVRM131 a brick:VAV ;
+    brick:feeds bldg36:RM131 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM131.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM131.Zone_Heating_Mode .
+
+bldg36:VAVRM133 a brick:VAV ;
+    brick:feeds bldg36:RM133 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM133.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM133.Zone_Heating_Mode .
+
+bldg36:VAVRM134 a brick:VAV ;
+    brick:feeds bldg36:RM134 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM134.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM134.Zone_Heating_Mode .
+
+bldg36:VAVRM135 a brick:VAV ;
+    brick:feeds bldg36:RM135 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM135.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM135.Zone_Heating_Mode .
+
+bldg36:VAVRM136 a brick:VAV ;
+    brick:feeds bldg36:RM136 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM136.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM136.Zone_Heating_Mode .
+
+bldg36:VAVRM137 a brick:VAV ;
+    brick:feeds bldg36:RM137 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM137.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM137.Zone_Heating_Mode .
+
+bldg36:VAVRM138 a brick:VAV ;
+    brick:feeds bldg36:RM138 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM138.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM138.Zone_Heating_Mode .
+
+bldg36:VAVRM139 a brick:VAV ;
+    brick:feeds bldg36:RM139 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM139.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM139.Zone_Heating_Mode .
+
+bldg36:VAVRM206 a brick:VAV ;
+    brick:feeds bldg36:RM206 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM206.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM206.Zone_Heating_Mode .
+
+bldg36:VAVRM207 a brick:VAV ;
+    brick:feeds bldg36:RM207 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM207.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM207.Zone_Heating_Mode .
+
+bldg36:VAVRM211 a brick:VAV ;
+    brick:feeds bldg36:RM211 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM211.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM211.Zone_Heating_Mode .
+
+bldg36:VAVRM212 a brick:VAV ;
+    brick:feeds bldg36:RM212 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM212.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM212.Zone_Heating_Mode .
+
+bldg36:VAVRM213 a brick:VAV ;
+    brick:feeds bldg36:RM213 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM213.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM213.Zone_Heating_Mode .
+
+bldg36:VAVRM215 a brick:VAV ;
+    brick:feeds bldg36:RM215 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM215.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM215.Zone_Heating_Mode .
+
+bldg36:VAVRM219 a brick:VAV ;
+    brick:feeds bldg36:RM219 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM219.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM219.Zone_Heating_Mode .
+
+bldg36:VAVRM224 a brick:VAV ;
+    brick:feeds bldg36:RM224 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM224.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM224.Zone_Heating_Mode .
+
+bldg36:VAVRM225 a brick:VAV ;
+    brick:feeds bldg36:RM225 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM225.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM225.Zone_Heating_Mode .
+
+bldg36:VAVRM228 a brick:VAV ;
+    brick:feeds bldg36:RM228 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM228.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM228.Zone_Heating_Mode .
+
+bldg36:VAVRM229 a brick:VAV ;
+    brick:feeds bldg36:RM229 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM229.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM229.Zone_Heating_Mode .
+
+bldg36:VAVRM231 a brick:VAV ;
+    brick:feeds bldg36:RM231 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM231.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM231.Zone_Heating_Mode .
+
+bldg36:VAVRM235 a brick:VAV ;
+    brick:feeds bldg36:RM235 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM235.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM235.Zone_Heating_Mode .
+
+bldg36:VAVRM236 a brick:VAV ;
+    brick:feeds bldg36:RM236 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM236.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM236.Zone_Heating_Mode .
+
+bldg36:VAVRM236B a brick:VAV ;
+    brick:feeds bldg36:RM236B ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM236B.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM236B.Zone_Heating_Mode .
+
+bldg36:VAVRM236C a brick:VAV ;
+    brick:feeds bldg36:RM236C ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM236C.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM236C.Zone_Heating_Mode .
+
+bldg36:VAVRM237 a brick:VAV ;
+    brick:feeds bldg36:RM237 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM237.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM237.Zone_Heating_Mode .
+
+bldg36:VAVRM239 a brick:VAV ;
+    brick:feeds bldg36:RM239 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM239.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM239.Zone_Heating_Mode .
+
+bldg36:VAVRM241 a brick:VAV ;
+    brick:feeds bldg36:RM241 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM241.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM241.Zone_Heating_Mode .
+
+bldg36:VAVRM242 a brick:VAV ;
+    brick:feeds bldg36:RM242 ;
+    brick:hasPoint bldg36:bldg36.ZONE.AHU01.RM242.Zone_Air_Temp,
+        bldg36:bldg36.ZONE.AHU01.RM242.Zone_Heating_Mode .
+
+bldg36:bldg36.CHW.BCHWR a brick:Entering_Chilled_Water_Temperature_Sensor ;
+    rdfs:label "bldg36.CHW.BCHWR" ;
+    brick:timeseries [ brick:hasTimeseriesId "f5e8c17b-4c36-4eb7-919e-6e336dba6508" ] .
+
+bldg36:bldg36.CHW.BCHWS a brick:Leaving_Chilled_Water_Temperature_Sensor ;
+    rdfs:label "bldg36.CHW.BCHWS" ;
+    brick:timeseries [ brick:hasTimeseriesId "119cbe2d-a291-466a-a56a-1a46a5b5c99b" ] .
+
+bldg36:bldg36.CHW.Chilled_Water_Return_Temp a brick:Entering_Chilled_Water_Temperature_Sensor ;
+    rdfs:label "bldg36.CHW.Chilled Water Return Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "9555a0c9-c510-4a05-abbe-4be45ab9cf7b" ] .
+
+bldg36:bldg36.CHW.Chilled_Water_Supply_Temp a brick:Leaving_Chilled_Water_Temperature_Sensor ;
+    rdfs:label "bldg36.CHW.Chilled Water Supply Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "d42cba16-3668-452a-98a2-88cf18265122" ] .
+
+bldg36:bldg36.CHW.ECONOMIZER a brick:Damper_Position_Command ;
+    rdfs:label "bldg36.CHW.ECONOMIZER" ;
+    brick:timeseries [ brick:hasTimeseriesId "5b074f19-f818-4a1a-9043-aa8e0478f4cd" ] .
+
+bldg36:bldg36.CHW.Enable a brick:Enable_Command ;
+    rdfs:label "bldg36.CHW.Enable" ;
+    brick:timeseries [ brick:hasTimeseriesId "de68d857-2c1a-412d-b8f3-23f147ef9d7f" ] .
+
+bldg36:bldg36.CHW.Pump1_SPEED a brick:Speed_Status ;
+    rdfs:label "bldg36.CHW.Pump1_SPEED" ;
+    brick:timeseries [ brick:hasTimeseriesId "8b33b16b-5b75-43c7-81c2-9e2a7512e2ad" ] .
+
+<http://buildsys.org/ontologies/bldg36#bldg36.CHW.Pump1_Start/Stop> a brick:Start_Stop_Command ;
+    rdfs:label "bldg36.CHW.Pump1_Start/Stop" ;
+    brick:timeseries [ brick:hasTimeseriesId "d7f73c0e-69b3-4177-ae7e-a0ecaa5e4ba4" ] .
+
+bldg36:bldg36.CHW.Pump1_VFD_FREQ_OUTPUT a brick:Output_Frequency_Sensor ;
+    rdfs:label "bldg36.CHW.Pump1_VFD_FREQ OUTPUT" ;
+    brick:timeseries [ brick:hasTimeseriesId "2919d433-8b7f-430b-ba34-a4ce1c460c01" ] .
+
+bldg36:bldg36.CHW.Pump1_VFD_PCT_OUTPUT a brick:Output_Frequency_Sensor ;
+    rdfs:label "bldg36.CHW.Pump1_VFD_PCT OUTPUT" ;
+    brick:timeseries [ brick:hasTimeseriesId "844334cc-661b-440f-813d-8b586196665a" ] .
+
+bldg36:bldg36.CHW.Pump1_VFD_POWER a brick:Power_Sensor ;
+    rdfs:label "bldg36.CHW.Pump1_VFD_POWER" ;
+    brick:timeseries [ brick:hasTimeseriesId "2b2caef6-9e20-4091-a4b3-850a9aad739f" ] .
+
+bldg36:bldg36.CHW.Pump1_VFD_SPEED a brick:Speed_Status ;
+    rdfs:label "bldg36.CHW.Pump1_VFD_SPEED" ;
+    brick:timeseries [ brick:hasTimeseriesId "31ff69da-f7d8-423b-a8b2-86868887741e" ] .
+
+bldg36:bldg36.CHW.Pump2_SPEED a brick:Speed_Status ;
+    rdfs:label "bldg36.CHW.Pump2_SPEED" ;
+    brick:timeseries [ brick:hasTimeseriesId "657666e1-8eff-4280-bd93-009acf5b2e78" ] .
+
+<http://buildsys.org/ontologies/bldg36#bldg36.CHW.Pump2_Start/Stop> a brick:Start_Stop_Command ;
+    rdfs:label "bldg36.CHW.Pump2_Start/Stop" ;
+    brick:timeseries [ brick:hasTimeseriesId "914b0d61-8549-4745-9f1d-606c97d6f384" ] .
+
+bldg36:bldg36.CHW.Pump2_VFD_FREQ_OUTPUT a brick:Output_Frequency_Sensor ;
+    rdfs:label "bldg36.CHW.Pump2_VFD_FREQ OUTPUT" ;
+    brick:timeseries [ brick:hasTimeseriesId "29cf0094-dcf0-4b41-93fb-9758a5725acd" ] .
+
+bldg36:bldg36.CHW.Pump2_VFD_PCT_OUTPUT a brick:Output_Frequency_Sensor ;
+    rdfs:label "bldg36.CHW.Pump2_VFD_PCT OUTPUT" ;
+    brick:timeseries [ brick:hasTimeseriesId "99cbbdac-f438-4b99-8c6c-466be4169a00" ] .
+
+bldg36:bldg36.CHW.Pump2_VFD_POWER a brick:Power_Sensor ;
+    rdfs:label "bldg36.CHW.Pump2_VFD_POWER" ;
+    brick:timeseries [ brick:hasTimeseriesId "7c30151c-a565-4c31-91cf-286ab4ce2341" ] .
+
+bldg36:bldg36.CHW.Pump2_VFD_SPEED a brick:Speed_Status ;
+    rdfs:label "bldg36.CHW.Pump2_VFD_SPEED" ;
+    brick:timeseries [ brick:hasTimeseriesId "9ec4ea7c-5db5-4d4d-9a4d-06996cdd3916" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM104.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM104.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "66a22843-1fbf-4a20-935f-7716e176ff59" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM104.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM104.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "0c73d35a-e587-4a5f-8c86-4d8506df616e" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM106.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM106.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "a52f1026-6411-45ac-b75d-9869a2607538" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM106.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM106.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "e59bceac-7354-41c8-8a9c-a03c25c31367" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM111.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM111.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "8f89f747-3e0c-445c-9c3a-6985590db31d" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM111.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM111.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "b9aadda0-d72b-433e-a603-678dfe68b199" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM113.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM113.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "9c2b4e87-da23-4350-85da-06581a70880f" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM113.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM113.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "330bf0cb-c9bb-4631-828a-d7089b1f6d7a" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM116.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM116.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "a836f391-77a1-4264-aba8-25866743b890" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM116.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM116.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "b97c2de6-f17c-4439-9ae0-157c6d77e86b" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM119.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM119.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "7bc36b18-f199-44fc-aa89-aea283c7af01" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM119.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM119.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "d0c6c1cb-f2c4-4b37-8b56-78a1ff5373cd" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM120.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM120.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "b92975e3-78d3-4e2c-9cf1-3706105a2dad" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM120.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM120.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "79e91b85-d06d-45dd-a46f-f003166bf415" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM120B.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM120B.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "88c07883-a840-4ab5-bb0c-5905d307bde0" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM120B.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM120B.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "c7ca1409-dbff-436e-b00b-97be47160b99" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM121.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM121.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "041b0328-9d70-4adb-9dc0-29cc1c8b9c73" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM121.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM121.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "f0e6d2ee-fc04-4d8d-82c6-5b190e08cbf6" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM123.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM123.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "c83ee944-8e7c-4405-b5bd-17f0a3e40fb7" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM123.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM123.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "ca0ff54f-2450-4333-a169-96d89cb60bde" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM125.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM125.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "0129b659-bf3e-4a9e-a635-2e3b671e7a57" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM125.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM125.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "3e97be9b-0035-4321-8a26-8d90a90cd2a2" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM126.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM126.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "4da7cb68-34bd-48ed-aa0a-697d34f173c6" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM126.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM126.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "dbdf8c66-41e4-48c1-a8bf-a571772f1de3" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM126A.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM126A.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "ee0bb646-6b9f-4e66-82b5-54658b629b4b" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM126A.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM126A.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "d15da713-2790-480d-b850-fdc3b015bd48" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM127.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM127.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "8df083c1-b8fd-43ff-8713-535744fb9631" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM127.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM127.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "1661b757-253a-4581-a834-2c956efdf284" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM129.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM129.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "46827a96-8983-48bb-b8cc-80333143dcbf" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM129.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM129.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "f6d5b86a-9c4e-4f07-8fa3-fc56068847c3" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM131.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM131.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "8c23d58b-f803-4032-b51b-03d859c681f5" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM131.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM131.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "5a46acd0-c1b5-4ce1-af47-f5e0b2719b2a" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM133.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM133.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "f1853539-d22d-45d8-9668-11948cb37333" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM133.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM133.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "4f9300b4-66e0-4d11-b984-037c5e02238e" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM134.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM134.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "b5b0e170-eccf-467e-93d4-01d046ac042b" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM134.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM134.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "b4cb4cf3-4fc0-4cd8-a9c7-cfab8f119f92" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM135.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM135.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "befff0be-c7e1-4a17-ac03-3c6258745be9" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM135.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM135.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "1b7e0222-5af7-41db-b5c5-8fd805bb17ce" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM136.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM136.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "c09a01d1-6be1-4075-8990-5a77b27c9470" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM136.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM136.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "1d779472-7608-4517-a117-dab1513c70fd" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM137.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM137.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "20c3a0c8-aeef-4516-8e65-2cf02ce4269f" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM137.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM137.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "03ebc5c4-b520-408f-a233-788293174225" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM138.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM138.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "ea7c0df6-0447-454f-aae9-5790327589eb" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM138.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM138.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "3cad6357-0232-495d-89aa-7e28b53c59ef" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM139.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM139.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "08b7a260-5aaa-4ad3-97f4-874cc6b8d74b" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM139.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM139.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "b0a35d51-461f-43d2-a1c2-c0231f15e2f1" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM206.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM206.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "e0bc8afb-c032-45e4-8640-7812fc5ef4db" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM206.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM206.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "408fb52b-80bb-47d8-959d-f00a74957aee" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM207.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM207.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "f1eb7649-9f65-4039-a0ef-169c532ed337" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM207.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM207.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "87333fd1-149a-4bdf-8f44-16c26e029c38" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM211.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM211.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "a7f64460-6727-41cd-a804-53428a53b1ad" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM211.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM211.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "52114033-261c-4906-a128-beaaff46fc1a" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM212.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM212.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "896f1cb4-5ff0-44d2-80b4-38ecc7191c19" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM212.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM212.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "26010acb-6161-42c5-a3df-4f44b4ddb2f2" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM213.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM213.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "e45f1e92-76b0-4ec0-a5bc-900c8eb7ae8f" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM213.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM213.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "79c9b8e7-07b5-4804-a39c-7fd7fceb8e21" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM215.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM215.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "75950ea8-90e0-441b-a9d0-0c96af1fe1e7" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM215.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM215.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "d265a894-2e6a-4448-bce3-2871558bb9ae" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM219.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM219.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "a12f478e-d4b8-4f32-8c78-a1182ebc7bd8" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM219.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM219.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "7351b0b6-fbab-406f-9f48-393768dbfc92" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM224.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM224.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "71222d5b-1269-4f32-8aff-b645ab2577ed" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM224.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM224.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "6cc59e54-f597-47df-b0cb-2177f505159e" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM225.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM225.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "89e02a1c-6c16-4115-9f2f-f7e13d09e98d" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM225.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM225.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "5dd8f4aa-5ec5-4311-96ee-d6388bda879a" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM228.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM228.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "b3f64071-1365-4da0-9aec-ed70fbb17344" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM228.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM228.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "4e60448c-7944-4f00-92ee-2585a550a992" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM229.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM229.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "20e3ab4c-f2ff-4336-8ae3-d354daeb0b35" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM229.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM229.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "783ce671-0013-4e1c-a6e6-00934f9e501f" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM231.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM231.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "3bb94a09-73a5-4c55-83fb-4e3d41aad1b8" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM231.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM231.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "69fe9aa5-c6b7-42dd-a929-e0d4b2b854f8" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM235.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM235.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "411e1b30-627b-44a5-a99f-59a3e0f7561f" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM235.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM235.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "bc940221-f846-40c9-80ff-ccc1851d4e5a" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM236.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM236.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "aa1cdc5f-6dd8-4170-8e5f-06cf48785512" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM236.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM236.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "a30e1c80-5850-4e14-9cb3-982bf61ffdd2" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM236B.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM236B.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "71343424-4e0c-4822-9ad1-e55f810453bf" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM236B.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM236B.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "e87676dd-92ac-4197-af09-4fbf068eba2f" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM236C.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM236C.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "7dfa42a9-0efb-4b2c-8e90-20a773c25c88" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM236C.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM236C.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "57c6c16e-a351-4e67-8637-5149063ec6de" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM237.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM237.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "334252bc-d795-45f2-a8ec-62c06194ddb0" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM237.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM237.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "695515fa-e143-4405-98da-288b622cde3d" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM239.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM239.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "683fcea7-db84-4608-a2db-b9703cc38753" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM239.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM239.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "8744bc44-46c7-44cf-967f-ac77acf533de" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM241.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM241.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "05f109b2-97bc-410a-a172-cbcfdb1de8ee" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM241.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM241.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "abc54e9a-a3f3-42a4-bc48-698495048e10" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM242.Zone_Air_Temp a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label "bldg36.ZONE.AHU01.RM242.Zone Air Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "14516f74-ed3b-46d6-8491-87688c02646c" ] .
+
+bldg36:bldg36.ZONE.AHU01.RM242.Zone_Heating_Mode a brick:Heating_Command ;
+    rdfs:label "bldg36.ZONE.AHU01.RM242.Zone Heating Mode" ;
+    brick:timeseries [ brick:hasTimeseriesId "723cc220-a09a-4a08-95c1-d743322264af" ] .
+
+bldg36:RM104_room a brick:Room .
+
+bldg36:RM106_room a brick:Room .
+
+bldg36:RM111_room a brick:Room .
+
+bldg36:RM113_room a brick:Room .
+
+bldg36:RM116_room a brick:Room .
+
+bldg36:RM119_room a brick:Room .
+
+bldg36:RM120B_room a brick:Room .
+
+bldg36:RM120_room a brick:Room .
+
+bldg36:RM121_room a brick:Room .
+
+bldg36:RM123_room a brick:Room .
+
+bldg36:RM125_room a brick:Room .
+
+bldg36:RM126A_room a brick:Room .
+
+bldg36:RM126_room a brick:Room .
+
+bldg36:RM127_room a brick:Room .
+
+bldg36:RM129_room a brick:Room .
+
+bldg36:RM131_room a brick:Room .
+
+bldg36:RM133_room a brick:Room .
+
+bldg36:RM134_room a brick:Room .
+
+bldg36:RM135_room a brick:Room .
+
+bldg36:RM136_room a brick:Room .
+
+bldg36:RM137_room a brick:Room .
+
+bldg36:RM138_room a brick:Room .
+
+bldg36:RM139_room a brick:Room .
+
+bldg36:RM206_room a brick:Room .
+
+bldg36:RM207_room a brick:Room .
+
+bldg36:RM211_room a brick:Room .
+
+bldg36:RM212_room a brick:Room .
+
+bldg36:RM213_room a brick:Room .
+
+bldg36:RM215_room a brick:Room .
+
+bldg36:RM219_room a brick:Room .
+
+bldg36:RM224_room a brick:Room .
+
+bldg36:RM225_room a brick:Room .
+
+bldg36:RM228_room a brick:Room .
+
+bldg36:RM229_room a brick:Room .
+
+bldg36:RM231_room a brick:Room .
+
+bldg36:RM235_room a brick:Room .
+
+bldg36:RM236B_room a brick:Room .
+
+bldg36:RM236C_room a brick:Room .
+
+bldg36:RM236_room a brick:Room .
+
+bldg36:RM237_room a brick:Room .
+
+bldg36:RM239_room a brick:Room .
+
+bldg36:RM241_room a brick:Room .
+
+bldg36:RM242_room a brick:Room .
+

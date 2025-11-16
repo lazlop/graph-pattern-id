@@ -1,0 +1,29 @@
+@prefix bldg24: <http://buildsys.org/ontologies/bldg24#> .
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg24:MULTI a brick:Air_Handler_Unit ;
+    brick:hasPoint bldg24:bldg24.AHU.MULTI.Cooling_Valve_Output,
+        bldg24:bldg24.AHU.MULTI.Heating_Valve_Output .
+
+bldg24:bldg24 a brick:Building ;
+    brick:area [ brick:hasUnit unit:FT2 ;
+            brick:value 9105 ] .
+
+owl:Class rdfs:subClassOf rdfs:Class .
+
+owl:DatatypeProperty rdfs:subClassOf rdf:Property .
+
+bldg24:bldg24.AHU.MULTI.Cooling_Valve_Output a brick:Cooling_Command,
+        brick:Valve_Command ;
+    rdfs:label "bldg24.AHU.MULTI.Cooling Valve Output" ;
+    brick:timeseries [ brick:hasTimeseriesId "9ed0fd3f-0698-4948-b111-7ecc456ff8f8" ] .
+
+bldg24:bldg24.AHU.MULTI.Heating_Valve_Output a brick:Command ;
+    rdfs:label "bldg24.AHU.MULTI.Heating Valve Output" ;
+    brick:timeseries [ brick:hasTimeseriesId "e00c7545-1acc-463f-af8c-bcb2416b5502" ] .
+

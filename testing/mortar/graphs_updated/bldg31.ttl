@@ -1,0 +1,48 @@
+@prefix bldg31: <http://buildsys.org/ontologies/bldg31#> .
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bldg31:Sproul_ChilledWater_Demand_kBtu a brick:Electrical_Meter ;
+    rdfs:label "Sproul_ChilledWater_Demand_kBtu" ;
+    brick:meters bldg31:chiller .
+
+bldg31:Sproul_Electricity_Demand_kBtu a brick:Building_Electric_Meter ;
+    rdfs:label "Sproul_Electricity_Demand_kBtu" .
+
+bldg31:bldg31 a brick:Building ;
+    brick:area [ brick:hasUnit unit:FT2 ;
+            brick:value 53797 ] .
+
+owl:Class rdfs:subClassOf rdfs:Class .
+
+owl:DatatypeProperty rdfs:subClassOf rdf:Property .
+
+bldg31:bldg31.CHW.BCHWR a brick:Entering_Chilled_Water_Temperature_Sensor ;
+    rdfs:label "bldg31.CHW.BCHWR" .
+
+bldg31:bldg31.CHW.BCHWS a brick:Leaving_Chilled_Water_Temperature_Sensor ;
+    rdfs:label "bldg31.CHW.BCHWS" .
+
+bldg31:bldg31.CHW.Building_Chilled_Water_Return_Temp a brick:Entering_Chilled_Water_Temperature_Sensor ;
+    rdfs:label "bldg31.CHW.Building Chilled Water Return Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "3d35cd3a-2fa8-4d76-8ab9-a01eaac2b659" ] .
+
+bldg31:bldg31.CHW.Building_Chilled_Water_Supply_Temp a brick:Leaving_Chilled_Water_Temperature_Sensor ;
+    rdfs:label "bldg31.CHW.Building Chilled Water Supply Temp" ;
+    brick:timeseries [ brick:hasTimeseriesId "40639fa7-f8bf-4247-b813-64a0696a28cf" ] .
+
+bldg31:bldg31.CHW.ECONOMIZER a brick:Damper_Position_Command ;
+    rdfs:label "bldg31.CHW.ECONOMIZER" ;
+    brick:timeseries [ brick:hasTimeseriesId "0974ef4d-6ebf-46f6-98c0-ed79fa2bf071" ] .
+
+bldg31:chiller a brick:Chiller ;
+    brick:hasPoint bldg31:bldg31.CHW.BCHWR,
+        bldg31:bldg31.CHW.BCHWS,
+        bldg31:bldg31.CHW.Building_Chilled_Water_Return_Temp,
+        bldg31:bldg31.CHW.Building_Chilled_Water_Supply_Temp,
+        bldg31:bldg31.CHW.ECONOMIZER .
+

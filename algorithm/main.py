@@ -15,10 +15,8 @@ from typing import Union, List, Union, Tuple, Optional
 from rdflib import Graph, URIRef
 import sys
 
-sys.path.append('../utils')
-sys.path.append('utils')
+sys.path.append('..')
 
-from namespaces import *
 from utils import * 
 
 from tqdm import tqdm
@@ -95,6 +93,11 @@ def get_class(node: URIRef, data_graph) -> URIRef:
         """Get the class of a node from the data graph"""
         # TODO: Shouldn't hve a default class and need a union of classes
         # Should have something else to represent literals, other than resource, but need to make sure defualt just applies to literals
+        
+        # NOTE: hacky method of addressing getting the right class or class set, just by preferring HPFS classes and earlier making sure hteres just one hpfs class per thing
+        for _, _, o in data_graph.triples((node, A, None)):
+            if str(HPFS) in str(o):
+                return o
         for _, _, o in data_graph.triples((node, A, None)):
             return o
         return URIRef("http://www.w3.org/2000/01/rdf-schema#Resource")
@@ -294,6 +297,15 @@ def run_algo(original_data_graph, iterations = 5):
         prev_equivalent_subjects = equivalent_subjects
         for s, cls_name in new_subject_classes.items():
             data_graph.add((s, A, cls_name))
+
+        # delete HPFS class since it is no longer needed 
+        # NOTE: hacky method of addressing getting the right class or class set
+        if i >= 1:
+            for s, cls_name in prev_subject_classes.items():
+                data_graph.remove((s, A, cls_name))
+        
+        prev_subject_classes = new_subject_classes
+    
     
     # H, in the paper
     class_graph = create_class_graph(data_graph)
@@ -318,11 +330,12 @@ if __name__ == "__main__":
     for s,p,o in cg:
         if (p == A) & (str(HPFS) in str(o)):
             cg.remove((s,p,o))
-        if p == RDFS.label:
-            cg.remove((s,p,o))
+        # if p == RDFS.label:
+        #     cg.remove((s,p,o))
     bind_prefixes(cg)
-    # cg.serialize('algo5-brick.ttl')
+    cg.serialize('algo5-brick.ttl')
     # mg.print()
+    print("compressed to ", len(cg)/len(data_graph)*100, "% of its original size")
     if PRINT_GRAPHS:
         cg.print()
 
@@ -330,9 +343,10 @@ if __name__ == "__main__":
     for s,p,o in cg:
         if (p == A) & (str(HPFS) in str(o)):
             cg.remove((s,p,o))
-        if p == RDFS.label:
-            cg.remove((s,p,o))
+        # if p == RDFS.label:
+        #     cg.remove((s,p,o))
     bind_prefixes(cg)
-    # cg.serialize('algo5-s223.ttl')
+    cg.serialize('algo5-s223.ttl')
+    print("compressed to ", len(cg)/len(data_graph)*100, "% of its original size")
     if PRINT_GRAPHS:
         cg.print()

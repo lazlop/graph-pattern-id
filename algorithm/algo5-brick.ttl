@@ -1,0 +1,139 @@
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix hpfs: <urn:hpflex/shapes#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+hpfs:AHU_version_3 a brick:AHU ;
+    rdfs:label rdfs:Resource ;
+    brick:feeds hpfs:VAV_version_5,
+        hpfs:VAV_version_6 ;
+    brick:hasPart hpfs:Cooling_Coil_version_3,
+        hpfs:Damper_version_6,
+        hpfs:Heating_Coil_version_5,
+        hpfs:Supply_Fan_version_3 ;
+    brick:hasPoint hpfs:Filter_Differential_Pressure_Sensor_version_3,
+        hpfs:Mixed_Air_Temperature_Sensor_version_3,
+        hpfs:Outside_Air_Temperature_Sensor_version_3,
+        hpfs:Return_Air_Temperature_Sensor_version_3,
+        hpfs:Supply_Air_Temperature_Sensor_version_3 .
+
+hpfs:CO2_Level_Sensor_version_4 a brick:CO2_Level_Sensor ;
+    rdfs:label rdfs:Resource .
+
+hpfs:CO2_Level_Sensor_version_5 a brick:CO2_Level_Sensor ;
+    rdfs:label rdfs:Resource .
+
+hpfs:Cooling_Coil_version_3 a brick:Cooling_Coil ;
+    rdfs:label rdfs:Resource ;
+    brick:hasPoint hpfs:Valve_Position_Command_version_5 .
+
+hpfs:Damper_Position_Command_version_4 a brick:Damper_Position_Command ;
+    rdfs:label rdfs:Resource .
+
+hpfs:Damper_Position_Command_version_5 a brick:Damper_Position_Command ;
+    rdfs:label rdfs:Resource .
+
+hpfs:Damper_Position_Command_version_6 a brick:Damper_Position_Command ;
+    rdfs:label rdfs:Resource .
+
+hpfs:Damper_version_6 a brick:Damper ;
+    rdfs:label rdfs:Resource ;
+    brick:hasPoint hpfs:Damper_Position_Command_version_4 .
+
+hpfs:Damper_version_7 a brick:Damper ;
+    rdfs:label rdfs:Resource ;
+    brick:hasPoint hpfs:Damper_Position_Command_version_5 .
+
+hpfs:Damper_version_8 a brick:Damper ;
+    rdfs:label rdfs:Resource ;
+    brick:hasPoint hpfs:Damper_Position_Command_version_6 .
+
+hpfs:Discharge_Air_Temperature_Sensor_version_4 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource .
+
+hpfs:Discharge_Air_Temperature_Sensor_version_5 a brick:Discharge_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource .
+
+hpfs:Fan_Status_version_3 a brick:Fan_Status ;
+    rdfs:label rdfs:Resource .
+
+hpfs:Filter_Differential_Pressure_Sensor_version_3 a brick:Filter_Differential_Pressure_Sensor ;
+    rdfs:label rdfs:Resource .
+
+hpfs:Frequency_Command_version_3 a brick:Frequency_Command ;
+    rdfs:label rdfs:Resource .
+
+hpfs:HVAC_Zone_version_4 a brick:HVAC_Zone ;
+    rdfs:label rdfs:Resource .
+
+hpfs:HVAC_Zone_version_5 a brick:HVAC_Zone ;
+    rdfs:label rdfs:Resource .
+
+hpfs:Heating_Coil_version_5 a brick:Heating_Coil ;
+    rdfs:label rdfs:Resource ;
+    brick:hasPoint hpfs:Valve_Position_Command_version_6 .
+
+hpfs:Heating_Coil_version_6 a brick:Heating_Coil ;
+    rdfs:label rdfs:Resource ;
+    brick:hasPoint hpfs:Position_Command_version_3 .
+
+hpfs:Mixed_Air_Temperature_Sensor_version_3 a brick:Mixed_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource .
+
+hpfs:Occupancy_Sensor_version_4 a brick:Occupancy_Sensor ;
+    rdfs:label rdfs:Resource .
+
+hpfs:Occupancy_Sensor_version_5 a brick:Occupancy_Sensor ;
+    rdfs:label rdfs:Resource .
+
+hpfs:Outside_Air_Temperature_Sensor_version_3 a brick:Outside_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource .
+
+hpfs:Position_Command_version_3 a brick:Position_Command ;
+    rdfs:label rdfs:Resource .
+
+hpfs:Return_Air_Temperature_Sensor_version_3 a brick:Return_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource .
+
+hpfs:Start_Stop_Command_version_3 a brick:Start_Stop_Command ;
+    rdfs:label rdfs:Resource .
+
+hpfs:Supply_Air_Temperature_Sensor_version_3 a brick:Supply_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource .
+
+hpfs:Supply_Fan_version_3 a brick:Supply_Fan ;
+    rdfs:label rdfs:Resource ;
+    brick:hasPoint hpfs:Fan_Status_version_3,
+        hpfs:Frequency_Command_version_3,
+        hpfs:Start_Stop_Command_version_3 .
+
+hpfs:VAV_version_5 a brick:VAV ;
+    rdfs:label rdfs:Resource ;
+    brick:feeds hpfs:HVAC_Zone_version_4 ;
+    brick:hasPart hpfs:Damper_version_7 ;
+    brick:hasPoint hpfs:CO2_Level_Sensor_version_4,
+        hpfs:Discharge_Air_Temperature_Sensor_version_4,
+        hpfs:Occupancy_Sensor_version_4,
+        hpfs:Zone_Air_Temperature_Sensor_version_4 .
+
+hpfs:VAV_version_6 a brick:VAV ;
+    rdfs:label rdfs:Resource ;
+    brick:feeds hpfs:HVAC_Zone_version_5 ;
+    brick:hasPart hpfs:Damper_version_8,
+        hpfs:Heating_Coil_version_6 ;
+    brick:hasPoint hpfs:CO2_Level_Sensor_version_5,
+        hpfs:Discharge_Air_Temperature_Sensor_version_5,
+        hpfs:Occupancy_Sensor_version_5,
+        hpfs:Zone_Air_Temperature_Sensor_version_5 .
+
+hpfs:Valve_Position_Command_version_5 a brick:Valve_Position_Command ;
+    rdfs:label rdfs:Resource .
+
+hpfs:Valve_Position_Command_version_6 a brick:Valve_Position_Command ;
+    rdfs:label rdfs:Resource .
+
+hpfs:Zone_Air_Temperature_Sensor_version_4 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource .
+
+hpfs:Zone_Air_Temperature_Sensor_version_5 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource .
+
