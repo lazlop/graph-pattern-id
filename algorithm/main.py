@@ -173,9 +173,18 @@ def get_class_isomorphisms(data_graph, similarity_threshold = None):
 
                 if union_size > 0:
                     similarity_score = intersection_size / union_size
+                    # NOTE: also replacing matched graph with union of class graph and g
                     if similarity_score > similarity_threshold:
                         equivalent_subjects[i].append(s)
+                        # NOTE: May not want to use + because we lose oxigraph as the store, also not sure it works correctly. Maybe just take the bigger graph?
+                        # distinct_class_subgraphs[i] = class_graph + g
+                        if len(class_graph) > len(g):
+                            distinct_class_subgraphs[i] = class_graph
+                        else:
+                            distinct_class_subgraphs[i] = g
                         found_in_preferred = True
+                    else:
+                        add_subgraph = True
                 break
             # NOTE: It may be good to look for isomorphic first then within jaccard similarity second to prefer exact matches. But it would run slower, and jaccard is just for testing on mortar rn
             else:
@@ -183,18 +192,21 @@ def get_class_isomorphisms(data_graph, similarity_threshold = None):
                     equivalent_subjects[i].append(s)
                     found_in_preferred = True
                     break
+                else:
+                    add_subgraph = True
 
         if found_in_preferred:
             continue
 
-        for i, g in enumerate(distinct_class_subgraphs):
-            if isomorphic(class_graph, g): 
-                equivalent_subjects[i].append(s)
-                add_subgraph = False
-                break
-            else:
-                add_subgraph = True
-                
+        # TODO: consider if there can ever be an isomorphism this way. I think not because the subjects MUST have the same class for their to be an isomorphism
+        # for i, g in enumerate(distinct_class_subgraphs):
+        #     if isomorphic(class_graph, g): 
+        #         equivalent_subjects[i].append(s)
+        #         add_subgraph = False
+        #         break
+        #     else:
+        #         add_subgraph = True
+        
         if add_subgraph == True:
             distinct_class_subgraphs.append(class_graph)
             equivalent_subjects.append([s])

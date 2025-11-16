@@ -1,0 +1,237 @@
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix ns1: <https://brickschema.org/schema/Brick/ref#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:hpflex/shapes#Air_Handler_Unit_version_25> a brick:Air_Handler_Unit ;
+    brick:feeds brick:VAV ;
+    brick:hasPoint brick:Command,
+        brick:Cooling_Command,
+        brick:Mixed_Air_Temperature_Sensor,
+        brick:Outside_Air_Temperature_Sensor,
+        brick:Return_Air_Temperature_Sensor,
+        brick:Supply_Air_Static_Pressure_Sensor,
+        brick:Supply_Air_Temperature_Sensor,
+        brick:Supply_Air_Temperature_Setpoint ;
+    brick:isFedBy brick:Chiller .
+
+owl:Ontology a owl:Ontology ;
+    rdfs:label rdfs:Resource ;
+    owl:imports rdfs:Resource .
+
+brick:Building a brick:Building ;
+    brick:area rdfs:Resource .
+
+brick:Building_Electric_Meter a brick:Building_Electric_Meter ;
+    rdfs:label rdfs:Resource .
+
+brick:Damper a brick:Damper ;
+    brick:hasPoint brick:Damper_Position_Setpoint ;
+    brick:isPartOf brick:VAV .
+
+brick:Electric_Meter a brick:Electric_Meter ;
+    rdfs:label rdfs:Resource ;
+    brick:isPointOf brick:Chiller .
+
+brick:Floor a brick:Floor ;
+    brick:hasPart brick:Room .
+
+brick:Air_Flow_Sensor a brick:Air_Flow_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Air_Handler_Unit a brick:Air_Handler_Unit ;
+    brick:feeds brick:VAV ;
+    brick:hasPoint brick:Chilled_Water_Return_Temperature_Sensor,
+        brick:Chilled_Water_Supply_Temperature_Sensor,
+        brick:Command,
+        brick:Cooling_Command,
+        brick:Mixed_Air_Temperature_Sensor,
+        brick:Mode,
+        brick:Outside_Air_Temperature_Sensor,
+        brick:Return_Air_Temperature_Sensor,
+        brick:Supply_Air_Static_Pressure_Sensor,
+        brick:Supply_Air_Temperature_Sensor,
+        brick:Supply_Air_Temperature_Setpoint,
+        brick:Supply_Air_flow ;
+    brick:isFedBy brick:Chiller .
+
+brick:Chilled_Water_Differential_Pressure_Sensor a brick:Chilled_Water_Differential_Pressure_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Chilled_Water_Differential_Temperature_Sensor a brick:Chilled_Water_Differential_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Chilled_Water_Flow_Sensor a brick:Chilled_Water_Flow_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Chilled_Water_Return_Temperature_Setpoint a brick:Chilled_Water_Return_Temperature_Setpoint ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Chilled_Water_Supply_Temperature_Setpoint a brick:Chilled_Water_Supply_Temperature_Setpoint ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Damper_Position_Command a brick:Damper_Position_Command ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Damper_Position_Setpoint a brick:Damper_Position_Setpoint ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Differential_Pressure_Sensor a brick:Differential_Pressure_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Enable_Command a brick:Enable_Command ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Fan_Status a brick:Fan_Status ;
+    rdfs:label rdfs:Resource .
+
+brick:HVAC_Zone a brick:HVAC_Zone ;
+    brick:hasPart brick:Room .
+
+brick:Mode a brick:Mode ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Outside_Air_Damper_Command a brick:Outside_Air_Damper_Command ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Pump_Command a brick:Pump_Command ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Speed_Setpoint a brick:Speed_Setpoint ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Speed_Status a brick:Speed_Status ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Start_Stop_Command a brick:Start_Stop_Command ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Status a brick:Status ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Supply_Air_Flow_Sensor a brick:Supply_Air_Flow_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Supply_Air_flow a brick:Supply_Air_flow ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Temperature_Setpoint a brick:Temperature_Setpoint ;
+    rdfs:label rdfs:Resource .
+
+brick:Water_Flow_Sensor a brick:Water_Flow_Sensor ;
+    rdfs:label rdfs:Resource .
+
+brick:Zone_Air_Temperature_Sensor a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Zone_Air_Temperature_Setpoint a brick:Zone_Air_Temperature_Setpoint ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Chilled_Water_Return_Temperature_Sensor a brick:Chilled_Water_Return_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Chilled_Water_Supply_Temperature_Sensor a brick:Chilled_Water_Supply_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Cooling_Command a brick:Cooling_Command,
+        brick:Valve_Command ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Heating_Command a brick:Heating_Command ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Mixed_Air_Temperature_Sensor a brick:Mixed_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource .
+
+brick:Return_Air_Temperature_Sensor a brick:Return_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Room a brick:Room .
+
+brick:Supply_Air_Static_Pressure_Sensor a brick:Supply_Air_Static_Pressure_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Supply_Air_Temperature_Setpoint a brick:Supply_Air_Temperature_Setpoint ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Valve_Command a brick:Valve_Command ;
+    rdfs:label rdfs:Resource .
+
+brick:Chiller a brick:Chiller ;
+    brick:hasPoint brick:Chilled_Water_Differential_Pressure_Sensor,
+        brick:Chilled_Water_Differential_Temperature_Sensor,
+        brick:Chilled_Water_Flow_Sensor,
+        brick:Chilled_Water_Return_Temperature_Sensor,
+        brick:Chilled_Water_Return_Temperature_Setpoint,
+        brick:Chilled_Water_Supply_Temperature_Sensor,
+        brick:Chilled_Water_Supply_Temperature_Setpoint,
+        brick:Damper_Position_Command,
+        brick:Differential_Pressure_Sensor,
+        brick:Enable_Command,
+        brick:Outside_Air_Damper_Command,
+        brick:Outside_Air_Temperature_Sensor,
+        brick:Pump_Command,
+        brick:Speed_Setpoint,
+        brick:Speed_Status,
+        brick:Start_Stop_Command,
+        brick:Status,
+        brick:Water_Flow_Sensor .
+
+brick:Command a brick:Command ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Outside_Air_Temperature_Sensor a brick:Outside_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:Supply_Air_Temperature_Sensor a brick:Supply_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference rdfs:Resource .
+
+brick:VAV a brick:VAV ;
+    brick:feeds brick:HVAC_Zone ;
+    brick:hasPoint brick:Air_Flow_Sensor,
+        brick:Command,
+        brick:Fan_Status,
+        brick:Heating_Command,
+        brick:Supply_Air_Flow_Sensor,
+        brick:Supply_Air_Temperature_Sensor,
+        brick:Temperature_Setpoint,
+        brick:Valve_Command,
+        brick:Zone_Air_Temperature_Sensor,
+        brick:Zone_Air_Temperature_Setpoint .
+
+rdfs:Resource brick:hasPoint brick:Heating_Command ;
+    brick:hasUnits rdfs:Resource ;
+    brick:value rdfs:Resource ;
+    ns1:hasTimeseriesId rdfs:Resource .
+

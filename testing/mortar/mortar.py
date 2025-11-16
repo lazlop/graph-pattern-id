@@ -25,7 +25,7 @@ if __name__ == "__main__":
     gs = []
     cgs = []
     file_names = []
-    threshold = 0.5
+    threshold = 0.7
     i = 0 
     # TODO: see what it looks like removing labels and stuff like that. 
     for file_name, g in get_mortar_graphs(directory_path):
