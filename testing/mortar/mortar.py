@@ -25,16 +25,18 @@ if __name__ == "__main__":
     gs = []
     cgs = []
     file_names = []
+    threshold = 0.5
     i = 0 
     # TODO: see what it looks like removing labels and stuff like that. 
     for file_name, g in get_mortar_graphs(directory_path):
         gs.append(g)
         file_names.append(file_name)
-        cg, mg = run_algo(g)
+        cg, mg = run_algo(g, similarity_threshold=threshold)
         # removing extraneous classes
         for s,p,o in cg:
             if (p == A) & (str(HPFS) in str(o)):
                 cg.remove((s,p,o))
+        cg.serialize('bschema/'+ f'theshold{threshold}' + file_name, format="turtle")
         cgs.append(cg)
         print("compressed to ", len(cg)/len(g)*100, "% of its original size")
         # cg.print()

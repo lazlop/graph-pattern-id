@@ -6,9 +6,11 @@ TODO:
 - works right for brick, but class graph currently only contains one class. This may create bugs, so I will need to consider other methods. Working so far because it happens to gets the most recently added class, which is alphabetically the latest because of the version tag I'm adding. Instead of directly doing the class relations it may make sense to separate instance and class once again 
 - Fix how I'm getting aspects and named nodes again so these show up in class graph for isomorphism. 
 - Getting the class names relies on how graph is serialized to get most recently added class label. This may cause a bug in the future.
+- Fix relaxed version of b_schema using jaccard similarity. May not converge exactly right since different subgraphs can be selected for each loop
+- For Jaccard similarity, would be good to save the version of the isomorphism that is the union of the graphs, so that we don't lose any important information, it just gets more aggregated. 
 """
 
-from rdflib.compare import isomorphic
+from rdflib.compare import isomorphic, graph_diff
 
 from pprint import pprint
 from typing import Union, List, Union, Tuple, Optional
@@ -139,7 +141,7 @@ def create_class_graph(data_graph: Graph):
 
     return class_graph
 
-def get_class_isomorphisms(data_graph):
+def get_class_isomorphisms(data_graph, similarity_threshold = None):
     distinct_class_subgraphs = []
     seen_subjects = set()
     equivalent_subjects = []
@@ -164,10 +166,23 @@ def get_class_isomorphisms(data_graph):
         # check indices first 
         for i in indices:
             g = distinct_class_subgraphs[i]
-            if isomorphic(class_graph, g): 
-                equivalent_subjects[i].append(s)
-                found_in_preferred = True
+            if similarity_threshold is not None:
+                in_both, in_g1_only, in_g2_only = graph_diff(class_graph, g)
+                intersection_size = len(in_both)
+                union_size = len(in_both) + len(in_g1_only) + len(in_g2_only)
+
+                if union_size > 0:
+                    similarity_score = intersection_size / union_size
+                    if similarity_score > similarity_threshold:
+                        equivalent_subjects[i].append(s)
+                        found_in_preferred = True
                 break
+            # NOTE: It may be good to look for isomorphic first then within jaccard similarity second to prefer exact matches. But it would run slower, and jaccard is just for testing on mortar rn
+            else:
+                if isomorphic(class_graph, g): 
+                    equivalent_subjects[i].append(s)
+                    found_in_preferred = True
+                    break
 
         if found_in_preferred:
             continue
@@ -271,7 +286,7 @@ def assign_new_classes(data_graph, distinct_class_subgraphs, equivalent_subjects
 
     return new_subject_classes, class_mappings
 
-def run_algo(original_data_graph, iterations = 5):
+def run_algo(original_data_graph, iterations = 10, similarity_threshold = None):
     # need to remove ontology statement because having just the prefix breaks serialization/parsing by oxigraph
     global counter
     counter = {}
@@ -279,7 +294,7 @@ def run_algo(original_data_graph, iterations = 5):
     original_data_graph.remove((URIRef('urn:example#'), A, OWL.Ontology))
     data_graph = copy_graph(original_data_graph)
     for i in range(iterations):
-        distinct_class_subgraphs, seen_subjects, equivalent_subjects, subject_classes = get_class_isomorphisms(data_graph)
+        distinct_class_subgraphs, seen_subjects, equivalent_subjects, subject_classes = get_class_isomorphisms(data_graph, similarity_threshold)
         new_subject_classes, new_class_mappings = assign_new_classes(data_graph, distinct_class_subgraphs, equivalent_subjects, subject_classes)
         class_mappings.append(new_class_mappings)
 
@@ -305,6 +320,7 @@ def run_algo(original_data_graph, iterations = 5):
                 data_graph.remove((s, A, cls_name))
         
         prev_subject_classes = new_subject_classes
+        print("Summarized Graph Length: ", len(create_class_graph(data_graph)))
     
     
     # H, in the paper
