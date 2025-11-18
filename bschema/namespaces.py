@@ -1,7 +1,6 @@
 # %%
 from rdflib.namespace import (
     XSD,
-    QUDT,
     RDFS,
     SH,
     Namespace,
