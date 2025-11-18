@@ -7,7 +7,7 @@ import os
 import sys 
 sys.path.append('../../')
 from utils import *
-from bschema.main import * 
+from bschema.bschema import * 
 import matplotlib.pyplot as plt
 
 def get_mortar_graphs(directory_path):
@@ -39,7 +39,7 @@ if __name__ == "__main__":
         gs.append(g)
         g_lens.append(len(g))
         file_names.append(file_name)
-        cg, mg = run_algo(g, iterations=10, similarity_threshold=threshold)
+        cg, mg = create_bschema(g, iterations=10, similarity_threshold=threshold)
         # removing extraneous classes
         for s,p,o in cg:
             if (p == A) & (str(HPFS) in str(o)):

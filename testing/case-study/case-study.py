@@ -3,7 +3,7 @@ if __name__ == "__main__":
     data_graph.parse("/Users/lazlopaul/Desktop/223p/experiments/graph-pattern-id/archive/development/brick-example.ttl", format="turtle")
     s223_data_graph = Graph(store = 'Oxigraph')
     s223_data_graph.parse("/Users/lazlopaul/Desktop/223p/experiments/graph-pattern-id/archive/development/s223-example.ttl", format="turtle")
-    cg, mg = run_algo(data_graph, 4)
+    cg, mg = create_bschema(data_graph, 4)
     for s,p,o in cg:
         if (p == A) & (str(HPFS) in str(o)):
             cg.remove((s,p,o))
@@ -16,7 +16,7 @@ if __name__ == "__main__":
     if PRINT_GRAPHS:
         cg.print()
 
-    cg, mg = run_algo(s223_data_graph, 5)
+    cg, mg = create_bschema(s223_data_graph, 5)
     for s,p,o in cg:
         if (p == A) & (str(HPFS) in str(o)):
             cg.remove((s,p,o))

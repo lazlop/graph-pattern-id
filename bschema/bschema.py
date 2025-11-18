@@ -319,7 +319,7 @@ def assign_new_classes(data_graph, distinct_class_subgraphs, equivalent_subjects
 
     return new_subject_classes, class_mappings
 
-def run_algo(original_data_graph, iterations = 10, similarity_threshold = None, remove_added_labels = True):
+def create_bschema(original_data_graph, iterations = 10, similarity_threshold = None, remove_added_labels = True):
     # need to remove ontology statement because having just the prefix breaks serialization/parsing by oxigraph
     global counter
     counter = {}
