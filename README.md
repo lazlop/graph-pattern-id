@@ -10,7 +10,10 @@ Make sure you have [uv](https://docs.astral.sh/uv/) installed.
 
 Clone the repo, and use the package to run via python, or run via CLI using 
 
-`uv run create-bschema`
+```
+uv pip install "git+https://github.com/lazlop/graph-pattern-id.git"
+uv run create-bschema
+```
 
 You can even run the code without installing using 
 
