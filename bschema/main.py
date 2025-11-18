@@ -22,10 +22,8 @@ from pprint import pprint
 from typing import Union, List, Union, Tuple, Optional
 from rdflib import Graph, URIRef
 import sys
-
-sys.path.append('..')
-
-from utils import * 
+from .utils import * 
+from .namespaces import *
 
 from tqdm import tqdm
 
@@ -321,7 +319,7 @@ def assign_new_classes(data_graph, distinct_class_subgraphs, equivalent_subjects
 
     return new_subject_classes, class_mappings
 
-def run_algo(original_data_graph, iterations = 10, similarity_threshold = None):
+def run_algo(original_data_graph, iterations = 10, similarity_threshold = None, remove_added_labels = True):
     # need to remove ontology statement because having just the prefix breaks serialization/parsing by oxigraph
     global counter
     counter = {}
@@ -357,22 +355,16 @@ def run_algo(original_data_graph, iterations = 10, similarity_threshold = None):
         
         prev_subject_classes = new_subject_classes
         print("Summarized Graph Length: ", len(create_class_graph(data_graph)))
-        # NOTE: bug check
-        strikes = {}
-        for s, p, o in data_graph:
-            if p == A and (str(HPFS) in str(o)):
-                if s in strikes:
-                    strikes[o] += 1
-                else:
-                    strikes[o] = 1
-        for k, v in strikes.items():
-            if v > 1:
-                raise Exception(f"shouldn't be more than one HPFS label on a class: {k} {v}") #print(k, v)
-                
     
     
     # H, in the paper
     class_graph = create_class_graph(data_graph)
+
+    # TODO: Should handle added class labels with better method. 
+    if remove_added_labels:
+        for s,p,o in class_graph:
+            if (p == A) & (str(HPFS) in str(o)):
+                class_graph.remove((s,p,o))
     # M, in the paper 
     member_graph = Graph(store = "Oxigraph")
     for i in range(len(equivalent_subjects)):
