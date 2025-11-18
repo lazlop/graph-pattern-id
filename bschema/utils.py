@@ -1,6 +1,4 @@
-import pandas as pd
 from rdflib import Graph
-import pyshacl
 
 
 def get_prefixes(g: Graph):
@@ -20,8 +18,11 @@ def query_to_df(query, g: Graph):
         [convert_to_prefixed(value, g) if isinstance(value, (str, bytes)) and value.startswith("http") else str(value) for value in row]
         for row in results
     ]
-    df = pd.DataFrame(formatted_results, columns=[str(var) for var in results.vars])
-    return df
+    # NOTE: getting rid of pandas as dependency
+    # df = pd.DataFrame(formatted_results, columns=[str(var) for var in results.vars])
+    # return df
+    columns=[str(var) for var in results.vars]
+    return formatted_results, columns
 
 import os
 

@@ -1,11 +1,8 @@
 # %%
-from buildingmotif.namespaces import (
-    bind_prefixes,
-    A,
+from rdflib.namespace import (
     XSD,
     QUDT,
     RDFS,
-    A,
     SH,
     Namespace,
     RDF,
