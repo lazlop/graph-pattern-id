@@ -7,7 +7,7 @@ import os
 import sys 
 sys.path.append('../../')
 from utils import *
-from algorithm.main import * 
+from bschema.main import * 
 import matplotlib.pyplot as plt
 
 def get_mortar_graphs(directory_path):
