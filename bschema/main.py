@@ -14,6 +14,7 @@ TODO:
     Also appears that there was an extra external reference version added 
     This indicates a bug with the rdfs:Resource usage. Line 108 in bldg5-20iter shows this. There should not be multiple external references on this sensor
     BUG IS BLANK NODES. Will skolemize graph before doing anything. Now stop condition is doing something for jaccard at least.
+- Should Jaccard similarity require things to be the same class? Perhaps that is an additional layer of relaxation we can consider later.
 """
 
 from rdflib.compare import isomorphic, graph_diff

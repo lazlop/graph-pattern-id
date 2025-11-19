@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 import pandas as pd 
 
-thresh5 = pd.read_csv('lengths-thresh5.csv').sort_values(by='graph_length')
-full = pd.read_csv('lengths.csv').sort_values(by='graph_length')
+thresh5 = pd.read_csv('lengths_buildingqa50.csv').sort_values(by='graph_length')
+full = pd.read_csv('lengths_buildingqa.csv').sort_values(by='graph_length')
 
 g_lens = list(thresh5.graph_length)
 cg_lens = list(thresh5.bschema_length)
