@@ -1,0 +1,47 @@
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix ns1: <https://brickschema.org/schema/Brick/ref#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:hpflex/shapes#Air_Handler_Unit_version_1> a brick:Air_Handler_Unit ;
+    brick:hasPoint <urn:hpflex/shapes#Cooling_Command_version_1> ;
+    brick:isFedBy <urn:hpflex/shapes#Chiller_version_1> .
+
+<urn:hpflex/shapes#Building_version_1> a brick:Building ;
+    brick:area <urn:hpflex/shapes#Resource_version_2> .
+
+<urn:hpflex/shapes#HVAC_Zone_version_1> a brick:HVAC_Zone .
+
+<urn:hpflex/shapes#Ontology_version_1> a owl:Ontology ;
+    rdfs:label rdfs:Resource ;
+    owl:imports rdfs:Resource .
+
+<urn:hpflex/shapes#Setpoint_version_1> a brick:Setpoint ;
+    rdfs:label rdfs:Resource .
+
+<urn:hpflex/shapes#Chilled_Water_Supply_Temperature_Sensor_version_1> a brick:Chilled_Water_Supply_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_3> .
+
+<urn:hpflex/shapes#Chiller_version_1> a brick:Chiller ;
+    brick:hasPoint <urn:hpflex/shapes#Chilled_Water_Supply_Temperature_Sensor_version_1>,
+        <urn:hpflex/shapes#Supply_Air_flow_version_1> .
+
+<urn:hpflex/shapes#Cooling_Command_version_1> a brick:Cooling_Command,
+        brick:Valve_Command ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_4> .
+
+<urn:hpflex/shapes#Resource_version_1> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_2> brick:hasUnits rdfs:Resource ;
+    brick:value rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_3> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_4> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Supply_Air_flow_version_1> a brick:Supply_Air_flow ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_1> .
+

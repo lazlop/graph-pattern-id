@@ -1,0 +1,149 @@
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix ns1: <https://brickschema.org/schema/Brick/ref#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<urn:hpflex/shapes#Air_Handler_Unit_version_1> a brick:Air_Handler_Unit ;
+    brick:feeds <urn:hpflex/shapes#VAV_version_1> ;
+    brick:hasPoint <urn:hpflex/shapes#Command_version_1>,
+        <urn:hpflex/shapes#Cooling_Command_version_1>,
+        <urn:hpflex/shapes#Mixed_Air_Temperature_Sensor_version_1>,
+        <urn:hpflex/shapes#Mode_version_1>,
+        <urn:hpflex/shapes#Outside_Air_Temperature_Sensor_version_1>,
+        <urn:hpflex/shapes#Return_Air_Temperature_Sensor_version_1>,
+        <urn:hpflex/shapes#Supply_Air_Temperature_Sensor_version_1>,
+        <urn:hpflex/shapes#Supply_Air_Temperature_Setpoint_version_1> ;
+    brick:isFedBy <urn:hpflex/shapes#Chiller_version_1> .
+
+<urn:hpflex/shapes#Building_version_1> a brick:Building ;
+    brick:area <urn:hpflex/shapes#Resource_version_6> .
+
+<urn:hpflex/shapes#Damper_version_1> a brick:Damper ;
+    brick:hasPoint <urn:hpflex/shapes#Damper_Position_Setpoint_version_1> ;
+    brick:isPartOf <urn:hpflex/shapes#VAV_version_1> .
+
+<urn:hpflex/shapes#Floor_version_1> a brick:Floor ;
+    brick:hasPart <urn:hpflex/shapes#Room_version_1> .
+
+<urn:hpflex/shapes#Ontology_version_1> a owl:Ontology ;
+    rdfs:label rdfs:Resource ;
+    owl:imports rdfs:Resource .
+
+<urn:hpflex/shapes#Chilled_Water_Flow_Sensor_version_1> a brick:Chilled_Water_Flow_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_14> .
+
+<urn:hpflex/shapes#Chilled_Water_Return_Temperature_Sensor_version_1> a brick:Chilled_Water_Return_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_3> .
+
+<urn:hpflex/shapes#Chilled_Water_Supply_Temperature_Sensor_version_1> a brick:Chilled_Water_Supply_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_15> .
+
+<urn:hpflex/shapes#Chilled_Water_Supply_Temperature_Setpoint_version_1> a brick:Chilled_Water_Supply_Temperature_Setpoint ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_9> .
+
+<urn:hpflex/shapes#Chiller_version_1> a brick:Chiller ;
+    brick:hasPoint <urn:hpflex/shapes#Chilled_Water_Flow_Sensor_version_1>,
+        <urn:hpflex/shapes#Chilled_Water_Return_Temperature_Sensor_version_1>,
+        <urn:hpflex/shapes#Chilled_Water_Supply_Temperature_Sensor_version_1>,
+        <urn:hpflex/shapes#Chilled_Water_Supply_Temperature_Setpoint_version_1>,
+        <urn:hpflex/shapes#Damper_Position_Command_version_1> .
+
+<urn:hpflex/shapes#Command_version_1> a brick:Command ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_7> .
+
+<urn:hpflex/shapes#Cooling_Command_version_1> a brick:Cooling_Command,
+        brick:Valve_Command ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_5> .
+
+<urn:hpflex/shapes#Damper_Position_Command_version_1> a brick:Damper_Position_Command ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_11> .
+
+<urn:hpflex/shapes#Damper_Position_Setpoint_version_1> a brick:Damper_Position_Setpoint ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_2> .
+
+<urn:hpflex/shapes#HVAC_Zone_version_1> a brick:HVAC_Zone ;
+    brick:hasPart <urn:hpflex/shapes#Room_version_1> .
+
+<urn:hpflex/shapes#Mixed_Air_Temperature_Sensor_version_1> a brick:Mixed_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource .
+
+<urn:hpflex/shapes#Mode_version_1> a brick:Mode ;
+    rdfs:label rdfs:Resource .
+
+<urn:hpflex/shapes#Outside_Air_Temperature_Sensor_version_1> a brick:Outside_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_4> .
+
+<urn:hpflex/shapes#Resource_version_1> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_10> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_11> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_12> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_13> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_14> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_15> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_16> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_2> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_3> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_4> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_5> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_6> brick:hasUnits rdfs:Resource ;
+    brick:value rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_7> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_8> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Resource_version_9> ns1:hasTimeseriesId rdfs:Resource .
+
+<urn:hpflex/shapes#Return_Air_Temperature_Sensor_version_1> a brick:Return_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_8> .
+
+<urn:hpflex/shapes#Supply_Air_Flow_Sensor_version_1> a brick:Supply_Air_Flow_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_16> .
+
+<urn:hpflex/shapes#Supply_Air_Temperature_Sensor_version_1> a brick:Supply_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_13> .
+
+<urn:hpflex/shapes#Supply_Air_Temperature_Setpoint_version_1> a brick:Supply_Air_Temperature_Setpoint ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_10> .
+
+<urn:hpflex/shapes#Zone_Air_Temperature_Sensor_version_1> a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_1> .
+
+<urn:hpflex/shapes#Zone_Air_Temperature_Setpoint_version_1> a brick:Zone_Air_Temperature_Setpoint ;
+    rdfs:label rdfs:Resource ;
+    ns1:hasExternalReference <urn:hpflex/shapes#Resource_version_12> .
+
+<urn:hpflex/shapes#Room_version_1> a brick:Room .
+
+<urn:hpflex/shapes#VAV_version_1> a brick:VAV ;
+    brick:feeds <urn:hpflex/shapes#HVAC_Zone_version_1> ;
+    brick:hasPoint <urn:hpflex/shapes#Supply_Air_Flow_Sensor_version_1>,
+        <urn:hpflex/shapes#Zone_Air_Temperature_Sensor_version_1>,
+        <urn:hpflex/shapes#Zone_Air_Temperature_Setpoint_version_1> .
+

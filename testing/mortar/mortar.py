@@ -11,7 +11,6 @@ from algorithm.main import *
 import matplotlib.pyplot as plt
 
 def get_mortar_graphs(directory_path):
-    g = Graph(store = "Oxigraph")
     for file_name in os.listdir(directory_path):
         # if file_name != 'bldg1.ttl':
         #     continue
@@ -19,6 +18,7 @@ def get_mortar_graphs(directory_path):
             file_path = os.path.join(directory_path, file_name)
             print(f"Processing file: {file_name}")
             try:
+                g = Graph(store = "Oxigraph")
                 g.parse(file_path, format="turtle")
             except Exception as e:
                 print(f"Error parsing {file_name}: {e}")
@@ -32,7 +32,7 @@ if __name__ == "__main__":
     g_lens = []
     cg_lens = []
     file_names = []
-    threshold = 0.7
+    threshold = None
     i = 0 
     # TODO: see what it looks like removing labels and stuff like that. 
     for file_name, g in get_mortar_graphs(directory_path):
