@@ -1,139 +1,139 @@
 @prefix brick: <https://brickschema.org/schema/Brick#> .
-@prefix hpfs: <urn:hpflex/shapes#> .
+@prefix bs: <urn:bschema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-hpfs:AHU_version_3 a brick:AHU ;
+bs:multiple-zone-ahu_name_1 a brick:AHU ;
     rdfs:label rdfs:Resource ;
-    brick:feeds hpfs:VAV_version_5,
-        hpfs:VAV_version_6 ;
-    brick:hasPart hpfs:Cooling_Coil_version_3,
-        hpfs:Damper_version_6,
-        hpfs:Heating_Coil_version_5,
-        hpfs:Supply_Fan_version_3 ;
-    brick:hasPoint hpfs:Filter_Differential_Pressure_Sensor_version_3,
-        hpfs:Mixed_Air_Temperature_Sensor_version_3,
-        hpfs:Outside_Air_Temperature_Sensor_version_3,
-        hpfs:Return_Air_Temperature_Sensor_version_3,
-        hpfs:Supply_Air_Temperature_Sensor_version_3 .
+    brick:feeds bs:vav-cooling-only_name_1,
+        bs:vav-with-reheat_name_1 ;
+    brick:hasPart bs:multiple-zone-ahu_clg_coil_1,
+        bs:multiple-zone-ahu_htg_coil_1,
+        bs:multiple-zone-ahu_ra_damper_1,
+        bs:multiple-zone-ahu_sa_fan_1 ;
+    brick:hasPoint bs:multiple-zone-ahu_filter_pd_1,
+        bs:multiple-zone-ahu_ma_temp_1,
+        bs:multiple-zone-ahu_oa_temp_1,
+        bs:multiple-zone-ahu_ra_temp_1,
+        bs:multiple-zone-ahu_sa_temp_1 .
 
-hpfs:CO2_Level_Sensor_version_4 a brick:CO2_Level_Sensor ;
+bs:multiple-zone-ahu_clg_coil-valve_cmd_1 a brick:Valve_Position_Command ;
     rdfs:label rdfs:Resource .
 
-hpfs:CO2_Level_Sensor_version_5 a brick:CO2_Level_Sensor ;
-    rdfs:label rdfs:Resource .
-
-hpfs:Cooling_Coil_version_3 a brick:Cooling_Coil ;
+bs:multiple-zone-ahu_clg_coil_1 a brick:Cooling_Coil ;
     rdfs:label rdfs:Resource ;
-    brick:hasPoint hpfs:Valve_Position_Command_version_5 .
+    brick:hasPoint bs:multiple-zone-ahu_clg_coil-valve_cmd_1 .
 
-hpfs:Damper_Position_Command_version_4 a brick:Damper_Position_Command ;
+bs:multiple-zone-ahu_filter_pd_1 a brick:Filter_Differential_Pressure_Sensor ;
     rdfs:label rdfs:Resource .
 
-hpfs:Damper_Position_Command_version_5 a brick:Damper_Position_Command ;
+bs:multiple-zone-ahu_htg_coil-valve_cmd_1 a brick:Valve_Position_Command ;
     rdfs:label rdfs:Resource .
 
-hpfs:Damper_Position_Command_version_6 a brick:Damper_Position_Command ;
-    rdfs:label rdfs:Resource .
-
-hpfs:Damper_version_6 a brick:Damper ;
+bs:multiple-zone-ahu_htg_coil_1 a brick:Heating_Coil ;
     rdfs:label rdfs:Resource ;
-    brick:hasPoint hpfs:Damper_Position_Command_version_4 .
+    brick:hasPoint bs:multiple-zone-ahu_htg_coil-valve_cmd_1 .
 
-hpfs:Damper_version_7 a brick:Damper ;
+bs:multiple-zone-ahu_ma_temp_1 a brick:Mixed_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource .
+
+bs:multiple-zone-ahu_oa_temp_1 a brick:Outside_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource .
+
+bs:multiple-zone-ahu_ra_damper-dmppos_1 a brick:Damper_Position_Command ;
+    rdfs:label rdfs:Resource .
+
+bs:multiple-zone-ahu_ra_damper_1 a brick:Damper ;
     rdfs:label rdfs:Resource ;
-    brick:hasPoint hpfs:Damper_Position_Command_version_5 .
+    brick:hasPoint bs:multiple-zone-ahu_ra_damper-dmppos_1 .
 
-hpfs:Damper_version_8 a brick:Damper ;
+bs:multiple-zone-ahu_ra_temp_1 a brick:Return_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource .
+
+bs:multiple-zone-ahu_sa_fan-speed_1 a brick:Frequency_Command ;
+    rdfs:label rdfs:Resource .
+
+bs:multiple-zone-ahu_sa_fan-start_stop_1 a brick:Start_Stop_Command ;
+    rdfs:label rdfs:Resource .
+
+bs:multiple-zone-ahu_sa_fan-status_1 a brick:Fan_Status ;
+    rdfs:label rdfs:Resource .
+
+bs:multiple-zone-ahu_sa_fan_1 a brick:Supply_Fan ;
     rdfs:label rdfs:Resource ;
-    brick:hasPoint hpfs:Damper_Position_Command_version_6 .
+    brick:hasPoint bs:multiple-zone-ahu_sa_fan-speed_1,
+        bs:multiple-zone-ahu_sa_fan-start_stop_1,
+        bs:multiple-zone-ahu_sa_fan-status_1 .
 
-hpfs:Discharge_Air_Temperature_Sensor_version_4 a brick:Discharge_Air_Temperature_Sensor ;
+bs:multiple-zone-ahu_sa_temp_1 a brick:Supply_Air_Temperature_Sensor ;
     rdfs:label rdfs:Resource .
 
-hpfs:Discharge_Air_Temperature_Sensor_version_5 a brick:Discharge_Air_Temperature_Sensor ;
+bs:vav-cooling-only_co2_1 a brick:CO2_Level_Sensor ;
     rdfs:label rdfs:Resource .
 
-hpfs:Fan_Status_version_3 a brick:Fan_Status ;
+bs:vav-cooling-only_dat_1 a brick:Discharge_Air_Temperature_Sensor ;
     rdfs:label rdfs:Resource .
 
-hpfs:Filter_Differential_Pressure_Sensor_version_3 a brick:Filter_Differential_Pressure_Sensor ;
+bs:vav-cooling-only_dmp-dmppos_1 a brick:Damper_Position_Command ;
     rdfs:label rdfs:Resource .
 
-hpfs:Frequency_Command_version_3 a brick:Frequency_Command ;
-    rdfs:label rdfs:Resource .
-
-hpfs:HVAC_Zone_version_4 a brick:HVAC_Zone ;
-    rdfs:label rdfs:Resource .
-
-hpfs:HVAC_Zone_version_5 a brick:HVAC_Zone ;
-    rdfs:label rdfs:Resource .
-
-hpfs:Heating_Coil_version_5 a brick:Heating_Coil ;
+bs:vav-cooling-only_dmp_1 a brick:Damper ;
     rdfs:label rdfs:Resource ;
-    brick:hasPoint hpfs:Valve_Position_Command_version_6 .
+    brick:hasPoint bs:vav-cooling-only_dmp-dmppos_1 .
 
-hpfs:Heating_Coil_version_6 a brick:Heating_Coil ;
+bs:vav-cooling-only_name_1 a brick:VAV ;
     rdfs:label rdfs:Resource ;
-    brick:hasPoint hpfs:Position_Command_version_3 .
+    brick:feeds bs:vav-cooling-only_zone_1 ;
+    brick:hasPart bs:vav-cooling-only_dmp_1 ;
+    brick:hasPoint bs:vav-cooling-only_co2_1,
+        bs:vav-cooling-only_dat_1,
+        bs:vav-cooling-only_occ_1,
+        bs:vav-cooling-only_ztemp_1 .
 
-hpfs:Mixed_Air_Temperature_Sensor_version_3 a brick:Mixed_Air_Temperature_Sensor ;
+bs:vav-cooling-only_occ_1 a brick:Occupancy_Sensor ;
     rdfs:label rdfs:Resource .
 
-hpfs:Occupancy_Sensor_version_4 a brick:Occupancy_Sensor ;
+bs:vav-cooling-only_zone_1 a brick:HVAC_Zone ;
     rdfs:label rdfs:Resource .
 
-hpfs:Occupancy_Sensor_version_5 a brick:Occupancy_Sensor ;
+bs:vav-cooling-only_ztemp_1 a brick:Zone_Air_Temperature_Sensor ;
     rdfs:label rdfs:Resource .
 
-hpfs:Outside_Air_Temperature_Sensor_version_3 a brick:Outside_Air_Temperature_Sensor ;
+bs:vav-with-reheat_name-co2_1 a brick:CO2_Level_Sensor ;
     rdfs:label rdfs:Resource .
 
-hpfs:Position_Command_version_3 a brick:Position_Command ;
+bs:vav-with-reheat_name-dat_1 a brick:Discharge_Air_Temperature_Sensor ;
     rdfs:label rdfs:Resource .
 
-hpfs:Return_Air_Temperature_Sensor_version_3 a brick:Return_Air_Temperature_Sensor ;
+bs:vav-with-reheat_name-dmp-dmppos_1 a brick:Damper_Position_Command ;
     rdfs:label rdfs:Resource .
 
-hpfs:Start_Stop_Command_version_3 a brick:Start_Stop_Command ;
-    rdfs:label rdfs:Resource .
-
-hpfs:Supply_Air_Temperature_Sensor_version_3 a brick:Supply_Air_Temperature_Sensor ;
-    rdfs:label rdfs:Resource .
-
-hpfs:Supply_Fan_version_3 a brick:Supply_Fan ;
+bs:vav-with-reheat_name-dmp_1 a brick:Damper ;
     rdfs:label rdfs:Resource ;
-    brick:hasPoint hpfs:Fan_Status_version_3,
-        hpfs:Frequency_Command_version_3,
-        hpfs:Start_Stop_Command_version_3 .
+    brick:hasPoint bs:vav-with-reheat_name-dmp-dmppos_1 .
 
-hpfs:VAV_version_5 a brick:VAV ;
+bs:vav-with-reheat_name-occ_1 a brick:Occupancy_Sensor ;
+    rdfs:label rdfs:Resource .
+
+bs:vav-with-reheat_name-zone_1 a brick:HVAC_Zone ;
+    rdfs:label rdfs:Resource .
+
+bs:vav-with-reheat_name-ztemp_1 a brick:Zone_Air_Temperature_Sensor ;
+    rdfs:label rdfs:Resource .
+
+bs:vav-with-reheat_name_1 a brick:VAV ;
     rdfs:label rdfs:Resource ;
-    brick:feeds hpfs:HVAC_Zone_version_4 ;
-    brick:hasPart hpfs:Damper_version_7 ;
-    brick:hasPoint hpfs:CO2_Level_Sensor_version_4,
-        hpfs:Discharge_Air_Temperature_Sensor_version_4,
-        hpfs:Occupancy_Sensor_version_4,
-        hpfs:Zone_Air_Temperature_Sensor_version_4 .
+    brick:feeds bs:vav-with-reheat_name-zone_1 ;
+    brick:hasPart bs:vav-with-reheat_name-dmp_1,
+        bs:vav-with-reheat_rhc_1 ;
+    brick:hasPoint bs:vav-with-reheat_name-co2_1,
+        bs:vav-with-reheat_name-dat_1,
+        bs:vav-with-reheat_name-occ_1,
+        bs:vav-with-reheat_name-ztemp_1 .
 
-hpfs:VAV_version_6 a brick:VAV ;
+bs:vav-with-reheat_rhc-cmd_1 a brick:Position_Command ;
+    rdfs:label rdfs:Resource .
+
+bs:vav-with-reheat_rhc_1 a brick:Heating_Coil ;
     rdfs:label rdfs:Resource ;
-    brick:feeds hpfs:HVAC_Zone_version_5 ;
-    brick:hasPart hpfs:Damper_version_8,
-        hpfs:Heating_Coil_version_6 ;
-    brick:hasPoint hpfs:CO2_Level_Sensor_version_5,
-        hpfs:Discharge_Air_Temperature_Sensor_version_5,
-        hpfs:Occupancy_Sensor_version_5,
-        hpfs:Zone_Air_Temperature_Sensor_version_5 .
-
-hpfs:Valve_Position_Command_version_5 a brick:Valve_Position_Command ;
-    rdfs:label rdfs:Resource .
-
-hpfs:Valve_Position_Command_version_6 a brick:Valve_Position_Command ;
-    rdfs:label rdfs:Resource .
-
-hpfs:Zone_Air_Temperature_Sensor_version_4 a brick:Zone_Air_Temperature_Sensor ;
-    rdfs:label rdfs:Resource .
-
-hpfs:Zone_Air_Temperature_Sensor_version_5 a brick:Zone_Air_Temperature_Sensor ;
-    rdfs:label rdfs:Resource .
+    brick:hasPoint bs:vav-with-reheat_rhc-cmd_1 .
 

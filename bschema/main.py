@@ -101,9 +101,9 @@ def get_class(node: URIRef, data_graph) -> URIRef:
         # TODO: Shouldn't hve a default class and need a union of classes
         # Should have something else to represent literals, other than resource, but need to make sure defualt just applies to literals
         
-        # NOTE: hacky method of addressing getting the right class or class set, just by preferring HPFS classes and earlier making sure hteres just one hpfs class per thing
+        # NOTE: hacky method of addressing getting the right class or class set, just by preferring BS classes and earlier making sure hteres just one BS class per thing
         for _, _, o in data_graph.triples((node, A, None)):
-            if str(HPFS) in str(o):
+            if str(BS) in str(o):
                 return o
         for _, _, o in data_graph.triples((node, A, None)):
             return o
@@ -304,23 +304,28 @@ def copy_graph(g):
         g2.add(triple)
     return g2
 
-def create_new_class_name(cls_name):
-    name = cls_name.split('#')[-1].split('_version_')[0]
-    counter[name] = count = counter.get(name, 0) + 1
-    return URIRef(f"{name}_version_{count}")
 
-def assign_new_classes(data_graph, distinct_class_subgraphs, equivalent_subjects, subject_classes):
+def assign_new_classes(data_graph, distinct_class_subgraphs, equivalent_subjects, subject_classes, use_original_names):
     class_mappings = {}
     new_subject_classes = {}
     for i, subj_list in enumerate(equivalent_subjects):
-        new_cls_name = create_new_class_name(subject_classes[i])
+        if use_original_names:
+            name = common_pattern(subj_list)
+            counter[name] = count = counter.get(name, 0) + 1
+            new_cls_name = URIRef(f"{name}{count}")
+        else:
+            cls_name = subject_classes[i]
+            name = cls_name.split('#')[-1].split('_version_')[0]
+            counter[name] = count = counter.get(name, 0) + 1
+            new_cls_name = URIRef(f"{name}_version_{count}")
         for s in subj_list:
-            new_subject_classes.update({s: HPFS[new_cls_name.split('#')[-1]]})
+            new_subject_classes.update({s: BS[new_cls_name.split('#')[-1]]})
             class_mappings[new_cls_name] = (subject_classes[i], distinct_class_subgraphs[i])
 
     return new_subject_classes, class_mappings
 
-def run_algo(original_data_graph, iterations = 10, similarity_threshold = None, remove_added_labels = True):
+
+def run_algo(original_data_graph, iterations = 10, similarity_threshold = None, remove_added_labels = True, use_original_names = True):
     # need to remove ontology statement because having just the prefix breaks serialization/parsing by oxigraph
     global counter
     counter = {}
@@ -329,8 +334,10 @@ def run_algo(original_data_graph, iterations = 10, similarity_threshold = None, 
     data_graph = copy_graph(original_data_graph)
     data_graph = data_graph.skolemize()
     for i in range(iterations):
+        # TODO: need to double check if it works to reset the counter each time, or if it will create issues because of when class name is assigned
+        counter = {}
         distinct_class_subgraphs, seen_subjects, equivalent_subjects, subject_classes = get_class_isomorphisms(data_graph, similarity_threshold)
-        new_subject_classes, new_class_mappings = assign_new_classes(data_graph, distinct_class_subgraphs, equivalent_subjects, subject_classes)
+        new_subject_classes, new_class_mappings = assign_new_classes(data_graph, distinct_class_subgraphs, equivalent_subjects, subject_classes, use_original_names=use_original_names)
         class_mappings.append(new_class_mappings)
 
         if i >= 1:
@@ -345,14 +352,15 @@ def run_algo(original_data_graph, iterations = 10, similarity_threshold = None, 
                 last_set_diff = find_similar_sublists(equivalent_subjects, prev_equivalent_subjects)
     
         prev_equivalent_subjects = equivalent_subjects
-        for s, cls_name in new_subject_classes.items():
-            data_graph.add((s, A, cls_name))
-
-        # delete HPFS class since it is no longer needed 
+        # delete BS class since it is no longer needed 
         # NOTE: hacky method of addressing getting the right class or class set
         if i >= 1:
             for s, cls_name in prev_subject_classes.items():
                 data_graph.remove((s, A, cls_name))
+        
+        # add new class names
+        for s, cls_name in new_subject_classes.items():
+            data_graph.add((s, A, cls_name))
         
         prev_subject_classes = new_subject_classes
         print("Summarized Graph Length: ", len(create_class_graph(data_graph)))
@@ -364,7 +372,7 @@ def run_algo(original_data_graph, iterations = 10, similarity_threshold = None, 
     # TODO: Should handle added class labels with better method. 
     if remove_added_labels:
         for s,p,o in class_graph:
-            if (p == A) & (str(HPFS) in str(o)):
+            if (p == A) & (str(BS) in str(o)):
                 class_graph.remove((s,p,o))
     # M, in the paper 
     member_graph = Graph(store = "Oxigraph")
