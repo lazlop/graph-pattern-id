@@ -1,5 +1,4 @@
 from rdflib import Graph
-import pyshacl
 from typing import Iterable, Tuple
 
 def get_prefixes(g: Graph):

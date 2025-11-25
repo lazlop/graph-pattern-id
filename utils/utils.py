@@ -1,6 +1,5 @@
 import pandas as pd
 from rdflib import Graph
-import pyshacl
 
 
 def get_prefixes(g: Graph):
