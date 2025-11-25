@@ -3,7 +3,7 @@ import os
 import sys 
 sys.path.append('../../')
 from utils import *
-from bschema.main import * 
+from bschema import * 
 import matplotlib.pyplot as plt
 
 data_graph = Graph(store = 'Oxigraph')
