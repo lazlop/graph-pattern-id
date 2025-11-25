@@ -45,6 +45,7 @@ S223 = Namespace("http://data.ashrae.org/standard223#")
 
 A = RDF.type
 
+BNODE_BASE = "https://rdflib.github.io/.well-known/genid/rdflib/"
 
 def bind_prefixes(graph):
     """Associate common prefixes with the graph.

@@ -29,6 +29,7 @@ from .namespaces import *
 from tqdm import tqdm
 
 counter = {}
+bnode_counter = {}
 PRINT_GRAPHS = False
 
 def get_subgraph_with_hops(
@@ -311,6 +312,8 @@ def assign_new_classes(data_graph, distinct_class_subgraphs, equivalent_subjects
     for i, subj_list in enumerate(equivalent_subjects):
         if use_original_names:
             name = common_pattern(subj_list)
+            if BNODE_BASE in name:
+                name = 'bnode'
             counter[name] = count = counter.get(name, 0) + 1
             new_cls_name = URIRef(f"{name}{count}")
         else:

@@ -12,6 +12,13 @@ def convert_to_prefixed(uri, g: Graph):
         print(e)
         return uri
 
+# NOTE: Can consider using get_qname for more accuracy, but takes longer
+def get_local_name(node):
+    node = str(node).replace("<", "").replace(">", "")
+    if "#" in node:
+        return node.rpartition("#")[-1]
+    else:
+        return node.rpartition("/")[-1]
 def query_to_df(query, g: Graph):
     results = g.query(query)
     formatted_results = [
