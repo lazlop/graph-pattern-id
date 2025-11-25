@@ -39,7 +39,7 @@ if __name__ == "__main__":
         gs.append(g)
         g_lens.append(len(g))
         file_names.append(file_name)
-        cg, mg = create_bschema(g, iterations=10, similarity_threshold=threshold)
+        cg, mg, i = create_bschema(g, iterations=10, similarity_threshold=threshold)
         # removing extraneous classes
         for s,p,o in cg:
             if (p == A) & (str(HPFS) in str(o)):

@@ -385,4 +385,5 @@ def create_bschema(original_data_graph, iterations = 10, similarity_threshold = 
         for s in equivalent_subjects[i]:
             member_graph.add((subject_classes[i], RDFS.member, s))
     # could optionally also return data_graph, class_mappings
-    return class_graph, member_graph
+    # also giving amt of iterations
+    return class_graph, member_graph, i 

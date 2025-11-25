@@ -17,7 +17,7 @@ def run():
     data_graph = Graph(store='Oxigraph')
     data_graph.parse(args.input_file)
 
-    cg, mg = create_bschema(data_graph, args.iterations, args.threshold, args.delete_added_classes)
+    cg, mg, i = create_bschema(data_graph, args.iterations, args.threshold, args.delete_added_classes)
 
     bind_prefixes(cg)
 
