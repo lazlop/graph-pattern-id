@@ -1,274 +1,274 @@
-@prefix hpfs: <urn:hpflex/shapes#> .
+@prefix bs: <urn:bschema#> .
 @prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix s223: <http://data.ashrae.org/standard223#> .
 
-hpfs:DomainSpace_version_3 a s223:DomainSpace ;
+bs:vav-1 a s223:DomainSpace ;
     rdfs:label rdfs:Resource ;
     s223:hasDomain rdfs:Resource .
 
-hpfs:Damper_version_6 a s223:Damper ;
-    rdfs:label rdfs:Resource ;
-    s223:hasProperty hpfs:QuantifiableActuatableProperty_version_7 .
-
-hpfs:Damper_version_7 a s223:Damper ;
-    rdfs:label rdfs:Resource ;
-    s223:hasProperty hpfs:QuantifiableActuatableProperty_version_8 .
-
-hpfs:InletConnectionPoint_version_11 a s223:InletConnectionPoint ;
-    rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:Coil_version_7 ;
-    s223:hasMedium rdfs:Resource .
-
-hpfs:OutletConnectionPoint_version_18 a s223:OutletConnectionPoint ;
-    rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:Coil_version_9 ;
-    s223:hasMedium rdfs:Resource ;
-    s223:mapsTo hpfs:OutletConnectionPoint_version_24 .
-
-hpfs:OutletConnectionPoint_version_19 a s223:OutletConnectionPoint ;
-    rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:SingleDuctTerminal_version_5 ;
-    s223:hasMedium rdfs:Resource ;
-    s223:hasProperty hpfs:QuantifiableObservableProperty_version_29 .
-
-hpfs:OutletConnectionPoint_version_20 a s223:OutletConnectionPoint ;
-    rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:SingleDuctTerminal_version_6 ;
-    s223:hasMedium rdfs:Resource ;
-    s223:hasProperty hpfs:QuantifiableObservableProperty_version_30 .
-
-hpfs:OutletConnectionPoint_version_21 a s223:OutletConnectionPoint ;
-    rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:Coil_version_7 ;
-    s223:hasMedium rdfs:Resource .
-
-hpfs:QuantifiableActuatableProperty_version_6 a s223:QuantifiableActuatableProperty ;
-    rdfs:label rdfs:Resource ;
-    s223:hasQuantityKind quantitykind:PositionRatio .
-
-hpfs:QuantifiableActuatableProperty_version_7 a s223:QuantifiableActuatableProperty ;
-    rdfs:label rdfs:Resource ;
-    s223:hasQuantityKind quantitykind:PositionRatio .
-
-hpfs:QuantifiableActuatableProperty_version_8 a s223:QuantifiableActuatableProperty ;
-    rdfs:label rdfs:Resource ;
-    s223:hasQuantityKind quantitykind:PositionRatio .
-
-hpfs:QuantifiableActuatableProperty_version_9 a s223:QuantifiableActuatableProperty ;
-    rdfs:label rdfs:Resource ;
-    s223:hasQuantityKind quantitykind:PositionRatio .
-
-hpfs:QuantifiableObservableProperty_version_22 a s223:QuantifiableObservableProperty ;
+bs:multiple-zone-ahu_filter_pd_1 a s223:QuantifiableObservableProperty ;
     rdfs:label rdfs:Resource ;
     s223:hasAspect s223:Aspect-Filter ;
     s223:hasQuantityKind quantitykind:PressureDifference .
 
-hpfs:QuantifiableObservableProperty_version_23 a s223:QuantifiableObservableProperty ;
+bs:multiple-zone-ahu_ma_temp_1 a s223:QuantifiableObservableProperty ;
     rdfs:label rdfs:Resource ;
     s223:hasQuantityKind quantitykind:Temperature .
 
-hpfs:QuantifiableObservableProperty_version_24 a s223:QuantifiableObservableProperty ;
+bs:multiple-zone-ahu_oa_temp_1 a s223:QuantifiableObservableProperty ;
     rdfs:label rdfs:Resource ;
     s223:hasAspect s223:Role-OutdoorAirIntake ;
     s223:hasQuantityKind quantitykind:Temperature .
 
-hpfs:QuantifiableObservableProperty_version_25 a s223:QuantifiableObservableProperty ;
+bs:multiple-zone-ahu_ra_damper-dmppos_1 a s223:QuantifiableActuatableProperty ;
+    rdfs:label rdfs:Resource ;
+    s223:hasQuantityKind quantitykind:PositionRatio .
+
+bs:multiple-zone-ahu_ra_temp_1 a s223:QuantifiableObservableProperty ;
     rdfs:label rdfs:Resource ;
     s223:hasAspect s223:Role-Return ;
     s223:hasQuantityKind quantitykind:Temperature .
 
-hpfs:QuantifiableObservableProperty_version_26 a s223:QuantifiableObservableProperty ;
+bs:multiple-zone-ahu_sa_temp_1 a s223:QuantifiableObservableProperty ;
     rdfs:label rdfs:Resource ;
     s223:hasAspect s223:Role-Supply ;
     s223:hasQuantityKind quantitykind:Temperature .
 
-hpfs:QuantifiableObservableProperty_version_27 a s223:QuantifiableObservableProperty ;
+bs:target_cp_1 a s223:OutletConnectionPoint ;
+    rdfs:label rdfs:Resource ;
+    s223:cnx bs:multiple-zone-ahu_htg_coil_1 ;
+    s223:hasMedium rdfs:Resource ;
+    s223:mapsTo bs:outlet_cp_2 .
+
+bs:vav-cooling-only_air-outlet-connectionpoint_1 a s223:OutletConnectionPoint ;
+    rdfs:label rdfs:Resource ;
+    s223:cnx bs:vav-cooling-only_name_1 ;
+    s223:hasMedium rdfs:Resource ;
+    s223:hasProperty bs:vav-cooling-only_dat_1 .
+
+bs:vav-cooling-only_co2_1 a s223:QuantifiableObservableProperty ;
     rdfs:label rdfs:Resource ;
     s223:hasQuantityKind quantitykind:Concentration ;
     s223:ofConstituent rdfs:Resource ;
     s223:ofMedium rdfs:Resource .
 
-hpfs:QuantifiableObservableProperty_version_28 a s223:QuantifiableObservableProperty ;
+bs:vav-cooling-only_dat_1 a s223:QuantifiableObservableProperty ;
+    rdfs:label rdfs:Resource ;
+    s223:hasAspect s223:Role-Discharge ;
+    s223:hasQuantityKind quantitykind:Temperature .
+
+bs:vav-cooling-only_dmp-dmppos_1 a s223:QuantifiableActuatableProperty ;
+    rdfs:label rdfs:Resource ;
+    s223:hasQuantityKind quantitykind:PositionRatio .
+
+bs:vav-cooling-only_dmp_1 a s223:Damper ;
+    rdfs:label rdfs:Resource ;
+    s223:hasProperty bs:vav-cooling-only_dmp-dmppos_1 .
+
+bs:vav-cooling-only_occ_1 a s223:QuantifiableObservableProperty ;
+    rdfs:label rdfs:Resource ;
+    s223:hasEnumerationKind s223:EnumerationKind-Occupancy .
+
+bs:vav-cooling-only_ztemp_1 a s223:QuantifiableObservableProperty ;
+    rdfs:label rdfs:Resource ;
+    s223:hasAspect s223:Aspect-Setpoint ;
+    qudt:hasQuantityKind rdfs:Resource .
+
+bs:vav-with-reheat_dmp_1 a s223:Damper ;
+    rdfs:label rdfs:Resource ;
+    s223:hasProperty bs:vav-with-reheat_name-dmp-dmppos_1 .
+
+bs:vav-with-reheat_name-air-outlet-connectionpoint_1 a s223:OutletConnectionPoint ;
+    rdfs:label rdfs:Resource ;
+    s223:cnx bs:vav-with-reheat_name_1 ;
+    s223:hasMedium rdfs:Resource ;
+    s223:hasProperty bs:vav-with-reheat_name-dat_1 .
+
+bs:vav-with-reheat_name-co2_1 a s223:QuantifiableObservableProperty ;
     rdfs:label rdfs:Resource ;
     s223:hasQuantityKind quantitykind:Concentration ;
     s223:ofConstituent rdfs:Resource ;
     s223:ofMedium rdfs:Resource .
 
-hpfs:QuantifiableObservableProperty_version_29 a s223:QuantifiableObservableProperty ;
+bs:vav-with-reheat_name-dat_1 a s223:QuantifiableObservableProperty ;
     rdfs:label rdfs:Resource ;
     s223:hasAspect s223:Role-Discharge ;
     s223:hasQuantityKind quantitykind:Temperature .
 
-hpfs:QuantifiableObservableProperty_version_30 a s223:QuantifiableObservableProperty ;
+bs:vav-with-reheat_name-dmp-dmppos_1 a s223:QuantifiableActuatableProperty ;
     rdfs:label rdfs:Resource ;
-    s223:hasAspect s223:Role-Discharge ;
-    s223:hasQuantityKind quantitykind:Temperature .
+    s223:hasQuantityKind quantitykind:PositionRatio .
 
-hpfs:QuantifiableObservableProperty_version_31 a s223:QuantifiableObservableProperty ;
-    rdfs:label rdfs:Resource ;
-    s223:hasEnumerationKind s223:EnumerationKind-Occupancy .
-
-hpfs:QuantifiableObservableProperty_version_32 a s223:QuantifiableObservableProperty ;
+bs:vav-with-reheat_name-occ_1 a s223:QuantifiableObservableProperty ;
     rdfs:label rdfs:Resource ;
     s223:hasEnumerationKind s223:EnumerationKind-Occupancy .
 
-hpfs:QuantifiableObservableProperty_version_33 a s223:QuantifiableObservableProperty ;
+bs:vav-with-reheat_name-ztemp_1 a s223:QuantifiableObservableProperty ;
     rdfs:label rdfs:Resource ;
     s223:hasAspect s223:Aspect-Setpoint ;
     qudt:hasQuantityKind rdfs:Resource .
 
-hpfs:QuantifiableObservableProperty_version_34 a s223:QuantifiableObservableProperty ;
+bs:vav-with-reheat_rhc-air-inlet-connectionpoint_1 a s223:InletConnectionPoint ;
     rdfs:label rdfs:Resource ;
-    s223:hasAspect s223:Aspect-Setpoint ;
-    qudt:hasQuantityKind rdfs:Resource .
+    s223:cnx bs:vav-with-reheat_rhc_1 ;
+    s223:hasMedium rdfs:Resource .
 
-hpfs:AirHandlingUnit_version_3 a s223:AirHandlingUnit ;
+bs:vav-with-reheat_rhc-air-outlet-connectionpoint_1 a s223:OutletConnectionPoint ;
     rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:OutletConnectionPoint_version_22,
-        hpfs:OutletConnectionPoint_version_24 ;
-    s223:connectsTo hpfs:SingleDuctTerminal_version_5,
-        hpfs:SingleDuctTerminal_version_6 ;
-    s223:contains hpfs:Coil_version_8,
-        hpfs:Coil_version_9,
-        hpfs:Damper_version_8,
-        hpfs:Fan_version_3 ;
-    s223:hasProperty hpfs:QuantifiableObservableProperty_version_22,
-        hpfs:QuantifiableObservableProperty_version_23,
-        hpfs:QuantifiableObservableProperty_version_24,
-        hpfs:QuantifiableObservableProperty_version_25,
-        hpfs:QuantifiableObservableProperty_version_26 .
+    s223:cnx bs:vav-with-reheat_rhc_1 ;
+    s223:hasMedium rdfs:Resource .
 
-hpfs:Connection_version_6 a s223:Connection ;
+bs:vav-with-reheat_rhc-cmd_1 a s223:QuantifiableActuatableProperty ;
     rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:InletConnectionPoint_version_12,
-        hpfs:OutletConnectionPoint_version_26 .
+    s223:hasQuantityKind quantitykind:PositionRatio .
 
-hpfs:Connection_version_7 a s223:Connection ;
+bs:ahu_out1 a s223:OutletConnectionPoint ;
     rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:InletConnectionPoint_version_14,
-        hpfs:OutletConnectionPoint_version_23 .
+    s223:cnx bs:ahu_con1,
+        bs:multiple-zone-ahu_name_1 ;
+    s223:hasMedium rdfs:Resource .
 
-hpfs:Connection_version_8 a s223:Connection ;
+bs:connection_1 a s223:Connection ;
     rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:InletConnectionPoint_version_13,
-        hpfs:OutletConnectionPoint_version_25 .
+    s223:cnx bs:inlet_cp_3,
+        bs:outlet_cp_4 .
 
-hpfs:Fan_version_3 a s223:Fan ;
+bs:connection_2 a s223:Connection ;
     rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:OutletConnectionPoint_version_23 ;
-    s223:connectsTo hpfs:Damper_version_8 ;
+    s223:cnx bs:inlet_cp_1,
+        bs:outlet_cp_3 .
+
+bs:connection_3 a s223:Connection ;
+    rdfs:label rdfs:Resource ;
+    s223:cnx bs:inlet_cp_2,
+        bs:outlet_cp_1 .
+
+bs:inlet_cp_1 a s223:InletConnectionPoint ;
+    rdfs:label rdfs:Resource ;
+    s223:cnx bs:connection_2,
+        bs:multiple-zone-ahu_ra_damper_1 ;
+    s223:hasMedium rdfs:Resource .
+
+bs:inlet_cp_2 a s223:InletConnectionPoint ;
+    rdfs:label rdfs:Resource ;
+    s223:cnx bs:connection_3,
+        bs:multiple-zone-ahu_clg_coil_1 ;
+    s223:hasMedium rdfs:Resource .
+
+bs:inlet_cp_3 a s223:InletConnectionPoint ;
+    rdfs:label rdfs:Resource ;
+    s223:cnx bs:connection_1,
+        bs:multiple-zone-ahu_htg_coil_1 ;
+    s223:hasMedium rdfs:Resource .
+
+bs:multiple-zone-ahu_name_1 a s223:AirHandlingUnit ;
+    rdfs:label rdfs:Resource ;
+    s223:cnx bs:ahu_out1,
+        bs:outlet_cp_2 ;
+    s223:connectsTo bs:vav-cooling-only_name_1,
+        bs:vav-with-reheat_name_1 ;
+    s223:contains bs:multiple-zone-ahu_clg_coil_1,
+        bs:multiple-zone-ahu_htg_coil_1,
+        bs:multiple-zone-ahu_ra_damper_1,
+        bs:multiple-zone-ahu_sa_fan_1 ;
+    s223:hasProperty bs:multiple-zone-ahu_filter_pd_1,
+        bs:multiple-zone-ahu_ma_temp_1,
+        bs:multiple-zone-ahu_oa_temp_1,
+        bs:multiple-zone-ahu_ra_temp_1,
+        bs:multiple-zone-ahu_sa_temp_1 .
+
+bs:multiple-zone-ahu_sa_fan_1 a s223:Fan ;
+    rdfs:label rdfs:Resource ;
+    s223:cnx bs:outlet_cp_3 ;
+    s223:connectsTo bs:multiple-zone-ahu_ra_damper_1 ;
     s223:hasAspect s223:Role-SupplyAir .
 
-hpfs:InletConnectionPoint_version_12 a s223:InletConnectionPoint ;
+bs:outlet_cp_1 a s223:OutletConnectionPoint ;
     rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:Coil_version_8,
-        hpfs:Connection_version_6 ;
+    s223:cnx bs:connection_3,
+        bs:multiple-zone-ahu_ra_damper_1 ;
     s223:hasMedium rdfs:Resource .
 
-hpfs:InletConnectionPoint_version_13 a s223:InletConnectionPoint ;
+bs:outlet_cp_2 a s223:OutletConnectionPoint ;
     rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:Coil_version_9,
-        hpfs:Connection_version_8 ;
+    s223:cnx bs:multiple-zone-ahu_name_1 ;
     s223:hasMedium rdfs:Resource .
 
-hpfs:InletConnectionPoint_version_14 a s223:InletConnectionPoint ;
+bs:outlet_cp_3 a s223:OutletConnectionPoint ;
     rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:Connection_version_7,
-        hpfs:Damper_version_8 ;
+    s223:cnx bs:connection_2,
+        bs:multiple-zone-ahu_sa_fan_1 ;
     s223:hasMedium rdfs:Resource .
 
-hpfs:InletConnectionPoint_version_15 a s223:InletConnectionPoint ;
+bs:outlet_cp_4 a s223:OutletConnectionPoint ;
     rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:Connection_version_9,
-        hpfs:SingleDuctTerminal_version_5 ;
+    s223:cnx bs:connection_1,
+        bs:multiple-zone-ahu_clg_coil_1 ;
     s223:hasMedium rdfs:Resource .
 
-hpfs:InletConnectionPoint_version_16 a s223:InletConnectionPoint ;
+bs:vav-cooling-only_air-inlet-connectionpoint_1 a s223:InletConnectionPoint ;
     rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:Connection_version_9,
-        hpfs:SingleDuctTerminal_version_6 ;
+    s223:cnx bs:ahu_con1,
+        bs:vav-cooling-only_name_1 ;
     s223:hasMedium rdfs:Resource .
 
-hpfs:OutletConnectionPoint_version_22 a s223:OutletConnectionPoint ;
+bs:vav-with-reheat_name-air-inlet-connectionpoint_1 a s223:InletConnectionPoint ;
     rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:AirHandlingUnit_version_3,
-        hpfs:Connection_version_9 ;
+    s223:cnx bs:ahu_con1,
+        bs:vav-with-reheat_name_1 ;
     s223:hasMedium rdfs:Resource .
 
-hpfs:OutletConnectionPoint_version_23 a s223:OutletConnectionPoint ;
+bs:ahu_con1 a s223:Connection ;
     rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:Connection_version_7,
-        hpfs:Fan_version_3 ;
-    s223:hasMedium rdfs:Resource .
+    s223:cnx bs:ahu_out1,
+        bs:vav-cooling-only_air-inlet-connectionpoint_1,
+        bs:vav-with-reheat_name-air-inlet-connectionpoint_1 .
 
-hpfs:OutletConnectionPoint_version_24 a s223:OutletConnectionPoint ;
+bs:vav-cooling-only_name_1 a s223:SingleDuctTerminal ;
     rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:AirHandlingUnit_version_3 ;
-    s223:hasMedium rdfs:Resource .
+    s223:cnx bs:vav-cooling-only_air-inlet-connectionpoint_1,
+        bs:vav-cooling-only_air-outlet-connectionpoint_1 ;
+    s223:contains bs:vav-cooling-only_dmp_1 ;
+    s223:hasProperty bs:vav-cooling-only_co2_1,
+        bs:vav-cooling-only_occ_1,
+        bs:vav-cooling-only_ztemp_1 .
 
-hpfs:OutletConnectionPoint_version_25 a s223:OutletConnectionPoint ;
+bs:vav-with-reheat_name_1 a s223:SingleDuctTerminal ;
     rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:Coil_version_8,
-        hpfs:Connection_version_8 ;
-    s223:hasMedium rdfs:Resource .
+    s223:cnx bs:vav-with-reheat_name-air-inlet-connectionpoint_1,
+        bs:vav-with-reheat_name-air-outlet-connectionpoint_1 ;
+    s223:contains bs:vav-with-reheat_dmp_1,
+        bs:vav-with-reheat_rhc_1 ;
+    s223:hasProperty bs:vav-with-reheat_name-co2_1,
+        bs:vav-with-reheat_name-occ_1,
+        bs:vav-with-reheat_name-ztemp_1 .
 
-hpfs:OutletConnectionPoint_version_26 a s223:OutletConnectionPoint ;
+bs:vav-with-reheat_rhc_1 a s223:Coil ;
     rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:Connection_version_6,
-        hpfs:Damper_version_8 ;
-    s223:hasMedium rdfs:Resource .
-
-hpfs:Coil_version_7 a s223:Coil ;
-    rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:InletConnectionPoint_version_11,
-        hpfs:OutletConnectionPoint_version_21 ;
+    s223:cnx bs:vav-with-reheat_rhc-air-inlet-connectionpoint_1,
+        bs:vav-with-reheat_rhc-air-outlet-connectionpoint_1 ;
     s223:hasAspect s223:Role-Heating ;
-    s223:hasProperty hpfs:QuantifiableActuatableProperty_version_9 .
+    s223:hasProperty bs:vav-with-reheat_rhc-cmd_1 .
 
-hpfs:Connection_version_9 a s223:Connection ;
+bs:multiple-zone-ahu_clg_coil_1 a s223:Coil ;
     rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:InletConnectionPoint_version_15,
-        hpfs:InletConnectionPoint_version_16,
-        hpfs:OutletConnectionPoint_version_22 .
-
-hpfs:SingleDuctTerminal_version_5 a s223:SingleDuctTerminal ;
-    rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:InletConnectionPoint_version_15,
-        hpfs:OutletConnectionPoint_version_19 ;
-    s223:contains hpfs:Damper_version_6 ;
-    s223:hasProperty hpfs:QuantifiableObservableProperty_version_27,
-        hpfs:QuantifiableObservableProperty_version_31,
-        hpfs:QuantifiableObservableProperty_version_33 .
-
-hpfs:SingleDuctTerminal_version_6 a s223:SingleDuctTerminal ;
-    rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:InletConnectionPoint_version_16,
-        hpfs:OutletConnectionPoint_version_20 ;
-    s223:contains hpfs:Coil_version_7,
-        hpfs:Damper_version_7 ;
-    s223:hasProperty hpfs:QuantifiableObservableProperty_version_28,
-        hpfs:QuantifiableObservableProperty_version_32,
-        hpfs:QuantifiableObservableProperty_version_34 .
-
-hpfs:Coil_version_8 a s223:Coil ;
-    rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:InletConnectionPoint_version_12,
-        hpfs:OutletConnectionPoint_version_25 ;
-    s223:connectsTo hpfs:Coil_version_9 ;
+    s223:cnx bs:inlet_cp_2,
+        bs:outlet_cp_4 ;
+    s223:connectsTo bs:multiple-zone-ahu_htg_coil_1 ;
     s223:hasAspect s223:Role-Cooling .
 
-hpfs:Coil_version_9 a s223:Coil ;
+bs:multiple-zone-ahu_htg_coil_1 a s223:Coil ;
     rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:InletConnectionPoint_version_13,
-        hpfs:OutletConnectionPoint_version_18 ;
+    s223:cnx bs:inlet_cp_3,
+        bs:target_cp_1 ;
     s223:hasAspect s223:Role-Heating .
 
-hpfs:Damper_version_8 a s223:Damper ;
+bs:multiple-zone-ahu_ra_damper_1 a s223:Damper ;
     rdfs:label rdfs:Resource ;
-    s223:cnx hpfs:InletConnectionPoint_version_14,
-        hpfs:OutletConnectionPoint_version_26 ;
-    s223:connectsTo hpfs:Coil_version_8 ;
-    s223:hasProperty hpfs:QuantifiableActuatableProperty_version_6 .
+    s223:cnx bs:inlet_cp_1,
+        bs:outlet_cp_1 ;
+    s223:connectsTo bs:multiple-zone-ahu_clg_coil_1 ;
+    s223:hasProperty bs:multiple-zone-ahu_ra_damper-dmppos_1 .
 

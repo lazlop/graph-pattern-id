@@ -7,6 +7,8 @@ from rdflib.namespace import (
     RDF,
 )
 
+BS = Namespace("urn:bschema#")
+
 EX = Namespace("urn:example#")
 
 HPF = Namespace(f"urn:hpflex#")
@@ -69,7 +71,7 @@ def bind_prefixes(graph):
     graph.bind("hpfs", HPFS)
     graph.bind("s223", S223)
     graph.bind("ex", EX)
-
+    graph.bind("bs", BS)
 
 namespace_dict = {
     "xsd": XSD,
@@ -92,6 +94,7 @@ namespace_dict = {
     "s223": S223,
     "ex1": "http://data.ashrae.org/standard223/data/scb-vrf#",
     "ex":EX,
+    "bs":BS
 }
 
 prefix_dict = {value: key for key, value in namespace_dict.items()}

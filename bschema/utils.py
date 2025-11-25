@@ -1,5 +1,6 @@
 from rdflib import Graph
-
+import pyshacl
+from typing import Iterable, Tuple
 
 def get_prefixes(g: Graph):
     return "\n".join(f"PREFIX {prefix}: <{namespace}>" for prefix, namespace in g.namespace_manager.namespaces())
@@ -40,3 +41,59 @@ def parse_ttl_files_in_directory(directory_path, g):
                 
             except Exception as e:
                 print(f"Error parsing {file_name}: {e}")
+
+
+def common_pattern(strings: Iterable[str],
+                   placeholder: str = "x") -> Tuple[str, str, str]:
+    """
+    Return a pattern that highlights the part common to *all* strings and
+    replaces the differing part with *placeholder*.
+
+    The result is a tuple (prefix, placeholder, suffix).  If you want a
+    single string you can join them:  prefix + placeholder + suffix.
+
+    Parameters
+    ----------
+    strings : iterable of str
+        The strings to analyse.
+    placeholder : str, default='x'
+        Symbol that will stand in for the variable region.
+
+    Returns
+    -------
+    tuple(str, str, str)
+        (common_prefix, placeholder, common_suffix)
+    """
+    strs = list(strings)
+    if not strs:
+        return "", placeholder, ""
+
+    # ---------- longest common prefix ----------
+    # zip stops at the shortest string, so we can compare column‑wise
+    prefix_chars = []
+    for chars in zip(*strs):
+        if all(c == chars[0] for c in chars):
+            prefix_chars.append(chars[0])
+        else:
+            break
+    prefix = "".join(prefix_chars)
+
+    # ---------- longest common suffix ----------
+    # reverse strings, do the same thing, then reverse the result
+    rev_strs = [s[::-1] for s in strs]
+    suffix_chars = []
+    for chars in zip(*rev_strs):
+        if all(c == chars[0] for c in chars):
+            suffix_chars.append(chars[0])
+        else:
+            break
+    suffix = "".join(suffix_chars)[::-1]
+
+    # If the prefix and suffix overlap (possible when the whole string is equal)
+    # trim the suffix to avoid duplication.
+    if prefix and suffix and len(prefix) + len(suffix) > len(strs[0]):
+        suffix = suffix[len(prefix) + len(suffix) - len(strs[0]):]
+
+    # TODO: determine if placeholder is helpful in any way
+    # return f"{prefix}{placeholder}{suffix}"
+    return f"{prefix}{suffix}"
