@@ -341,14 +341,14 @@ def create_bschema(original_data_graph, iterations = 10, similarity_threshold = 
     original_data_graph.remove((URIRef('urn:example#'), A, OWL.Ontology))
     data_graph = copy_graph(original_data_graph)
     data_graph = data_graph.skolemize()
-    for i in range(iterations):
+    for iteration in range(iterations):
         # TODO: need to double check if it works to reset the counter each time, or if it will create issues because of when class name is assigned
         counter = {}
         distinct_class_subgraphs, seen_subjects, equivalent_subjects, subject_classes = get_class_isomorphisms(data_graph, similarity_threshold)
         new_subject_classes, new_class_mappings = assign_new_classes(data_graph, distinct_class_subgraphs, equivalent_subjects, subject_classes, use_original_names=use_original_names)
         class_mappings.append(new_class_mappings)
 
-        if i >= 1:
+        if iteration >= 1:
             # stop condition is no subjects are being distinguished from each other
             if lists_have_same_members(equivalent_subjects, prev_equivalent_subjects):
                 print('Algorithm stopped, since no further distinguishing classes found. Process took ',i, 'iterations')
@@ -362,7 +362,7 @@ def create_bschema(original_data_graph, iterations = 10, similarity_threshold = 
         prev_equivalent_subjects = equivalent_subjects
         # delete BS class since it is no longer needed 
         # NOTE: hacky method of addressing getting the right class or class set
-        if i >= 1:
+        if iteration >= 1:
             for s, cls_name in prev_subject_classes.items():
                 data_graph.remove((s, A, cls_name))
         
@@ -391,4 +391,4 @@ def create_bschema(original_data_graph, iterations = 10, similarity_threshold = 
             member_graph.add((subject_classes[i], RDFS.member, s))
     # could optionally also return data_graph, class_mappings
     # also giving amt of iterations
-    return class_graph, member_graph, i 
+    return class_graph, member_graph, iteration

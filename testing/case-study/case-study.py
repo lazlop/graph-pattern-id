@@ -4,13 +4,17 @@ import sys
 sys.path.append('../../')
 from utils import *
 from bschema import * 
+from time import time
 import matplotlib.pyplot as plt
 
 data_graph = Graph(store = 'Oxigraph')
 data_graph.parse("/Users/lazlopaul/Desktop/223p/experiments/graph-pattern-id/archive/development/brick-example.ttl", format="turtle")
 s223_data_graph = Graph(store = 'Oxigraph')
 s223_data_graph.parse("/Users/lazlopaul/Desktop/223p/experiments/graph-pattern-id/archive/development/s223-example.ttl", format="turtle")
+st = time()
 cg, mg, i = create_bschema(data_graph, 4)
+et = time()
+print(f"took {et-st} seconds")
 for s,p,o in cg:
     if (p == A) & (str(HPFS) in str(o)):
         cg.remove((s,p,o))
@@ -22,8 +26,10 @@ cg.serialize('algo5-brick.ttl')
 print("compressed to ", len(cg)/len(data_graph)*100, "% of its original size")
 # if PRINT_GRAPHS:
 #     cg.print()
-
+st = time()
 cg, mg, i = create_bschema(s223_data_graph, 5)
+et = time()
+print(f"took {et-st} seconds")
 for s,p,o in cg:
     if (p == A) & (str(HPFS) in str(o)):
         cg.remove((s,p,o))

@@ -40,7 +40,7 @@ bs:target_cp_1 a s223:OutletConnectionPoint ;
     rdfs:label rdfs:Resource ;
     s223:cnx bs:multiple-zone-ahu_htg_coil_1 ;
     s223:hasMedium rdfs:Resource ;
-    s223:mapsTo bs:outlet_cp_4 .
+    s223:mapsTo bs:outlet_cp_2 .
 
 bs:vav-cooling-only_air-outlet-connectionpoint_1 a s223:OutletConnectionPoint ;
     rdfs:label rdfs:Resource ;
@@ -132,41 +132,41 @@ bs:ahu_out1 a s223:OutletConnectionPoint ;
 
 bs:connection_1 a s223:Connection ;
     rdfs:label rdfs:Resource ;
-    s223:cnx bs:inlet_cp_3,
-        bs:outlet_cp_2 .
+    s223:cnx bs:inlet_cp_2,
+        bs:outlet_cp_1 .
 
 bs:connection_2 a s223:Connection ;
     rdfs:label rdfs:Resource ;
-    s223:cnx bs:inlet_cp_2,
+    s223:cnx bs:inlet_cp_1,
         bs:outlet_cp_3 .
 
 bs:connection_3 a s223:Connection ;
     rdfs:label rdfs:Resource ;
-    s223:cnx bs:inlet_cp_1,
-        bs:outlet_cp_1 .
+    s223:cnx bs:inlet_cp_3,
+        bs:outlet_cp_4 .
 
 bs:inlet_cp_1 a s223:InletConnectionPoint ;
-    rdfs:label rdfs:Resource ;
-    s223:cnx bs:connection_3,
-        bs:multiple-zone-ahu_ra_damper_1 ;
-    s223:hasMedium rdfs:Resource .
-
-bs:inlet_cp_2 a s223:InletConnectionPoint ;
     rdfs:label rdfs:Resource ;
     s223:cnx bs:connection_2,
         bs:multiple-zone-ahu_htg_coil_1 ;
     s223:hasMedium rdfs:Resource .
 
-bs:inlet_cp_3 a s223:InletConnectionPoint ;
+bs:inlet_cp_2 a s223:InletConnectionPoint ;
     rdfs:label rdfs:Resource ;
     s223:cnx bs:connection_1,
+        bs:multiple-zone-ahu_ra_damper_1 ;
+    s223:hasMedium rdfs:Resource .
+
+bs:inlet_cp_3 a s223:InletConnectionPoint ;
+    rdfs:label rdfs:Resource ;
+    s223:cnx bs:connection_3,
         bs:multiple-zone-ahu_clg_coil_1 ;
     s223:hasMedium rdfs:Resource .
 
 bs:multiple-zone-ahu_name_1 a s223:AirHandlingUnit ;
     rdfs:label rdfs:Resource ;
     s223:cnx bs:ahu_out1,
-        bs:outlet_cp_4 ;
+        bs:outlet_cp_2 ;
     s223:connectsTo bs:vav-cooling-only_name_1,
         bs:vav-with-reheat_name_1 ;
     s223:contains bs:multiple-zone-ahu_clg_coil_1,
@@ -187,14 +187,13 @@ bs:multiple-zone-ahu_sa_fan_1 a s223:Fan ;
 
 bs:outlet_cp_1 a s223:OutletConnectionPoint ;
     rdfs:label rdfs:Resource ;
-    s223:cnx bs:connection_3,
+    s223:cnx bs:connection_1,
         bs:multiple-zone-ahu_sa_fan_1 ;
     s223:hasMedium rdfs:Resource .
 
 bs:outlet_cp_2 a s223:OutletConnectionPoint ;
     rdfs:label rdfs:Resource ;
-    s223:cnx bs:connection_1,
-        bs:multiple-zone-ahu_ra_damper_1 ;
+    s223:cnx bs:multiple-zone-ahu_name_1 ;
     s223:hasMedium rdfs:Resource .
 
 bs:outlet_cp_3 a s223:OutletConnectionPoint ;
@@ -205,7 +204,8 @@ bs:outlet_cp_3 a s223:OutletConnectionPoint ;
 
 bs:outlet_cp_4 a s223:OutletConnectionPoint ;
     rdfs:label rdfs:Resource ;
-    s223:cnx bs:multiple-zone-ahu_name_1 ;
+    s223:cnx bs:connection_3,
+        bs:multiple-zone-ahu_ra_damper_1 ;
     s223:hasMedium rdfs:Resource .
 
 bs:vav-cooling-only_air-inlet-connectionpoint_1 a s223:InletConnectionPoint ;
@@ -261,14 +261,14 @@ bs:multiple-zone-ahu_clg_coil_1 a s223:Coil ;
 
 bs:multiple-zone-ahu_htg_coil_1 a s223:Coil ;
     rdfs:label rdfs:Resource ;
-    s223:cnx bs:inlet_cp_2,
+    s223:cnx bs:inlet_cp_1,
         bs:target_cp_1 ;
     s223:hasAspect s223:Role-Heating .
 
 bs:multiple-zone-ahu_ra_damper_1 a s223:Damper ;
     rdfs:label rdfs:Resource ;
-    s223:cnx bs:inlet_cp_1,
-        bs:outlet_cp_2 ;
+    s223:cnx bs:inlet_cp_2,
+        bs:outlet_cp_4 ;
     s223:connectsTo bs:multiple-zone-ahu_clg_coil_1 ;
     s223:hasProperty bs:multiple-zone-ahu_ra_damper-dmppos_1 .
 
