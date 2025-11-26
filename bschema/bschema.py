@@ -15,6 +15,8 @@ TODO:
     This indicates a bug with the rdfs:Resource usage. Line 108 in bldg5-20iter shows this. There should not be multiple external references on this sensor
     BUG IS BLANK NODES. Will skolemize graph before doing anything. Now stop condition is doing something for jaccard at least.
 - Should Jaccard similarity require things to be the same class? Perhaps that is an additional layer of relaxation we can consider later.
+
+- for models made using bob the builder, uri's are not interpretable and I'm losing rdfs:labels. May need a way to pull labels through or name the URIs based on the labels
 """
 
 from rdflib.compare import isomorphic, graph_diff
@@ -306,6 +308,7 @@ def copy_graph(g):
     return g2
 
 
+# TODO: cleanup renaming
 def assign_new_classes(data_graph, distinct_class_subgraphs, equivalent_subjects, subject_classes, use_original_names):
     class_mappings = {}
     new_subject_classes = {}
@@ -315,7 +318,9 @@ def assign_new_classes(data_graph, distinct_class_subgraphs, equivalent_subjects
             if BNODE_BASE in name:
                 name = 'bnode'
             counter[name] = count = counter.get(name, 0) + 1
-            new_cls_name = URIRef(f"{name}{count}")
+            name_no_uri = name.split('#')[-1].split('/')[-1]
+            # new_cls_name = URIRef(f"{name}{count}")
+            new_cls_name = BS[f"{name_no_uri}{count}"]
         else:
             cls_name = subject_classes[i]
             name = cls_name.split('#')[-1].split('_version_')[0]
