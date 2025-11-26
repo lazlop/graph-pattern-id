@@ -351,7 +351,7 @@ def create_bschema(original_data_graph, iterations = 10, similarity_threshold = 
         if iteration >= 1:
             # stop condition is no subjects are being distinguished from each other
             if lists_have_same_members(equivalent_subjects, prev_equivalent_subjects):
-                print('Algorithm stopped, since no further distinguishing classes found. Process took ',i, 'iterations')
+                print('Algorithm stopped, since no further distinguishing classes found. Process took ',iteration, 'iterations')
                 if PRINT_GRAPHS:
                     print('Printing Last Set Difference')
                     pprint(last_set_diff)
