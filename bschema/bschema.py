@@ -117,11 +117,12 @@ def create_class_pattern(triple: Tuple[URIRef, URIRef, URIRef], data_graph) -> T
         # may want to have a union of classes 
         # TODO: if ordering is not consistent of classes this could create bugs
         # subject node should maybe represent union of classes
-        named_node_predicates = [S223.hasAspect, S223.hasEnumerationKind, S223.hasQuantityKind, S223.hasUnit, S223.hasMedium, S223.ofConstituent]
+        # should be able to be appended to or overwritten outside of the class
+        named_node_predicates = [S223.hasAspect, S223.hasEnumerationKind, S223.hasQuantityKind, S223.hasUnit, S223.hasMedium, S223.ofConstituent, QUDT.hasUnit]
         s_class = get_class(triple[0], data_graph)
         if triple[1] == A:
             o_class = triple[2]
-        elif triple[1] in [S223['hasAspect'], S223.hasEnumerationKind, S223.hasQuantityKind, S223.hasUnit]:
+        elif triple[1] in named_node_predicates:
             o_class = triple[2]
         else:
             o_class = get_class(triple[2], data_graph)
@@ -238,7 +239,8 @@ def get_class_isomorphisms(data_graph, similarity_threshold = None):
             subject_classes.append(subject_class)
     return distinct_class_subgraphs, seen_subjects, equivalent_subjects, subject_classes
 
-def find_similar_sublists(list1, list2, min_intersection_ratio=0.4):
+# TODO: consider switching to overlap coefficient rather than jaccard, so that unions work better 
+def find_similar_sublists(list1, list2, min_intersection_ratio=0.4, use_jaccard=False):
     """
     Find pairs of sublists that have high overlap but aren't exactly the same.
     
@@ -268,17 +270,28 @@ def find_similar_sublists(list1, list2, min_intersection_ratio=0.4):
             
             # Calculate Jaccard similarity
             jaccard = len(intersection) / len(union) if union else 0
+
+            # calculate overlap coefficient
+            overlap_coefficient = len(intersection) / min(len(set1), len(set2))
             
             # Also calculate intersection ratio relative to each set
             ratio1 = len(intersection) / len(set1) if set1 else 0
             ratio2 = len(intersection) / len(set2) if set2 else 0
             
             # Check if meets threshold
-            if jaccard >= min_intersection_ratio:
+            threshold_met = False
+            if use_jaccard:
+                threshold_met = jaccard >= min_intersection_ratio
+            else:
+                threshold_met = overlap_coefficient >= min_intersection_ratio
+            
+            # Add pair if meets threshold
+            if threshold_met:
                 similar_pairs.append({
                     'list1_index': i,
                     'list2_index': j,
                     'jaccard_similarity': jaccard,
+                    'overlap_coefficient': overlap_coefficient,
                     'intersection_size': len(intersection),
                     'only_in_list1': list(set1 - set2),
                     'only_in_list2': list(set2 - set1),
