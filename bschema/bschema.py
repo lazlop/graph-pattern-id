@@ -346,7 +346,7 @@ def assign_new_classes(data_graph, distinct_class_subgraphs, equivalent_subjects
     return new_subject_classes, class_mappings
 
 
-def create_bschema(original_data_graph, iterations = 10, similarity_threshold = None, remove_added_labels = True, use_original_names = True):
+def create_bschema(original_data_graph, iterations = 10, similarity_threshold = None, remove_added_labels = True, use_original_names = True, use_jaccard = False):
     # need to remove ontology statement because having just the prefix breaks serialization/parsing by oxigraph
     global counter
     counter = {}
@@ -370,7 +370,7 @@ def create_bschema(original_data_graph, iterations = 10, similarity_threshold = 
                     pprint(last_set_diff)
                 break
             else:
-                last_set_diff = find_similar_sublists(equivalent_subjects, prev_equivalent_subjects)
+                last_set_diff = find_similar_sublists(equivalent_subjects, prev_equivalent_subjects, use_jaccard=use_jaccard)
     
         prev_equivalent_subjects = equivalent_subjects
         # delete BS class since it is no longer needed 
