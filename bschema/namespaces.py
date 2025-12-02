@@ -62,6 +62,7 @@ def bind_prefixes(graph):
     graph.bind("quantitykind", QK)
     graph.bind("qudt", QUDT)
     graph.bind("unit", UNIT)
+    graph.bind("ref", REF)
     graph.bind("brick", BRICK)
     graph.bind("tag", TAG)
     graph.bind("bsh", BSH)
@@ -85,7 +86,7 @@ namespace_dict = {
     "qudt": QUDT,
     "unit": UNIT,
     "brick": BRICK,
-    # "ref": REF,
+    "ref": REF,
     "tag": TAG,
     "bsh": BSH,
     "P": PARAM,
