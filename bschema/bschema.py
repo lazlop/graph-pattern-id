@@ -379,6 +379,9 @@ def create_bschema(original_data_graph, iterations = 10, similarity_threshold = 
         
         prev_subject_classes = new_subject_classes
         print("Summarized Graph Length: ", len(create_class_graph(data_graph)))
+        # Threshold 0 is just the class graph, and requires only 1 iteration
+        if similarity_threshold == 0:
+            break
     
     
     # H, in the paper
