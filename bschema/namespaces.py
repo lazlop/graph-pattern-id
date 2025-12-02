@@ -28,7 +28,7 @@ RDFS = Namespace("http://www.w3.org/2000/01/rdf-schema#")
 SKOS = Namespace("http://www.w3.org/2004/02/skos/core#")
 SH = Namespace("http://www.w3.org/ns/shacl#")
 XSD = Namespace("http://www.w3.org/2001/XMLSchema#")
-
+BOB = Namespace("http://data.ashrae.org/standard223/si-builder#")
 # QUDT namespaces
 QUDT = Namespace("http://qudt.org/schema/qudt/")
 QK = Namespace("http://qudt.org/vocab/quantitykind/")
@@ -85,6 +85,7 @@ namespace_dict = {
     "qudt": QUDT,
     "unit": UNIT,
     "brick": BRICK,
+    "ref": REF,
     "tag": TAG,
     "bsh": BSH,
     "P": PARAM,
