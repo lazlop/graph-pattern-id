@@ -21,6 +21,10 @@ TAG = Namespace("https://brickschema.org/schema/BrickTag#")
 BSH = Namespace("https://brickschema.org/schema/BrickShape#")
 REF = Namespace("https://brickschema.org/schema/Brick/ref#")
 
+S4BLDG = Namespace("https://saref.etsi.org/saref4bldg#")
+S4ENER = Namespace("https://saref.etsi.org/saref4ener#")
+SAREF = Namespace("https://saref.etsi.org/core#")
+
 # defaults
 OWL = Namespace("http://www.w3.org/2002/07/owl#")
 RDF = Namespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
@@ -74,6 +78,10 @@ def bind_prefixes(graph):
     graph.bind("s223", S223)
     graph.bind("ex", EX)
     graph.bind("bs", BS)
+    graph.bind("bob", BOB)
+    graph.bind("s4bldg", S4BLDG)
+    graph.bind("s4ener", S4ENER)
+    graph.bind("saref", SAREF)
 
 namespace_dict = {
     "xsd": XSD,
@@ -97,7 +105,11 @@ namespace_dict = {
     "s223": S223,
     "ex1": "http://data.ashrae.org/standard223/data/scb-vrf#",
     "ex":EX,
-    "bs":BS
+    "bs":BS,
+    "bob":BOB,
+    "s4bldg":S4BLDG,
+    "s4ener":S4ENER,
+    "saref":SAREF
 }
 
 prefix_dict = {value: key for key, value in namespace_dict.items()}
