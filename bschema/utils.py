@@ -1,5 +1,7 @@
-from rdflib import Graph
+from rdflib import Graph, URIRef, BNode
+from rdflib.namespace import RDF
 from typing import Iterable, Tuple
+from collections import Counter
 
 def get_prefixes(g: Graph):
     return "\n".join(f"PREFIX {prefix}: <{namespace}>" for prefix, namespace in g.namespace_manager.namespaces())
@@ -103,3 +105,39 @@ def common_pattern(strings: Iterable[str],
     # TODO: determine if placeholder is helpful in any way
     # return f"{prefix}{placeholder}{suffix}"
     return f"{prefix}{suffix}"
+
+def inline_graph(g: Graph):
+    # 1. Get all entities defined in this graph (subject of rdf:type)
+    defined_entities = set(s for s, p, o in g.triples((None, RDF.type, None)) if isinstance(s, URIRef))
+
+    # 2. Count object references (excluding literals)
+    object_counter = Counter()
+    for s, p, o in g:
+        if isinstance(o, URIRef):
+            object_counter[o] += 1
+
+    # 3. Find single-use, defined entities
+    candidates = {uri for uri in defined_entities if object_counter[uri] == 1}
+
+    # 4. Map for URIRef -> BNode replacement
+    uri_to_bnode = {}
+    new_g = Graph()
+    for prefix, ns in g.namespaces():
+        new_g.bind(prefix, ns)
+
+    # 5. Build the mapping for nodes to be replaced
+    for s, p, o in g:
+        if isinstance(o, URIRef) and o in candidates:
+            if o not in uri_to_bnode:
+                uri_to_bnode[o] = BNode()
+
+    # 6. Rewrite the graph with substitutions
+    for s, p, o in g:
+        # Replace object if needed
+        if isinstance(o, URIRef) and o in uri_to_bnode:
+            o = uri_to_bnode[o]
+        # Replace subject if needed (very rare, but possible)
+        if isinstance(s, URIRef) and s in uri_to_bnode:
+            s = uri_to_bnode[s]
+        new_g.add((s, p, o))
+    return new_g
