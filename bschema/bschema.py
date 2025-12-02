@@ -1,25 +1,3 @@
-"""Notes:
-LLM class naming isn't particularly good using a locally running LLM. Should just number the variants of the original class. (ConnectionPoint1,2, VAV1,2, etc.)
-Using GPT OSS run by CBORG, creating new class names was decent
- 
-TODO: 
-- works right for brick, but class graph currently only contains one class. This may create bugs, so I will need to consider other methods. Working so far because it happens to gets the most recently added class, which is alphabetically the latest because of the version tag I'm adding. Instead of directly doing the class relations it may make sense to separate instance and class once again 
-- Fix how I'm getting aspects and named nodes again so these show up in class graph for isomorphism. 
-- Getting the class names relies on how graph is serialized to get most recently added class label. This may cause a bug in the future.
-- Fix relaxed version of b_schema using jaccard similarity. May not converge exactly right since different subgraphs can be selected for each loop
-- Need to check stop condition for jaccard similarity version. NOT working correctly for mortar
-    A hint about what may be going wrong is that the graphs are getting bigger per iteration. I think they shouldn't be getting bigger after the 1st iteration because I'm just removing and replacing labels
-    Ran with 20 iterations and the graph got one longer per iteration, and the summarized graph got 3 longer.
-    Appears that there were different amounts of rooms and the amount of rooms per floor changed a bit
-    Also appears that there was an extra external reference version added 
-    This indicates a bug with the rdfs:Resource usage. Line 108 in bldg5-20iter shows this. There should not be multiple external references on this sensor
-    BUG IS BLANK NODES. Will skolemize graph before doing anything. Now stop condition is doing something for jaccard at least.
-- Should Jaccard similarity require things to be the same class? Perhaps that is an additional layer of relaxation we can consider later.
-- fully delete Jaccard and switch to similarity coefficient. 
-
-- for models made using bob the builder, uri's are not interpretable and I'm losing rdfs:labels. May need a way to pull labels through or name the URIs based on the labels
-"""
-
 from rdflib.compare import isomorphic, graph_diff
 
 from pprint import pprint
@@ -38,7 +16,7 @@ PRINT_GRAPHS = False
 def get_subgraph_with_hops(
     graph: Graph, 
     central_node: Union[str, URIRef], 
-    num_hops: int,
+    num_hops: int = 1,
     get_classes = False
 ) -> Graph:
     """
@@ -49,6 +27,7 @@ def get_subgraph_with_hops(
         graph: The source RDF graph
         central_node: The central node URI (as string or URIRef)
         num_hops: Number of hops to traverse from the central node
+        get_classes: Whether to include rdf:type information for all entities
     
     Returns:
         A new Graph containing the subgraph
@@ -100,12 +79,9 @@ def get_subgraph_with_hops(
                 subgraph.add((o, RDF.type, class_uri))
     return subgraph
 
-def get_class(node: URIRef, data_graph) -> URIRef:
-        """Get the class of a node from the data graph"""
-        # TODO: Shouldn't hve a default class and need a union of classes
-        # Should have something else to represent literals, other than resource, but need to make sure defualt just applies to literals
-        
-        # NOTE: hacky method of addressing getting the right class or class set, just by preferring BS classes and earlier making sure hteres just one BS class per thing
+def get_class(node: URIRef, data_graph: Graph) -> URIRef:
+        """Get the class of a node from the data graph. Asigns a default class for literals or if one is not found"""
+        # NOTE: can change to look at union of classes, if necessary for differrent use of ontologies
         for _, _, o in data_graph.triples((node, A, None)):
             if str(BS) in str(o):
                 return o
@@ -116,11 +92,9 @@ def get_class(node: URIRef, data_graph) -> URIRef:
         return URIRef("http://www.w3.org/2000/01/rdf-schema#Resource")
 
 def create_class_pattern(triple: Tuple[URIRef, URIRef, URIRef], data_graph) -> Tuple[URIRef, URIRef, URIRef]:
-        """Create class-based pattern from concrete triples"""
-        # may want to have a union of classes 
-        # TODO: if ordering is not consistent of classes this could create bugs
-        # subject node should maybe represent union of classes
-        # should be able to be appended to or overwritten outside of the class
+        """Create class-based pattern from a triple. This is just how the class of the subject relates to the class of the object.
+        If NamedNodes are used (i.e. hasAspect, hasEnumerationKind, etc.) then the named node is used as the class."""
+        # TODO: should be able to be appended to or overwritten outside of the class
         named_node_predicates = [S223.hasAspect, S223.hasEnumerationKind, S223.hasQuantityKind, S223.hasUnit, 
                                  S223.hasMedium, S223.ofConstituent, QUDT.hasUnit, S223.hasRole, S223.hasDomain, 
                                  BRICK.hasUnit, QUDT.hasQuantityKind]
@@ -144,18 +118,24 @@ def create_class_graph(data_graph: Graph):
 
     return class_graph
 
-def create_class_graph(data_graph: Graph):
-    class_graph = Graph(store = 'Oxigraph')
-    for triple in data_graph: 
-        class_triple = create_class_pattern(triple, data_graph)
-        if class_triple in class_graph:
-            continue
-        else:
-            class_graph.add(class_triple)
-
-    return class_graph
-
 def get_class_isomorphisms(data_graph, similarity_threshold = None):
+    """Looks for isomorphisms or high similarities between the graphs one hop around each node in the data graph.
+    If similarity threshold is none, isomorphisms are found. If not, similar nodes are found
+    based on the overlap coefficent of the one-hop subgraphs around these nodes.
+    
+    Args:
+        data_graph: The data graph
+        similarity_threshold: The threshold for similarity between graphs. If None, isomorphisms are found.
+    
+    Returns:
+        A list of distinct_class_subgraphs,
+        a list of all the subjects seen
+        a list of which subjects are equivalent
+        a list of the classes for these equivalent subjects
+        
+        distinct_class_subgraphs, seen_subjects, equivalent_subjects, subject_classes
+    """
+    
     distinct_class_subgraphs = []
     seen_subjects = set()
     equivalent_subjects = []
@@ -177,9 +157,6 @@ def get_class_isomorphisms(data_graph, similarity_threshold = None):
             continue
             
         indices = [i for i, x in enumerate(subject_classes) if x == subject_class]
-        # check indices first 
-        # NOTE: checking indices like this places an extra condition on the jaccard similarity.
-        # NOTE: Switching from jaccard similarity to overlap coefficient
         for i in indices:
             g = distinct_class_subgraphs[i]
             if similarity_threshold is not None:
@@ -197,7 +174,6 @@ def get_class_isomorphisms(data_graph, similarity_threshold = None):
                 else:
                     found_in_preferred = False
                     add_subgraph = True
-            # NOTE: It may be good to look for isomorphic first then within jaccard similarity second to prefer exact matches. But it would run slower, and jaccard is just for testing on mortar rn
             else:
                 if isomorphic(class_graph, g): 
                     equivalent_subjects[i].append(s)
@@ -211,23 +187,6 @@ def get_class_isomorphisms(data_graph, similarity_threshold = None):
         if found_in_preferred:
             continue
 
-        # NOTE: may be a more efficient way to do this. Not sure it does anything since for an isomorphism to be found the subject classes must be the same. This is also an extra condition for jaccard similarity
-        # In mortar I'm finding many more isomorphisms, maybe this is because the one hop graphs are identical for subjects with different classes? 
-        # TODO: Finding unexpected isomorphisms for empty graphs. Should handle somehow
-        # for i, g in enumerate(distinct_class_subgraphs):
-        #     if isomorphic(class_graph, g): 
-        #         pprint(subject_class)
-        #         pprint(subject_classes)
-        #         print('FOUND unexpected isomorphism')
-        #         class_graph.print()
-        #         g.print()
-        #         raise Exception
-        #         equivalent_subjects[i].append(s)
-        #         add_subgraph = False
-        #         break
-        #     else:
-        #         add_subgraph = True
-
         if indices == []:
             add_subgraph = True
 
@@ -238,14 +197,16 @@ def get_class_isomorphisms(data_graph, similarity_threshold = None):
     return distinct_class_subgraphs, seen_subjects, equivalent_subjects, subject_classes
 
 # TODO: consider switching to overlap coefficient rather than jaccard, so that unions work better 
-def find_similar_sublists(list1, list2, min_intersection_ratio=0.4, use_jaccard=False):
+def find_similar_sublists(list1, list2, min_intersection_ratio=0.4, use_jaccard=True):
     """
     Find pairs of sublists that have high overlap but aren't exactly the same.
+    This is a debugging function to see how groups of nodes change per iteration when creating the bschema
     
     Args:
         list1: First list containing sublists
         list2: Second list containing sublists
         min_intersection_ratio: Minimum ratio of intersection to consider (default 0.8)
+        use_jaccard: Whether to use Jaccard similarity or overlap coefficient (default to True, Jaccard)
     
     Returns:
         list: Pairs of similar but not identical sublists with their similarity info
@@ -308,6 +269,7 @@ def lists_have_same_members(list1, list2):
     return sets1 == sets2
 
 def copy_graph(g):
+    """creates a copy of a graph using Oxigraph"""
     g2 = Graph(store = "Oxigraph")
     bind_prefixes(g2)
     for triple in g:
@@ -340,8 +302,8 @@ def assign_new_classes(data_graph, distinct_class_subgraphs, equivalent_subjects
     return new_subject_classes, class_mappings
 
 
-def create_bschema(original_data_graph, iterations = 10, similarity_threshold = None, remove_added_labels = True, use_original_names = True, use_jaccard = False):
-    # need to remove ontology statement because having just the prefix breaks serialization/parsing by oxigraph
+def create_bschema(original_data_graph, iterations = 10, similarity_threshold = None, remove_added_labels = True, use_original_names = True):
+    """ Create a bschema from a data graph."""
     global counter
     counter = {}
     class_mappings = []
@@ -364,7 +326,7 @@ def create_bschema(original_data_graph, iterations = 10, similarity_threshold = 
                     pprint(last_set_diff)
                 break
             else:
-                last_set_diff = find_similar_sublists(equivalent_subjects, prev_equivalent_subjects, use_jaccard=use_jaccard)
+                last_set_diff = find_similar_sublists(equivalent_subjects, prev_equivalent_subjects)
     
         prev_equivalent_subjects = equivalent_subjects
         # delete BS class since it is no longer needed 
