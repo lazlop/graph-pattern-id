@@ -112,7 +112,9 @@ namespace_dict = {
     "bob":BOB,
     "s4bldg":S4BLDG,
     "s4ener":S4ENER,
-    "saref":SAREF
+    "saref":SAREF,
+    "bacnet":BACNET,
+    "rec":REC
 }
 
 prefix_dict = {value: key for key, value in namespace_dict.items()}
