@@ -23,7 +23,7 @@ from rdflib.compare import isomorphic, graph_diff
 
 from pprint import pprint
 from typing import Union, List, Union, Tuple, Optional
-from rdflib import Graph, URIRef
+from rdflib import Graph, URIRef, Literal
 import sys
 from .utils import * 
 from .namespaces import *
@@ -110,6 +110,8 @@ def get_class(node: URIRef, data_graph) -> URIRef:
                 return o
         for _, _, o in data_graph.triples((node, A, None)):
             return o
+        if isinstance(node, Literal):
+            return URIRef("http://www.w3.org/2000/01/rdf-schema#Literal")
         return URIRef("http://www.w3.org/2000/01/rdf-schema#Resource")
 
 def create_class_pattern(triple: Tuple[URIRef, URIRef, URIRef], data_graph) -> Tuple[URIRef, URIRef, URIRef]:
@@ -118,7 +120,9 @@ def create_class_pattern(triple: Tuple[URIRef, URIRef, URIRef], data_graph) -> T
         # TODO: if ordering is not consistent of classes this could create bugs
         # subject node should maybe represent union of classes
         # should be able to be appended to or overwritten outside of the class
-        named_node_predicates = [S223.hasAspect, S223.hasEnumerationKind, S223.hasQuantityKind, S223.hasUnit, S223.hasMedium, S223.ofConstituent, QUDT.hasUnit]
+        named_node_predicates = [S223.hasAspect, S223.hasEnumerationKind, S223.hasQuantityKind, S223.hasUnit, 
+                                 S223.hasMedium, S223.ofConstituent, QUDT.hasUnit, S223.hasRole, S223.hasDomain, 
+                                 BRICK.hasUnit, QUDT.hasQuantityKind]
         s_class = get_class(triple[0], data_graph)
         if triple[1] == A:
             o_class = triple[2]
