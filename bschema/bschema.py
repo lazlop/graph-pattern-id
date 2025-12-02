@@ -15,6 +15,7 @@ TODO:
     This indicates a bug with the rdfs:Resource usage. Line 108 in bldg5-20iter shows this. There should not be multiple external references on this sensor
     BUG IS BLANK NODES. Will skolemize graph before doing anything. Now stop condition is doing something for jaccard at least.
 - Should Jaccard similarity require things to be the same class? Perhaps that is an additional layer of relaxation we can consider later.
+- fully delete Jaccard and switch to similarity coefficient. 
 
 - for models made using bob the builder, uri's are not interpretable and I'm losing rdfs:labels. May need a way to pull labels through or name the URIs based on the labels
 """
@@ -178,31 +179,24 @@ def get_class_isomorphisms(data_graph, similarity_threshold = None):
         indices = [i for i, x in enumerate(subject_classes) if x == subject_class]
         # check indices first 
         # NOTE: checking indices like this places an extra condition on the jaccard similarity.
+        # NOTE: Switching from jaccard similarity to overlap coefficient
         for i in indices:
             g = distinct_class_subgraphs[i]
             if similarity_threshold is not None:
-                in_both, in_g1_only, in_g2_only = graph_diff(class_graph, g)
+                in_both, _, _ = graph_diff(class_graph, g)
                 intersection_size = len(in_both)
-                union_size = len(in_both) + len(in_g1_only) + len(in_g2_only)
-
-                if union_size > 0:
-                    similarity_score = intersection_size / union_size
-                    # NOTE: also replacing matched graph with union of class graph and g
-                    if similarity_score > similarity_threshold:
-                        # NOTE: May not want to use + because we lose oxigraph as the store, also not sure it works correctly. Maybe just take the bigger graph?
-                        distinct_class_subgraphs[i] = class_graph + g
-                        # if len(class_graph) > len(g):
-                        #     distinct_class_subgraphs[i] = class_graph
-                        # else:
-                        #     distinct_class_subgraphs[i] = g
-                        
-                        equivalent_subjects[i].append(s)
-                        found_in_preferred = True
-                        add_subgraph = False
-                        break
-                    else:
-                        found_in_preferred = False
-                        add_subgraph = True
+                similarity_score = intersection_size / min(len(class_graph), len(g))
+                
+                if similarity_score > similarity_threshold:
+                    # NOTE: May not want to use + because we lose oxigraph as the store, also not sure it works correctly. Maybe just take the bigger graph?
+                    distinct_class_subgraphs[i] = class_graph + g
+                    equivalent_subjects[i].append(s)
+                    found_in_preferred = True
+                    add_subgraph = False
+                    break
+                else:
+                    found_in_preferred = False
+                    add_subgraph = True
             # NOTE: It may be good to look for isomorphic first then within jaccard similarity second to prefer exact matches. But it would run slower, and jaccard is just for testing on mortar rn
             else:
                 if isomorphic(class_graph, g): 
@@ -277,10 +271,6 @@ def find_similar_sublists(list1, list2, min_intersection_ratio=0.4, use_jaccard=
 
             # calculate overlap coefficient
             overlap_coefficient = len(intersection) / min(len(set1), len(set2))
-            
-            # Also calculate intersection ratio relative to each set
-            ratio1 = len(intersection) / len(set1) if set1 else 0
-            ratio2 = len(intersection) / len(set2) if set2 else 0
             
             # Check if meets threshold
             threshold_met = False
